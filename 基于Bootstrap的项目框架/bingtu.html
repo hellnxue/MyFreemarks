@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        .flot-pie-chart {
+            display: block;
+            height: 200px;
+        }
+        .flot-chart-pie-content {
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            transform:rotate(120deg);
+            -ms-transform:rotate(120deg); 	/* IE 9 */
+			-moz-transform:rotate(120deg); 	/* Firefox */
+			-webkit-transform:rotate(120deg); /* Safari 和 Chrome */
+			-o-transform:rotate(120deg); 	/* Opera */
+        }
+    </style>
+</head>
+<body>
+	<div class="flot-pie-chart" >
+        <div class="flot-chart-pie-content" id="flot-pie-chart"></div>
+    </div>
+<script language="javascript" type="text/javascript" src="vendor/jquery/dist/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="vendor/jquery-flot/jquery.flot.js"></script>
+<script language="javascript" type="text/javascript" src="vendor/jquery-flot/jquery.flot.pie.js"></script>
+<script>
+	$(function () {
+        function flotPieChart(){
+        	var data3 = [
+	            { data: 30, color: "#ccc465", },
+	            { data: 70, color: "#8dd76a", }
+	        ];
+
+	        var chartUsersOptions3 = {
+	            series: {
+	                pie: {
+	                    show: true
+	                }
+	            },
+	            grid: {
+	                hoverable: true
+	            }
+	        };
+	        $.plot($("#flot-pie-chart"), data3 , chartUsersOptions3);
+        }
+        flotPieChart()
+	})
+</script>
+</body>
+</html>
