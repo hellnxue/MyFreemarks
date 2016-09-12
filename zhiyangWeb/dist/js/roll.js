@@ -7,6 +7,7 @@ function roll(){
 		timer;
 
 	oUl.innerHTML += oUl.innerHTML;
+	console.log(oUl.innerHTML);
 	oUl.style.width = oLi[0].offsetWidth * oLi.length + 'px';
 
 	oBtn[0].onclick = fLeft;
@@ -16,10 +17,10 @@ function roll(){
 	timer = setInterval(fMove,30);
 
 	function fMove(){
-		var getOulLeftData = oUl.offsetLeft,
+		var getOulLeftData = oUl.offsetLeft,//offsetLeft当前对象的外边框到它上层对象的内边框之间的距离
 			getOulWidthData = oUl.offsetWidth;
 
-		oUl.style.left = getOulLeftData + iSpeed + 'px';
+		oUl.style.left = getOulLeftData + 0 + 'px';
 		if(getOulLeftData < -getOulWidthData/2){
 			oUl.style.left = '0px';
 		}else if(getOulLeftData > 0){
