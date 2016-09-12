@@ -1,0 +1,77 @@
+.modal {
+    bottom: 0;
+    display: none;
+    left: 0;
+    outline: 0 none;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1050;
+}
+.modal-open {
+    overflow: hidden;
+}
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.fade {
+    opacity: 0;
+    transition: opacity 0.15s linear 0s;
+}
+.fade.in {
+    opacity: 1;
+}
+.modal.fade .modal-dialog {
+    transform: translate(0px, -25%);
+    transition: transform 0.3s ease-out 0s;
+}
+.modal.in .modal-dialog {
+    transform: translate(0px, 0px);
+}
+.modal-dialog {
+    margin: 90px auto 0;
+    width: 700px;
+    position: relative;
+    
+}
+.modal-content {
+	padding: 45px 35px;
+    background-clip: padding-box;
+    background-color: #fff;
+    outline: 0 none;
+    position: relative;
+    height: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.modal-absolute{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 45px;
+}
+.modal-backdrop.in {
+    opacity: 0.38;
+}
+.modal-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #000;
+}
+.modal-backdrop {
+    position: fixed;
+    bottom: 0;
+}
+.modal-close{
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    top: -36px;
+    right: -30px;
+    opacity: .7;
+    cursor: pointer;
+}

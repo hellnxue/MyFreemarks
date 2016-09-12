@@ -1,0 +1,8 @@
+@mixin btn($btn-color,$bg-color,$border-color,$btn-radius,$btn-padding,$width:auto){
+	color: $btn-color;
+	background: $bg-color;
+	border: 1px solid $border-color;
+	border-radius: $btn-radius;
+	padding: $btn-padding;
+	width: $width;
+}

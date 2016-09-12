@@ -1,0 +1,78 @@
+.icon{
+	display: inline-block;
+}
+.icon-align-t{
+	vertical-align: top;
+}
+.icon-align-m{
+	vertical-align: middle;
+}
+.icon-down{
+	width: 14px;
+	height: 14px;
+	background: url(../../img/icon-down.png) no-repeat 0 0;
+}
+.icon-weibo{
+	width: 32px;
+	height: 32px;
+	background: url(../../img/icon-wei.png) no-repeat 0 0;
+}
+.icon-weixin{
+	width: 32px;
+	height: 32px;
+	background: url(../../img/icon-wei.png) no-repeat -64px 0;
+}
+.icon-num1,.icon-num2,.icon-num3{
+	width: 54px;
+	height: 54px;
+	background-image: url(../../img/icon-num.png);
+	background-repeat: no-repeat;
+}
+.icon-num1{
+	background-position: 0 0;
+}
+.icon-num2{
+	background-position: -54px 0;
+}
+.icon-num3{
+	background-position: -108px 0;
+}
+.icon-shop,.icon-apply,.icon-safe,.icon-privacy,.icon-service,.icon-complaints{
+	background-image: url(../../img/icon.png);
+	background-repeat: no-repeat;
+}
+.icon-shop{
+	width: 29px;
+	height: 24px;
+	background-position: 0 0;
+}
+.icon-apply{
+	width: 22px;
+	height: 22px;
+	background-position: -34px 0;
+}
+.icon-safe{
+	width: 25px;
+	height: 24px;
+	background-position: -60px 0;
+}
+.icon-privacy{
+	width: 21px;
+	height: 29px;
+	background-position: -90px 0;
+}
+.icon-service{
+	width: 29px;
+	height: 26px;
+	background-position: -116px 0;
+}
+.icon-complaints{
+	width: 30px;
+	height: 25px;
+	background-position: -148px 0;
+}
+.icon-backTop{
+	width: 70px;
+	height: 70px;
+	background: url(../../img/backTop-img.jpg) no-repeat 0 0;
+}

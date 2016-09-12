@@ -1,0 +1,17 @@
+.btn{
+	background: transparent;
+	text-align: center;
+	cursor: pointer;
+}
+.btn-experience{
+	$btn-padding: 10px 30px;
+	@include btn(#729de8,#fff,#729de8,20px,$btn-padding);
+}
+.btn-apply{
+	$btn-padding: 10px 150px;
+	@include btn(#fff,#6c7fb7,#6c7fb7,3px,$btn-padding);
+}
+.btn-business{
+	$btn-padding: 16px 0;
+	@include btn(#fff,#6c7fb7,#6c7fb7,0px,$btn-padding,450px);
+}

@@ -1,0 +1,32 @@
+.footer{
+	width: 1280px;
+	margin: 0 auto;
+}
+.footer-heading{
+	font-size: 18px;
+	ul{
+		margin: 0 20px;
+		padding-bottom: 20px;
+		border-bottom: 1px solid #e5e5e5;
+		li{
+			margin-right: 50px;
+			color: #7b7b7b;
+			a span{
+				margin-left: 10px;
+			}
+			&:last-child{
+				margin-right: 0px;
+			}
+		}
+	}
+}
+.footer-body{
+	margin-top: 20px;
+	margin-bottom: 70px;
+	ul > li{
+		text-align: left;
+		&:first-child{
+			margin-right: 108px;
+		}
+	}
+}

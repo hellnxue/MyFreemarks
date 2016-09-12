@@ -1,0 +1,139 @@
+.roll{
+	
+	margin: 0 auto;
+	position: relative;
+	.btn-left,.btn-right{
+		display: block;
+		width: 13px;
+		height: 41px;
+		position: absolute;
+	}
+	.btn-left{
+		background: url(../../img/icon.png) no-repeat 0px -29px;
+		top: 0;
+		left: 0px;
+	}
+	.btn-right{
+		background: url(../../img/icon.png) no-repeat -13px -29px;
+		top: 0;
+		right: 0px;
+	}
+	.wrap{
+		width: 1050px;
+		height: 60px;
+		margin: 0 auto;
+		position: relative;
+		overflow: hidden;
+		ul{
+			position: absolute;
+			top: 0;
+			left: 0;
+			li{
+				float: left;
+				width: 158px;
+				height: 58px;
+				text-align: center;
+				margin-right: 15px;
+				border: 1px solid #ccc;
+				position: relative;
+				&:hover{
+					box-shadow: 1px 0 13px rgba(184,184,184,0.31);
+					width: 220px;
+					height: 80px;
+				}
+			}
+		}
+	}
+}
+
+
+.banner-roll{
+	width: 100%;
+	margin-top: 33px;
+	overflow: hidden;
+	.index-roll{
+		width: 100%;
+		height: 530px;
+		overflow: hidden;
+		position: relative;
+		.index-barner{
+			overflow: hidden;
+        	width: 100%;
+        	height: 100%;
+        	ul li{
+        		width: 100%;
+        		height: 530px;
+        		a{
+        			overflow: hidden;
+		        	display: block;
+		        	width: 100%;
+		        	height: 100%;
+		        	text-indent: -9999px;
+        		}
+        	}
+		}
+		.roll-tag{
+        	position: absolute;
+        	left: 20%;
+        	bottom: 50px;
+        	width: 100%;
+        	font-size: 0;
+        	li{
+	        	display: inline-block;
+	        	overflow: hidden;
+	        	width: 10px;
+	        	height: 10px;
+	        	margin: 0 3px;
+	        	font-size: 0;
+	        	line-height: 0;
+	        	background: transparent;
+	        	cursor: pointer; 
+	        	border: 1px solid #fff; 
+	        	&.current{
+		        	background-color:#fff;
+		        }
+	        }
+        }
+        .roll-btn{
+        	display: none;
+	        a{
+	        	position: absolute;
+	        	top: 50%;
+	        	width: 70px;
+	        	height: 70px;
+	        	margin-top: -50px;
+	        	background: url(../../img/roll/banner-direct.png) no-repeat 0 0;
+	        	&:hover{
+	        		opacity: .8;
+	        	}
+	        	&.btnPrev{
+		        	left: 18%;
+		        }
+		        &.btnNext{
+		        	right: 18%;
+		        	background-position: -70px 0;
+		        }
+	        }
+	    }
+	    .banner-next-pic{
+			width: 115px;
+			height: 70px;
+			img{
+				position: absolute;
+				top: 50%;
+				right: 21.77%;
+				margin-top: -50px;
+				@media screen and (max-width: 1336px) {
+					&{
+						right: 24.1%;
+					}
+				}
+			}
+		}
+	}
+    &:hover{
+    	.roll-btn{
+    		display: block;
+    	}
+    }
+}
