@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gb2312" />
+<title>无标题文档</title>
+<link href="layer/need/layer.css"  rel="stylesheet" type="text/css"/>
+<style>
+
+h3{
+	margin:30px;
+	background-color:#FFFF99;
+	border-radius:10px;
+	text-align: center;
+	color:#FF66FF;
+	background:-moz-linear-gradient(left,#64d1dd, #FFF 50%, #64d1dd);
+	font-size:1.2em;
+	
+}
+
+
+.bootstrap-well{
+	min-height:20px;
+	border:1px solid #e3e3e3;
+	padding:20px;
+	margin-bottom:20px;
+	border-radius:6px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.05) inset;
+	background-color:#f5f5f5;}
+
+/*bootstrap的按钮*/
+.btn{
+	display:inline-block;
+	margin-bottom:0;
+	padding:6px 12px;
+	border:1px solid transparent;
+	border-radius:4px;
+	font-size:14px;
+	font-weight:400;
+	background-color:#eee;
+	vertical-align:middle;
+	line-height:1.4;
+	text-align:center;
+	white-space:nowrap;
+	cursor:pointer;}
+	
+/*bootstrap信息按钮*/
+.btn-info{
+	background-color:#5bc0de;
+	border-color:#46b8da;
+	color:#fff;}	
+
+.btn-lg{
+	border-radius:6px;
+	font-size:18px;
+	line-height:1.3;
+	padding:10px 16px;}
+	
+.btn-sm{
+	border-radius:3px;
+	font-size:12px;
+	line-height:1.5;
+	padding:5px 10px;}
+
+	
+.btn-xs{
+	border-radius:3px;
+	font-size:12px;
+	line-height:1.5;
+	padding:1px 5px;}
+	
+.btn-info:hover{
+ 	background-color: #31b0d5;
+    border-color: #269abc;
+    color: #fff;}
+.btn-info:focus{
+	 background-color: #31b0d5;
+    border-color: #269abc;
+    color: #fff;
+}
+
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.btn.disabled:focus,.btn.disabled:hover{
+		background-color:#5bc0de;
+	border-color:#46b8da;
+}
+
+.img{
+vertical-align:middle;
+border:0 none;}
+
+/*bootstrap图片*/
+.img-rounded{
+	border-radius:6px;
+
+}
+
+.img-circle{
+	border-radius:50%;}
+
+/*bootstrap图片-缩略图*/
+.img-thumbnail{
+	display:inlie-block;
+	max-width:100%;
+	height:auto;
+	padding:4px;
+	border:1px solid #ddd;
+	border-radius:4px;
+	line-height:1.4;
+	background-color:#fff;}
+
+a{
+  color:#337ab7;
+  text-decoration:none;}	
+  
+li{
+	background-color:#eee;}
+
+#aftertest{
+	border: 3px solid yellow;
+    height: 100px;
+    position: relative;
+    width: 100px;}	
+	
+#aftertest::after{
+   border-color: transparent transparent transparent yellow;
+    border-style: solid;
+    border-width: 12px;
+    content: "";
+    height: 0;
+    left: 100%;
+    position: absolute;
+    top: 33%;
+    width: 0;}
+	
+#aftertest::before{
+   content:"";
+   width:0;
+   height:0;
+   border-style:solid;
+   border-width:10px;
+   border-color:transparent transparent transparent #fff;
+   position:absolute;
+   right:0;
+   top:32%;
+
+}
+	
+div[data-border='feactur_border']{
+	border-color: pink blue red yellow;
+    border-style: solid;
+    border-width: 12px;
+   /* display: inline;  这属性在这里没有作用可言，宽和高设置为0可以使有边框的div成为一个小正方形。行内样式和设置宽高放一起不合适*/
+    height: 0;
+    left: 50%;
+    margin-left: -12px;
+    margin-top: -12px;
+    position: absolute;/*即使同时设置了display:inline;，因为有绝对定位，div的默认高度也会取消，好神奇。*/
+    top: 50%;
+    width: 0;
+}
+
+
+#centerSun{
+	background-color:#CCCCFF;
+	text-align:center;}
+#centerSun ul{
+	background:#FFFF99;}
+#centerSun ul li{
+	float:left;
+	list-style-type:none;
+	}
+
+	/* <!-- 奇怪，只要ul下的列表浮动了，在父元素nav上设置text-align子元素ul就没作用了-->*/
+	 
+/*用边框制造三角形*/
+[data-triangle="two"]{
+     background-color:rgba(0,0,0,0);
+	 width:200px;
+  	 height:200px;
+     margin:0 auto;/*让容器在浏览器中居中*/
+     line-height:200px;/*让容器中得元素垂直居中*/
+	 text-align:center;/*让容器中得元素水平居中*/
+	 border:1px solid pink;
+}
+
+[data-triangle="two"] div{
+   display:inline-block;/*div变为可设置宽度和高度的行内样式，方便外部容器用text-align来居中它，注：设置display:inline时，会使div元素有默认的高度，22px,及时设置了height:0，div也会有默认高度。*/
+   width:0; 
+   height:0; 
+   border:10px solid ; 
+   border-color:red green blue yellow;
+  
+}
+
+  
+	
+#dltd dl{
+	text-align:center;
+	overflow:hidden;}
+	
+#dltd dt{
+    width:160px;
+	float:left;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	text-align:right;}
+	
+#dltd  dd{
+  margin-left:180px;
+  text-align:left;}  
+  
+  
+  /*--------------------------------好看的表格样式奥-------------------------------------*/
+  
+  .table{
+  margin-bottom:20px;
+  min-width:100%;
+  width:100%;
+  background-color:transparent;
+  /*border-collapse 属性设置表格的边框是否被合并为一个单一的边框，还是象在标准的 HTML 中那样分开显示。
+  separate 	默认值。边框会被分开。不会忽略 border-spacing 和 empty-cells 属性。
+  collapse 	如果可能，边框会合并为一个单一的边框。会忽略 border-spacing 和 empty-cells 属性。*/
+  border-collapse:collapse;
+  
+  /*border-spacing 属性设置相邻单元格的边框间的距离（仅用于“边框分离”模式 即 border-collapse:separate;）。*/
+  border-spacing:0;/*感觉这个加上也是多余的，因为border-collapse不是分离模式的*/
+  }
+  
+  th{
+  text-align:left;/*表头th里的内容默认水平居中，要重置一下*/
+  }
+  
+  td,th{
+  padding:0;
+  }
+  
+  .table > thead:first-child > tr:first-child > th{
+  border-top:0 none;
+  }
+  
+  .table > thead >tr >th{
+  border-bottom:2px solid #ddd;
+  vertical-align:bottom;/*为什么要用这个呢？*/
+  
+  }
+  
+  .table > thead >tr >th, .table > thead >tr >td,
+   .table > tbody >tr >th, .table > tbody >tr >td{
+   border-top:1px solid #ddd;
+   padding:8px;
+   vertical-align:top;/*为什么要加这个呢？*/
+   line-height:1.4;/*还有这个。。。*/}
+   
+   
+   /*为表格添加条纹*/
+   .table-striped tbody tr:nth-of-type(odd){
+   background-color:#f9f9f9;
+   }
+   
+ 
+   
+   /*鼠标悬停时，一行的颜色变化*/
+   .table-hover tbody tr:hover{
+   background-color:#f5f5f5;}
+   
+   
+   /*精简表格，压缩了的样子哎*/
+   .table-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {
+    padding: 5px;
+}
+
+
+/*--------------------------------模仿bootstrap的表单-------------------------------------*/
+/*
+使用 class .sr-only，您可以隐藏内联表单的标签*/
+.sr-only {
+    border: 0 none;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*表单帮助文本，块级*/
+.help-block{
+display:block;
+margin-top:5px;
+margin-bottom:10px;
+color:#737373;}
+
+
+.container{
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-left:15px;
+	padding-right:15px;
+	box-sizing:border-box;/*让盒子宽度等于内容宽度*/
+ }
+ 
+ .form-group{
+	margin-bottom:15px;
+ }
+ 
+ label{
+   display:inline-block;
+   margin-bottom:5px;
+   font-weight:700;
+   font-size:14px;
+   line-height:1.4;
+   max-width:100%;}
+   
+   
+   .form-control{
+   display:block;
+   width:100%;
+   height:34px;
+   padding:6px 12px;
+   border:1px solid #ccc;
+   border-radius:4px;
+   box-shadow:0 1px 1px rgba(0,0,0,0.075) inset;
+   color:#555;
+   background-color:#fff;
+   font-size:14px;
+   line-height:1.4;
+   box-sizing:border-box;/*这个是关键，会让盒子高度等于盒子内容高度之和，从而input看起来更细，更美观*/
+   transition:border-color 0.15s ease-in-out 0s,box-shadow 0.15s ease-in-out 0s;
+   
+   }
+   
+   input[type="file"]{
+   display:block;}
+   
+   .form-control:focus{
+   border-color:#66afe9;
+   box-shadow:0 1px 1px rgba(0,0,0,0.075) inset,0 0 8px rgba(102, 175, 233, .6) ;}
+   
+   /*给占位符添加样式，要有厂商前缀*/
+   .form-control::-moz-placeholder{
+   color:#999;
+   opacity:1;}
+   
+   .form-control:-ms-input-placeholder {
+	  color: #999;
+	}
+	.form-control::-webkit-input-placeholder {
+	  color: #999;
+	}
+	.form-control::-ms-expand {
+	  background-color: transparent;
+	  border: 0;
+	}
+
+.checkbox{
+	margin-top:10px;
+	margin-bottom:10px;
+	min-height:20px;
+	cursor:pointer;
+	}
+	
+.checkbox label, .radio label {
+    cursor: pointer;
+    font-weight: 400;
+    margin-bottom: 0;
+    min-height: 20px;
+    padding-left: 20px;
+}
+/* 为了让复选框与文字对齐，用了绝对定位和负左外边距，绝对定位和上外边距让它和文字在一条水平线上看起来对齐了。。。，如果不用绝对定位，设置了上外边距时复选框和文字会一块移动设置的margin-top的距离*/
+.checkbox input[type="checkbox"],.radio input[type="radio"]{
+	position:absolute;
+	margin:4px 0 0 -20px;}
+	
+.checkbox-inline, .radio-inline{
+	display:inlie-block;
+	margin-bottom:0;
+	padding-left:20px;
+	font-weight:400;
+	cursor:pointer;
+	vertical-align:middle;}
+
+.checkbox-inline input[type="checkbox"], .radio-inline[type="radio"]{
+	position:absolute;
+	margin:4px 0 0 -20px;}	
+/*-----------------------------内联表单--------------*/	
+.form-inline .form-group{
+	display:inline-block;
+	margin-bottom:0;
+	vertical-align:middle;
+}
+
+.form-inline  .form-control{
+	width:auto;
+	display:inline-block;
+	vertical-align:middle;}
+	
+.form-inline .checkbox{
+	display:inline-block;
+	margin-top:0;
+	margin-bottom:0;}
+	
+	
+	
+	
+	
+	
+/*---CSS属性clip 对绝对定位的元素进行剪裁rect(top, right, bottom, left) 经过试验，只设置right和bottom元素就可以剪裁出来-------*/
+.clip-absolute{
+    background-color: #eee;
+    cursor: pointer;
+    height: 100px;
+    margin: 0 auto;
+    overflow: visible;
+    position: relative;
+    width: 300px;
+}
+
+.clip-absolute div{
+    background: yellow none repeat scroll 0 0;
+    border: 1px solid blue;
+    clip: rect(0px, 71px, 93px, 0px);
+    height: 400px;
+    overflow: visible;
+    position: absolute;
+    width: 400px;
+}
+
+/*CSS中貌似没有类似jQuery的sibiling()方法可以选择一个元素的所有同辈元素 ，只好用:not()来代替喽。。。*/
+#sibilings p{
+   margin:5px 0 0 0;
+}
+#sibilings p:not(#slb) {
+	background-color:#abcdef;
+
+}
+
+
+/*--------------------------让两段文本在一行显示----------------------------------------*/
+.tryme .textLeft{
+    display: inline-block;
+    float: left;
+    text-align: left;
+    width: 50%;
+}
+
+.tryme .textRight{
+    display: inline-block;
+    text-align: right;
+    width: 50%;
+}
+
+/*倒立的小三角，有点像下拉样式的那种*/
+.caret {
+	display: inline-block;/*此处要设置成可设置高宽的盒子，span是行内样式，行内样式设置高宽是不管用的*/
+    width: 0;
+    height: 0;
+   /* 
+    第一种方法：
+    border: 6px solid #2bdeef;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom: transparent;*/
+	
+	/*方法二：只设置left、right和top，其中top是关键，不然就不显示*/
+	border-left:6px solid transparent;
+	border-right:6px solid transparent;
+	border-top:6px solid gold;
+}
+
+.lineHeigh-Center{
+    background-color: #abcdef;
+    height: 100px;
+    line-height: 100px;
+    margin: 0 auto;
+    width: 100px;
+}
+
+.lineHeigh-Center div{
+    background-color: #3cffcc;
+    height: 20px;
+    width: 20px;
+	display:inline-block;/*如果是inline-block 那此处的div会和div内的文字分离，文字垂直居中，div不会。或者此处设置为display:inline,div内的内容为空，这时div是垂直居中的*/
+}
+ 
+</style>
+</head>
+
+<body>
+
+ <h3>blockquote标签定义块引用</h3>
+  <!--<blockquote> 标签定义块引用。定义长文字的引用
+
+  <blockquote> 与 </blockquote> 之间的所有文本都会从常规文本中分离出来，经常会在左、右两边进行缩进（增加外边距），而且有时会使用斜体。也就是说，块引用拥有它们自己的空间。
+  <q> 标签定义短的引用。  浏览器经常在引用的内容周围添加引号。
+  <q> 标签在本质上与 <blockquote> 是一样的。不同之处在于它们的显示和应用。<q> 标签用于简短的行内引用。
+  如果需要从周围内容分离出来比较长的部分（通常显示为缩进的块），请使用 <blockquote> 标签。
+  -->
+  
+  here's blockquote:
+  <blockquote cite="http://www.baidu.com">百度的名字起源于<q>众里寻他千百度，蓦然回首，那人却在灯火阑珊处。</q></blockquote> 
+ 
+ <!--<article> 标签规定独立的自包含内容。 HTML5的新标签-->
+ <h3>article标签</h3>
+ <article>
+  <h1>Internet Explorer 9</h1>
+  <p>Windows Internet Explorer 9（简称 IE9）于 2011 年 3 月 14 日发布.....</p>
+ </article>
+ 
+ <!--在介绍语言技术的网站中，避免不了在网页中显示一些计算机专业的编程代码，当代码为一行代码时，你就可以使用<code>标签了，如下面例子：-->
+ <h3>code标签</h3>
+  
+ <p>我们可能知道水平渐变的实现，类似这样：<code>{background-image:linear-gradient(left, red 100px, yellow 200px);}</code></p>
+ 
+ <h3>&lt;pre&gt;标签 pre元素可以定义预格式化文本， pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。&lt;pre&gt; 标签的一个常见应用就是用来表示计算机的源代码。</h3> 
+ <code> code <small>small code</small> code</code>
+ <code>This is a code element.</code>
+  <p>This is a p element.</p>
+  <code> This is a 
+  code element. </code>
+  <pre>  This is a 
+  pre element. </pre>
+
+
+ <h3>small标签 &lt;small&gt; 标签呈现小号字体效果。可以嵌套使用，来把字体变得更小</h3>
+ <p>This is a nice day today.</p>
+ <p><small>small:This is a nice day today.  </small></p>
+  <p><small> <small>very small:This is a nice day today.</small></small></p>
+   <p><small> <small><small>very very small:This is a nice day today.</small></small></small></p>
+
+<!--<cite> 标签通常表示它所包含的文本对某个参考文献的引用，比如书籍或者杂志的标题。
+<cite> 标签定义作品（比如书籍、歌曲、电影、电视节目、绘画、雕塑等等）的标题。不包括人名
+-->
+ <h3>cite标签</h3>
+ <p><cite>《谁偷了我的奶酪》</cite>是一本讲述变化是不变的书。</p>
+ 
+  <h3>line-height行高,设置的行高值会平均分配在文本的上下方奥</h3>
+ <div style="height:50px; border:1px solid yellow; ">
+ 
+	 <p style="line-height:50px; text-align:center;border:1px solid pink;margin:0px;">hello,sir</p>
+	 
+	 <img src="../../image/m2.jpg"/>
+ </div>
+
+<h3 style="margin-top:200px;">dl标签 定义一个描述列表。dl标签与 dt （定义项目/名字）和 dd （描述每一个项目/名字）一起使用。</h3>
+<div   id="dltd" class="bootstrap-well">
+  <dl>
+  <dt >水果的种类有很多种，比如以下的这些</dt>
+  <dd >苹果</dd><!--默认有40px的左外边距，可以重写样式去掉默认样式-->
+  <dd>香蕉</dd>
+  <dt>果汁是水果炸到最后的结果</dt>
+  <dd>苹果汁</dd>
+  <dd>香蕉汁</dd> 
+</dl>
+</div>
+
+<!--
+<address>是块级元素
+
+<address> 标签定义文档作者/所有者的联系信息。
+
+如果 <address> 元素位于 <body> 元素内部，则它表示该文档作者/所有者的联系信息。
+
+如果 <address> 元素位于 <article> 元素内部，则它表示该文章作者/所有者的联系信息。
+
+<address> 元素的文本通常呈现为斜体。大多数浏览器会在该元素的前后添加换行。-->
+<h3 >address标签</h3>
+<div style="text-align:center;">
+	<p>重写了样式之后的</p>
+	 <address style="font-style:normal; font-size:14px;"><!--默认为斜体，可以重写默认样式-->
+		Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br>
+		Visit us at:<br>
+		Example.com<br>
+		Box 564, Disneyland<br>
+		USA
+	</address>
+	<p>默认样式为斜体</p>
+	 <address  ><!--默认为斜体，可以重写默认样式-->
+		 007 street<br>
+		 Some City, State XXXXX
+	</address>
+</div>
+ 
+ <h3>label标签的for属性</h3>
+ <div  >
+   点击文本可以触发选择单选按钮动作<br>
+
+   <label for="male">eat</label>
+  <input type="radio" name="sex" id="male" /> <br>
+  
+  <label for="fmale">song</label>
+  <input type="radio" name="sex" id="fmale" /> <br>
+
+   <!--label中包含控件与不包含控件与有for属性指向控件的ID是一样的效果，都是可以点击label文字使控件获得焦点-->
+  <label>User Name<input type="text" name="user_name" />
+	</label>
+ 
+ </div>
+ 
+ <h3>HTML5新增导航链接 块级元素</h3>
+ <nav>
+   <a href="#">helln</a>
+   <a href="#">tom</a>
+ </nav>
+ 
+ <h3>ul是块级元素奥</h3>
+ <nav id="centerSun">
+	   <ul class="clearfix">
+		   <li>hellow world</li>
+		   <li>hellow world</li>
+		   <li>hellow world</li>
+	   </ul>
+ </nav>
+ 
+
+ 
+<h3>表单元素search,range</h3>
+<input type="search"/>
+<input type="range"/>
+
+<h3>figure 标签规定独立的流内容（图像、图表、照片、代码等等）</h3>
+<p>萌小希是一个努力奋进的好孩纸。</p>
+
+<figure> 
+  <figcaption>快乐的萌小希</figcaption>
+  <img src="../../image/mxx/m4.jpg" />
+</figure>
+
+
+<h3>图片，行内元素对齐方式，默认底部对齐文本的基线位置</h3>
+<!--文字旁边搭配图片时，发现图片比文字靠上，原来默认的情况是图片底部相对于文本基线对齐，行内
+元素的定位原则是与文本基线对齐，而不是与它们容器的底边对齐，所以导致图片与包含它的容器不对齐，给图片设置vertical-align，可以去掉图片底部的基线空白奥-->
+<div style="text-decoration:underline; border:1px solid blue;">
+ <img src="../../image/mxx/m6.jpg" style="vertical-align:text-bottom;"/>中文English
+</div>
+
+<h3>元素堆叠，在一个包含多个同辈元素的容器内，这些同辈元素都会构造一个堆叠上下文。在这个上下文中，它们的子元素会上下堆叠起来。</h3>
+<!--ps子div都是绝对定位后，脱离了文档流，父元素成了一条线哎，好可怜啊-->
+<span>默认情况下，div中的第二个div会堆叠在第一个div的上方，z-index默认值为auto，即为0，通过给第一个div设置z-index:1 可以打破默认的堆叠传统奥~</span>
+<div style="border:1px solid; position:relative; background-color:#FFFFCC;">
+   <div style="position:absolute;z-index:1;"><img src="../../image/mxx/m3.jpg"></div>
+   <div style="position:absolute;left:150px;"><img src="../../image/mxx/m5.jpg"></div>
+</div>
+<h3 style="margin-top:300px;">用边框制造三角形</h3>
+<div style="width:500px;margin:10px auto;position: relative;border: 1px solid gold;">
+  <div data-border="feactur_border"> </div>
+
+<div  id="aftertest">hello sir</div>
+</div>
+
+<h3  >用边框制造三角形2</h3>
+<div data-triangle="two">
+  <div></div>
+</div>
+
+
+<h3>-----------------下拉小图标--倒立的小三角--------------</h3>
+<div style="width:200px; margin:0 auto;">
+   <span class="caret"></span>
+   <button type="button" class="btn btn-info">下拉样式 <span class="caret"></span></button>
+</div> 
+
+
+
+<!--对于行内元素，设置margin和padding只能在水平方向能看出明显的效果-->
+<h3  >display:inline设置元素为行内元素，会使得height:0 效果消失，因为行内元素是不可以设置高度的</h3>
+<div style="border: 1px solid; display: inline; height: 100px; margin: 20px; padding: 44px; width: 100px;">hello sir....</div>
+ <div style="border:10px solid ; border-color:pink yellow red green; height:0; width: 0;"></div>
+ 
+ 
+ <h3>-----------------短语元素---------------</h3>
+ 
+ <div class="bootstrap-well">
+    <em>强调标签-em。</em>&nbsp;&nbsp;&nbsp;&nbsp;
+	<strong>比em根据强调作用的文本-strong。</strong>&nbsp;&nbsp;&nbsp;&nbsp;
+	<i>斜体文本标签-i。</i>&nbsp;&nbsp;&nbsp;&nbsp;
+	<dfn>定义一个定义项目-dfn。</dfn>&nbsp;&nbsp;&nbsp;&nbsp;
+	<code>定义计算机代码文本 hello world-code。</code>&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	字符序列 <samp>ae</samp> 可能会被转换为 &aelig; 连字字符。&nbsp;&nbsp;&nbsp;&nbsp;
+	键入 <kbd>quit</kbd> 来退出程序，或者键入 <kbd>menu</kbd> 来返回主菜单。
+ </div>
+
+<h3>-----------------模仿bootstrap画的表格---------------</h3> 
+ <div>
+ 	 <table class="table table-striped table-hover table-condensed"  >
+	  <thead>
+		<tr>
+		 <th>#</th>
+		 <th>FirstName</th>
+		</tr>
+	  </thead>
+	  <tbody>
+		 <tr>
+		   <td>1</td>
+		   <td>helln</td>
+		 </tr>
+		 <tr>
+		   <td>2</td>
+		   <td>tom</td>
+		 </tr>
+		 <tr>
+		   <td>3</td>
+		   <td>join</td>
+		 </tr>
+		 
+		  <tr>
+		   <td>4</td>
+		   <td>jouch</td>
+		 </tr>
+	  </tbody>
+			  
+		   
+  </table>
+ </div>
+
+
+
+<h3>-----------------模仿bootstrap画的表单：垂直& 基本表单---------------</h3> 
+<div class="container">
+		<div class="row">
+		  <form role="form">
+		     <div class="form-group">
+			   <label for="name">姓名</label>
+			   <input type="text" class="form-control" name="name" placeholder="输入姓名"/>
+			 </div>
+			 <div class="form-group">
+			   <label for="favorite"> 爱好</label>
+			    <input type="text" class="form-control" name="favorite" placeholder="输入爱好"/>
+			 </div>
+			  <div class="form-group">
+				<label class="sr-only" for="inputfile">文件输入</label>
+				<input type="file" id="inputfile">
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> 请打勾
+				</label>
+			</div>
+			<div class="form-group">
+			    <label class="checkbox-inline">
+					<input type="checkbox"> 吃饭
+				</label>
+				 <label class="checkbox-inline">
+					<input type="checkbox"> 睡觉
+				</label>
+			</div>
+			<button type="submit" class="btn btn-default">提交</button>
+		  </form>
+	    </div>
+ </div>
+ 
+ 
+ <h3>-----------------模仿bootstrap画的表单：内联表单---------------</h3> 
+<div class="container">
+		<div class="row">
+		
+		  <form role="form " class="form-inline">
+		   
+		     <div class="form-group">
+			   <label for="name">姓名</label>
+			   <input type="text" class="form-control" name="name" placeholder="输入姓名"/>
+			 </div>
+			 <div class="form-group">
+			   <label for="favorite"> 爱好</label>
+			    <input type="text" class="form-control" name="favorite" placeholder="输入爱好"/>
+			 </div>
+			  <div class="form-group">
+				<label class="sr-only" for="inputfile">文件输入</label>
+				<input type="file" id="inputfile">
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> 请打勾
+				</label>
+			</div>
+			<button type="submit" class="btn btn-default">提交</button>
+			
+		  </form>
+	    </div>
+ </div>
+ 
+ <h3>-----------------模仿bootstrap的按钮---------------</h3> 
+  <a href="#"  class="btn btn-info">a button</a>
+ <input type="button" class="btn btn-info" value="bootstrap"/>
+ 
+  <input type="button" class="btn btn-info btn-lg" value="bootstrap"/>
+  <input type="button" class="btn btn-info btn-sm" value="bootstrap"/>
+  <input type="button" class="btn btn-info btn-xs" value="bootstrap"/>
+
+ 
+ 
+  <input type="button" class="btn btn-info disabled" value="禁用的按钮" id="try"/>
+ 
+ 
+ 
+ 
+<h3>-----------------CSS属性clip:rect(0px, 71px, 93px, 0px) 对绝对定义的子元素大小比父元素大的情况，进行剪裁---------------</h3> 
+
+<div   class="clip-absolute">
+   <div  >hello absolute</div>
+
+</div>
+
+
+<h3>-----------------模仿bootstrap图片---------------</h3> 
+<img class="img img-rounded" src="../../image/mxx/m2.jpg"/>
+<img class="img img-circle" src="../../image/mxx/m2.jpg"/>
+<img class="img img-thumbnail" src="../../image/mxx/m2.jpg"/>
+
+
+
+
+<h3>-----------------CSS 同辈选择器 用:not()代替吧---------------</h3> 
+<div id="sibilings" class="bootstrap-well">
+   <p>one</p>
+   <p>two</p>
+   <p id="slb">three</p>
+   <p>four</p>
+   <p>five</p>
+</div>
+
+<h3>-----------------让两段文本在一行显示--------------</h3> 
+<div class="tryme bootstrap-well"  >
+  <span  class="textLeft">商品名称</span>
+  <span  class="textRight">哈利波特</span>
+  <span  class="textLeft">交易时间</span>
+  <span  class="textRight">2016-09-22</span>
+</div>
+
+<h3>-----------------@import导入样式表测试--------------</h3> 
+<div class="bootstrap-well">
+	<p class="importTest">hello sir</p>
+</div>
+
+<h3>-----------------line-height行高对垂直居中的影响，影响文本和行内元素，对块级元素无效哒，不过line-height是会继承的--------------</h3> 
+<div   class="lineHeigh-Center">
+	<div >hello</div>
+</div>
+
+<button type="button" id="layers" class="btn btn-info">layer</button>
+
+ <script type="text/javascript" src="jquery.min.js"></script>
+ <script type="text/javascript" src="layer/layer.js"></script>
+ 
+ <script>
+   $(function(){
+     
+     
+	 $("#layers").on("click",function(){
+	     layer.open({
+				/*title: [
+					"投票结果",
+					'background-color:#8DCE16; color:#fff;'
+				],*/
+				anim: 'up',
+				area: '500px' ,
+				//<input type='text' class='form-control' placeholder='请输入手机号码'>
+				content: "<img src='../../image/m2.jpg'/> ",
+				/*btn: ['确定','关闭'],*/
+				yes: function(index){
+					layer.close(index);
+					
+					if(!false){
+						//data.open_id
+						//如果手机为空则先输入手机，然后转向抽奖
+						
+					}else{
+						//如果不为空则直接转向抽奖
+						
+					}
+				}
+			});
+	 })
+   
+   })
+ </script>
+</body>
+</html>
