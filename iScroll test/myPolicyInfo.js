@@ -1,4 +1,4 @@
-var pageIndex=1,total,myScroll;
+var pageIndex=1,total=5,myScroll,pageSize=3;
 $(function(){
 	 
 		if (myScroll){
@@ -9,20 +9,20 @@ $(function(){
 	
 	// 保单信息
 	// 默认第一页
-	//policyInfo();
+	 policyInfo();
 });
 
 //分页
 function pullTo(){
 	
 	if(this.y<=this.maxScrollY){
-		
-		/*pageIndex++;
+	 
+		 pageIndex++;
 		if(pageIndex<=total){
 			policyInfo();
-		}*/
-		 alert("hello");
-		 policyInfo();
+		} 
+		 /*alert("hello");
+		 policyInfo();*/
 	}
 }
 
@@ -33,7 +33,7 @@ function policyInfo() {
 		var   html;
 		html= '<div class="height_05"></div>';
 				html += '<div class="bdlb_21_div"  >';
-				html += '<p  class="titile_p">start<span>'+(pageIndex++)+'</span></p>';
+				html += '<p  class="titile_p">new<span>'+(pageIndex++)+'</span></p>';
 				html += '<div class="bdlb_21_div_con">';
 				html += '<p class="height_1"></p>';
 				html += '<p>1111111：'+2+'</p>';

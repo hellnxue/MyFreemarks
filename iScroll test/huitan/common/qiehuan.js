@@ -1,0 +1,56 @@
+function xq(){
+    $("#xuqi").removeClass("zn_tab_04");
+	$("#xuqi").addClass("zn_tab_03");
+    $("#baoquan").removeClass("zn_tab_03");
+	$("#baoquan").addClass("zn_tab_04");
+	$("#lipei").removeClass("zn_tab_03");
+	$("#lipei").addClass("zn_tab_04");
+	$("#huizong").removeClass("zn_tab_03");
+	$("#huizong").addClass("zn_tab_04");
+    $("#xuqidiv").show();
+	$("#baoquandiv").hide();
+	$("#lipeidiv").hide();
+    $("#huizongdiv").hide();
+}
+function bq(){
+    $("#xuqi").removeClass("zn_tab_03");
+	$("#xuqi").addClass("zn_tab_04");
+    $("#baoquan").removeClass("zn_tab_04");
+	$("#baoquan").addClass("zn_tab_03");
+	$("#lipei").removeClass("zn_tab_03");
+	$("#lipei").addClass("zn_tab_04");
+	$("#huizong").removeClass("zn_tab_03");
+	$("#huizong").addClass("zn_tab_04");
+	$("#xuqidiv").hide();
+	$("#baoquandiv").show();
+	$("#lipeidiv").hide();
+    $("#huizongdiv").hide();
+}
+function lp(){
+    $("#xuqi").removeClass("zn_tab_03");
+	$("#xuqi").addClass("zn_tab_04");
+    $("#baoquan").removeClass("zn_tab_03");
+	$("#baoquan").addClass("zn_tab_04");
+	$("#lipei").removeClass("zn_tab_04");
+	$("#lipei").addClass("zn_tab_03");
+	$("#huizong").removeClass("zn_tab_03");
+	$("#huizong").addClass("zn_tab_04");
+	$("#xuqidiv").hide();
+	$("#baoquandiv").hide();
+	$("#lipeidiv").show();
+    $("#huizongdiv").hide();
+}
+function hz(){
+    $("#xuqi").removeClass("zn_tab_03");
+	$("#xuqi").addClass("zn_tab_04");
+	$("#baoquan").removeClass("zn_tab_03");
+	$("#baoquan").addClass("zn_tab_04");
+	$("#lipei").removeClass("zn_tab_03");
+	$("#lipei").addClass("zn_tab_04");
+	$("#huizong").removeClass("zn_tab_04");
+	$("#huizong").addClass("zn_tab_03");
+	$("#xuqidiv").hide();
+	$("#baoquandiv").hide();
+	$("#lipeidiv").hide();
+    $("#huizongdiv").show();
+}
