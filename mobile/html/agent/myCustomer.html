@@ -1,0 +1,157 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.5" charset="utf-8"/>
+<title>客户查询</title>
+<link href="../../css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/common.css" rel="stylesheet" type="text/css" />
+<link href="../../css/common/mobiscroll.custom-2.6.2.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+<!--tips start-->
+<div class="tips_main" style="display:none;">
+	<p></p>
+</div>
+<!--tips end-->
+<!--top-->
+<div class="bg_white" id="wdmp_top">
+	<div class="tiitle_top_div">
+    		<span>马志成</span>
+            <p class="star_div"><span class="star_span_cur"></span><span class="star_span_cur"></span><span class="star_span_cur"></span><span></span><span></span></p>
+            <span class="float_r">JX354032</span>
+    </div>
+    <div class="height_1"></div>
+    <div class="lqzs_14_top_tab">
+        <span class="span_cur" id="1span">查询客户</span>
+        <span id="2span">新增客户</span>
+    </div>
+    <div class="height_1"></div>
+</div>
+<!--top-->
+
+<!--内容区域 start-->
+<div class="H_bdlb bg_white" id="wrapper">
+	<div>
+    
+    
+            <!--切换块1 start -->
+            <div id="divTab1" class="divHide pad_w_1">
+                  <table class="kdjh_03_table">
+                      <tr>
+                      	<th width="1%" align="left">姓　　名</th>
+                        <td><input maxlength="10" placeholder="姓名" class="input_none width_wio_100" id="name"></td>
+                      </tr>
+                      <tr>
+                      	<th align="left">手机号码</th>
+                        <td><input maxlength="11" placeholder="" class="input_none width_wio_100" id="mobile"></td>
+                      </tr>
+                      <tr>
+                      	<th align="left">来　　源</th>
+                        <td><input placeholder="" class="width_wio_100 input_pull" id="source"></td>
+                      </tr>
+                      <tr>
+                      	<th align="left">客户等级</th>
+                        <td><input placeholder="310000000000000009" class="width_wio_100 input_pull" id="custLevel"></td>
+                      </tr>
+                      <tr>
+                      	<th align="left">创建日期起</th>
+                        <td><input placeholder="2015-01-09" class="width_wio_100 input_cal" id="startDate"></td>
+                      </tr>
+                      <tr>
+                      	<th align="left">创建日期止</th>
+                        <td><input placeholder="2015-02-09" class="width_wio_100 input_cal" id="endDate"></td>
+                      </tr>
+                  </table>
+            
+                  <div class="height_2"></div>
+                  
+                  <span class=" btn_gray width_wio_100">查询</span>
+          
+                  <div class="height_2"></div>
+            </div>
+            <!--end-->
+            
+            
+            
+            
+            <!--切换块2 start -->
+            <div id="divTab2" class="divHide pad_w_1">
+                  <table class="kdjh_03_table">
+                      <tr>
+                      	<th width="1%"><b class="b_red">*</b>姓　　名</th>
+                        <td><input placeholder="姓名" class="input_none width_wio_100"></td>
+                      </tr>
+                      <tr style="border-bottom:none;">
+                      	<th>性　　别</th>
+                        <td class="radio_blo_m"><span class="span_m_cur">男</span>　<span class="span_m_no">女</span></td>
+                      </tr>
+                      <tr>
+                      	<th>出生日期</th>
+                        <td><input placeholder="1990-09-09" class="width_wio_100 input_cal"></td>
+                      </tr>
+                      <tr>
+                      	<th>年　　龄</th>
+                        <td><input placeholder="310000000000000009" class="input_none width_wio_100"></td>
+                      </tr>
+                      <tr>
+                      	<th><b class="b_red">*</b>手机号码</th>
+                        <td><input maxlength="11" placeholder="3212312321321" class="input_none width_wio_100"></td>
+                      </tr>
+                      <tr>
+                      	<th>邮　　箱</th>
+                        <td><input maxlength="30" placeholder="3212312321321" class="input_none width_wio_100"></td>
+                      </tr>
+                      <tr>
+                      	<th>地　　址</th>
+                        <td><input maxlength="30" placeholder="3212312321321" class="input_none width_wio_100"></td>
+                      </tr>
+                      <tr>
+                      	<th>来　　源</th>
+                        <td><input maxlength="18" placeholder="身份证" class="width_wio_100 input_pull"></td>
+                      </tr>
+                      <tr>
+                      	<th>职业代码</th>
+                        <td><input maxlength="5" placeholder="3212312321321" class="input_none width_wio_100"></td>
+                      </tr>
+                      <tr>
+                      	<th>职业名称</th>
+                        <td><input maxlength="30" placeholder="机关团体" class="input_none width_wio_100"></td>
+                      </tr>
+                      <tr>
+                      	<th><b class="b_red">*</b>客户等级</th>
+                        <td><input maxlength="18" placeholder="身份证" class="width_wio_100 input_pull"></td>
+                      </tr>
+                  </table>
+                 
+            
+                  <div class="height_2"></div>
+                  
+                  <span class="btn_org width_wio_100">保存</span>
+          
+                  <div class="height_2"></div>
+            </div>
+            <!--end-->
+      
+ </div>  
+</div>
+<!--内容区域 end-->
+
+
+
+
+  
+    
+<!--js全放底部-->
+<script src="../../js/common/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+<script src="../../js/common/jquery.jmpopups-0.5.1.js" type="text/javascript"></script>
+<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+<script src="../../js/common/mobiscroll.custom-2.6.2.min.js" type="text/javascript"></script>
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<script src="../../js/common/utility.js" type="text/javascript"></script>
+<script src="../../js/agent/myCustomer.js" type="text/javascript"></script>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <title>iScroll demo: simple</title>
 
-<script type="text/javascript" src="iscroll.js"></script>
+<script src="../../js/common/iscroll.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 
@@ -65,6 +65,9 @@ function loaded() {
 			}
 		},
 		onScrollMove: function () {
+			
+			console.log(this.y);
+			console.log(this.minScrollY);
 			if (this.y > 5 && !pullDownEl.className.match('flip')) {
 				pullDownEl.className = 'flip';
 				pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Release to refresh...';

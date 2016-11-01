@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>身份信息</title>
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/style.css" rel="stylesheet">
+		<link href="../../css/common/color_style.css" rel="stylesheet" type="text/css"/>
+		<link href="../../css/commonStyle.css" rel="stylesheet">
+		<style>
+		  body,body *{
+		  background-color:#abcdef;
+		  color:#fff; }
+		  
+		  form input,form select{
+		  border:none;}
+		</style>
+	</head>
+	<body>
+	<!--tips start-->
+		<div class="tips_main" style="display:none;">
+			<p></p>
+		</div>
+	<!--tips end-->
+	<!-- top start -->
+	
+		<header>
+			 <nav class="navbar navbar-default">
+			 <!--<div class="row">
+			   <div class="col-md-3">
+			   		 <a class="glyphicon glyphicon-chevron-left" href="withdrawalsResult.html"></a> 
+				</div>
+				<div class="col-md-9 text-right">
+			   		 <a   href="withdrawalsResult.html">取消</a> 
+				</div>
+			 </div>
+				 基本信息-->
+				 
+				 <div class="container  m-b-none">
+				 	 
+					<div class="row">
+					   <div class="col-md-2"  >
+					   
+							<a class="glyphicon glyphicon-chevron-left" href="withdrawalsResult.html" style="top:25px;z-index:100;" ></a>
+							
+						</div>
+						
+						<div class="col-md-10 text-right">
+							  <a   href="withdrawalsResult.html">取消</a>  
+						</div>
+						
+					 </div>
+						<span style="font-size:1.5em;">基本信息</span>
+					</div>
+			  </nav>  
+			
+		</header>
+	<!-- top end -->
+	<div class="container ">
+		<!--<div class="process row">
+			<div class="left col-md-4 col-sm-4 col-xs-4">
+				<div class="active row">
+					<p class="col-md-12 col-sm-12 col-xs-12">1</p>
+					<p class="col-md-12 col-sm-12 col-xs-12">基本信息</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<div class="row">
+					<p class="col-md-12 col-sm-12 col-xs-12">2</p>
+					<p class="col-md-12 col-sm-12 col-xs-12">安全卡</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+				<div class="row">
+					<p class="col-md-12 col-sm-12 col-xs-12">3</p>
+					<p class="col-md-12 col-sm-12 col-xs-12">证件上传</p>
+				</div>
+			</div>
+		</div>-->
+
+		<form class="form ">
+			<div class="line form-group">
+				<label for="userName"> <span class="white"></span> 张末 </label> 
+				<!--<input type="text" class="form-control" id="userName"   placeholder="hello"/>-->
+			</div>
+			<div class="line form-group">
+				<!--<label for="idCard"> <span class="red">*</span> 身份证号码：</label>-->
+				<input type="text" class="form-control" id="idCard" placeholder="&gt;请输入身份证号码" />
+			</div>
+			<div class="line form-group">
+            	<!--<label for="company"><span class="red">*</span>所属公司：</label>-->
+            	<select class="bgColor form-control" id="company"  >
+              		<option value="">请选择公司名称</option>
+              		<option value="1">总公司</option>
+            	</select>
+          	</div>
+          	
+          	<div class="line form-group">
+            	<!--<label for="jobLevel"><span class="red">*</span>职级：</label>-->
+            	<select class="bgColor form-control" id="jobLevel"  >
+              		<option value="">请选择职级</option>
+              		<option value="1">一级</option>
+            	</select>
+          	</div>
+          	<div class="line form-group">
+            <!--	<label for="monSalary"><span class="red">*</span>每月收入：</label>-->
+            	<input type="text" class="form-control" id="monSalary"    placeholder="请输入您的月收入" />
+          	</div>
+			<button type="button" onClick="f_commit();" class="btn btn-default btn-block">下一步</button>
+		</form>
+	</div>
+
+	<script src="../../js/common/jquery-1.12.3.min.js" type="text/javascript"></script>
+	<script src="../../js/common/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+	<!--页面接口调用包装js部分-->
+	<script src="../../js/common/utility.js" type="text/javascript"></script>
+	<script src="../../js/credit/baseInfo.js" type="text/javascript"></script>
+	<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+	</body>
+</html>

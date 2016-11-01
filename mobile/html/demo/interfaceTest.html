@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.5"/>
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Content-Type" content="charset=utf-8">
+<title>Demo测试页</title>
+</head>
+<body>
+	
+	接口号：<input id="no">
+	输入：<textarea id="input" rows="3" cols="20">
+	</textarea>
+
+	<input type="button" value="调用接口" onclick="callInter();">
+	输出：<div id="output"></div>
+	
+</body>
+<script src="../../js/common/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script>
+function callInter(){
+	$('#output').html('');
+	
+	var input = $('#input').val();
+	
+	var request = generateParams($('#no').val(),JSON.parse(input));
+	$.ajax({
+		url: '/portalservice/access/doSubmit.do',
+		type:"post",
+		data:request,
+		cache: false,
+		async: true,
+		timeout: 600000,
+		success:function(data){
+			$('#output').html(data);
+		},
+		error:function(data){
+			$('#output').html(data);
+		}	
+			
+	});
+}
+
+function generateParams(transCode,requestBodyJson){
+	var request = {};
+	request["clientId"]=String(Math.random()).substring(2,8);//设备号
+	request["transCode"]=transCode;//交易代码
+	request["channelCode"]="accessTest";//请求来源
+	request["requestNo"]=request["clientId"]+""+(new Date()).getTime();//请求号  要保证每一次，
+	request["empNo"] = sessionStorage.empNo;
+	if(request["empNo"] == ""){
+		request["empNo"]=getParam("empNo");
+	}
+	request["encryptValue"]="c9f41b31fd5531f514535ba731cbd014"; //请求号+MAN  要保证每一次，
+	request["sessionToken"]="";
+	request["sessionRandom"]="";
+	request["businessparams"]="";
+	var reqHeader = {};
+	reqHeader["screensize"] = "";
+	reqHeader["clientSource"] = "3";
+	reqHeader["tokenId"] = "111";
+	var obj = requestBodyJson;
+	obj["reqHeader"] = reqHeader;
+	var text = JSON.stringify(obj);
+	request["requestBodyJson"]=text;
+	return request;
+}
+
+</script>
+</html>
+	
