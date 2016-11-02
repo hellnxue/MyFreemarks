@@ -19,6 +19,7 @@ function pullTo(){
 	 
 		 pageIndex++;
 		if(pageIndex<=total){
+			alert(11);
 			policyInfo();
 		} 
 		 /*alert("hello");
@@ -49,7 +50,7 @@ function policyInfo() {
 			  
 			 
 			 
-			$("#wrapper > div").append(html);
+			$("#wrapper > div").append(html).append(html).append(html);
 			 
 			myScroll.refresh();
 	

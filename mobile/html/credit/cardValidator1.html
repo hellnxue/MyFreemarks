@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+ 	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <title>绑定银行卡</title>
+	   	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		 <link href="../../css/commonStyle.css" rel="stylesheet">
+		<!--<link href="../../css/style.css" rel="stylesheet">-->
+		 <link href="../../css/myStyle.css" rel="stylesheet">
+		<link href="../../css/common/color_style.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body style="background-color:#1E8CD7;">
+	<!--tips start-->
+		<div class="tips_main" style="display:none;">
+			<p></p>
+		</div>
+	<!--tips end-->
+	<div class="container allWhite">
+	     <header class=" m-t-xs" >
+			<div class="navbar" role="navigation">
+				<div class="container">
+					
+					<div class="row">
+					   <div class="col-md-12">
+							<a href="#" class="pull-left iconP">
+							<img class="leftIcon" src="../../img/new/back@2x.png">
+							</a>
+							<h4 class="white pull-right fontOpacity">取消</h4>
+					   </div>
+					   
+					 
+					</div>
+					
+					<div class="row">
+					   <div class="col-md-12 text-center">
+						   <h3>安全卡</h3>
+					   </div>
+					  
+					 
+					</div>
+				</div> 
+			  </div>
+		</header>
+	<!-- top end -->
+	 <div class="container m-t-lg">
+		
+		<div class="row">
+		    <form class="form form-horizontal">
+				 
+				<div class=" form-group m-b-lg">
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> 
+					  <img  src="../../img/new/back@2x2x.png" class="leftIcon iconP iconImgInput">
+					   <label for="idCard" class="sr-only"> <span class="red">*</span> 请输入银行卡卡号：</label>
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+					  
+					   <input type="text" class="form-control  ph-color" id="idCard" placeholder="请输入银行卡卡号" />
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> </div>
+				</div>
+				<div class=" form-group m-b-lg">										
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					  	<label for="company" class="sr-only"><span class="red">*</span>开户支行：</label> 
+					</div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  mySelector">
+						<h4 class="inputSize fontOpacity" >请选择银行卡开户行</h4>
+					   <select class=" form-control  black" id="company">
+						<option value="" >--请选择--</option>
+						<option value="1">总公司</option>
+					   </select>
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> </div>
+				</div>
+				
+				 
+				<div class=" form-group m-b-lg">					
+					
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					   <label for="monSalary" class="sr-only"><span class="red">*</span>手机号码：</label>
+					 </div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+					 <input type="text" class="form-control ph-color" id="monSalary" placeholder="请输入手机号码" />
+					</div>
+					 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> </div>
+				</div>
+				
+				
+				<div class=" form-group m-b-lg">					
+					
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					   
+					 </div>
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+					  <input id="verifyCode" name="verifyCode"  type="text" class="form-control ph-color" id="verifyCode" placeholder="动态验证码" />
+					</div>
+					
+					 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+					     <!-- <span  id="checkcode"  class="hCode"> 获取短信验证码</span>-->
+						 <div class="codeBorder"></div>
+						 <input id="checkcode" class="btn btn-default btnBlue" value="获取短信验证码" type="button">
+					  </div>
+				</div>
+				
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  m-t-lg ">
+				   <button type="button" onClick="f_commit();" class="btn btn-default btn-lg btn-block btnBlue">下一步</button>
+				</div>
+			</form>
+		</div>
+
+		
+	</div>
+	</div>
+	<!-- top start -->
+		
+
+	<!-- 跳转等待提示 -->
+	<div class="jump" id="jump">
+		<p>正在提交数据...</p>
+	</div>
+	<!-- 跳转等待提示结束 -->
+    <script src="../../js/common/jquery-1.12.3.min.js" type="text/javascript"></script>
+	<script src="../../js/common/bootstrap.min.js" type="text/javascript"></script>
+	<!--页面接口调用包装js部分-->
+	<script src="../../js/common/utility.js" type="text/javascript"></script>
+	<script src="../../js/credit/cardValidator.js" type="text/javascript"></script>
+		<script>
+	   $(function(){
+		  
+		  $("select").on("change",function(){
+		       
+			   $(this).siblings("h4").html($(this).find("option:selected").text());
+			   $(this).siblings("h4").css("opacity","1");
+		  });
+	   });
+	</script>
+	 <script type="text/javascript"> 
+						var wait=3; 
+						function time(o) {
+							if(wait == 3){
+							//sendVerifyCode('verifyCode','');
+							}
+							if (wait == 0) { 
+								o.removeAttribute("disabled"); 
+								o.value="获取短信验证码";
+								//$(this).css("color","#fff");
+								// o.style.backgroundColor="#fff"; 
+								 $(o).removeAttr("style") .addClass("btnBlue");
+								 
+								wait = 3; 
+							} else { 
+								o.setAttribute("disabled", true); 
+								o.value="重新发送("+wait+")";
+								$(o).removeClass("btnBlue") .css("color","#fff") .css("opacity","1");
+								 o.style.backgroundColor="#FF0000";
+								wait--; 
+								setTimeout(function() { 
+								time(o);}, 1000); }
+							} 
+						document.getElementById("checkcode").onclick=function(){time(this);};
+					</script>
+	</body>
+</html>
