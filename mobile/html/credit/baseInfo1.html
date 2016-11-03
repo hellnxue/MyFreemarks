@@ -10,19 +10,19 @@
 	   <link href="../../css/myStyle.css" rel="stylesheet">
 		<link href="../../css/common/color_style.css" rel="stylesheet" type="text/css"/>
 	</head>
-	<body style="background-color:#1E8CD7;">
+	<body style="background-color:#1E8CD7;" class="allWhite">
 	<!--tips start-->
 		<div class="tips_main" style="display:none;">
 			<p></p>
 		</div>
 	<!--tips end-->
-	<div class="container allWhite">
+	 
 	     <header class=" m-t-xs" >
 			<div class="navbar" role="navigation">
 				<div class="container">
 					
 					<div class="row">
-					   <div class="col-md-12">
+					   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 							<a href="#" class="pull-left iconP">
 							<img class="leftIcon" src="../../img/new/back@2x.png">
 							</a>
@@ -33,7 +33,7 @@
 					</div>
 					
 					<div class="row">
-					   <div class="col-md-12 text-center">
+					   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 						   <h3>基本信息</h3>
 					   </div>
 					  
@@ -75,8 +75,8 @@
 					</div>
 					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  mySelector">
 						<h4 class="inputSize fontOpacity" >请选择公司名称</h4>
-					   <select class=" form-control  black" id="company">
-						<option value="" >--请选择--</option>
+					   <select class=" form-control  black change" id="company">
+						<option value="" selected="selected">--请选择--</option>
 						<option value="1">总公司</option>
 					   </select>
 					</div>
@@ -89,8 +89,8 @@
 					 </div>
 					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  mySelector">
 					  <h4 class="inputSize fontOpacity" >请选择职级</h4>
-					  <select class="bgColor form-control black" id="jobLevel">
-						<option value="" >--请选择--</option>
+					  <select class="bgColor form-control black change" id="jobLevel">
+						<option value=""  selected="selected">--请选择--</option>
 						<option value="1">一级</option>
 						</select>
 					</div>
@@ -107,15 +107,23 @@
 					</div>
 					 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> </div>
 				</div>
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  m-t-lg ">
-				   <button type="button" onClick="f_commit();" class="btn btn-default btn-lg btn-block btnBlue">下一步</button>
+				
+				<div class="row">
+				    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					   
+					 </div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+					 	  <button type="button" onClick="f_commit();" class="btn btn-default btn-lg btn-block btnBlue">下一步</button>
+					</div>
+					 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> </div> 
 				</div>
+			 
 			</form>
 		</div>
 
 		
 	</div>
-	</div>
+ 
 	<!-- top start -->
 		
 
@@ -136,7 +144,7 @@
 			  
 		  });*/
 		  
-		  $("select").on("change",function(){
+		  $("select.change").on("change",function(){
 		       
 			   $(this).siblings("h4").html($(this).find("option:selected").text());
 			   $(this).siblings("h4").css("opacity","1");

@@ -1,8 +1,9 @@
 function fn_browse(n){
+	  
 	switch(n) { 
-		case 1: document.uploadForm.image.click();break; 
-		case 2: document.uploadForm.image2.click();break; 
-		case 3: document.uploadForm.image3.click();break; 
+		case 1: document.uploadForm.image[0].click();break; 
+		case 2: document.uploadForm.image[1].click();break; 
+		case 3: document.uploadForm.image[2].click();break; 
 	} 
 }
 
