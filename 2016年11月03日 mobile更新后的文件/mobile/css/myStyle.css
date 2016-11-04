@@ -160,7 +160,7 @@ background-color:#1E8CD7;}*/
 
 
 /*文本框字体大小*/
-.inputSize{
+.inputSize, .mySelector > h4{
    font-size: 16px; 
    font-weight: 200;
 }
