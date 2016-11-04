@@ -29,7 +29,8 @@
       
 	  
 	    <div class="container">
-		<button type="button" onClick="f_commit();" class="btn btn-default btn-block">下一步</button>
+		<!--<button type="button" onClick="f_commit();" class="btn btn-default btn-block">下一步</button>-->
+		  <h3 class="text-center">列偏移 col-md-offset-*  col-sm-offset-* col-lg-offset-*</h3>
 		   <!--使用偏移列class类 col-md-offset-6使一列偏移到右边去-->
 		    <div class="row">
 			    <!--使用偏移类使一列偏移到右边，div整体是一行-->
@@ -44,6 +45,9 @@
 		       </div>
 		    </div>
 			
+			
+			
+			  <h3 class="text-center">列排序 push: col-md-push-*  col-sm-push-* col-lg-push-*;  pull: col-md-pull-*  col-sm-pull-* col-lg-pull-*  </h3>
 			<!--列排序之前-->
 			<div class="row">
 			   <div class="col-md-6 col-md-offset-6">
@@ -76,8 +80,19 @@
 		
 		<span class="glyphicon glyphicon-chevron-right" style="color: rgb(255, 140, 60);"> Chevron-right</span>
 		
-		
-		
+		<!--网格系统是怎么包围浮动元素的-->
+		<div class="row" style="background-color:#FFFFCC;">
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			   hello
+			 </div>
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+				 hello world
+			</div>
+			 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			     hello wir
+			  </div> 
+		</div>
+
 		<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
       <script src="../js/jquery-2.0.0.min.js"></script>
       <!-- 包括所有已编译的插件 -->

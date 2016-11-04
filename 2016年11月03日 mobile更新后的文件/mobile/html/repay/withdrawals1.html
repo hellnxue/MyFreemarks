@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>申请提现</title>
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/commonStyle.css" rel="stylesheet">
+	<!--<link href="../../css/style.css" rel="stylesheet">-->
+	<link href="../../css/myStyle.css" rel="stylesheet">
+  </head>
+  <body class="thinBgColor">
+  	<div class="tips_main" style="display:none;">
+			<p></p>
+	</div>
+ 
+	  <!-- 头部开始 -->
+	 <header class="allWhite wdlsHeader " >
+			<div class="navbar" role="navigation">
+				<div class="container m-t-xl">
+					<div class="row">
+					   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							  <p>账户可用额度</p>
+							  <span>300.00</span>
+					   </div>					 
+					</div>
+				</div> 
+			  </div>
+		</header>
+    <!-- 头部结束 -->
+	 <div class="container  m-t-md ctnPadding">
+		<form class="form">
+			
+		
+		<div class="row">
+			   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			   		
+					<div class="panel panel-default m-b-sm">
+						<div class="panel-body">
+								
+							<div class="row">
+								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							 	 	<input type="text"  class="form-control pl-color" id="withdrawAmount" placeholder="请输入提现金额"/>
+							     </div>
+							</div>
+							
+							 <div class="row">
+								  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									 <hr>
+								  </div>
+							</div>
+							
+							
+							 <div class="row">
+								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+							 	 		<select class="bgColor form-control" id="loanPurpose">
+										<option value="">---请选择---</option>
+										<option value="0001">买房</option>
+									</select>
+							     </div>
+							</div>
+							
+							 <div class="row">
+								  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									 <hr>
+								  </div>
+							</div>
+							
+							<div class="row m-b">
+								  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   <span>贷款期限</span>
+								  </div>
+								    
+								   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+									 
+								  </div>
+							</div>
+							 
+							  <div class="row">
+								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<select class="bgColor form-control" id="repaymentTerm">
+										<option value="">---请选择---</option>
+										<option value="2001">员工贷三天</option>
+										<option value="2002">员工贷四天</option>
+									</select>
+							     </div>
+							</div>
+							
+						</div>
+					</div>
+
+			   </div>
+			    
+	    </div>
+		
+		<!--第二块-->
+		<div class="row m-b">
+			   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  p-b-xs">
+			   		
+					<div class="panel panel-default">
+						<div class="panel-body">
+								
+							<div class="row">
+								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   <span>手续费率</span>
+								  </div>
+								    
+								    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   <span>36.56</span>
+								  </div>
+								   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   
+								  </div>
+							</div>
+							
+							 <div class="row">
+								  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									 <hr>
+								  </div>
+							</div>
+							
+							
+							 <div class="row">
+								  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   <span>还款日期</span>
+								  </div>
+								   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   <span>每月9号</span>
+								  </div>
+								   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   
+								  </div>
+							</div>
+							
+							 <div class="row">
+								  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									 <hr>
+								  </div>
+							</div>
+							 
+							  <div class="row">
+								   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   <span>月还金额</span>
+								  </div>
+								   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   <span>500.00元</span>
+								  </div>
+								   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+									   
+								  </div>
+							</div>
+							
+						</div>
+					</div>
+
+			   </div>
+			  
+	    </div>		
+		
+		
+		<!--按钮-->
+		 <div class="row  m-b">
+			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9  ">
+				   	<button  type="button" class="btn btn-info btn-block btn-lg" onClick="f_commit();">立即提现</button>
+			</div>
+			 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div> 
+		</div>
+		
+
+	  </form>	
+	 </div>
+	
+	
+	
+	
+
+
+	<script src="../../js/common/jquery-1.12.3.min.js" type="text/javascript"></script>
+	<script src="../../js/common/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+	<!--页面接口调用包装js部分-->
+	<script src="../../js/common/utility.js" type="text/javascript"></script>
+	<script src="../../js/repay/withdrawals.js" type="text/javascript"></script>
+	<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+	
+	<script type="text/javascript"> 
+						var wait=60; 
+						function time(o) {
+							if(wait == 60){
+							//sendVerifyCode('verifyCode','');
+							}
+							if (wait == 0) { 
+								o.removeAttribute("disabled"); 
+								o.value="重新发送";
+								o.style.backgroundColor="#00AFBE"; 
+								wait = 60; 
+							} else { 
+								o.setAttribute("disabled", true); 
+								o.value="重新发送("+wait+")";
+								o.style.backgroundColor="#FF0000";
+								wait--; 
+								setTimeout(function() { 
+								time(o);}, 1000); }
+							} 
+						document.getElementById("checkcode").onclick=function(){time(this);};
+					</script>
+    <script type="text/javascript">
+    	function checkProtocol(){
+    		if (!$("#checkbox").is(':checked')) {
+    			alert("必须签署协议才能提现!");
+    			return false;
+    		}
+    	}
+    </script>
+  </body>
+</html>

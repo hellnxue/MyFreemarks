@@ -17,6 +17,11 @@ color:#fff;}
   color:#fff;
 }
 
+/*浅蓝色背景*/
+.thinBgColor{
+  background-color:#EDF4FE;
+}
+
 /*下内边距*/
 .p-b-xs{
   padding-bottom:5px;
@@ -95,10 +100,10 @@ input.ph-color::-ms-input-placeholder {
 
 /*文本框样式修改*/
 input.ph-color{
-font-size:16px;
-border:0;
-padding-left:0;
-background-color:#1E8CD7;
+	font-size:16px;
+	border:0;
+	padding-left:0;
+	background-color:transparent;
 }
 
 
@@ -109,6 +114,50 @@ background-color:#1E8CD7;}
 
 input.ph-color:blur{
 background-color:#1E8CD7;}
+
+/*提现start*/
+/*placeholder颜色修改*/
+ 
+input.pl-color::-webkit-input-placeholder {
+  color: #333;
+  opacity: 0.7;
+}
+input.pl-color::-moz-placeholder {/* Firefox 18- */
+  color: #333;
+   opacity: 0.7;
+}
+input.pl-color::-moz-placeholder{/* Firefox 19+ */
+ color: #333;
+  opacity: 0.7;
+}
+input.pl-color::-ms-input-placeholder {
+  color: #333;
+   opacity: 0.7;
+}
+
+
+/*文本框样式修改*/
+.pl-color{
+	font-size:16px;
+	border:0;
+	padding-left:0;
+	background-color:transparent;
+}
+
+
+
+/*input.pl-color:focus{
+background:none;
+background-color:#1E8CD7;}
+
+input.pl-color:blur{
+background-color:#1E8CD7;}*/
+/*提现end*/
+
+
+
+
+
 
 /*文本框字体大小*/
 .inputSize{
@@ -156,4 +205,71 @@ background-color:#1E8CD7;}
 /*证件上传*/
 .rect{   
     width: 280px;
+	height:173px;
+	border-radius:10px;
 }
+
+.p-relative{
+position:relative;}
+
+.rectCover{  
+	background-color: #ccc;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    height: 100%;
+    left: 50%;
+	margin: 0 -140px;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    width: 280px;
+	 
+}
+
+
+.rectCoverImg{
+	left: 50%;
+    margin: -33px -25px;
+    position: absolute;
+    top: 50%;
+	cursor:pointer;
+}
+
+.rectCoverTxt{
+    left: 50%;
+    margin: 16px -60px;
+    position: absolute;
+    top: 50%;
+	color: #fff;
+	cursor:pointer;
+}
+
+.cover{
+	display:none;
+}
+
+/*申请提现页面*/
+.wdlsHeader{
+	background:rgba(0, 0, 0, 0) url("../img/new/index_bg@2x.png") no-repeat scroll 50% 50% / cover ;
+	height: 164px;
+
+}
+
+.wdlsHeader p{
+   font-size:16px;
+}
+
+.wdlsHeader span{
+	font-size:50px;
+	 
+}
+
+
+.wdlsHeader p,wdlsHeader span{
+	opacity:0.7;
+}
+
+.ctnPadding{
+	padding:0 30px;
+	}
