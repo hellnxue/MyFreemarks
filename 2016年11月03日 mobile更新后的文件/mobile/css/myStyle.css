@@ -11,6 +11,9 @@ color:#fff;}
   color:#333;
 }
 
+input.wdColor{
+color:#1EBCD7}
+
 
 /*容器中的所有字体颜色*/
 .allWhite *{
@@ -26,6 +29,8 @@ color:#fff;}
 .p-b-xs{
   padding-bottom:5px;
 }
+
+
 
 /*问好图标大小*/
 .questionIcon{
@@ -273,3 +278,22 @@ position:relative;}
 .ctnPadding{
 	padding:0 30px;
 	}
+	
+.wd-p-t{
+	padding-top:7px;
+	
+	}
+	
+	
+	
+/*网页信息动态提示部分*/
+header .tips_main{
+	position:absolute;
+	top:5px;
+	left:5px;
+	width: 100%;}
+	
+	
+header .tips_main p{
+	margin-bottom: 0px; 
+	font-size: 14px;}
