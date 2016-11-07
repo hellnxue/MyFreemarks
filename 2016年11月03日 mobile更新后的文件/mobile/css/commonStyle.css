@@ -960,9 +960,9 @@ body.blank {
 .float-e-margins .btn {
   margin-bottom: 5px;
 }
-.btn-primary.btn-outline {
+/* .btn-primary.btn-outline {
   color: #34495e;
-}
+} */
 .btn-primary2.btn-outline {
   color: #9b59b6;
 }
@@ -984,18 +984,18 @@ body.blank {
 .btn-danger2.btn-outline {
   color: #c0392b;
 }
-.btn-primary.btn-outline:hover,
+/* .btn-primary.btn-outline:hover, */
 .btn-success.btn-outline:hover,
 .btn-info.btn-outline:hover,
 .btn-warning.btn-outline:hover,
 .btn-danger.btn-outline:hover {
   color: #fff;
 }
-.btn-primary {
+/* .btn-primary {
   background-color: #34495e;
   border-color: #34495e;
   color: #FFFFFF ;
-}
+} 
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -1027,7 +1027,7 @@ fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
   background-color: #293a4a;
   border-color: #293a4a;
-}
+}*/
 .btn-primary2 {
   background-color: #9b59b6;
   border-color: #9b59b6;

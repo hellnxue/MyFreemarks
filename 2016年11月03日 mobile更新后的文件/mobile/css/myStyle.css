@@ -25,10 +25,28 @@ color:#1EBCD7}
   background-color:#EDF4FE;
 }
 
+.whiteBgColor{
+  background-color:#fff;}
+
 /*下内边距*/
 .p-b-xs{
   padding-bottom:5px;
 }
+
+.p-t-xs{
+  padding-bottom:5px;
+}
+
+.p-l-xs{
+  padding-bottom:5px;
+}
+
+.p-r-xs{
+  padding-bottom:5px;
+}
+
+.cbox-m-t{
+	margin-top:3px !important;}
 
 
 
@@ -43,6 +61,31 @@ width:10px;}
 
 .iconP{
 	padding-top:10px;}
+	
+	
+.iconLeft{
+	padding-top:14px;}
+
+.iconRight{
+	padding-top:15px;}
+	
+.f-s{
+   font-size:15px;
+}
+
+.lgSpan{
+	font-size:16px;}
+
+
+.mdSpan{
+	font-size:13px;}
+	
+.sdSpan, .sdSpan span{
+	font-size:15px;
+	}
+	
+.myHr{
+	margin:15px 0;}
 	
 /*输入框左边箭头*/
 .iconImgInput{
@@ -62,7 +105,7 @@ width:10px;}
 
 
 /*按钮字体颜色*/	
-.btnBlue{
+.btnBlue,.titleBlue, .spanBlue{
     color:#1e8cd7;
 }
 /*下拉框字体颜色*/
@@ -125,19 +168,19 @@ background-color:#1E8CD7;}
  
 input.pl-color::-webkit-input-placeholder {
   color: #333;
-  opacity: 0.7;
+  opacity: 0.5;
 }
 input.pl-color::-moz-placeholder {/* Firefox 18- */
-  color: #333;
-   opacity: 0.7;
+   color: #333;
+   opacity: 0.5;
 }
 input.pl-color::-moz-placeholder{/* Firefox 19+ */
- color: #333;
-  opacity: 0.7;
+  color: #333;
+  opacity: 0.5;
 }
 input.pl-color::-ms-input-placeholder {
-  color: #333;
-   opacity: 0.7;
+   color: #333;
+   opacity: 0.5;
 }
 
 
@@ -148,6 +191,8 @@ input.pl-color::-ms-input-placeholder {
 	padding-left:0;
 	background-color:transparent;
 }
+
+ 
 
 
 
@@ -287,13 +332,104 @@ position:relative;}
 	
 	
 /*网页信息动态提示部分*/
-header .tips_main{
-	position:absolute;
-	top:5px;
-	left:5px;
-	width: 100%;}
+.tips_main{
+	position:fixed;
+	width: 100%;
+	z-index: 100;
+	color:red;
+	line-height:1.4;
+	background-color:#fff;
+	opacity: 0.8;}
+
+.tips_main p{
+ 
+	margin-bottom:0}
 	
 	
 header .tips_main p{
 	margin-bottom: 0px; 
 	font-size: 14px;}
+	
+	
+	
+/*宽度100%的外包装*/
+.content{
+	width:100%;
+	height:auto;
+	padding:0;
+	margin:0;}
+	
+.content .list{
+	width:100%;
+	padding:0;
+	margin:0;
+	background-color:#fff;}
+	
+.content .list + .list{
+	margin-top:10px;}
+	
+/*模态窗口*/
+.modal p{
+	color:#767676;
+}
+
+.modal .codeBorder {
+    border-left: 2px solid #767676;
+    height: 34px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    opacity:0.7;
+}
+
+.modal input[type="text"]{
+	border:0;
+	font-size:16px;	
+}
+
+/* .modal input[type="button"]{
+	background-color:#1E8CD7;
+}
+ */
+ 
+ .modal .wrpBorder{
+ border: 1px solid #1E8CD7;
+ }
+ 	
+.modal span.catch{
+    color: #1e8cd7;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+
+/*审核结果页面样式部分*/
+.rltInfo{
+	 
+	height:219px;;
+	background:transparent  url("../img/new/bill_bg@2x.png") no-repeat scroll 50% 50% / cover ;
+	
+	 }
+
+.rltContent{
+	width:90%;
+	}
+.rltContent > img{
+	width:100%;
+	}
+	
+.rltContent > div{
+	 
+    left: 0;
+    position: absolute;
+    top: 0;
+	margin:0;
+	}
+	
+	
+	/*try*/
+.mwrp{
+	border:2px  dotted blue;
+	border:dashed;}

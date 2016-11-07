@@ -10,12 +10,13 @@
 	<link href="../../css/myStyle.css" rel="stylesheet">
   </head>
   <body class="thinBgColor">
+  	<!--提示-->
+		 <div class="tips_main" style="display:none;">
+				<p class="lead">提现金额不能为空</p>
+		 </div>
 	  <!-- 头部开始 -->
 	 <header class="allWhite wdlsHeader p-relative" >
-	 	<!--提示-->
-		 <div class="tips_main" style="display:none;">
-				<p>提现金额不能为空</p>
-		 </div>
+	 
 		<!--导航--> 
 		<div class="navbar" role="navigation">
 			<div class="container m-t-xl">
@@ -41,7 +42,7 @@
 								
 							<div class="row">
 								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							 	 	<input type="text"  class="form-control pl-color fontOpacity" id="withdrawAmount" placeholder="请输入提现金额"/>
+							 	 	<input type="text"  class="form-control pl-color" id="withdrawAmount" placeholder="请输入提现金额"/>
 							     </div>
 							</div>
 							
@@ -54,7 +55,7 @@
 							
 							 <div class="row">
 								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mySelector">
-								 	    <h4 class="inputSize fontOpacity" >请选择公司名称</h4>
+								 	    <h4 class="inputSize fontOpacity" >请选择贷款用途称</h4>
 							 	 		<select class="bgColor form-control change" id="loanPurpose">
 											<option value="">---请选择---</option>
 											<option value="0001">买房</option>
@@ -114,11 +115,11 @@
 						<div class="panel-body">
 								
 							<div class="row">
-								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 wd-p-t">
-									  <span class="inputSize fontOpacity">手续费率</span>
+								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 wd-p-t">
+									  <span class="inputSize">手续费率</span>
 								  </div>
 								    
-								    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+								    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 									   <!--<span>36.56</span>-->
 									   <input type="text" class="form-control pl-color fontOpacity wdColor" id="chargeRate" placeholder="单位:%" />
 								  </div>
@@ -132,12 +133,12 @@
 							
 							
 							 <div class="row">
-								  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 wd-p-t">
-									    <span class="inputSize fontOpacity">还款日期</span>
+								  <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 wd-p-t">
+									    <span class="inputSize">还款日期</span>
 								  </div>
-								   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+								   <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 									<!--   <span>每月9号</span>-->
-									<input type="text" class="form-control pl-color fontOpacity wdColor" id="repayDate" placeholder="还款日期" />
+									<input type="text" class="form-control pl-color fontOpacity wdColor" id="repayDate" placeholder="请输入还款日期" />
 								  </div>
 							</div>
 							
@@ -148,12 +149,12 @@
 							</div>
 							 
 							  <div class="row">
-								   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 wd-p-t">
-									   <span class="inputSize fontOpacity">月还金额</span>
+								   <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 wd-p-t">
+									   <span class="inputSize">月还金额</span>
 								  </div>
-								   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+								   <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 									  <!-- <span>500.00元</span>-->
-									  	<input type="text" class="form-control pl-color fontOpacity wdColor" id="monRepayAmount" placeholder="月还金额" />
+									  	<input type="text" class="form-control pl-color fontOpacity wdColor" id="monRepayAmount" placeholder="请输入月还金额" />
 								  </div>
 							</div>
 							
@@ -168,10 +169,17 @@
 		<!--按钮-->
 		 <div class="row  m-b">
 			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9  ">
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  ">
+			 <div class="form-group">
 				   	<button  type="button" class="btn btn-info btn-block btn-lg" onClick="f_commit();">立即提现</button>
-					<input  class="m-t-md" id="checkbox" type="radio" checked="checked" style="margin-top: 20px">
-					<a class="fontOpacity"  >&laquo;同意签署协议&raquo;</a>
+					    <div class="checkbox">
+						<label>
+							<input type="checkbox" id="checkbox"  checked="checked" class="cbox-m-t">
+							同意<a href="#">&laquo;签署协议&raquo;</a>
+						</label>
+					</div>
+					 </div>
+				
 			</div>
 			 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div> 
 		</div>
@@ -179,9 +187,43 @@
 
 	  </form>	
 	 </div>
-	
-	
-	
+	 
+	 
+	<!-- 测试 <button type="button"  data-toggle="modal" data-target="#myModal" >modal</button> -->
+	 <!-- 填写动态验证码 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-body">
+            		<div class=" form-group">
+            		   <div class="row m-b">
+	            	        <p  class="text-left lead m-b-none" id="myModalLabel">已向138****8888的手机发送了验证码</p>
+	            	   </div>
+					   <div class="row p-m wrpBorder">
+							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+							  <input id="verifyCode" name="verifyCode"  type="text" class="form-control" id="verifyCode" placeholder="请输入验证码" />				  
+							</div>
+							
+							 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
+								 <div class="codeBorder"></div>
+								 <!-- <input id="checkcode" class="btn btn-info" value="获取验证码" type="button" > -->
+								 
+								 <span class="m-t-xs catch" id="checkcode">获取验证码</span>
+								 
+							  </div>
+					   </div>
+					   
+					   <div class="row m-t-lg">
+					   		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							   <button class="btn btn-primary btn-block btn-lg" type="button"  onclick="next('orderSubmitSucc.html')" >提交</button>
+							</div>
+							<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>	
+	            		</div>
+ 	            </div>
+	         <!-- /.modal-content -->
+	    </div><!-- /.modal -->
+	</div>
 	
 
 
@@ -192,47 +234,38 @@
 	<script src="../../js/common/utility.js" type="text/javascript"></script>
 	<script src="../../js/repay/withdrawals.js" type="text/javascript"></script>
 	<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
- 
-	<script>
-	   $(function(){
-	      
-	     /* $("select option").on("click",function(){
-		       
-			  $(this).parent("select").siblings("h4").html($(this).text());
-			  
-		  });*/
-		  
-		   
- 
-		  $("select.change").on("change",function(){
-			   
-			   $(this).siblings("h4").html($(this).find("option:selected").text());
-			   $(this).siblings("h4").css("opacity","1");
-		  });
-	   });
-	</script>	
+ 	<script src="../../js/credit/myCredit.js" type="text/javascript"></script>
 	
-	<!--<script type="text/javascript"> 
-						var wait=60; 
-						function time(o) {
-							if(wait == 60){
-							//sendVerifyCode('verifyCode','');
-							}
-							if (wait == 0) { 
-								o.removeAttribute("disabled"); 
-								o.value="重新发送";
-								o.style.backgroundColor="#00AFBE"; 
-								wait = 60; 
-							} else { 
-								o.setAttribute("disabled", true); 
-								o.value="重新发送("+wait+")";
-								o.style.backgroundColor="#FF0000";
-								wait--; 
-								setTimeout(function() { 
-								time(o);}, 1000); }
-							} 
-						document.getElementById("checkcode").onclick=function(){time(this);};
-					</script>
+ <script type="text/javascript"> 
+	
+		$(function() {
+			$("#checkcode").get(0).onclick = dynamic;
+		});
+		var wait = 60;
+		function time(o) {
+			if (wait == 60) {
+				//sendVerifyCode('verifyCode','');
+			}
+			if (wait == 0) {
+				$("#checkcode").get(0).onclick = dynamic;
+				$(o).html("获取验证码");
+				$(o).removeAttr("style").addClass("catch");
+				wait = 60;
+			} else {
+				$("#checkcode").get(0).onclick = null;
+				$(o).html("重新发送(" + wait + ")");
+				$(o).css("color", "#FF0000");
+				wait--;
+				setTimeout(function() {
+					time(o);
+				}, 1000);
+			}
+		}
+
+		function dynamic() {
+			time(this);
+		}
+	</script>
     <script type="text/javascript">
     	function checkProtocol(){
     		if (!$("#checkbox").is(':checked')) {
@@ -240,6 +273,6 @@
     			return false;
     		}
     	}
-    </script>-->
+    </script> 
   </body>
 </html>
