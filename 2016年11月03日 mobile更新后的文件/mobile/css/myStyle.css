@@ -87,6 +87,9 @@ width:10px;}
 .myHr{
 	margin:15px 0;}
 	
+.myHr-xs{
+	margin:5px 0;}
+	
 /*输入框左边箭头*/
 .iconImgInput{
     padding-top: 9px;
@@ -262,6 +265,9 @@ background-color:#1E8CD7;}*/
 .p-relative{
 position:relative;}
 
+.p-absolute{
+position:absolute;}
+
 .rectCover{  
 	background-color: #ccc;
     border-radius: 10px;
@@ -413,23 +419,62 @@ header .tips_main p{
 	
 	 }
 
+
+/**********withdrawalsResult.html提现结果中部样式******************/
 .rltContent{
+	display:inline-block;
 	width:90%;
 	}
 .rltContent > img{
 	width:100%;
 	}
 	
-.rltContent > div{
-	 
+ 
+
+.rltInfos{
+	 position: absolute;
+     width: 80%;
+	 left: 50%;
+	 margin-left: -40%;
+     margin-top: 2%;
+	 height:100%;
+	 /*background-color: #ddd;*/
+   
+}
+
+.result{
+	border-bottom: 1px solid #ddd;
+    height: 10%;
     left: 0;
+    line-height: 15%;
     position: absolute;
-    top: 0;
-	margin:0;
+    top: 5%;
+    width: 98%;/*#ddd*/
+
+   
 	}
+
+
+.result:last-child{
+	border-bottom: medium none;
+    margin-left: 0;
+    padding-right:0;
+    text-align: right;
+    top: 89%;
+}
+
+.result span{
+	font-size: 14px;
+	}
+
+.result span:last-child{
+	padding-left:0;
+	color:#1ebcd7;
+	}
+.result a{
+    /*color:#1e8cd7;*/}
+
+
 	
+ 
 	
-	/*try*/
-.mwrp{
-	border:2px  dotted blue;
-	border:dashed;}

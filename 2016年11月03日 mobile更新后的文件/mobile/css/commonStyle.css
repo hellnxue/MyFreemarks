@@ -2409,7 +2409,7 @@ body.page-small.show-sidebar #menu {
 body.page-small.show-sidebar #wrapper {
   margin-left: 180px;
 }
-a {
+/*a {
   cursor: pointer;
   color: #34495e;
 }
@@ -2418,7 +2418,7 @@ a:focus {
   color: #34495e;
   text-decoration: none;
 }
-.no-padding {
+*/.no-padding {
   padding: 0 !important;
 }
 .no-borders {
