@@ -246,14 +246,15 @@ background-color:#1E8CD7;}*/
     left: -1px;
     position: absolute;
     top: -1px;}
-	
-/*银行名称*/	
-.bank{
+/*安全卡-验证码-文字*/    
+.codeBorder-xs{
+    border-left: 1px solid;
+    height: 20px;
+    left: 6px;
     position: absolute;
-	left: -20px;
-    top: -2px;
-
+    top: 6px;
 }
+	
 
 /*证件上传*/
 .rect{   
@@ -402,13 +403,20 @@ header .tips_main p{
  border: 1px solid #1E8CD7;
  }
  	
-.modal span.catch{
-    color: #1e8cd7;
+.modal span.catch, .catch{
+   
     cursor: pointer;
     display: inline-block;
     font-size: 16px;
-}
+} 
+.modal span.catch{
+   
+   color: #1e8cd7;
+} 
 
+.catch{
+    font-size:15px;
+}
 
 
 /*审核结果页面样式部分*/
@@ -463,18 +471,60 @@ header .tips_main p{
     top: 89%;
 }
 
-.result span{
+.result span, .statusDetail span:not(.lead){
 	font-size: 14px;
+	 
 	}
 
 .result span:last-child{
 	padding-left:0;
-	color:#1ebcd7;
+	color:#1e8cd7;
 	}
-.result a{
-    /*color:#1e8cd7;*/}
 
+/*withdrawalsResult.html提现结果底部状态样式 审核中，审核成功，审核结果*/
 
+.statusDetail{
+    display: inline-block;
+    width: 90%;
+	}
 	
- 
+.statusDetail .badge{
+	background-color:#1e8cd7;
+	border-radius: 15px;
+	font-size:12px;
+	font-weight:400;
+	} 
 	
+.statusDetail .row div:last-child span:not(.badge){
+	color:#1e8cd7;}
+	
+/*withdrawalsResult.html提现结果底部按钮组*/	
+
+.btn-group-wrapper{
+  /*bottom: 0;
+    left: 0;
+    position: absolute;*/
+    width: 100%;
+	}
+	
+
+.btn-group-wrapper > div{
+	 
+    width: 100%;
+	border-bottom: 2px solid #3498db;
+    border-top: 2px solid #3498db;
+	} 
+.btn-group-wrapper button{	 
+    width: 50%;
+	} 
+	
+.btn-group-wrapper button:nth-child(1){	
+	border-left:none; 
+    border-top-left-radius:0;
+	border-bottom-left-radius:0;
+	}
+.btn-group-wrapper button:nth-child(2){	 
+	border-right:none;
+    border-top-right-radius:0;
+	border-bottom-right-radius:0;
+	}  
