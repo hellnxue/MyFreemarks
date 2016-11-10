@@ -345,7 +345,7 @@ position:absolute;}
 .header_bg{
 	position:absolute;
 	z-index:-100;
-    width:100%;
+ 	width:100%;
 	 
 }	
 
@@ -353,8 +353,32 @@ position:absolute;}
 	width: 100%;
 	height: 164px;
    
-}	
+}
 
+
+
+/*申请提现页面协议文章*/	
+
+.my-articles{
+	 height: 300px;
+     overflow-y: scroll;
+}
+
+.my-articles strong span{
+	font-family: 宋体,SimSun; 
+	font-size: 29px;
+}
+
+.modal .my-articles,.modal .my-articles p{
+	color:#333;
+}
+
+.my-articles p{
+	font-family: 宋体,SimSun;
+	font-size: 14px;
+    line-height: 2em;
+    text-indent: 2em;
+}
 	
 	
 /*网页信息动态提示部分*/
@@ -419,7 +443,8 @@ header .tips_main p{
  */
  
  .modal .wrpBorder{
- border: 1px solid #1E8CD7;
+   border: 1px solid #1E8CD7;
+   padding:10px;
  }
  	
 .modal span.catch, .catch{
@@ -571,3 +596,23 @@ header .tips_main p{
   
 }
  
+
+
+
+/*模拟背景图的效果*/
+.imitate{
+   left: 50%;
+   margin-left: -40%;
+   position: absolute;
+   width: 80%;
+   z-index: -100;
+}
+
+.imitate >img{
+	width:100%;
+	
+
+}
+
+.my-hr-sm{
+	margin:3% 0;}

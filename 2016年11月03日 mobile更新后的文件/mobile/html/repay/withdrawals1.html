@@ -16,8 +16,8 @@
 		 </div>
 	  <!-- 头部开始 -->
 	 <header class="allWhite wdlsHeader p-relative" >
-	    
-		<div class="header_bg">
+	 
+	 	<div class="header_bg">
 		    <img src="../../img/new/index_bg@2x.png"/>
 		</div>
 		<!--导航--> 
@@ -36,7 +36,6 @@
 	 <div class="container  m-t-md ctnPadding">
 		<form class="form">
 			
-		
 		<div class="row">
 			   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			   		
@@ -71,26 +70,6 @@
 									 <hr>
 								  </div>
 							</div>
-							
-							<!--<div class="row m-b">
-								  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-									   <span>贷款期限</span>
-								  </div>
-								    
-								   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-									 
-								  </div>
-							</div>
-							 
-							  <div class="row">
-								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<select class="bgColor form-control" id="repaymentTerm">
-										<option value="">---请选择---</option>
-										<option value="2001">员工贷三天</option>
-										<option value="2002">员工贷四天</option>
-									</select>
-							     </div>
-							</div>-->
 							
 							 <div class="row">
 								 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mySelector">
@@ -178,7 +157,7 @@
 					    <div class="checkbox">
 						<label>
 							<input type="checkbox" id="checkbox"  checked="checked" class="cbox-m-t">
-							同意<a href="#">&laquo;签署协议&raquo;</a>
+							同意<a href="#myModal" data-toggle="modal">&laquo;签署协议&raquo;</a>
 						</label>
 					</div>
 					 </div>
@@ -192,90 +171,126 @@
 	 </div>
 	 
 	 
-	<!-- 测试 <button type="button"  data-toggle="modal" data-target="#myModal" >modal</button> -->
+	
 	 <!-- 填写动态验证码 -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <div class="modal-body">
-            		<div class=" form-group">
-            		   <div class="row m-b">
-	            	        <p  class="text-left lead m-b-none" id="myModalLabel">已向138****8888的手机发送了验证码</p>
-	            	   </div>
-					   <div class="row p-m wrpBorder">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  >
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+					<!-- 协议部分 -->
+				     <div class="row v-protocol">
+				        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				           <article class="text-center my-articles">
+				           	  <strong><span>贷款协议</span></strong>
+				           	  <p class="text-left m-t">
+					           	  对于在淘宝平台上因交易活动引起的任何纠纷，您同意司法机关（包括但不限于人民法院）可以通过手机短信、电子邮件或阿里旺旺等现代通讯方式
+					           	  或邮寄方式向您送达法律文书（包括但不限于诉讼文书）。您指定接收法律文书的手机号码、电子邮箱或阿里旺旺账号等联系方式为您在淘宝平台注册、更新时提供的手机号码、电子邮箱
+					           	  联系方式以及在注册淘宝用户时生成阿里旺旺账号，司法机关向上述联系方式发出法律文书即视为送达。您指定的邮寄地址为您的法定联系地址或您提供的有效联系地址。
+				           	  </p>
+				           </article>
+				        </div>
+				        
+				         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-xl">
+				           <button class="btn btn-info btn-block btn-lg" onclick="test();">我确认已阅读并知晓协议内容 </button>
+				        </div>
+				     </div>     
+					<!-- 发送验证码部分 -->
+					  <div class=" form-group v-code hidden">
+						<div class="row m-b">
+							<p class="text-left lead m-b-none" id="myModalLabel">已向138****8888的手机发送了验证码</p>
+						</div>
+						<div class="row wrpBorder">
 							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-							  <input id="verifyCode" name="verifyCode"  type="text" class="form-control" id="verifyCode" placeholder="请输入验证码" />				  
+								<input id="verifyCode" name="verifyCode" type="text"
+									class="form-control" id="verifyCode" placeholder="请输入验证码" />
 							</div>
-							
-							 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
-								 <div class="codeBorder"></div>
-								 <!-- <input id="checkcode" class="btn btn-info" value="获取验证码" type="button" > -->
-								 
-								 <span class="m-t-xs catch" id="checkcode">获取验证码</span>
-								 
-							  </div>
-					   </div>
-					   
-					   <div class="row m-t-lg">
-					   		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
+								<div class="codeBorder"></div>
+								<!-- <input id="checkcode" class="btn btn-info" value="获取验证码" type="button" > -->
+
+								<span class="m-t-xs catch" id="checkcode">获取验证码</span>
+
+							</div>
+						</div>
+
+						<div class="row m-t-lg">
+							<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
 							<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-							   <button class="btn btn-primary btn-block btn-lg" type="button"  onclick="next('orderSubmitSucc.html')" >提交</button>
+								<button class="btn btn-primary btn-block btn-lg" type="button"
+									onclick="next('orderSubmitSucc.html')">提交</button>
 							</div>
-							<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>	
-	            		</div>
- 	            </div>
-	         <!-- /.modal-content -->
-	    </div><!-- /.modal -->
-	</div>
-	
+							<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+						</div>
+					</div>   
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal -->
+			</div>
 
 
-	<script src="../../js/common/jquery-1.12.3.min.js" type="text/javascript"></script>
-	<script src="../../js/common/bootstrap.min.js" type="text/javascript"></script>
-	<script src="../../js/common/iscroll.js" type="text/javascript"></script>
-	<!--页面接口调用包装js部分-->
-	<script src="../../js/common/utility.js" type="text/javascript"></script>
-	<script src="../../js/repay/withdrawals.js" type="text/javascript"></script>
-	<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
- 	<script src="../../js/credit/myCredit.js" type="text/javascript"></script>
-	
- <script type="text/javascript"> 
-	
-		$(function() {
-			$("#checkcode").get(0).onclick = dynamic;
-		});
-		var wait = 60;
-		function time(o) {
-			if (wait == 60) {
-				//sendVerifyCode('verifyCode','');
-			}
-			if (wait == 0) {
+
+			<script src="../../js/common/jquery-1.12.3.min.js"
+				type="text/javascript"></script>
+			<script src="../../js/common/bootstrap.min.js" type="text/javascript"></script>
+			<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+			<!--页面接口调用包装js部分-->
+			<script src="../../js/common/utility.js" type="text/javascript"></script>
+			<script src="../../js/repay/withdrawals.js" type="text/javascript"></script>
+			<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+			<script src="../../js/credit/myCredit.js" type="text/javascript"></script>
+
+			<script type="text/javascript"> 
+			var wait = 60;
+			$(function() {
 				$("#checkcode").get(0).onclick = dynamic;
-				$(o).html("获取验证码");
-				$(o).removeAttr("style").addClass("catch");
-				wait = 60;
-			} else {
-				$("#checkcode").get(0).onclick = null;
-				$(o).html("重新发送(" + wait + ")");
-				$(o).css("color", "#FF0000");
-				wait--;
-				setTimeout(function() {
-					time(o);
-				}, 1000);
+				
+				$('#myModal').on('hidden.bs.modal', function () {
+					$(".v-protocol").show();
+					$(".v-code").addClass("hidden");
+				});
+			});
+	
+			function time(o) {
+				if (wait == 60) {
+					//sendVerifyCode('verifyCode','');
+				}
+				if (wait == 0) {
+					$("#checkcode").get(0).onclick = dynamic;
+					$(o).html("获取验证码");
+					$(o).removeAttr("style").addClass("catch");
+					wait = 60;
+				} else {
+					$("#checkcode").get(0).onclick = null;
+					$(o).html("重新发送(" + wait + ")");
+					$(o).css("color", "#FF0000");
+					wait--;
+					setTimeout(function() {
+						time(o);
+					}, 1000);
+				}
 			}
-		}
-
-		function dynamic() {
-			time(this);
-		}
+	
+			function dynamic() {
+				time(this);
+			}
+			
+			//同意协议显示
+			function test(){
+				$(".v-protocol").hide();
+				$(".v-code").removeClass("hidden").show();
+				
+			}
+		
+		
 	</script>
-    <script type="text/javascript">
+			<script type="text/javascript">
     	function checkProtocol(){
     		if (!$("#checkbox").is(':checked')) {
     			alert("必须签署协议才能提现!");
     			return false;
     		}
     	}
-    </script> 
-  </body>
+    </script>
+</body>
 </html>
