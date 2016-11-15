@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <title>documentUpload</title>
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+	    <link href="../../css/commonStyle.css" rel="stylesheet">
+		<link href="../../css/myStyle.css" rel="stylesheet">
+		<link href="../../css/common/color_style.css" rel="stylesheet" type="text/css"/>
+		<link href="../../css/common/jquery.alerts.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body style="background-color:#1E8CD7;">
+		<!--tips start-->
+		<div class="tips_main" style="display:none;">
+			<p></p>
+		</div>
+		<!--tips end-->
+		<!-- top start -->
+		
+		<header class=" m-t-xs allWhite" >
+			<div class="navbar" role="navigation">
+				<div class="container">
+					
+					<div class="row">
+					   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<a href="baseInfo.html" class="pull-left iconP">
+								<img class="leftIcon" src="../../img/new/back@2x.png">
+							</a>
+							<h4 class="white pull-right fontOpacity">取消</h4>
+					   </div>					 
+					</div>
+					
+					<div class="row">
+					   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+						   <h3>身份验证</h3>
+						 
+					      <div class="row">
+						      <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+							        <p class="pull-left m-l fontOpacity">请提交身份信息，仅用于银行审核</p>
+						   			<img class="pull-right m-t-xxs questionIcon" src="../../img/new/Question@2x.png"  >
+							  </div>
+							  <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+							         
+							  </div>
+						  </div>
+					   </div>
+					</div>
+				</div> 
+			  </div>
+		</header>
+    	<!-- top end -->
+		  <div class="container m-t-lg">
+		  		<input type="hidden" id="merCode"/>
+      			<input type="hidden" id="merUserId"/>
+				<input type="hidden" id="key1" name="faceIdCard"/>
+				<input type="hidden" id="key2" name="rearIdCard"/>
+				<input type="hidden" id="key3" name="handIdCard"/>
+				<input type="hidden" id="productCode"/>
+		       	<form method="post" action="" id="uploadForm" name="uploadForm" enctype="multipart/form-data">
+			   
+				   <div class="row">
+						 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							 <div class="center-block p-relative">
+								<input class="hidden"  type="file" accept="image/*" name="image1"
+										id="uploadFile1" onChange="uploadIdCard('uploadFile1',1);"/>
+								<a href="javascript:;" onClick="linkBtn(1);">
+								
+									<img class="rect" id="preview1" src="../../img/new/ID_01@2x.png"/>
+								
+								</a>
+								<a class="rectCover coverHidden" data-type="1"> </a>
+							    <img  class="rectCoverImg coverHidden" data-type="1"  id="preview1" src="../../img/new/Repeat@2x.png" />
+							    <h3 class="rectCoverTxt coverHidden" data-type="1">点击重新拍</h3>								
+								
+							</div>
+						 </div>
+				   </div>
+					
+					<div class="row m-t-xxl">
+						 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							 <div class="center-block p-relative">
+								<input class="hidden"  type="file" accept="image/*" name="image2"
+										id="uploadFile2" onChange="uploadIdCard('uploadFile2',2);"/>
+								<a href="javascript:;" onClick="linkBtn(2);">
+								
+									<img class="rect"  id="preview2" src="../../img/new/ID_02@2x.png" />
+								
+								</a>
+								<a class="rectCover coverHidden" data-type="2"> </a>
+							    <img  class="rectCoverImg coverHidden" data-type="2"  id="preview1" src="../../img/new/Repeat@2x.png" />
+							    <h3 class="rectCoverTxt coverHidden" data-type="2">点击重新拍</h3>								
+							</div>
+						 </div>
+				   </div>
+				   
+					<div class="row m-t-xxl">
+						 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							<div class="center-block p-relative">
+								<input class="hidden"  type="file" accept="image/*" name="image3"
+										id="uploadFile3" onChange="uploadIdCard('uploadFile3',3);"/>
+								<a href="javascript:;" onClick="linkBtn(3);">
+								
+									<img  class="rect" id="preview3" src="../../img/new/ID_03@2x.png" />
+								
+								</a>
+								<a class="rectCover coverHidden" data-type="3"> </a>
+							    <img  class="rectCoverImg coverHidden" data-type="3"  id="preview1" src="../../img/new/Repeat@2x.png" />
+							    <h3 class="rectCoverTxt coverHidden" data-type="3">点击重新拍</h3>
+							</div>
+						 </div>
+				   </div>
+				   
+					
+					<div class="row  m-t-xxl">
+
+						 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+					   
+						 </div>
+						<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10  ">
+							<button type="button" onClick="f_commit(this);" class="btn btn-default btn-lg btn-block btnBlue">
+								立即提交
+						 	 </button>
+						</div>
+						 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"> </div> 
+											
+						 </div>
+		    		
+					
+					<div class="row  m-t-xxl">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12  m-t-xxl  ">
+					   
+						</div>
+					</div>
+			</form>
+		  </div>
+    <script src="../../js/common/jquery-1.12.3.min.js" type="text/javascript"></script>
+    <script src="../../js/common/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+	<script src="../../js/common/jquery.jmpopups-0.5.1.js" type="text/javascript"></script>
+	<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+	<script src="../../js/common/common.js" type="text/javascript"></script>
+	<!-- 照片上传组件 -->
+	<script src="../../js/common/lrz/lrz.bundle.js" type="text/javascript"></script>
+	
+	<!--页面接口调用包装js部分-->
+	<script src="../../js/common/utility.js" type="text/javascript"></script> 
+	<script src="../../js/common/userCheck.js" type="text/javascript"></script>
+	<script src="../../js/credit/documentUpload.js" type="text/javascript"></script>
+	 
+	</body>
+</html>

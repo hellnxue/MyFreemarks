@@ -1,0 +1,20 @@
+/*��֤��*/
+.wxsfbd_table_yzm{ background:url(../../img/icon_yzm_1.png) no-repeat;letter-spacing:2px; font-weight:bold;  font-family:Arial;font-style:italic; float:right; margin-right:0.3em; margin-top:0.2em; width:3.7em; height:1.5em;}
+.kdjh_03_table tr td .span_btn_yzm_gray{background:#a8a8a8; border:solid 1px #a8a8a8; color:#fff; border-radius:0.4em; float:right; width:39%; text-align:center; line-height:2.3rem; margin-top:-0.6em;}
+
+/*tips*/
+.tips_main {position:fixed; width:100%; background:rgba(0,0,0,0.6); z-index:99;}
+.tips_main p{ margin:0.5em; color:#fff; word-break:break-all;}
+
+/*��ť�Ŀ��*/
+.with_100{width:100%;}
+.with_48{width:48%;}
+.with_98{width:98%;}
+
+/*��ť������*/
+input:focus{outline: none; background:#1E8CD7;}
+select{appearance:none; -moz-appearance:none; -webkit-appearance:none; border:none; line-height:2em; text-indent:0.3em; background-color:none; background:url(../../img/icon_sel.png) no-repeat right center; background-size:1.5em 1.5em; font-size:1.5rem; border-radius:0.2em; padding-right:1.5em;}
+option{background-color:#1E8CD7;color:#fff;font-size:1.5rem; }
+textarea:focus{outline: none;}
+
+  

@@ -1,0 +1,116 @@
+a:hover,
+a:focus,
+a:active{
+	text-decoration:none;
+}
+header{
+	position:relative;
+}
+header .navbar-default{
+	background: #fff;
+}
+header nav{
+	text-align: center;
+	line-height: 60px;
+	color:#666;
+	font-weight: bold;
+	font-size:1.2em;
+}
+header .navbar{
+	margin-bottom: 0;
+	border:none;
+}
+header .glyphicon{
+	position: absolute;
+	left: 20px;
+	top:16px;
+}
+header a{
+	color:#666;
+}
+.red{
+	color:red;
+	font-weight:800;
+}
+.container{
+	width:100%;
+	margin-bottom:20px;
+}
+.form .form-group input,.form .form-group select,button{
+	height:40px;
+}
+.container button{
+	background-color:#01acef;
+	color:#fff;
+	margin-top:20px;
+	border:none;
+}
+.active{
+	background-color:#01acef !important;
+}
+.process{
+	text-align:center;
+	margin-bottom:20px;
+}
+.process p{
+	margin-bottom:0;
+	font-size: 12px;
+}
+.process > div{
+	border: 1px solid #999;
+	border-right: none;
+}
+.process > div > .row{
+	padding:5px 0;
+}
+.process div.left{
+	border-left: none;
+}
+.process .active{
+	background-color:#01acef;
+	color:#fff;
+}
+.bgColor{
+	background: -webkit-linear-gradient( bottom,#dadada,#fff);
+	background: -moz-linear-gradient( bottom,#dadada,#fff);
+	background: -ms-linear-gradient( bottom,#dadada,#fff);
+}
+.checkcodebtn{
+	height:35px;
+	width:48%;
+	display:inline;
+	color:#fff;
+	background-color:#00AFBE;
+	border:none;
+	border-radius:4px;
+	-webkit-border-radius: 4px;
+}
+.quota{
+	border-bottom:1px solid #999;
+	margin-bottom:10px;
+	padding:20px 0;
+	text-align:center;
+	font-size:1.5em;
+}
+.modal-footer button{
+	padding:10px 25px;
+}
+.rect{
+	width: 280px;
+	background-color:#fff;
+	margin-bottom:30px;
+	height: 160px;
+	border-color:#ccc;
+}
+.rect input[type=file]{
+	display:none;
+}
+#uploadForm p{
+	text-align:center;
+}
+.btn:hover,
+.btn:focus,
+.btn:active{
+  color: #fff;
+  background-color: #01ACEF;
+}

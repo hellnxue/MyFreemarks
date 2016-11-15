@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+ 	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	    <title>绑定银行卡</title>
+	   	<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../css/commonStyle.css" rel="stylesheet">
+		<link href="../../css/myStyle.css" rel="stylesheet">
+		<link href="../../css/common/color_style.css" rel="stylesheet" type="text/css"/>
+		<link href="../../css/common/jquery.alerts.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body style="background-color:#1E8CD7;" class="allWhite">
+	<!--tips start-->
+		<div class="tips_main" style="display:none;">
+			<p></p>
+		</div>
+	<!--tips end-->
+	 
+	     <header class=" m-t-xs" >
+			<div class="navbar" role="navigation">
+				<div class="container">
+					
+					<div class="row">
+					   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<a href="baseInfo1.html" class="pull-left iconP">
+							<img class="leftIcon" src="../../img/new/back@2x.png">
+							</a>
+							<h4 class="white pull-right fontOpacity">取消</h4>
+					   </div>					 
+					</div>
+					
+					<div class="row">
+					   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+						   <h3>安全卡</h3>
+					   </div>
+					</div>
+				</div> 
+			  </div>
+		</header>
+	<!-- top end -->
+	 <div class="container m-t-lg">
+		
+		<div class="row">
+		    <form class="form form-horizontal">
+				 
+				<div class=" form-group m-b-lg">
+					
+					 <div class="row">
+					    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> 
+						  <img  src="../../img/new/back@2x2x.png" class="leftIcon iconP iconImgInput">
+						</div>
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+						   <input type="text" class="form-control  ph-color" id="cardNo" placeholder="请输入银行卡卡号" autocomplete="off"/>
+						</div>
+						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  ">
+						  <!--    -->
+						<!--<span  class="inputSize fontOpacity bank" >中国农业发展银行有限公司</span>-->
+						 </div>
+						 
+					  </div>
+				</div>
+				
+				<!--银行名称-动态展示部分 -->
+				<div class=" form-group m-b-lg hidden">
+					
+					 <div class="row">
+					    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> 
+						 
+						</div>
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+						   	<span class="inputSize fontOpacity" >中国工商银行上海分行</span>
+						</div>
+						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2  ">
+						 </div>
+						 
+					  </div>
+				</div>
+				
+				<div class=" form-group m-b-lg">										
+					
+					<div class="row">
+					    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
+					</div>
+					
+					<div class=	"col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+						<input type="text" class="form-control ph-color" id="branchBank" placeholder="开户支行"/>
+					</div>
+					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "> </div>
+					</div>
+				</div>
+				
+				 
+				<div class=" form-group m-b-lg">					
+					  <div class="row">
+					     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
+					 </div>
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+						 <input type="text" class="form-control ph-color" id="mobileNo" placeholder="请输入手机号码" />
+						</div>
+					 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 "> </div>
+					  </div>
+				</div>
+				
+				<div class=" form-group">
+				   <div class="row">
+						 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">
+						 </div>
+						 
+						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 ">
+						  <input id="verifyCode" name="verifyCode"  type="text" class="form-control ph-color" id="verifyCode" placeholder="动态验证码" />				  
+						</div>
+						
+						 <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5  ">
+							 <!-- <span  id="checkcode"  class="hCode"> 获取短信验证码</span>-->
+							 <div class="codeBorder-xs"></div>
+							 <!-- <input id="checkcode" class="btn btn-default btnBlue" value="获取验证码" type="button"> -->
+							 <span id="checkcode" class="m-t-xs catch" onclick="dynamic()">获取验证码</span> 
+						  </div>
+				   </div>					
+					
+				</div>
+				
+				<div class="row m-t-xxxl ">
+				    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+					   
+					 </div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8  ">
+					 	  <button type="button" onClick="f_commit(this);" class="btn btn-default btn-lg btn-block btnBlue">下一步</button>
+					</div>
+					 <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> </div> 
+				</div>
+				<input type="hidden" id="productCode" />
+			</form>
+		</div>
+
+		
+	</div>
+	 
+	<!-- top start -->
+		
+
+	<!-- 跳转等待提示 -->
+	<div class="jump hidden" id="jump">
+		<p>正在提交数据...</p>
+	</div>
+
+	<!-- 跳转等待提示结束 -->
+    <script src="../../js/common/jquery-1.12.3.min.js" type="text/javascript"></script>
+    <script src="../../js/common/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+	<script src="../../js/common/jquery.jmpopups-0.5.1.js" type="text/javascript"></script>
+	<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+	<script src="../../js/common/common.js" type="text/javascript"></script>
+	<!--页面接口调用包装js部分-->
+	<script src="../../js/common/utility.js" type="text/javascript"></script>
+	<script src="../../js/common/userCheck.js" type="text/javascript"></script>
+	<script src="../../js/credit/cardValidator.js" type="text/javascript"></script>
+	 <script type="text/javascript"> 
+	 $(function() {
+			$("#checkcode").get(0).onclick = dynamic;
+		});
+		var wait = 60;
+		function time(o) {
+			if (wait == 60) {
+				sendVerifyCode('verifyCode','');
+			}
+			if (wait == 0) {
+				$("#checkcode").get(0).onclick = dynamic;
+				$(o).html("获取验证码");
+				$(o).removeAttr("style").addClass("catch");
+				wait = 60;
+			} else {
+				$("#checkcode").get(0).onclick = null;
+				$(o).html("重新发送(" + wait + ")");
+				$(o).css("color", "#FF0000");
+				wait--;
+				setTimeout(function() {
+					time(o);
+				}, 1000);
+			}
+		}
+
+		function dynamic() {
+			time(this);
+		}
+</script>
+	</body>
+</html>

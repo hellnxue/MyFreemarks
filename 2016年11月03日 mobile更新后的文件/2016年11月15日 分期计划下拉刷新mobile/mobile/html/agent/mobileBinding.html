@@ -1,0 +1,139 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.5" charset="utf-8"/>
+<title>吉小微</title>
+<link href="../../css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/common.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/common/color_style.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/common/jquery.alerts.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body class="bg_white">
+<!--tips start-->
+<div class="tips_main" style="display:none;">
+	<p></p>
+</div>
+<!--tips end-->
+<!--top-->
+<div id="wdmp_top">
+			<img src="../../img/banner_sjbd.jpg" width="100%">
+            <div class="height_05"></div>
+			<div class="lqzs_14_top_tab">
+            	<span class="span_cur" id="1span">手机验证码</span>
+                <span id="2span">后台验证码</span>
+            </div>
+            <div class="height_1"></div>
+</div>
+
+<!--top-->
+
+<!--内容区域 start-->
+<div class="H_yjmx" id="wrapper">
+	<div class="pad_w_1">
+    		
+            	<!--切换块1 start -->
+                <div id="divTab1" class="divHide">
+                   <table class="kdjh_03_table">
+                   	  <tr>
+                      	<th class="txtL" width="1%">验 证 码</th>
+                        <td><input placeholder="请输入右侧数字" class="input_none" style="width:54%" id="m_yzm"><span class="span_img_yzm" onclick='pic_yzm();'></span></td>
+                      </tr>
+                      <tr>
+                      	<th class="txtL">手机号码</th>
+                        <td>
+                        	<input placeholder="请输入您的手机号" class="input_none" style="width:60%" id="mobile" readonly="readonly">
+                        	<span class="span_btn_yzm">发送验证码</span>
+                        </td>
+                      </tr>
+                      <tr>
+                      	<th class="txtL">短信验证码</th>
+                        <td><input placeholder="请输短信验证码" class="input_none" style="width:50%" id="m_verificationCode"><span class="span_txt_org" onClick="showDiv('open1');">收不到短信？</span></td>
+                      </tr>
+                   </table>
+                   
+                   <div class="height_1"></div>
+                   
+                   <p class="check_blo2"><span id="check_1" class="check_no2"></span><i class="font_st_n">我已阅读并同意<i class="font_st_n txt_org text_d_u">协议</i></i></p>
+                   
+                   <div class="height_2"></div>
+                   
+                   <span class="btn_org width_wio_100" onclick="binding('mobile');">立即绑定</span>
+                   
+                   <div class="height_05"></div>
+                 
+                </div>
+                <!--切换块1 end -->
+                
+                <!--切换块2 start -->
+                <div id="divTab2" class="divHide">
+                   <table class="kdjh_03_table">
+                      <tr>
+                      	<th class="txtL" width="1%">验证码</th>
+                        <td><input placeholder="请输验证码" class="input_none width_wio_100" id="ht_zym"></td>
+                      </tr>
+                   </table> 
+                   <div class="height_1"></div>
+                   
+                   <p class="check_blo2"><span id="check_2" class="check_no2"></span><i class="font_st_n">我已阅读并同意<i class="font_st_n txt_org text_d_u">协议</i></i></p>
+                   
+                   <div class="height_2"></div>
+                   
+                   <span class="bindSub btn_org width_wio_100" onclick="binding('houtai');">立即绑定</span>
+                   
+                   <div class="height_05"></div>
+                </div>
+                <!--切换块2 end -->
+            	<!-- 短信测试 -->
+            	<p style="color: red;">测试短信验证码为111111</p>
+
+
+        
+        
+      
+ </div>  
+</div>
+<!--内容区域 end-->
+
+<p class=" pad_w_1 yjys_14_bottom">温馨提示：<i>手机号码错误时，请使用后台验证码。</i></p>
+
+<!--弹出层 start-->
+<div class="open_block displayN" id="open1">
+
+		<!--open title start-->
+  		<div>
+        	<span class="open_close" onClick="closeDiv('open1')"></span>
+            <span class="open_tit_cen">收不到短信</span>
+        </div>
+        <!--open title end-->
+        
+        <!--open con start-->
+        <div class="pad_w_1">
+        		
+               <p class="open_con_top_p">我们将在10秒内拨打投保人的手机，通过语音播报的方式告知验证码，请您点击按钮后保持手机畅通并注意接听电话。</p>
+               <div class="height_1"></div>
+               <p class="open_con_p">温馨提示：</p>
+               <p class="open_con_p">语音验证码的来电号码列表如下，请您放心接听；若在3分钟后仍未接到来电，请检查您的手机是否有信号，来电号码列表是否被拉入黑名单。<br>语音验证码来电号码列表：</p>
+               <p class="open_con_p_org">010-12345678<br>010-12345679<br>010-12345680</p>
+        </div>
+        <!--open con end-->
+
+         
+ 
+  
+</div>
+<!--弹出层 end-->
+
+
+  
+    
+<!--js全放底部-->
+<script src="../../js/common/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+<script src="../../js/common/jquery.jmpopups-0.5.1.js" type="text/javascript"></script>
+<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<script src="../../js/common/utility.js" type="text/javascript"></script>
+<script src="../../js/agent/mobileBinding.js" type="text/javascript"></script>
+</body>
+</html>

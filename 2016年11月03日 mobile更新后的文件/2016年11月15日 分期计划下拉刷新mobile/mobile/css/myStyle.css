@@ -1,0 +1,620 @@
+
+ 
+.border_none{
+	border:none;}
+
+/*字体颜色*/
+.white{
+color:#fff;}
+
+/*标题颜色 EDF4FE*/
+.titleColor{
+ color:#1E8CD7;
+}
+ /*内容颜色*/
+.ctColor{
+  color:#333;
+}
+
+input.wdColor{
+color:#1EBCD7}
+
+
+/*容器中的所有字体颜色*/
+.allWhite *{
+  color:#fff;
+}
+
+/*浅蓝色背景*/
+.thinBgColor{
+  background-color:#EDF4FE;
+}
+
+.whiteBgColor{
+  background-color:#fff;}
+
+/*下内边距*/
+.p-b-xs{
+  padding-bottom:5px;
+}
+
+.p-t-xs{
+  padding-bottom:5px;
+}
+
+.p-l-xs{
+  padding-bottom:5px;
+}
+
+.p-r-xs{
+  padding-bottom:5px;
+}
+
+.cbox-m-t{
+	margin-top:3px !important;}
+
+
+
+/*问好图标大小*/
+.questionIcon{
+	width:15px;
+	cursor:pointer;}
+
+/*头部箭头图标*/
+.leftIcon{
+width:10px;}
+
+.iconP{
+	padding-top:10px;}
+	
+	
+.iconLeft{
+	padding-top:14px;}
+
+.iconRight{
+	padding-top:15px;}
+	
+.f-s{
+   font-size:15px;
+}
+
+.lgSpan{
+	font-size:16px;}
+
+
+.mdSpan{
+	font-size:13px;}
+	
+.sdSpan, .sdSpan span{
+	font-size:15px;
+	}
+	
+.myHr{
+	margin:15px 0;}
+	
+.myHr-xs{
+	margin:5px 0;}
+	
+/*输入框左边箭头*/
+.iconImgInput{
+    padding-top: 9px;
+    position: absolute;
+    right: -10px;
+    width: 8px;
+}	
+	
+/*未用*/
+
+.iconright:before{
+	content:">";
+	color:#fff;
+	font-size:14px;
+}
+
+
+/*按钮字体颜色*/	
+.btnBlue,.titleBlue, .spanBlue{
+    color:#1e8cd7;
+}
+/*下拉框字体颜色*/
+select.black,select.black option{
+color:#A6A6A6;}
+
+/*覆盖下拉框*/
+.mySelector select{
+ opacity: 0;
+ position: absolute;
+ top: 2px;
+
+}
+
+
+/*部分字体透明*/
+.fontOpacity{
+  opacity:0.7;
+}
+ 
+/*placeholder颜色修改*/
+ 
+input.ph-color::-webkit-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+input.ph-color::-moz-placeholder {/* Firefox 18- */
+  color: #fff;
+   opacity: 0.7;
+}
+input.ph-color::-moz-placeholder{/* Firefox 19+ */
+ color: #fff;
+  opacity: 0.7;
+}
+input.ph-color::-ms-input-placeholder {
+  color: #fff;
+   opacity: 0.7;
+}
+
+
+/*文本框样式修改*/
+input.ph-color{
+	font-size:16px;
+	border:0;
+	padding-left:0;
+	background-color:transparent;
+}
+
+
+
+input.ph-color:focus{
+background:none;
+background-color:#1E8CD7;}
+
+input.ph-color:blur{
+background-color:#1E8CD7;}
+
+/*提现start*/
+/*placeholder颜色修改*/
+ 
+input.pl-color::-webkit-input-placeholder {
+  color: #333;
+  opacity: 0.5;
+}
+input.pl-color::-moz-placeholder {/* Firefox 18- */
+   color: #333;
+   opacity: 0.5;
+}
+input.pl-color::-moz-placeholder{/* Firefox 19+ */
+  color: #333;
+  opacity: 0.5;
+}
+input.pl-color::-ms-input-placeholder {
+   color: #333;
+   opacity: 0.5;
+}
+
+
+/*文本框样式修改*/
+.pl-color{
+	font-size:16px;
+	border:0;
+	padding-left:0;
+	background-color:transparent;
+}
+
+ 
+
+
+
+/*input.pl-color:focus{
+background:none;
+background-color:#1E8CD7;}
+
+input.pl-color:blur{
+background-color:#1E8CD7;}*/
+/*提现end*/
+
+
+
+
+
+
+/*文本框字体大小*/
+.inputSize, .mySelector > h4{
+   font-size: 16px; 
+   font-weight: 200;
+}
+
+ /*验证码*/
+ .hCode{
+  display:inline-block;
+  border-left:1px solid;
+  border-color:#fff !important; 
+  font-size: 15px;
+  font-size: 16px;
+  padding: 6px;
+  cursor:pointer;
+ 
+ }
+/*安全卡-验证码原来样式*/
+ .checkcodebtn {
+    background-color: #00afbe;
+    border: medium none;
+    border-radius: 4px;
+    color: #fff;
+    display: inline;
+    height: 35px;
+    width: 48%;
+}
+/*安全卡-验证码*/
+.codeBorder{
+	border-left: 1px solid;
+    height: 37px;
+    left: -1px;
+    position: absolute;
+    top: -1px;}
+/*安全卡-验证码-文字*/    
+.codeBorder-xs{
+    border-left: 1px solid;
+    height: 20px;
+    left: 6px;
+    position: absolute;
+    top: 6px;
+}
+	
+
+/*证件上传*/
+.rect{   
+    width: 280px;
+	height:173px;
+	border-radius:10px;
+}
+
+.p-relative{
+position:relative;}
+
+.p-absolute{
+position:absolute;}
+
+.rectCover{  
+	background-color: #ccc;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    height: 100%;
+    left: 50%;
+	margin: 0 -140px;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    width: 280px;
+	 
+}
+
+
+.rectCoverImg{
+	left: 50%;
+    margin: -33px -25px;
+    position: absolute;
+    top: 50%;
+	cursor:pointer;
+}
+
+.rectCoverTxt{
+    left: 50%;
+    margin: 16px -60px;
+    position: absolute;
+    top: 50%;
+	color: #fff;
+	cursor:pointer;
+}
+
+.cover{
+	display:none;
+}
+
+/*申请提现页面*/
+.wdlsHeader{
+	/*background:rgba(0, 0, 0, 0) url("../img/new/index_bg@2x.png") no-repeat scroll 50% 50% / cover ;*/
+	height: 164px;
+
+}
+
+.wdlsHeader p{
+   font-size:16px;
+}
+
+.wdlsHeader span{
+	font-size:50px;
+	 
+}
+
+
+.wdlsHeader p,wdlsHeader span{
+	opacity:0.7;
+}
+
+.ctnPadding{
+	padding:0 30px;
+	}
+	
+.wd-p-t{
+	padding-top:7px;
+	
+	}
+	
+/*申请提现页面header图片设置*/
+.header_bg{
+	position:absolute;
+	z-index:-100;
+ 	width:100%;
+	 
+}	
+
+.header_bg img{
+	width: 100%;
+	height: 164px;
+   
+}
+
+
+
+/*申请提现页面协议文章*/	
+
+.my-articles{
+	 height: 300px;
+     overflow-y: scroll;
+}
+
+.my-articles strong span{
+	font-family: 宋体,SimSun; 
+	font-size: 29px;
+}
+
+.modal .my-articles,.modal .my-articles p{
+	color:#333;
+}
+
+.my-articles p{
+	font-family: 宋体,SimSun;
+	font-size: 14px;
+    line-height: 2em;
+    text-indent: 2em;
+}
+	
+	
+/*网页信息动态提示部分*/
+.tips_main{
+	position:fixed;
+	top:0;
+	width: 100%;
+	z-index: 100;
+	color:red;
+	line-height:1.4;
+	background-color:#fff;
+	opacity: 0.8;}
+
+.tips_main p{
+ 
+	margin-bottom:0}
+	
+	
+header .tips_main p{
+	margin-bottom: 0px; 
+	font-size: 14px;}
+	
+	
+	
+/*宽度100%的外包装*/
+.content{
+	width:100%;
+	height:auto;
+	padding:0;
+	margin:0;}
+	
+.content .list{
+	width:100%;
+	padding:0;
+	margin:0;
+	background-color:#fff;}
+	
+.content .list + .list{
+	margin-top:10px;}
+	
+/*模态窗口*/
+.modal p{
+	color:#767676;
+}
+
+.modal .codeBorder {
+    border-left: 2px solid #767676;
+    height: 34px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    opacity:0.7;
+}
+
+.modal input[type="text"]{
+	border:0;
+	font-size:16px;	
+}
+
+/* .modal input[type="button"]{
+	background-color:#1E8CD7;
+}
+ */
+ 
+ .modal .wrpBorder{
+   border: 1px solid #1E8CD7;
+   padding:10px;
+ }
+ 	
+.modal span.catch, .catch{
+   
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+} 
+.modal span.catch{
+   
+   color: #1e8cd7;
+} 
+
+.catch{
+    font-size:15px;
+}
+
+
+/*审核结果页面样式部分*/
+.rltInfo{
+	 
+	height:219px;;
+	background:transparent  url("../img/new/bill_bg@2x.png") no-repeat scroll 50% 50% / cover ;
+	
+	 }
+
+
+/**********withdrawalsResult.html提现结果中部样式******************/
+.rltContent{
+	display:inline-block;
+	width:90%;
+	}
+.rltContent > img{
+	width:100%;
+	}
+	
+ 
+
+.rltInfos{
+	 position: absolute;
+     width: 80%;
+	 left: 50%;
+	 margin-left: -40%;
+     margin-top: 2%;
+	 height:100%;
+	 /*background-color: #ddd;*/
+   
+}
+
+.result{
+	border-bottom: 1px solid #ddd;
+    height: 10%;
+    left: 0;
+    line-height: 15%;
+    position: absolute;
+    top: 5%;
+    width: 98%;/*#ddd*/
+
+   
+	}
+
+
+.result:last-child{
+	border-bottom: medium none;
+    margin-left: 0;
+    padding-right:0;
+    text-align: right;
+    top: 89%;
+}
+
+.result span, .statusDetail span:not(.lead){
+	font-size: 14px;
+	 
+	}
+
+.result span:last-child{
+	padding-left:0;
+	color:#1e8cd7;
+	}
+
+/*withdrawalsResult.html提现结果底部状态样式 审核中，审核成功，审核结果*/
+
+.statusDetail{
+    display: inline-block;
+    width: 90%;
+	}
+	
+.statusDetail .badge{
+	background-color:#1e8cd7;
+	border-radius: 15px;
+	font-size:12px;
+	font-weight:400;
+	} 
+	
+.statusDetail .row div:last-child span:not(.badge){
+	color:#1e8cd7;}
+	
+/*withdrawalsResult.html提现结果底部按钮组*/	
+
+.btn-group-wrapper{
+  /*bottom: 0;
+    left: 0;
+    position: absolute;*/
+    width: 100%;
+	}
+	
+
+.btn-group-wrapper > div{
+	 
+    width: 100%;
+	border-bottom: 2px solid #3498db;
+    border-top: 2px solid #3498db;
+	} 
+.btn-group-wrapper button{	 
+    width: 50%;
+	} 
+	
+.btn-group-wrapper button:nth-child(1){	
+	border-left:none; 
+    border-top-left-radius:0;
+	border-bottom-left-radius:0;
+	}
+.btn-group-wrapper button:nth-child(2){	 
+	border-right:none;
+    border-top-right-radius:0;
+	border-bottom-right-radius:0;
+	}  
+	
+/********系统建设中的提示页面**********/
+
+
+
+/*授信引导页面按钮*/
+
+.btn-custom-opacity{
+  
+    background-color: transparent;
+    border-color: #1e8cd7;
+    color: #1e8cd7;
+}
+
+
+.btn-custom-opacity:hover,
+.btn-custom-opacity:focus,
+.btn-custom-opacity:active,
+.btn-custom-opacity.active {
+  /*background-color: #fff;*/
+  border-color: #509FFC;
+  
+}
+
+/*证件重新上传*/
+.coverHidden{
+	display:none;
+}
+
+
+/*分期计划下拉刷新*/
+div[data-scroll="wrappers"]{
+	position:absolute;
+	top:80px; 
+	bottom:0;
+	left:0;
+	width:100%;
+}
+
+
+
+div[data-pull="pullDown"],div[data-pull="pullUp"]{
+	padding:0 10px;height:30px;line-height:30px;color:#888;text-align:center
+}
+ 

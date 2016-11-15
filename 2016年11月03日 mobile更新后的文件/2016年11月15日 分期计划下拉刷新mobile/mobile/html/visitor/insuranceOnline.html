@@ -1,0 +1,109 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.5" charset="utf-8"/>
+<title>在线投保</title>
+<link href="../../css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/common.css" rel="stylesheet" type="text/css" />
+<link href="../../css/common/color_style.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/common/jquery.alerts.css" rel="stylesheet" type="text/css"/>
+<link href="../../css/common/mobiscroll.custom-2.6.2.min.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body class="bg_white">
+<!--tips start-->
+<div class="tips_main" style="display:none;">
+	<p></p>
+</div>
+<!--tips end-->
+<!--top start--> 
+<div class="bg_org kdjh_01_top_h">    
+    <div class="kdjh_01_top_div1">
+                <span></span>
+                <p class="txt_white">卡单激活</p>
+                <strong></strong>
+        </div>
+        <div class="kdjh_01_top_div_new2">
+                <span></span>
+                <p class="txt_white">卡单查询</p>
+                <strong></strong>
+        </div>
+</div>
+<!--top end-->
+
+<!--内容区域 start-->
+<div class="H_top_qh" id="wrapper" style="background:#fff;">
+<div class="pad_w_1">
+                 
+                 <!--切换块1 start -->
+                 <div id="list1">
+                
+                       <div class="kdjh_con_table_div">
+                       		<div class="left_div">保险卡卡号</div>
+                            <div class="right_div"><input placeholder="请输入保险卡卡号" id="f_insuranceCard"><span id="f_icon"></span></div>
+                            <div class="clear"></div>
+                       </div>
+                       <div class="kdjh_con_table_div">
+                       		<div class="left_div">保险卡密码</div>
+                            <div class="right_div"><input placeholder="请输入保险卡密码" id="f_insurancePassword"></div>
+                            <div class="clear"></div>
+                       </div>
+                       
+                       <div class=" height_3"></div>
+                       
+                       <div class="btn_org width_wio_100" onclick="f_commit();">提交</div><!----btn_org替换btn_gray----->
+
+                </div>
+                <!--切换块1 end -->
+                
+                <!--切换块2 start -->
+                 <div class="displayN" id="list2">
+               			<div class="kdjh_con_table_div">
+                       		<div class="left_div">保险卡卡号</div>
+                            <div class="right_div"><input placeholder="请输入保险卡卡号" id="s_insuranceCard"><span id="s_icon"></span></div>
+                            <div class="clear"></div>
+                       </div>
+                       <div class="kdjh_con_table_div">
+                       		<div class="left_div">保险卡密码</div>
+                            <div class="right_div"><input placeholder="请输入保险卡密码" id="s_insurancePassword"></div>
+                            <div class="clear"></div>
+                       </div>
+                       <div class="kdjh_con_table_div_c">
+                       		<div class="left_div">被保险人证件号码 </div>
+                            <div class="right_div"><input placeholder="请输入证件号码" id="s_cardNo"></div>
+                            <div class="clear"></div>
+                       </div>
+                       
+                       <div class=" height_3"></div>
+                       
+                       <div class="btn_org width_wio_100" onclick="s_commit();">提交</div><!----btn_org替换btn_gray----->
+                </div>
+                <!--切换块2 end -->
+      
+      
+ </div>  
+</div>
+<!--内容区域 end-->
+
+<p class="pad_w_1 kdjh_fot_p">温馨提示：<i class="txt_gray">请完整填写您所持有自助保险卡的卡号和密码，提交后方可继续激操作！</i></p>
+
+
+
+  
+    
+<!--js全放底部-->
+
+<!--工具js部分-->
+<script src="../../js/common/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="../../js/common/iscroll.js" type="text/javascript"></script>
+<script src="../../js/common/jquery.jmpopups-0.5.1.js" type="text/javascript"></script>
+<script src="../../js/common/jquery.alerts.js" type="text/javascript"></script>
+<script src="../../js/common/mobiscroll.custom-2.6.2.min.js" type="text/javascript"></script>
+<!--整体页面效果控制js部分-->
+<script src="../../js/common/common.js" type="text/javascript"></script>
+<!--页面接口调用包装js部分-->
+<script src="../../js/common/utility.js" type="text/javascript"></script>
+<!--当前页面执行js部分注意与html页面目录、名称相同的规范-->
+<script src="../../js/visitor/insuranceOnline.js" type="text/javascript"></script>
+</body>
+</html>
