@@ -2,22 +2,54 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>无标题文档</title>
+<title>layer mobile 弹出层</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 
 
 <script type="text/javascript" src="layer_mobile/layer.js"></script>
 <body>
-<button type="button" onClick="layerTest(this);">弹出层</button>
+<button type="button" onClick="layerTest(this);">layer mobile 弹出层</button>
 
 <script>
 function layerTest(ts){
 	layer.open({
-    content: '移动版和PC版不能同时存在同一页面'
-    ,
-    btn: '我知道了',
-    closeBtn:1
+	type:0,//默认：0 （0表示信息框，1表示页面层，2表示加载层）
+	title:  '标题', 
+    content: '<em>移动版和PC版不能同时存在同一页面</em>' ,//content可以传入html
+   /* btn: '我知道了',*/
+    btn:['ok','no'],
+    closeBtn:1,
+    anim:'up', //默认scale
+   /* time:2*/  //自动关闭
+   /*skin:"footer",*/  //弹层显示风格  从页面底部弹出 
+    shade:'background-color: rgba(0,0,0,.3)',//自定义遮罩透明度
+    shadeClose:true,//是否点击遮罩时关闭弹框
+   /* fixed:true,  */   //是否固定层的位置 ？？？
+   success:function(){
+   		console.log("open success!");
+   },
+   yes: function(index){
+	  console.log('点击了是');
+	   // layer.open({content:'hello'});
+
+
+	   layer.open({
+	   	id:"hehe",
+	    content: 'hello layer'
+	    ,skin: 'msg'
+	    ,time: 2 //2秒后自动关闭
+	  });
+   } ,
+   no: function(index){
+	  console.log('点击了no');
+	  layer.close(index);
+   } ,
+   end: function(index){
+	  console.log('层彻底销毁了。。。');
+	  layer.close(index);
+   },
+   style:'background-color:pink'
   });
 
 }
