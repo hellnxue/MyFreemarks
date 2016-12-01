@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>Demo</title>
   <link rel="stylesheet" href="../dist/idangerous.swiper.css">
+
+  <!-- 
+  官网
+  http://idangero.us/swiper/api/#.WD_3qfmerlB
+   -->
   <style>
 /* Demo Styles */
 body {
@@ -100,7 +105,7 @@ body {
     </div>
     <div class="pagination"></div>
   </div>
- <!--  <p class="swiper-dynamic-links">
+   <p class="swiper-dynamic-links">
     <a class="sdl-append" href="#">Append slide</a> 
     <a class="sdl-prepend" href="#">Prepend slide</a> 
     <a class="sdl-swap" href="#">Swap 1st and 2nd slides</a> 
@@ -108,7 +113,7 @@ body {
     <a class="sdl-remove1" href="#">Remove first slide</a> 
     <a class="sdl-removel" href="#">Remove last slide</a> 
     <a class="sdl-remove2" href="#">Remove 2nd slide</a>
-  </p> -->
+  </p>  
   <script src="js/jquery-1.10.1.min.js"></script>
   <script src="../dist/idangerous.swiper.min.js"></script>
   <script>
@@ -117,8 +122,10 @@ body {
     paginationClickable: true
   })
 
+  $(".pagination span").eq(1).trigger("click");
+
   /* Dynamic Swiper Links*/
-  /*function randomColor () {
+   function randomColor () {
     var colors = ('blue red green orange pink').split(' ');
     return colors[ Math.floor( Math.random()*colors.length ) ]
   }
@@ -154,7 +161,7 @@ body {
   $('.sdl-remove2').click(function(e) {
     e.preventDefault();
     mySwiper.removeSlide(1)
-  });*/
+  }); 
   </script>
 </body>
 </html>
