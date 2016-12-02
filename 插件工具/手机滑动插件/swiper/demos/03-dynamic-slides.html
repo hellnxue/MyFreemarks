@@ -119,9 +119,26 @@ body {
   <script>
   var mySwiper = new Swiper('.swiper-container',{
     pagination: '.pagination',
-    paginationClickable: true
-  })
+    paginationClickable: true,
 
+      onTouchEnd: function(swiper){
+        console.log(112);
+      } 
+  });
+
+
+  Swiper.h.getWidth();
+
+   $('.pagination .swiper-pagination-switch').click(function(){
+               console.log(11);
+                mySwiper.swipeTo($(this).index());
+              });
+
+  // mySwiper.paginationClick=function(){
+  //         console.log("click");
+  //        }
+
+  /*默认选中第2个*/
   $(".pagination span").eq(1).trigger("click");
 
   /* Dynamic Swiper Links*/

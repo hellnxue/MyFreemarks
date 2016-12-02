@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1">
+
+
+<link type="text/css" href="base.css" rel="stylesheet" />
+<link type="text/css" href="custom.css" rel="stylesheet" />
+
+ 
+ 
+<link type="text/css" href="idangerous.swiper.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="htmlsize.js"></script>
+<script type="text/javascript" src="mobileBUGFix.mini.js"></script>
+<script type="text/javascript" src="jquery.mobile-1.4.5.js"></script>
+<title>借钱还信用卡a</title>
+<script type="text/javascript">
+   
+</script>
+</head>
+<body>
+    <div class="header">
+		<a href="index" class="icon ico_back" data-ajax="false"></a>
+		滑动插件与屏幕适配冲突
+	</div>
+	<div class="maincontainer">
+	<form action="credit_card_02" method="post"  data-ajax="false">
+	     
+	    
+         <div class='pd_list_cn swiper-container' >
+        	<div class='swiper-wrapper text-left'  >
+        	
+        		  <div class='swiper-slide pd_area  sp'>
+		        <div class='t_lit'>
+			        <div class='p_n'>长江1号
+			        </div>
+			        <div class='p_d'>比信用卡省（尊享省呗月利率0.76333%）
+			        </div>
+		        </div>
+		        <div class='t_lit'>
+			        <span>实际月还款</span>
+			        <span class='t_lit_je'>240.00 &gt;</span>
+		        </div>
+		    </div>
+		    
+		     <div class='swiper-slide pd_area   sp'>
+		        <div class='t_lit'>
+			        <div class='p_n'>长江2号
+			        </div>
+			        <div class='p_d'>比信用卡省（尊享省呗月利率0.76333%）
+			        </div>
+		        </div>
+		        <div class='t_lit'>
+			        <span>实际月还款</span>
+			        <span class='t_lit_je'>240.00 &gt;</span>
+		        </div>
+		    </div>
+		    
+		     <div class='swiper-slide pd_area   sp'>
+		        <div class='t_lit'>
+			        <div class='p_n'>长江3号
+			        </div>
+			        <div class='p_d'>比信用卡省（尊享省呗月利率0.76333%）
+			        </div>
+		        </div>
+		        <div class='t_lit'>
+			        <span>实际月还款</span>
+			        <span class='t_lit_je'>240.00 &gt;</span>
+		        </div>
+		    </div>
+        	 
+        	</div>
+		     <div class="pagination"></div>
+		</div>
+		<!-- <div class='qs_eare'>
+			<div>期数 <span id='period_dom'>33</span> </div>
+			<div class='qs_li'>
+				<span class='qs_current'>12</span>
+				<span>6</span>
+				<span>3</span>
+			</div>
+		</div>
+		<div>
+		    <button class="btn btn-orange  ctm-box-shadow ctm-cursor-default" type="button" id="step"> 下一步 </button>
+		</div> -->
+	</form>
+	</div>
+	
+	
+</body>
+ 
+ 
+ 
+ <script src="idangerous.swiper.min.js" type="text/javascript" ></script>
+ <script> 
+ 
+$(function(){
+	 
+      
+     resetSwiperContainerWH({
+     	remWidth:6.72,					//相对宽度
+     	remHeight:2.41,					//相对高度
+     	containerSelector:".swiper-container" , //滑动容器
+     	firstInitPage:true			    //是否第一次执行
+     });
+    
+       var wipers=new Swiper(".swiper-container",{
+		   	    pagination: ".pagination",
+  		   	    paginationClickable:true,
+  		   	    resizeReInit:true,
+		   	    onTouchEnd: function(swiper){
+		   	    	console.log("slip......");
+		   	    },
+		   	    loop:false 
+		    
+   	        });
+
+       $(".pagination span").eq(1).click();
+});
+
+/*手动 动态计算重置滑动容器的宽高
+  此处是为了解决页面初始化时滑动区域宽高计算错误的问题，因为页面使用了屏幕适配，这个插件在页面初始化的时候会出现宽高计算错误的情况，但是在缩大缩小浏览器尺寸的时候确计算的很正确，终于解决了，，感谢自己。
+*/	
+ function resetSwiperContainerWH(paramObj){
+
+ 	if(paramObj.firstInitPage){
+
+ 		console.log('init.......');
+ 	  var docEl = document.documentElement;
+	  var clientWidth = docEl.clientWidth;
+      if (!clientWidth) return;
+      if(clientWidth>=750){
+    	  num = '100px';
+      }else{
+    	  num= 100 * (clientWidth / 750) + 'px';
+      }
+
+ 	}
+ 	 
+ 	  var handelNum=Number(num.replace("px",""));//根目录字体大小
+ 	  var hWidth=handelNum * paramObj.remWidth;//根据根目录字体大小计算后的宽度
+ 	  var hHeight=handelNum* paramObj.remHeight;//根据根目录字体大小计算后的高度
+
+      $(paramObj.containerSelector).css("width",hWidth+"px");
+      $(paramObj.containerSelector).css("height",hHeight+"px");
+
+      console.log("hello resize");
+
+ 	 
+ }
+	 
+ </script>
+ 
+</html>

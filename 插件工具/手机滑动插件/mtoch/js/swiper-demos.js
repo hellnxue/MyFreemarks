@@ -12,6 +12,7 @@ $(function(){
 		loop:true,
 		grabCursor: true
 	});
+	 
 	//Navigation arrows
 	$('.arrow-left').click(function(e) {
         e.preventDefault()
@@ -23,7 +24,8 @@ $(function(){
     });
     //Clickable pagination
     $('.pagination1 .swiper-pagination-switch').click(function(){
-    	swiper.swipeTo($(this).index())
+    	swiper.swipeTo($(this).index());
+		console.log("点击了第 "+($(this).index()+1)+" 个分页器");
     })
 
 	/* Vertical mode: */
