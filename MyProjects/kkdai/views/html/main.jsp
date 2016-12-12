@@ -8,49 +8,24 @@
 <div id="main-wrapper">
 	<!--  <a href="productList"  ><i  ></i>产品</a>
 <a href="authentication_03"  ><i  ></i>身份验证</a>   -->
-   <div class='header_bg'>
+   <div class='header_bg' id="hhh">
    		<div class='nav_date'>
    		<!-- <span></span> -->
    		<img class="night none" src="<%=request.getContextPath()%>/resource/images/main/v1/night@2x.png"><img class="day" src="<%=request.getContextPath()%>/resource/images/main/v1/sunny-@2x.png"> <span>13</span>.<span>Oct</span>.<span>周四</span>
    		</div>
-   		<div class="nav_main" id='promote_quota' promoteQuota='${promoteQuota}' processCode="${processCode}">
+   		<div class="nav_main">
 		 	 <div  class="tip_info">
 			 	<span>可用额度</span>
 			 	<abbr class="ctm-f-s-4">￥</abbr> <span class='cedu'><!-- ${creditAmount} -->5000</span><abbr class="ctm-f-s-4">.00</abbr>   
 			</div>
 			<div>
-				<a class="tip_img">
-					<span>点我提额</span>
+				<a class="tip_img" data-dwte>
+					<span>申请额度</span>
 				</a>
 			</div>
 
 	 	</div>
-	 	
-	 	
-	    <%--  <div id='promote_quota' promoteQuota='${promoteQuota}' processCode="${processCode}">
-		 	<a style="display: inline-block;">
-			 	<span>可用额度</span>
-			 	<span class='dwte'><span>点我提额</span></span><br>
-	 	        <span class='edu'>${creditAmount}</span>
-			</a>
-		 	<a class='ljhk'><dt>Go></dt><dt id='application_amount' applicationAmount='${applicationAmount}'>立即还款</dt></a>
-	 	</div>
-	 	<div class='rl'><span>13 Oct. 周四</span></div>   --%>
 	</div>
-	
-	<!-- 
-	<div class='xyhk'><i></i>&nbsp;&nbsp;&nbsp;&nbsp;添加新的银行卡</div>
-	<div class='zxhd'>
-	     <div class='hd_title'>最新活动 &nbsp;&nbsp;&nbsp;&nbsp;<i></i></div>
-	     <div class='gg_dom'><span>聚宝袋推出尊享信用卡日利率0.05%</span><i></i></div>
-	     <div class='gg_dom'><span>聚宝袋推出尊享信用卡日利率0.05%</span><i></i></div>
-	</div>
-	
-	<div class='zxhd' >
-	     <div class='hd_title'>最新消息 &nbsp;&nbsp;&nbsp;&nbsp;<i></i></div>
-	     <div class='gg_dom'><span>聚宝袋推出尊享信用卡日利率0.05%</span> <i></i></div>
-	     <div class='gg_dom'><span>聚宝袋推出尊享信用卡日利率0.05%</span> <i></i></div>
-	</div> -->
 	
 	<div class="ctm-container link_money">
 	    <div class="m-v"></div>
@@ -95,7 +70,7 @@
  
 		<div class=" ctm-row   p-l-lg p-r-lg bank_card" >
 			<div class="custom-col-10  ctm-b-btm">
-				<a class="block ctm-cursor-default card" href="#">
+				<a class="block ctm-cursor-default card" href="bind_credit_card">
 				  <img src="<%=request.getContextPath()%>/resource/images/main/v1/ind_mor@2x.png">
 				  <span class="m-l">立即添加您的银行卡</span> 
 				</a>
@@ -110,7 +85,11 @@
 				</div>
 				<div class="custom-col-5 ">
 					 
-					<a  href="#" class="block ctm-cursor-default news_tip">立即添加您的银行卡立即添加您的银行卡</a> 
+					<a  href="bind_credit_card" class="block ctm-cursor-default news_tip" data-scroll>
+						<span class="news_span">1立即添加您的银行卡立即添加您的银行卡</span>
+						<span class="news_span">2立即添加您的银行卡立即添加您的银行卡</span>
+						<span class="news_span">3立即添加您的银行卡立即添加您的银行卡</span>
+					</a> 
 				</div>
 				<div class="custom-col-2 news_tip text-right">
 					 
@@ -142,46 +121,14 @@
 <jsp:include page="foot.jsp"></jsp:include>
 </div>
  
-</body>
+
+<script src="<%=request.getContextPath()%>/resource/js/views/html/main.js" type="text/javascript" ></script>  
+
 <script type="text/javascript">
-	$(document).ready(function() {
-		var promoteQuota = $("#promote_quota").attr("promoteQuota");
-		var dom1 = $("#promote_quota");
-		if(promoteQuota == '1') {
-			$(".dwte > span").bind("click", function(){
-				if(dom1.attr("processCode") == '30'){
-				    window.location.href='operator_01';
-				}else if(dom1.attr("processCode") == '40'){
-					window.location.href='credit_03';
-				}
-			})
-		}else if(promoteQuota == '0' || promoteQuota == '3') {
-			$(".dwte > span").hide();
-			$(".dwte").css("background","none");
-		}
-		var dom = $("#application_amount");
-		var applicationAmount = dom.attr("applicationAmount");
-		if('1' == applicationAmount) {
-			dom.html("立即还款");
-			$(".ljhk").bind("click", function(){
-				window.location.href='productList';
-			})
-		} else if('0' == applicationAmount){
-			dom.html("申请额度");
-			$(".ljhk").bind("click", function(){
-				if(dom1.attr("processCode") == '00' || dom1.attr("processCode") == ""){
-					window.location.href='authentication_02';
-				}else if(dom1.attr("processCode") == '10'){
-					window.location.href='linkman';
-				}else if (dom1.attr("processCode") == '20'){
-					window.location.href='zhimaxinyong';
-				}
-			})
-		}
-		
-		$(".xyhk").bind("click", function(){
-			window.location.href='bind_credit_card';
-		})
-	})
+	var promoteQuota="${promoteQuota}";
+	var processCode="${processCode}";
+	 
 </script>
+</body>
+
 </html>

@@ -23,7 +23,6 @@ var cardinalNumber=0;//页面根目录字体大小基数值
    	      });
        }
 
-        
     };
 
 	if (!doc.addEventListener) return;
