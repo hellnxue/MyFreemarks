@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>从下往上的信息滚动特效</title>
+        <style>
+        *{
+            margin:0;
+            padding:0;
+            text-align: center;
+        }
+        #container{
+            overflow:hidden;
+            height:100px;
+        }       
+        </style>
+        <script>
+            var timer=null;    //定时器
+            window.onload=function(){
+               // init();
+            }
+                function init(){
+
+                   var time=10;    //定义滚动的时间间隔
+                   var container=document.getElementById("container");
+                   var d1=document.getElementById("con1");
+                   var d2=document.getElementById("con2");
+                   d2.innerHTML+=d1.innerHTML;        //把第二个容器的内容填充到第一个
+
+                   function MyMarquee(){
+
+                    if(d2.offsetHeight<=container.scrollTop){
+
+                        console.log(container.scrollTop);
+                        container.scrollTop-=d1.offsetHeight;// 如果第二个内容滚动完毕，则讲滚动条返回到初始位置
+                    } else{
+                      container.scrollTop++;//若没有加载完毕，则滚动条继续滚动
+                    }  
+                   }
+
+                   timer=setInterval(MyMarquee,time);
+                  /* container.onmouseover=function(){
+                    clearInterval(timer);
+                   }
+                   container.onmouseout=function(){
+                    timer=setInterval(MyMarquee,time);
+                   }*/
+                }
+ 
+        </script>
+    </head>
+    <body >
+        <div id="container">
+            <table >
+                <tr>
+                    <td id="con1" valign="top">
+                        <img src="../../image/20161108093026_uykQH.thumb.700_0.png">
+                    </td>
+                </tr>
+                <tr>
+                    <td id="con2" valign="top">
+                        <img src="../../image/m2.jpg">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

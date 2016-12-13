@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta http-equiv="content-type" charset="gb2312" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" charset="utf-8" />
    
     <title>demo</title>
 </head>
@@ -42,9 +42,9 @@ a{
 </style>
 <body>
    <div id="a">
-    <a href="javascript:void(0)" id="id1">Ïò×ó</a>
-    <a href="javascript:void(0)" id="id3">ÔİÍ£</a>
-    <a href="javascript:void(0)" id="id2">ÏòÓÒ</a>
+    <a href="javascript:void(0)" id="id1">å‘å·¦</a>
+    <a href="javascript:void(0)" id="id3">æš‚åœ</a>
+    <a href="javascript:void(0)" id="id2">å‘å³</a>
 </div>
      
    <div id="div1">
@@ -77,14 +77,14 @@ a{
             oUl.style.width=oLi[0].offsetWidth*oLi.length+"px";
              
              
-            //ÒÆ¶¯ËÙ¶È
+            //ç§»åŠ¨é€Ÿåº¦
             var speed=2;
              
              
-            //¿ØÖÆ¹ö¶¯µÄ·½Ïò
-            var a1=document.getElementById("id1");  
-            var a2=document.getElementById("id2");  
-            var a3=document.getElementById("id3");  
+            //æ§åˆ¶æ»šåŠ¨çš„æ–¹å‘
+            var a1=document.getElementById("id1");  //å·¦
+            var a2=document.getElementById("id2");  //å³
+            var a3=document.getElementById("id3");  //æš‚åœ
                  
                 a1.onclick=function(){
                         speed=2;
@@ -96,15 +96,18 @@ a{
                         speed=0;
                     }
 					
-			console.log( oUl.offsetLeft);
-            console.log( -oUl.offsetWidth/2);         
-                //Êó±êÒÆ¿ª  
+			console.log( oUl.offsetLeft);//0
+            console.log( -oUl.offsetWidth/2); //-800        
+                //é¼ æ ‡ç§»å¼€  
             function  move(){
+			
+			    //å‘å·¦æ»‘åˆ°äº†è‡ªèº«çš„ä¸€åŠæ—¶ï¼Œè¿”å›åˆ°åˆå§‹ä½ç½®
                 if(oUl.offsetLeft<-oUl.offsetWidth/2){
                     oUl.style.left="0";
                     }
                      
                 if(oUl.offsetLeft>0){
+				   
                     oUl.style.left=-oUl.offsetWidth/2+"px";
                     }
                      
@@ -112,19 +115,21 @@ a{
                      
                 }
              
-            //¶¨Ê±Æ÷  ¿ØÖÆÒÆ¶¯µÄÊ±¼ä
+            //å®šæ—¶å™¨  æ§åˆ¶ç§»åŠ¨çš„æ—¶é—´
             var timer=setInterval(move,30);
                  
-            //Êó±êÒÆÈë
+            //é¼ æ ‡ç§»å…¥
             oDiv.onmouseover=function(){
                 clearInterval(timer);
                 }
                      
-            //Êó±êÒÆ¿ª
+            //é¼ æ ‡ç§»å¼€
             oDiv.onmouseout=function(){
                  timer=setInterval(move,30);
                     }   
         }
+		
+		console.log((0-2-(-2)));
 </script>
 </body>
 </html>
