@@ -40,29 +40,39 @@ a{
   </div>
 </div>
 <script language="javascript">
+    var can=false;
+    var dom=document.getElementById("div1");
+    dom.innerHTML+=dom.innerHTML;
 
+    dom.onmouseover=function(){
+      can=true;
+    };
 
-/*滚动的原理都是将dom变为原来的两倍，滑动到一半时回到初始位置*/
-  var box=document.getElementById("div1"),can=true;
+    dom.onmouseout=function(){
+      can=false;
+    };
 
-  console.log(box.scrollHeight);//126 
-  box.innerHTML+=box.innerHTML;
-  
-  console.log(box.scrollHeight);//252
+    // (function(){
+    //     var stop=dom.scrollTop%18==0&&can;
+    //     if(!stop){
+    //        dom.scrollTop==parseInt(dom.scrollHeight/2)?dom.scrollTop=0:dom.scrollTop++;
+    //     }
+       
 
-  box.onmouseover=function(){can=false};
-  box.onmouseout=function(){can=true};
-  new function (){
+    //     setTimeout(arguments.callee,dom.scrollTop%18?10:1500);
 
-  //当鼠标划过时，暂停滚动。条件是滚动完了一整行时，不然会出现滚动了一行的一部分后就停住的情况奥~~
-   var stop=box.scrollTop%18==0&&!can;
-  
-   if(!stop)box.scrollTop==parseInt(box.scrollHeight/2)?box.scrollTop=0:box.scrollTop++;
-    
+    // })();
 
-   //滑动了完整的一行时，速度是1500，即停顿的时间久一点。若未滑动完整的一行，则向上滚动的速度是10，速度滚动的快。
-   setTimeout(arguments.callee,box.scrollTop%18!=0?1000:1500);
-  };
+    setInterval(function(){
+        var stop=dom.scrollTop%18==0&&can;
+        if(!stop){
+           dom.scrollTop==parseInt(dom.scrollHeight/2)?dom.scrollTop=0:dom.scrollTop++;
+        }
+
+    },dom.scrollTop%18?10:1500)
+   
+
+ 
 </script>
 
 
