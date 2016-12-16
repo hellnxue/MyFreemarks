@@ -15,11 +15,11 @@
    		</div>
    		<div class="nav_main">
 		 	 <div  class="tip_info">
-			 	<span>可用额度</span>
-			 	<abbr class="ctm-f-s-4">￥</abbr> <span class='cedu'><!-- ${creditAmount} -->5000</span><abbr class="ctm-f-s-4">.00</abbr>   
+			 	<span>可用额度（元）</span>
+			 	<!-- <abbr class="ctm-f-s-4">￥</abbr> --> <span class='cedu'>${creditAmount}<!-- 5000 --></span><abbr class="ctm-f-s-4">.00</abbr>   
 			</div>
 			<div>
-				<a class="tip_img" data-dwte>
+				<a class="tip_img ctm-cursor-ptr" data-dwte>
 					<span>申请额度</span>
 				</a>
 			</div>
@@ -30,24 +30,24 @@
 	<div class="ctm-container link_money">
 	    <div class="m-v"></div>
 		<div class=" ctm-row   p-l-lg m-t-md" >
-			<div class="custom-col-5">
+			<div class="custom-col-5 ctm-cursor-ptr" data-href="productList">
 				<img src="<%=request.getContextPath()%>/resource/images/main/v1/borrow@2x.png">
 				<span>借款</span> 
 			</div>
 	
-			<div class="custom-col-5" style="padding-left: 0">
+			<div class="custom-col-5 ctm-cursor-ptr" style="padding-left: 0">
 				<img src="<%=request.getContextPath()%>/resource/images/main/v1/repay@2x.png" class="p-img">
 				<span>提额</span> 
 	
 			</div>
 		</div>
 		<div class=" ctm-row   p-l-lg m-t-xs" >
-			<div class="custom-col-5 pret-info">
+			<div class="custom-col-5 pret-info ctm-cursor-ptr" data-href="productList">
 				 
 				<p>极速审核，快速放款</p> 
 			</div>
 	
-			<div class="custom-col-5 pret-info pr"  >
+			<div class="custom-col-5 ctm-cursor-ptr pret-info pr"  >
 				 
 				<p>距离本期还款还有<span class="c_orange">10</span>天</p> 
 	
@@ -70,7 +70,7 @@
  
 		<div class=" ctm-row   p-l-lg p-r-lg bank_card" >
 			<div class="custom-col-10  ctm-b-btm">
-				<a class="block ctm-cursor-default card" href="bind_credit_card">
+				<a class="block  card" href="bind_credit_card">
 				  <img src="<%=request.getContextPath()%>/resource/images/main/v1/ind_mor@2x.png">
 				  <span class="m-l">立即添加您的银行卡</span> 
 				</a>
@@ -83,17 +83,17 @@
 					<img src="<%=request.getContextPath()%>/resource/images/main/v1/news@2x.png">
 					<span>最新消息</span> 
 				</div>
-				<div class="custom-col-5 ">
+				<div class="custom-col-5 w-rt newsItem">
 					 
-					<a  href="bind_credit_card" class="block ctm-cursor-default news_tip" data-scroll>
-						<span class="news_span">1立即添加您的银行卡立即添加您的银行卡</span>
-						<span class="news_span">2立即添加您的银行卡立即添加您的银行卡</span>
-						<span class="news_span">3立即添加您的银行卡立即添加您的银行卡</span>
+					<a  href="bind_credit_card" class="block  news_tip" data-scroll>
+					    <span class="news_span">1.聚宝袋推出尊享信用卡日利率0.05%</span>
+						<span class="news_span">2.聚宝袋推出尊享信用卡日利率0.05%</span>
+						<span class="news_span">3.聚宝袋推出尊享信用卡日利率0.05%</span>
 					</a> 
 				</div>
-				<div class="custom-col-2 news_tip text-right">
+				<div class="custom-col-2 news_tip text-right w-rt newsMore">
 					 
-					<a  href="#" class="block ctm-cursor-default">更多</a> 
+					<a  href="#" class="block ">更多</a> 
 				</div>			
 			</div>
 			 				
@@ -105,13 +105,17 @@
 					<img src="<%=request.getContextPath()%>/resource/images/main/v1/activity@2x.png">
 					<span  >最新动态</span> 
 				</div>
-				<div class="custom-col-5 ">
+				<div class="custom-col-5 w-rt newsItem">
 					 
-					<a   href="#" class="block ctm-cursor-default news_tip">立即添加您的银行卡立即添加您的银行卡</a>
+					<a   href="#" class="block  news_tip" data-scroll>					
+					    <span class="news_span">1.聚宝袋推出尊享信用卡日利率0.05%</span>
+						<span class="news_span">2.聚宝袋推出尊享信用卡日利率0.05%</span>
+						<span class="news_span">3.聚宝袋推出尊享信用卡日利率0.05%</span>
+					</a>
 				</div>
-				<div class="custom-col-2 news_tip text-right">
+				<div class="custom-col-2 w-rt newsMore news_tip text-right ">
 					 
-					<a   href="#" class="block ctm-cursor-default">更多</a> 
+					<a   href="#" class="block ">更多</a> 
 				</div>
 			</div>		
 						

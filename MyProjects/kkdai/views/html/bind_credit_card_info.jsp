@@ -40,7 +40,7 @@ $(document).ready(function(){
 					"<form action='saveCard' method='post'>"+
 					    "<div class='tips_info gray_bg'>请输入手机139********收到的短信验证码</div>" + 
 						"<div>" + 
-							"<input class='form-control-border mt20 input_boder_style' name='vcodeToken' value='' placeholder='请输入验证码' type='text' required='required'>" + 
+							"<input class='form-control-border mt20 input_boder_style' name='verifyCode' value='' placeholder='请输入验证码' type='text' required='required'>" + 
 							"<input class='form-control-border mt20 button_boder_style' value='59秒后重发' type='button'>" + 
 						"</div>" + 
 						"<div class='btn-wrap'>" + 
@@ -85,7 +85,6 @@ $(document).ready(function(){
 			<button id="next_type" class="btn_new" type="button">下一步</button>
 		</div>
 		<div id="hidden_dom" >
-			<input type='hidden' name='reqType' value='2'/>
 		    <input type='hidden' name='type' value='${result.type}'/>
 		    <input type='hidden' name='cardNo' value='<%=request.getParameter("cardNo")%>'/>
 		    <input type='hidden' name='cardBank' value='${result.bankName}'/>

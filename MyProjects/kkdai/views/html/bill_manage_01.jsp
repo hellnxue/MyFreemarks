@@ -11,7 +11,7 @@
 <body >
  <!-- <a data-ajax="false" onclick="ttest()">测试</a> -->
 	<div class="header">
-		<a href="index" class="icon ico_back" data-ajax="false"></a>
+		<a href="javascript:history.go(-1)" class="icon ico_back" data-ajax="false"></a>
 		我的账单
 	</div>
 	<div class="maincontainer">
@@ -48,13 +48,13 @@
 				<a href="javascript:void(0)" class="icon pos_a_r"></a>
 			</div>
 			<!-- <div class="form_ft ctm-ft"> 
-			  <bdo class="c_orange ctm-cursor v-hidden" data-type="cancel">取消订单</bdo>
+			  <bdo class="c_orange ctm-cursor-ptr v-hidden" data-type="cancel">取消订单</bdo>
 			  <bdo class="c_orange ctm-f-r">状态：订单申请中</bdo>  
 			</div> -->
 			<div class="form_ft ctm-ft"> 
 			   支付状态：
 			   <bdo class="c_orange">订单申请中</bdo>  
-			   <bdo class="c_orange ctm-cursor m-l-lg" data-type="cancel" onclick="orderCancel(this)">取消订单</bdo>
+			   <bdo class="c_orange ctm-cursor-ptr m-l-lg" data-type="cancel" onclick="orderCancel(this)">取消订单</bdo>
 			    <a class="c_orange ctm-f-r" href="#">
 			               立即查看
 			     <img src="<%=request.getContextPath()%>/resource/images/j_rt@3x.png" class="ctm-icon1"/>
@@ -95,12 +95,12 @@
 						<label class="control-label">每月应还：</label>
 						#repaymentAmount# 元
 					</div>
-					<a  class="icon ico_next pos_a_r ctm-cursor-default"  ></a>
+					<a  class="icon ico_next pos_a_r "  ></a>
 			</div>
 		    <div class="form_ft ctm-ft"> 
 			      	   支付状态：
 				   <bdo class="c_orange">#status#</bdo>  
-				   <bdo class="c_orange  m-l-lg ctm-cursor-default v-hidden " data-type="cancel" data-orderId="#orderId#" data-appointDate="#appointDate#">取消订单</bdo>
+				   <bdo class="c_orange  m-l-lg  v-hidden " data-type="cancel" data-orderId="#orderId#" data-appointDate="#appointDate#">取消订单</bdo>
 				   <%--  <a class="c_orange ctm-f-r" href="./bill_manage_02.html?param=#orderId#"  data-ajax="false">
 				               立即查看
 				     <img src="<%=request.getContextPath()%>/resource/images/j_rt@3x.png" class="ctm-icon1"/>
@@ -124,7 +124,7 @@
 			<!--测试 value.status!=10&&value.status!=20-->
 			{{if value.status!=10&&value.status!=20}}
 			   
-			  <div class="form_wrap form_noborder f-ct"  data-href="./bill_manage_02.html?param={{value.orderId}}"> 
+			  <div class="form_wrap form_noborder f-ct ctm-cursor-ptr"  data-href="./bill_manage_02.html?param={{value.orderId}}"> 
 			{{else}}
 
 			  <div class="form_wrap form_noborder f-ct"  >
@@ -156,7 +156,7 @@
 						{{value.repaymentAmount}} 元
 					</div>
 			    {{if value.status!=10&&value.status!=20}}
-			   	    <a  class="icon ico_next pos_a_r ctm-cursor-default"  ></a>
+			   	    <a  class="icon ico_next pos_a_r "  ></a>
 			      
 				{{/if}}					
 					
@@ -178,7 +178,7 @@
 					</bdo>  
 					  {{if value.status==10||value.status==13}}
 
-				       <bdo class="c_orange ctm-f-r   m-l-lg ctm-cursor-default " data-type="cancel" data-orderId="{{value.orderId}}" data-appointDate="{{value.appointDate}}">取消订单</bdo>
+				       <bdo class="c_orange ctm-f-r   m-l-lg  ctm-cursor-ptr" data-type="cancel" data-orderId="{{value.orderId}}" data-appointDate="{{value.appointDate}}">取消订单</bdo>
 						 
 					  {{/if}}
 				   <%--  <a class="c_orange ctm-f-r" href="./bill_manage_02.html?param=#orderId#"  data-ajax="false">
@@ -209,7 +209,7 @@
 					<input  name="verifyCode" class="custom-form-control" placeholder="请输入验证码" type="text" data-input="dy">
 				</div>
 
-				<div class="custom-col-r ctm-cursor">
+				<div class="custom-col-r ctm-cursor-ptr">
 					<div class="codeBorder c_orange"></div>
 
 					<span class="m-t-xs catch " id="checkcode">获取验证码</span>

@@ -13,7 +13,7 @@ function ttest(){
   
   var beforeScrollStart = 0,  beforeScrollTop = 0, page = 1, flag = false;
   $(document).ready(function(){
-	  
+	   
 	  $(document).on("scrollstart",function(){
 		   beforeScrollStart = document.body.scrollTop;
 	  });
@@ -24,14 +24,14 @@ function ttest(){
 			   var callBack = function(){
 		    	   page = page - 1;
 				   flag = true;
-		       }
+		       };
 			   if(flag){
 				   return false;
 			   }
 			    postDate("2", callBack);
 		   }
 	  });
-	   postDate("1", function(){});
+	   postDate("1");
 	  
 	  
 	 
@@ -66,7 +66,7 @@ function ttest(){
 //		var orderId= $(this).data("orderid"); //订单编号
 //		$("#orderId").val(orderId);
 //		console.log(orderId);
-	    $.post("phoneDynCode",{verifyKind:"JY", mobileNo: sessionMobile},function(){ });
+	    $.post("phoneDynCode",{verifyKind:"JY"},function(){ });
 	}
 	
 	//数据初始化渲染 
@@ -75,45 +75,53 @@ function ttest(){
 		 $.post("kakadai/order/orderInfo",
 			  {userId: json.userId,account:'baifutianxia',pageSize:10,pageIndex:page},
 			  function(res){
-				 if(res.result.length == 0 || "" == res.result || null == res.result){callBack()};
-				 var statusJson = {10: "订单申请中", 11: "已签约", 12: "已结清", 20: "解约"};
-				 
-				 var $maincontainer = $("div.maincontainer");
-			 	 var resdata = typeof res == 'string' ? $.parseJSON(res) : res;
-			 	 
-			 	 if(resdata.code != '0000') {
-			 		 MessageWin(resdata.msg );
-			 		 return;
-			 	 }
-			 	 if(resdata.result) {
-			 		 
-			 		 var html=template("billManageTemplate",resdata);
-			 		 var $html=$(html);
-			 		 
-				 	if("1" == times) {
-				 		
-				 		$maincontainer.empty().append( $html);
-				 		
-				 	}else {
-				 		$maincontainer.append( $html);
-				 	}
-				 	
-				 	//$(".box_wrap2").first().addClass("mt20");
-				 	//取消订单
-				 	$html.find('[data-type="cancel"]').on("click",function(){
-				 		
-				 		orderCancel(this);
-				 		
-				 	});
-				 	
-				 	//还款状况
-				 	$html.find('[data-href]').on("click",function(){
+				 if(res.result){
+					 if(res.result.length == 0 || "" == res.result || null == res.result){
+						 if(callBack){
+							 callBack();
+							 
+						  }
+						 };
+					 var statusJson = {10: "订单申请中", 11: "已签约", 12: "已结清", 20: "解约"};
+					 
+					 var $maincontainer = $("div.maincontainer");
+				 	 var resdata = typeof res == 'string' ? $.parseJSON(res) : res;
+				 	 
+				 	 if(resdata.code != '0000') {
+				 		 MessageWin(resdata.msg );
+				 		 return;
+				 	 }
+				 	 if(resdata.result) {
 				 		 
-				 		location.href=$(this).data("href");
-				 		
-				 	});
-				 	
-			 	 }
+				 		 var html=template("billManageTemplate",resdata);
+				 		 var $html=$(html);
+				 		 
+					 	if("1" == times) {
+					 		
+					 		$maincontainer.empty().append( $html);
+					 		
+					 	}else {
+					 		$maincontainer.append( $html);
+					 	}
+					 	
+					 	//$(".box_wrap2").first().addClass("mt20");
+					 	//取消订单
+					 	$html.find('[data-type="cancel"]').on("click",function(){
+					 		
+					 		orderCancel(this);
+					 		
+					 	});
+					 	
+					 	//还款状况
+					 	$html.find('[data-href]').on("click",function(){
+					 		 
+					 		location.href=$(this).data("href");
+					 		
+					 	});
+					 	
+				 	 } 
+					 
+				 }
 
 			  }) .error(function(){
 				  MessageWin("ajax异常" );

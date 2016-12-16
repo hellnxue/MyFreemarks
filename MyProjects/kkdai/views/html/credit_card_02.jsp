@@ -7,6 +7,128 @@
 <script type="text/javascript" src="resource/js/jquery.js"></script>
 <script src="resource/js/htmlsize.js"></script>
 <script src='resource/js/My97DatePicker/WdatePicker.js'/></script>
+
+ 
+</head>
+<body>
+	<div class="header">
+		<a href="javascript:void(0);" class="icon ico_back" id="proBack"></a>
+		银行卡信息
+	</div>
+	
+	
+	<div class="maincontainer">
+	
+	<form action="productList" method="post" id="productList">
+         <input name="loanAmt" value="" type="hidden">
+         <input name="productCode" value="" type="hidden">
+    </form>        
+            
+	<form action="./credit_card_04.html" method="post">
+		<div class="tips_info">
+			<i class="icon ico_sign"></i>亲，您申请的金额需大于1000小于您的授信额度哦~~
+		</div>
+		<div class="box_circle circle_not_b">
+			<div class="hd" ><span data-credit></span><i class='more_crieds'></i></div>
+			<input type="hidden" name="creditBank" value=""/>
+			<input type="hidden" name="creditCardNo" value=""/>
+			<input type="hidden" name="md5CreditNo" value=""/>
+			<input type="hidden" name="productCode" value="<%=request.getParameter("productCode")%>"/>
+			<input type="hidden" id="creditAmount" value="${userSession.creditAmount}"/>
+			<input type="hidden" id="userId" name='userId' value="${userSession.userId}"/>
+			<input type="hidden" id="bankKey" name='bankKey' value="${credit.bankKey}"/>
+			<div class="form_wrap">
+				<div class="form-group">
+					<label class="control-label">申请代还金额</label>
+					<input type="text" name='loanAmt' value="<%=request.getParameter("loanAmt")%>" id="amount" placeholder="最低1000且为100整数倍" class="form-control form_ipt_right" readonly="readonly"/>
+				</div>
+				<div class="form-group">
+					<label class="control-label">还款期数</label>
+					<span style="text-align:right;margin-right:0.6rem;"><%=request.getParameter("repaymentPeriod")%></span>
+					<input type="hidden" name="repaymentPeriod" value="<%=request.getParameter("repaymentPeriod")%>" />
+					<!-- <i class="icon ico_arrow_down" style="right:0.45rem ;"></i>
+					<div class="subnav none">
+						<a href="javascript:void(0)">6个月</a>
+						<a href="javascript:void(0)">12个月</a>
+						<a href="javascript:void(0)">18个月</a>
+						<a href="javascript:void(0)">24个月</a>
+					</div> -->
+				</div>
+				<div class="form-group">
+					<label class="control-label">手续费</label>
+					<bdo class="form_text_right c_orange fs36" id="poundage"><%=request.getParameter("poundage")%></bdo>
+					<input type="hidden" name="poundage" value="<%=request.getParameter("poundage")%>" />
+				</div>
+				<div class="form_hint">注：手续费需从代还金额中扣除</div>
+				<div class="form-group">
+					<label class="control-label">放款日期</label>
+					<input required="required" type="date" name="makeLoanDay" value="<%= request.getParameter("makeLoanDay") == null  ? "" : request.getParameter("makeLoanDay") %>" class="form-control form_ipt_right_ico" id="makeLoanDay" style="background:url(resource/images/day@3x.png) no-repeat scroll 83% 42% / 8% 42%"/>
+					<!-- <i class="icon ico_date"></i> -->
+				</div>
+				<div class="form_hint">注：放款成功后，预计1-2个工作日到账</div>
+			</div>
+		</div>
+		<div class="from_line"></div>
+		<div class="box_circle circle_not_t">
+			<div class="form_wrap">
+				<div class="form-group">
+					<label class="control-label">每月还款</label>
+					<bdo class="form_text_right c_orange" id="capital"><%=request.getParameter("capital")%></bdo>
+					<input type="hidden" name="capital" value="<%=request.getParameter("capital")%>" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">还款日</label>
+					<input type="text" id="repaymentDate" name="repaymentDate" value="" placeholder="放款成功后查看“还款详情”" class="form-control form_ipt_right" readonly="readonly" />
+				</div>
+				<div class="form-group">
+					<label class="control-label">绑定借记卡</label>
+					<input type="text" name="depositsCardNo" value="" placeholder="" readonly="readonly" class="form-control form_ipt_right"/>
+					<input type="hidden" name="md5CardNo" value="" />
+					<input type="hidden" name="cardBankKey" value="" />
+				</div>
+			</div>
+		</div>
+		<div class="btn-agree"><a id="signlink" href="javascript:void(0)"><i class="icon ico_check"></i>同意并签署<bdo class="c_orange">《合同套件》</bdo></a></div>
+		<div class="btn-wrap">
+			<button type="button" class="btn btn-orange ctm-box-shadow disabled" onclick="javascript:void(0)" id="btnSubmit">确认代还</button>
+		</div>
+		<input type="hidden" name="userSignature" value="<%=request.getParameter("userSignature")%>" />
+	</form>
+	</div>
+	
+	<div class="mask_outer none" data-mask-outer></div>
+	<div class="layer-wrap none window_credit ctm-layer-wrapper" data-layer-wrapper >
+		<div class="credit_title orange">请选择代还信用卡号</div>
+		<div class='credit_list' data-credit-list>
+		
+	    </div>
+	   <div class='credit_close'> </div> 
+	</div>
+<!-- 信用卡 -->	
+<script id="creditList" type="text/html">
+ 
+  {{if credit}}
+  	{{each credit as card index}}
+			<div class='list_item ctm-cursor-ptr'>
+		        <label class="orange" creditBank="{{card.creditBank}}">{{card.creditBank}} </label> | 
+		        <span creditCity="{{card.creditCity}}" bankKey="{{card.bankKey}}" md5CreditNo="{{card.md5CreditNo}}" creditNo="{{card.creditNo}}"> 
+			        {{card.creditNo}}
+			    </span>
+	        </div>
+ 	{{/each}}
+  {{/if}}
+ 
+</script>	
+<script type="text/javascript">
+var userId="${userSession.userId}";
+//隐藏域
+$("input[name=productCode]").val("${param.productCode}");
+$("input[name=loanAmt]").val("${param.loanAmt}");
+</script>
+		
+<script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/resource/js/views/html/credit_card_02.js" type="text/javascript" ></script>  
+</body>
 <script type="text/javascript">
 	/* var param = undefined;
 	var periods="";
@@ -197,188 +319,5 @@
         }
 	}); */
 	
-</script>
- 
-</head>
-<body>
-	<div class="header">
-		<a href="javascript:void(0);" class="icon ico_back" id="proBack"></a>
-		银行卡信息
-	</div>
-	
-	
-	<div class="maincontainer">
-	
-	<form action="productList" method="post" id="productList">
-         <input name="loanAmt" value="" type="hidden">
-         <input name="productCode" value="" type="hidden">
-    </form>        
-            
-	<form action="./credit_card_04.html" method="post">
-		<div class="tips_info">
-			<i class="icon ico_sign"></i>亲，您申请的金额需大于1000小于您的授信额度哦~~
-		</div>
-		<div class="box_circle circle_not_b">
-			<div class="hd">${credit.creditBank}丨${credit.creditNo}</div>
-			<input type="hidden" name="creditBank" value=""/>
-			<input type="hidden" name="creditCardNo" value=""/>
-			<input type="hidden" name="md5CreditNo" value=""/>
-			<input type="hidden" name="productCode" value="<%=request.getParameter("productCode")%>"/>
-			<input type="hidden" id="creditAmount" value="${userSession.creditAmount}"/>
-			<input type="hidden" id="userId" name='userId' value="${userSession.userId}"/>
-			<input type="hidden" id="bankKey" name='bankKey' value="${credit.bankKey}"/>
-			<div class="form_wrap">
-				<div class="form-group">
-					<label class="control-label">申请代还金额</label>
-					<input type="text" name='loanAmt' value="<%=request.getParameter("loanAmt")%>" id="amount" placeholder="最低1000且为100整数倍" class="form-control form_ipt_right" readonly="readonly"/>
-				</div>
-				<div class="form-group">
-					<label class="control-label">还款期数</label>
-					<span style="text-align:right;margin-right:0.6rem;"><%=request.getParameter("repaymentPeriod")%></span>
-					<input type="hidden" name="repaymentPeriod" value="<%=request.getParameter("repaymentPeriod")%>" />
-					<!-- <i class="icon ico_arrow_down" style="right:0.45rem ;"></i>
-					<div class="subnav none">
-						<a href="javascript:void(0)">6个月</a>
-						<a href="javascript:void(0)">12个月</a>
-						<a href="javascript:void(0)">18个月</a>
-						<a href="javascript:void(0)">24个月</a>
-					</div> -->
-				</div>
-				<div class="form-group">
-					<label class="control-label">手续费</label>
-					<bdo class="form_text_right c_orange fs36" id="poundage"><%=request.getParameter("poundage")%></bdo>
-					<input type="hidden" name="poundage" value="<%=request.getParameter("poundage")%>" />
-				</div>
-				<div class="form_hint">注：手续费需从代还金额中扣除</div>
-				<div class="form-group">
-					<label class="control-label">放款日期</label>
-					<input required="required" type="date" name="makeLoanDay" value="<%= request.getParameter("makeLoanDay") == null  ? "" : request.getParameter("makeLoanDay") %>" class="form-control form_ipt_right_ico" id="makeLoanDay" style="background:url(resource/images/day@3x.png) no-repeat scroll 83% 42% / 8% 42%"/>
-					<!-- <i class="icon ico_date"></i> -->
-				</div>
-				<div class="form_hint">注：放款成功后，预计1-2个工作日到账</div>
-			</div>
-		</div>
-		<div class="from_line"></div>
-		<div class="box_circle circle_not_t">
-			<div class="form_wrap">
-				<div class="form-group">
-					<label class="control-label">每月还款</label>
-					<bdo class="form_text_right c_orange" id="capital"><%=request.getParameter("capital")%></bdo>
-					<input type="hidden" name="capital" value="<%=request.getParameter("capital")%>" />
-				</div>
-				<div class="form-group">
-					<label class="control-label">还款日</label>
-					<input type="text" id="repaymentDate" name="repaymentDate" value="" placeholder="放款成功后查看“还款详情”" class="form-control form_ipt_right" readonly="readonly" />
-				</div>
-				<div class="form-group">
-					<label class="control-label">绑定借记卡</label>
-					<input type="text" name="depositsCardNo" value="${card.cardNo}" placeholder="${card.cardNo}" readonly="readonly" class="form-control form_ipt_right"/>
-					<input type="hidden" name="md5CardNo" value="${card.md5CardNo}" />
-					<input type="hidden" name="cardBankKey" value="${card.cardBankKey}" />
-				</div>
-			</div>
-		</div>
-		<div class="btn-agree"><a id="signlink" href="javascript:void(0)"><i class="icon ico_check"></i>同意并签署<bdo class="c_orange">《合同套件》</bdo></a></div>
-		<div class="btn-wrap">
-			<button type="button" class="btn btn-orange disabled" onclick="javascript:void(0)" id="btnSubmit">确认代还</button>
-		</div>
-		<input type="hidden" name="userSignature" value="<%=request.getParameter("userSignature")%>" />
-	</form>
-	</div>
-	
-	<div class="mask_outer none"></div>
-	<div class="layer-wrap none window_credit">
-		<div class="credit_title">请选择代还信用卡号</div>
-		<div class='credit_list'>
-		<c:forEach items="${userSession.credit}" var="card">
-	        <div class='list_item'>
-		        <label creditBank="${card.creditBank}"> ${card.creditBank} </label> | 
-		        <span 
-		            creditCity="${card.creditCity}"
-		            bankKey="${card.bankKey}"
-		            md5CreditNo="${card.md5CreditNo}"
-			        creditNo="${card.creditNo}"> 
-			        ${card.creditNo} 
-			    </span>
-	        </div>
-		</c:forEach>
-	    </div>
-	    <div class='credit_close'>关闭</div>
-	</div>
-</body>
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	//隐藏域
-	$("input[name=productCode]").val("${param.productCode}");
-	$("input[name=loanAmt]").val("${param.loanAmt}");
-	
-	$("#proBack").on("click",function(){
-		
-		$("#productList").submit();
-	 
-	   	
-	});
-	 
- 
-	var dom = $(".credit_list").children(":first");
-	var creditBank = dom.find('label').attr("creditBank");
-	var creditNo = dom.find('span').attr("creditNo");
-	var md5CreditNo = dom.find('span').attr("md5CreditNo");
-	var bankKey = dom.find('span').attr("bankKey");
-	$("#bankKey").val(bankKey);
-	$(".hd").html(creditBank + " | " + creditNo + "<i class='more_crieds'><i/>");
-	$("input[name=md5CreditNo]").val(md5CreditNo);
-	$("input[name=creditCardNo]").val(creditNo);
-	$("input[name=creditBank]").val(creditBank);
-	
- 
-	
-	
-	$("#signlink").bind("click", function(){
-		$("form").attr("action", "credit_card_03").submit();
-	})
-	
-	var userSignature = $("input[name=userSignature]").val();
-	if('null' != userSignature && userSignature.length > 0){
-		$("#btnSubmit").removeClass("disabled");
-		$("#signlink").find("i").addClass("ico_check_current");
-		$("#btnSubmit").bind("click", function(){
-			if($("input[name=makeLoanDay]").val() == ""){ 
-				MessageWin("放款时间不能为空", function(){}); 
-				return false;
-			}
-			$("form").attr("action", "kakadai/order/submitOrder").submit();
-		})
-	}
-	
-	$(".more_crieds").bind("click", function(){
-		$(".mask_outer").removeClass("none");
-		$(".window_credit").removeClass("none");
-	})
-	$(".credit_list").bind("click", function(){
-		var creditBank = $(this).find('label').attr("creditBank");
-		var creditNo = $(this).find('span').attr("creditNo");
-		var md5CreditNo = $(this).find('span').attr("md5CreditNo");
-		var bankKey = $(this).find('span').attr("bankKey");
-		$("#bankKey").val(bankKey);
-		$(".hd").html(creditBank + " | " + creditNo + "<i class='more_crieds'><i/>");
-		$("input[name=md5CreditNo]").val(md5CreditNo);
-		$("input[name=creditCardNo]").val(creditNo);
-		$("input[name=creditBank]").val(creditBank);
-		$(".mask_outer").addClass("none");
-	    $(".window_credit").addClass("none");
-	    $(".more_crieds").bind("click", function(){
-			$(".mask_outer").removeClass("none");
-			$(".window_credit").removeClass("none");
-		})
-	})
-	
-	$(".credit_close").bind("click", function(){
-	    $(".mask_outer").addClass("none");
-	    $(".window_credit").addClass("none");
-    })
-
-})
 </script>
 </html>

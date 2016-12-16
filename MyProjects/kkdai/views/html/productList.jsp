@@ -77,7 +77,7 @@
 			</div> -->
 		</div>
 		<div>
-		    <button class="btn btn-orange  ctm-box-shadow ctm-cursor-default" type="button" id="step"> 下一步 </button>
+		    <button class="btn btn-orange  ctm-box-shadow " type="button" id="step"> 下一步 </button>
 		</div>
 	</form>
 	</div>

@@ -105,7 +105,7 @@ function dynamic() {
 	var $selector=$(this).parents(".custom-code-wrapper");
 	$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
 	time(this);
-    $.post("phoneDynCode",{verifyKind:"CHK", mobileNo: sessionMobile},function(){ });
+    $.post("phoneDynCode",{verifyKind:"CHK"},function(){ });
 }
 
 function time(o) {

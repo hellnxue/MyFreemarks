@@ -108,7 +108,7 @@ if(!!param) {
 //		$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
 		sendCodeFlag=true;
 		time(this);
-	    $.post("phoneDynCode",{verifyKind:"HK", mobileNo: sessionMobile},function(){ });
+	    $.post("phoneDynCode",{verifyKind:"HK"},function(){ });
 		 
 	}
 

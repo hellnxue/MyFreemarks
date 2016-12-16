@@ -107,7 +107,7 @@
 					<input  name="verifyCode" class="custom-form-control" placeholder="请输入验证码" type="text" data-input="dy">
 				</div>
 
-				<div class="custom-col-r ctm-cursor">
+				<div class="custom-col-r ctm-cursor-ptr">
 					<div class="codeBorder c_orange"></div>
 
 					<span class="m-t-xs catch " id="checkcode">获取验证码</span>
@@ -117,7 +117,7 @@
 
 			<div class="ctm-row m-t-xxxl ">
 			
-				<button class="btn  custom-btn btn-orange ctm-layer-btn" type="button" data-confirm>确认还款</button>
+				<button class="btn  custom-btn btn-orange ctm-layer-btn ctm-box-shadow" type="button" data-confirm>确认还款</button>
 				 
 			</div>
 		</div>
