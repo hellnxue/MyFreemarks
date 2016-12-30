@@ -10,20 +10,21 @@
 
 </head>
 <body>
-
-	<div class="header">
-		<a href="bill_manage_01" class="pull-right ctm-icon-txt "  >确认</a>
-		我的账单
-		
-	</div>
+   <header class="ctm-header ctm-header-default">
+		 
+		  <a href="bill_manage_01" class="nav-right-icon"> <span>确认</span>
+		</a>  
+		<h1 class="ctm-header-title">我的账单</h1>
+	</header>
+	
 	<div class="ctm-container m-t-xxxl">
 	  
-		<div class="ctm-img-wrapper none" data-success>
+		<div class="ctm-img-wrapper text-center none" data-success>
 		   <img src="<%=request.getContextPath()%>/resource/images/main/b_ok@2x.png" width="30%"/>
 		   <p class="m-t-lg p-t">该笔账单撤销成功！</p>
 		</div>
 		
-		<div class="ctm-img-wrapper none" data-tip>
+		<div class="ctm-img-wrapper text-center none" data-tip>
 		   <img src="<%=request.getContextPath()%>/resource/images/main/cancel@2x.png" width="30%"/>
 		   <p class="m-t-lg p-t m-l-md m-r-md">该笔账单预约放款日为当天，不能取消。如有疑问，请联系客服400-056-1212</p>
 		</div>
@@ -31,7 +32,7 @@
 	</div>
    <script type="text/javascript">
       var status="${param.flag}";
-      if(status!=""){
+      if(status){
     	  if(status=="success"){
     		  $("[data-success]").removeClass("none");
     		  $("[data-tip]").addClass("none");

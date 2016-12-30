@@ -7,6 +7,10 @@
 <title>借钱还信用卡</title>
 </head>
 <body>
+  	<!--提示-->
+	 <div class="tips_main" style="display:none;">
+			<p class="lead"></p>
+	 </div>
     <div class="header">
 		<a href="index" class="icon ico_back" data-ajax="false"></a>
 		借钱还信用卡
@@ -97,7 +101,7 @@ var paramObj={
 		
 };
 
-
+var path="<%=request.getContextPath()%>";
 
  
 </script> 

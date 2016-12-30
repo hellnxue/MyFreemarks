@@ -27,6 +27,7 @@ $(document).ready(function(){
 			success: function(data) {
 				if(data.code == '0000'){
 					window.location.href= data.result;
+					//window.location="bill_cancel_01?hh="+"http://dev.dcloud.net.cn/mui/";
 				}
 			}
 		});

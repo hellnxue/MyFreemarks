@@ -14,10 +14,14 @@
 </script>
 </head>
 <body class="white_bg">
-	<div class="header">
-		<a href="./bill_manage_02.html" class="icon ico_back" id="pageback"></a>
-		提前还贷
-	</div>
+	<header class="ctm-header ctm-header-default">
+		<a href="bill_manage_02.html" class="nav-left-icon"> <em></em>
+		</a> 
+		<!-- <a href="#" class="nav-right-icon"> <span>返回首页</span>
+		</a> -->
+		<h1 class="ctm-header-title">提前还贷</h1>
+	</header>
+	
 	<div class="maincontainer">
 		<div class="tips_info">
 			<i class="icon ico_sign"></i>如要提前清贷，除剩余本金外，涉及到的其他费用，如下

@@ -1,4 +1,4 @@
-
+﻿
 ;(function(exports){
 	var KeyBoard = function(input, options){
 		var body = document.getElementsByTagName('body')[0];
@@ -12,7 +12,7 @@
 		this.el = document.createElement('div');
 		
 		var self = this;
-		var zIndex = options && options.zIndex || 1000;
+		var zIndex = options && options.zIndex || 19891060;
 		var width = options && options.width || '100%';
 		var height = options && options.height || '193px';
 		var fontSize = options && options.fontSize || '15px';
@@ -40,18 +40,29 @@
 		cssStr += '</style>';
 		
 		//Button
-		var btnStr = '<div style="width:60px;height:28px;background-color:#FE8534;';
-		btnStr += 'float:right;margin-right:5px;text-align:center;color:#fff;';
-		btnStr += 'line-height:28px;border-radius:3px;margin-bottom:2px;cursor:default; margin-top: 3px;">完成</div>';
+//		var btnStr = '<div style="width:60px;height:28px;background-color:#FE8534;';
+//		btnStr += 'float:right;margin-right:5px;text-align:center;color:#fff;';
+//		btnStr += 'line-height:28px;border-radius:3px;margin-bottom:2px;cursor:default; margin-top: 3px;">完成</div>';
+		
+		var btnStr = '<div style="width:1rem;height:0.6rem; ';
+		btnStr += 'float:right;margin-right:5px;text-align:center;color:#FA6E28;';
+		btnStr += 'line-height:0.6rem; margin-bottom:2px;cursor:default; margin-top: 3px;font-size: 0.45rem;cursor:pointer;">完成</div>';
 		
 		//table
+//		var tableStr = '<table id="' + TABLE_ID + '" border="0" cellspacing="0" cellpadding="0">';
+//			tableStr += '<tr><td>1</td><td>2</td><td>3</td></tr>';
+//			tableStr += '<tr><td>4</td><td>5</td><td>6</td></tr>';
+//			tableStr += '<tr><td>7</td><td>8</td><td>9</td></tr>';
+//			tableStr += '<tr><td style="background-color:#D3D9DF;"></td><td>0</td>';
+//			tableStr += '<td style="background-color:#D3D9DF;">删除</td></tr>';
+//			tableStr += '</table>';
 		var tableStr = '<table id="' + TABLE_ID + '" border="0" cellspacing="0" cellpadding="0">';
-			tableStr += '<tr><td>1</td><td>2</td><td>3</td></tr>';
-			tableStr += '<tr><td>4</td><td>5</td><td>6</td></tr>';
-			tableStr += '<tr><td>7</td><td>8</td><td>9</td></tr>';
-			tableStr += '<tr><td style="background-color:#D3D9DF;">.</td><td>0</td>';
-			tableStr += '<td style="background-color:#D3D9DF;">删除</td></tr>';
-			tableStr += '</table>';
+		tableStr += '<tr><td>1</td><td>2</td><td>3</td></tr>';
+		tableStr += '<tr><td>4</td><td>5</td><td>6</td></tr>';
+		tableStr += '<tr><td>7</td><td>8</td><td>9</td></tr>';
+		tableStr += '<tr><td style="background-color:#D3D9DF;"></td><td>0</td>';
+		tableStr += '<td style="background-color:#D3D9DF;"><img src="" data-delete style="cursor:pointer;"></td></tr>';
+		tableStr += '</table>';
 		this.el.innerHTML = cssStr + btnStr + tableStr;
 		
 		function addEvent(e){
@@ -66,12 +77,15 @@
 				if(options.accomplished){
 					options.accomplished();
 				}
-				setTimeout(function(){
-					body.removeChild(self.el);
-				},200);
+				 
+				body.removeChild(self.el);
 				
+				if(options.endCallback){
+					options.endCallback();
+				}
 				
-			}else if(clickEl.tagName.toLocaleLowerCase() === 'td' && value === "删除"){
+//			}else if(clickEl.tagName.toLocaleLowerCase() === 'td' && value === "删除"){
+			}else if(clickEl.tagName=== "IMG"){
 				var num = self.input.value;
 				if(num){
 					var newNum = num.substr(0, num.length - 1);

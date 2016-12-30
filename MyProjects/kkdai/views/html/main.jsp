@@ -6,12 +6,14 @@
 </head>
 <body>
 <div id="main-wrapper">
-	<!--  <a href="productList"  ><i  ></i>产品</a>
+	 <!-- <a href="withdraw_cash"  ><i  ></i>产品</a>   
 <a href="authentication_03"  ><i  ></i>身份验证</a>   -->
-   <div class='header_bg' id="hhh">
-   		<div class='nav_date'>
-   		<!-- <span></span> -->
-   		<img class="night none" src="<%=request.getContextPath()%>/resource/images/main/v1/night@2x.png"><img class="day" src="<%=request.getContextPath()%>/resource/images/main/v1/sunny-@2x.png"> <span>13</span>.<span>Oct</span>.<span>周四</span>
+   <div class='header_bg'>
+   		<div class='nav_date text-left'>
+   			<div  data-date >
+   				<img class="night none" src="<%=request.getContextPath()%>/resource/images/main/v1/night@2x.png"><img class="day" src="<%=request.getContextPath()%>/resource/images/main/v1/sunny-@2x.png"> <span>13</span>.<span>Oct</span>.<span>周四</span>
+   			</div>
+   			<a href="#" class="message pull-right"></a>
    		</div>
    		<div class="nav_main">
 		 	 <div  class="tip_info">
@@ -30,27 +32,29 @@
 	<div class="ctm-container link_money">
 	    <div class="m-v"></div>
 		<div class=" ctm-row   p-l-lg m-t-md" >
-			<div class="custom-col-5 ctm-cursor-ptr" data-href="productList">
+			<div class="custom-col-5 ctm-cursor-ptr" data-href="productList" data-card-href="bind_credit_card" >
 				<img src="<%=request.getContextPath()%>/resource/images/main/v1/borrow@2x.png">
 				<span>借款</span> 
 			</div>
 	
 			<div class="custom-col-5 ctm-cursor-ptr" style="padding-left: 0">
 				<img src="<%=request.getContextPath()%>/resource/images/main/v1/repay@2x.png" class="p-img">
-				<span>提额</span> 
-	
+				<span>还款</span> 
+				<!-- <div class=" ctm-row">
+					<div class="custom-col-10" ></div>
+				</div> -->
 			</div>
 		</div>
 		<div class=" ctm-row   p-l-lg m-t-xs" >
-			<div class="custom-col-5 pret-info ctm-cursor-ptr" data-href="productList">
+			<div class="custom-col-5 pret-info ctm-cursor-ptr" data-href="productList" data-card-href="bind_credit_card" >
 				 
 				<p>极速审核，快速放款</p> 
 			</div>
 	
 			<div class="custom-col-5 ctm-cursor-ptr pret-info pr"  >
 				 
-				<p>距离本期还款还有<span class="c_orange">10</span>天</p> 
-	
+				<!-- <p>距离本期还款还有<span class="c_orange">10</span>天</p>  -->
+				<p id="tips">  </p>
 			</div>
 		</div>
 		<div class=" ctm-row   p-l-lg m-t-xs" >
@@ -58,7 +62,7 @@
 	
 			<div class="custom-col-5 pret-info pr" >
 				 
-				<p>还款金额<span class="c_orange">1500.000</span></p> 
+				<!-- <p>还款金额<span class="c_orange">1500.000</span></p>  -->
 	
 			</div>
 		</div>
@@ -122,15 +126,25 @@
 		</div> 
 	</div>
 
-<jsp:include page="foot.jsp"></jsp:include>
+
 </div>
- 
+<jsp:include page="foot.jsp"></jsp:include>
+<form   id="cardForm">
+    <input type='hidden' name='type'  id="cardType"/>
+</form> 
 
 <script src="<%=request.getContextPath()%>/resource/js/views/html/main.js" type="text/javascript" ></script>  
 
 <script type="text/javascript">
+	var path="<%=request.getContextPath()%>";
 	var promoteQuota="${promoteQuota}";
 	var processCode="${processCode}";
+	var repayRem="${repayRem}";
+	var credit="${credit}";
+	var card="${card}";  
+	
+	
+	
 	 
 </script>
 </body>

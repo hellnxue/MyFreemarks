@@ -456,7 +456,7 @@ fieldset[disabled] .btn  {
 	padding-left: 0;
     line-height: 0.42rem;
     min-height: 0.42rem;
-    color: #717171;
+    color:#424242; ;/* #717171 */
 }
 .form_noborder .hd{
 	color: #424242;
@@ -1387,6 +1387,7 @@ i.ico_success{
 .zmxysq {
 	color: #FFF;
 	padding: 0 0.9rem 0 0.9rem;
+	cursor:pointer;
 }
 
 .zmxysq span{
@@ -1552,13 +1553,63 @@ i.ico_success{
 .top2_rt{ width:3.75rem; float:right;}
 .top2_left_p1{ font-size:0.24rem; padding-top:0.45rem;}
 .top2_left_p2{ font-size:0.45rem; padding-top:0.2rem;}
-.pro_text_box{ clear:both; height:3.4rem; margin-top:0.2rem;  position:relative; font-size:0.22rem; color:#666; margin-bottom:2rem;}
+.pro_text_box{ clear:both;   margin-top:0.2rem;  position:relative; font-size:0.22rem; color:#666; margin-bottom:2rem;}
 .pro_text_ico{ width:0.75rem; height:2.5rem; background:url(../images/img/monback_icon@2x.png) no-repeat; background-size:100%; position:absolute; top:0.3rem; left:0.5rem;}
-.pro_text1{ background-color:#FFF; height:1.4rem; padding-left:1.4rem;padding-top:0.5rem;}
-.pro_text2{ background-color:#FFF; height:1.8rem; margin-top:0.2rem; padding-left:1.4rem; padding-top:0.5rem;}
-.pro_text2 span,.pro_text1 span{ color:#fe8533; font-size:0.28rem; padding-right:0.15rem;}
-.pro_bottom{ height:1rem; background-color:#ffb367; text-align:center; line-height:1rem; color:#fff; font-size:0.32rem; width:100%; position:fixed; bottom:0; left:0;}
+.pro_text1 {
+	background-color: #FFF;
+	height: 1.4rem;
+	padding-left: 0.6rem;
+	padding-top: 0.5rem;
+}
 
+.pro_text2 {
+	background-color: #FFF;
+	height: 1.4rem;
+	margin-top: 0.2rem;
+	padding-left: 0.6rem;
+	padding-top: 0.5rem;
+}
+
+.pro_text2 img,.pro_text1 img {
+    float: left;
+    vertical-align: middle;
+   
+}
+
+.pro_text2 span,.pro_text1 span {
+	float: left; color : #fe8533;
+	font-size: 0.28rem;
+	padding-right: 0.15rem;
+	color: #fe8533;
+}
+
+.pro_text2 p,.pro_text1 p  {
+    float: left;
+    line-height: 1.5;
+    width: 65%;
+    position: relative;
+    top: 0.02rem;
+}
+
+.pro_bottom {
+	height: 1rem;
+	background-color: #ffb367;
+	text-align: center;
+	line-height: 1rem;
+	color: #fff;
+	font-size: 0.32rem;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+.pro_bottom .btm_accomplished{
+	display: block;
+    background-color: orange;
+    color: #fff;
+    font-size: 0.45rem;
+}
 
 .me_top{ height:4.99rem; width:7.5rem; background:url(../images/img/me_bg@2x.png) no-repeat; background-size:100%; text-align:center; padding-top:3.27rem; font-size:0.5rem; color:#fff;}
 .me_ul{ padding-left:0.3rem; margin-bottom:1rem}

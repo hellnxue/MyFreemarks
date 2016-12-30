@@ -24,6 +24,8 @@ $(document).ready(function(){
 		 selectItemUpDown(); //点击下拉
 		
 		 $(".form-group>span").click(handleItem); //下拉项选择处理
+		 
+			
 	});
 
 /*日期-年选择*/
@@ -190,7 +192,8 @@ function checkNull(){
 	var validate = true;
 	$(".validate").each(function(){
 		if('' == $(this).val() || 'undefined' == $(this).val()){
-			MessageWin($(this).attr('msg'));
+//			MessageWin($(this).attr('msg'));
+			promt($(this).attr('msg'));
 			validate = false;
 			return false;
 		}
@@ -229,7 +232,23 @@ function submitInfo(){
 	valid();
     if(checkNull()){
     	
-    	$("#authenticationForm").submit();
+    	var obj=$("#authenticationForm").serializeObject();
+    	
+    	 $.ajax({
+ 			type: "POST",
+ 			dataType: 'json',
+ 			url: 'authentication_03_submit',
+ 			data:obj
+ 			
+    	 }).done(function(data){
+ 			
+ 				if(data.code&&data.code=="0000"){
+ 					window.location.href="linkman";
+ 				}else{
+ 					promt(data.msg);
+ 				}
+ 			});
+    	
     }
 	
 }

@@ -52,7 +52,7 @@
 	</div>
 </div>
 <script type="text/javascript">
- 	var orderId = "${result.orderId}";
+ 	var orderId = "${param.orderId}";
  	var userId = "${userSession.userId}";
    
 </script>

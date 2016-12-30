@@ -1,36 +1,25 @@
-﻿function createProvince(){
-	var province = "";
-	$(areaData.province).each(function(i, obj){
-	    var city = "";
-	    $(obj.city).each(function(j, item){
-	    	if($(obj.city).length == (j+1)){
-	    		city += item.name.trim()
-	    	}else{
-	    		city += item.name.trim() + ","
-	    	}
-	    });
-		province += "<a href='javascript:void(0)' data='" + city + "'>" + obj.name + "</a>"
-	});
-	return province;
-}
-
-function createCity(str){
-	if(!str){
-		return;
+﻿$(document).ready(function(){
+	
+	
+	if(hFrom&&hType&&hFrom=="replace"){//借记卡替换
+		$("input[name='type']").val(hType);
+	}else{//绑卡提示
+		if(hType&&hType=="J"){
+			
+			MessageWin("请绑定您的借记卡！",function(){
+				$("input[name='type']").val(hType);
+			});
+			
+		}else if(hType&&hType=="X"){
+			MessageWin("请绑定您的信用卡！" ,function(){
+				$("input[name='type']").val(hType);
+			});
+		}
 	}
-    var city = "";
-    var arr = str.split(",");
-    $.each(arr, function(i){
-    	if(arr.length == (i+1)){
-    		city += "<a href='javascript:void(0)'>" + arr[i] + "</a>";
-    	}else{
-    		city += "<a href='javascript:void(0)'>" + arr[i] + "</a>";
-    	}
-    });
-	return city;
-}
+	
 
-$(document).ready(function(){
+	
+	
 	//调用卡宾校验后提示
  
 	if(code.length > 0 && code != "0000") {
@@ -105,3 +94,35 @@ $(document).ready(function(){
     });
 	
 });
+
+function createProvince(){
+	var province = "";
+	$(areaData.province).each(function(i, obj){
+	    var city = "";
+	    $(obj.city).each(function(j, item){
+	    	if($(obj.city).length == (j+1)){
+	    		city += item.name.trim()
+	    	}else{
+	    		city += item.name.trim() + ","
+	    	}
+	    });
+		province += "<a href='javascript:void(0)' data='" + city + "'>" + obj.name + "</a>"
+	});
+	return province;
+}
+
+function createCity(str){
+	if(!str){
+		return;
+	}
+    var city = "";
+    var arr = str.split(",");
+    $.each(arr, function(i){
+    	if(arr.length == (i+1)){
+    		city += "<a href='javascript:void(0)'>" + arr[i] + "</a>";
+    	}else{
+    		city += "<a href='javascript:void(0)'>" + arr[i] + "</a>";
+    	}
+    });
+	return city;
+}

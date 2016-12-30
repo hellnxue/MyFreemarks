@@ -1,5 +1,7 @@
  
-
+.ctm-white-bgc{
+	background-color: rgba(255, 255, 255, 1);
+}
 	
 /* header导航 */
 .ctm-icon-txt-r{
@@ -19,6 +21,89 @@
     right: 5%;
 	
 }
+
+/*---------------自定义导航栏----------- start*/
+.ctm-header-default {
+    background-color: #fd6f19;
+    color:#fff;
+}
+
+.ctm-header-white {
+    background-color: #fff;
+    color:#fe6f1a;
+}
+
+.ctm-header {
+    display: block;
+    height: 0.86rem;
+    line-height: 0.86rem;
+    position: relative;
+    width: 100%;
+}
+
+
+
+.ctm-header .nav-left-icon,.ctm-header .nav-right-icon{
+
+    display: inline-block;
+    position: absolute;    
+    color: #fe6f1a;   
+}
+
+.ctm-header .nav-left-icon {
+    width: 0.86rem;
+    height: 0.86rem;
+    left: 0;
+    padding-left: 0.2rem;
+}
+
+.ctm-header .nav-right-icon {
+
+    width: 1.8rem;
+    height: 0.86rem;
+    padding-right: 0.2rem;
+    right: 0;
+    font-size: 0.3rem; 
+    text-align: right;  
+}
+
+.ctm-header .nav-left-icon em {
+    background-image: url("../images/main/back@2x.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: inline-block;
+    height: 0.42rem;
+    position: absolute;
+    top: 52%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+    width: 0.2rem;
+}
+
+.ctm-header-default .nav-left-icon em{
+	background-image: url("../images/back@3x.png"); 
+}
+
+.ctm-header-default .nav-right-icon{
+	color:#fff;
+}
+ 
+
+.ctm-header .ctm-header-title {
+    /* color: #fe6f1a; */
+    display: block;
+    font-size: 0.36rem;
+    line-height:0.86rem;
+    font-weight: 500;
+    margin: 0 30%;
+    overflow: hidden;
+    overflow-wrap: normal;
+    padding: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+/*--------------------自定义导航栏 --------- end*/	
 
 
 	
@@ -205,28 +290,137 @@ a.ctm-link:focus {
 }
  
  
-/* 我的账单部分字体-start */
+/* 我的账单部分-start */
+.box_wrap2{
+	padding-top:0;
+	padding-bottom:0;
+	margin-top:0.2rem;
+}
+
+
+
+.form_wrap.form_noborder{
+	padding-top:0.2rem;
+	padding-bottom:0.3rem;
+}
+
+
+.box_wrap2 .title2,.box_wrap2 .form_ft{
+	height:0.6rem;
+	line-height:0.6rem;
+}
+
+.history_list .title2,.history_list .form_ft{
+	height:0.5rem;
+	line-height:0.5rem;
+}
+
+.history_list .detailsInfo{
+    vertical-align: middle;
+    width: 0.25rem;
+}
 .ctm-f-t .f-t-b{
 	
-	 font-size: 0.27rem;
-    line-height: 0.5rem;
+	 font-size: 0.26rem;
+   /*  line-height: 0.56rem; */
 }
 
 .ctm-f-t .f-ct,.f-ct .form-group{
 	
 	font-size: 0.29rem;
-	line-height: 0.5rem;
+	line-height: 0.6rem;
 }
 
 .ctm-f-t .m-b-none{
 	margin-bottom:0;
 }  
 
-/* 我的账单部分字体-end */
+
+.form_noborder .form-group.ctm-hor-r{
+	padding-left:0.2rem;
+}
+
+.form_noborder .form-group.c_orange{
+	color:#fa6e28;
+}
+
+/* 还款记录点击底部弹出层 */
+
+.window_credit.hty-record{
+	padding-bottom:0;
+	text-align:left;
+	animation:up  0.1s  ;
+	-moz-animation:up  0.1s  ;
+	-webkit-animation:up  0.1s  ;
+	-ms-animation:up  0.1s  ;
+	-o-animation:up  0.1s  ;
+}
+
+.hty-record .ctm-container .ctm-layer-title{
+    background-color: #f5f5f5;
+	height: 0.8rem;
+    line-height: 0.8rem;
+    border: 0.01rem solid #e3e3e3;
+    box-shadow: 0 0.01rem 0.01rem rgba(0, 0, 0, 0.05) inset;
+
+}
+
+.hty-record .ctm-layer-title > img{
+    vertical-align: -0.02rem;
+    width: 0.16rem;
+}
+
+.hty-record .ctm-layer-title > span{
+    color: #424242;
+    font-size: 0.3rem;
+}
+
+.hty-record .ctm-layer-content ul li::after{
+	content:" ";
+	display:table;
+	clear:both;
+}
+
+.hty-record .ctm-layer-content ul li{
+	padding:0 0.25rem;
+	font-size:0.28rem;
+	color:#424242;
+	border-bottom:0.01rem solid #eee;
+	
+}
+
+.hty-record .ctm-layer-content ul li:first-child{
+	height:0.8rem;
+	line-height:0.8rem;
+	color:#FE6F1A;
+	
+}
+
+
+.hty-record .ctm-layer-content ul li+li{
+	height:0.7rem;
+	line-height:0.7rem;
+	border-bottom:0.01rem solid #eee;
+	
+}
+
+.ctm-layer-content ul li:first-child div:last-child,.hty-record .ctm-layer-content ul li+li div:last-child{
+	text-align:right;
+	
+}
+
+/* 我的账单部分-end */
 
 .ctm-bg{
 	background-color:#eee;
 }
+
+
+
+ 
+
+
+ 
 
 
 /* c_repat.jsp */
@@ -429,6 +623,8 @@ div.sp.cur-scales{
 }
 
 .ctm-produt-list .pd_area .t_lit:nth-of-type(2)>span:not(:first-child){
+	position: relative;
+    top: 0.05rem;
 	font-size:0.22rem;
 	color:#666;
 }
@@ -489,16 +685,30 @@ div.sp.cur-scales{
 }
 
  .header_bg .nav_date {
-    margin-right: 0.3rem;
-    text-align: right;
+   /*  margin-right: 0.3rem;
+    text-align: right; */
+    margin-left:0.3rem;
     color:#666;
+}
+
+.header_bg .nav_date > div{
+	display:inline-block;
+	font-weight:600;
 }
 
 .header_bg .nav_date img {
    
    width:0.34rem;
    height:0.32rem;
-    vertical-align: -0.03rem;
+   vertical-align: -0.03rem;
+}
+
+.nav_date .message{
+	 background: rgba(0, 0, 0, 0) url("../images/main/v1/index_news@2x.png") repeat scroll 0 0 / 100% 100%;
+	 display:inline-block;
+	 width:0.43rem;
+	 height:0.38rem;
+	 margin-right: 0.3rem;
 }
 
 
@@ -709,7 +919,7 @@ div.sp.cur-scales{
    width: 11%;
 }
 
-#main-wrapper .footer{
+.ctm-footer{
   background: rgba(0,0,0,0)  url("../images/main/v1/index_bg@2x.png"); 
   filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
   -moz-background-size: 7.5rem 1.6rem;
@@ -790,26 +1000,243 @@ div.sp.cur-scales{
 
 
 
+/* 个人中心      start */
+.widget-list{
+	width:100%;
+	
+}
+
+.widget-list ul{
+	list-style:none;
+	padding-left:0;
+}
+
+.vip-list li{
+	position:relative;
+	display:block;
+    vertical-align: middle;
+}
+
+.vip-list li a {
+    background: #fff none repeat scroll 0 0;
+    display: block;
+    height: 1rem;
+    line-height: 1rem;
+    margin-left: 0.3rem;
+    border-bottom: 1px solid #dddddd;
+    color: #555;
+    text-decoration: none;
+}
+
+.vip-list li .arrows{
+    background: rgba(0, 0, 0, 0) url("../images/img/next@2x.png") no-repeat scroll 0 0 / 100% auto;
+    display: inline-block;
+    height: 0.3rem;
+    position: absolute;
+    right: 0.4rem;
+    top: 0.35rem;
+    width: 0.18rem;
+}
+
+.vip-list li img{
+    margin-right: 0.2rem;
+    vertical-align: middle;
+    width: 0.49rem;
+}
+
+/* 个人中心      end */
+
+
+/* 借贷产品       start */
+.pro_list .pro_list_bg{
+	background:rgba(0, 0, 0, 0) url("../images/main/v1/pro_mbg@2x.png") no-repeat scroll center center / 7.15rem 2.95rem;
+	height:2.95rem;
+	cursor:pointer;
+}
+
+.pro_list .pro_list_bg .tag{
+    color: #fe6f1a;
+    font-size: 0.2rem;
+    left: 0.6rem;
+    line-height: 0.5rem;
+    position: relative;
+    top: 0.05rem;
+}
+
+
+.pro_list .pro_list_bg .pro_title{
+    
+    font-size: 0.36rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #333;
+    
+}
+
+.pro_list .pro_list_bg .pro_info1{
+    
+    font-size: 0.22rem;
+    color: #999;
+     
+    
+}
+
+ .pro_info1 span{
+    
+    color: #fe6f1a;
+     
+    
+}
+
+.pro_list .pro_list_bg .pro_info2{
+    
+	color: #333;
+    font-size: 0.24rem;
+     
+    
+}
+
+ .pro_list_bg button{
+    box-shadow: none;
+    font-size: 0.24rem;
+    height: 0.5rem;
+    padding: 0;
+    width: 2.1rem;
+}
+
+/* 借贷产品       end */
+
+
+
+/* 提额法宝       start */
+
+
+.withdraw_list .withdraw_list_bg{
+	background:url("../images/main/v1/user_bg@2x.png") no-repeat scroll 90% 85% / 1.1rem 0.9rem, rgba(0, 0, 0, 0) url("../images/main/v1/weapon_bg@2x.png") no-repeat scroll center center / 6.5rem 2.91rem;
+	height:2.91rem;
+	/* cursor:pointer; */
+	padding-left: 0.5rem;
+    padding-right: 0.5rem;
+	
+}
+
+.withdraw_list .operator_bg{
+	background:url("../images/main/v1/Operator@2x.png") no-repeat scroll 92% 87.8% / 0.96rem 1.05rem, rgba(0, 0, 0, 0) url("../images/main/v1/weapon_bg@2x.png") no-repeat scroll center center / 6.5rem 2.91rem;
+ 
+	
+}
+
+.withdraw_list_bg .wd_title,.withdraw_list_bg  .wd_star {
+	color: #fff;
+	line-height: 0.7rem;
+	position: relative;
+	left: 0.2rem;
+}
+
+
+.withdraw_list_bg .wd_title {
+  
+    font-size: 0.32rem;
+    font-weight: 500;
+    height: 0.8rem;
+   
+}
+
+
+.withdraw_list_bg  .wd_star{
+    left: 0.25rem;    
+    font-size: 0.2rem;
+    height: 0.8rem;
+
+}
 
 
 
 
+.withdraw_list_bg  .wd_date{
+    color: #666;
+    font-size: 0.2rem;
+    height: 0.6rem;
+    
+    
+}
+
+.withdraw_list_bg .wd_date > div {
+	border-bottom: 0.01rem dashed #FF8862;
+	height: 0.6rem;
+	line-height: 0.6rem;}
+
+.withdraw_list_bg .wd_date > div:first-child{
+   padding-left:0.3rem;
+	
+}
+
+.withdraw_list_bg .wd_date > div:last-child{
+   padding-right:0.3rem;
+	
+}
+
+.withdraw_list_bg  .wd_star i{
+	display:inline-block;
+    background:rgba(0, 0, 0, 0) url("../images/main/v1/-pentagon@2x.png") no-repeat scroll center center / 0.21rem 0.21rem;
+	width:0.21rem;
+	height:0.21rem;
+	vertical-align: -0.02rem;
+}
+
+ .wd_star i+i{
+ 	margin-left:0.1rem;}
 
 
+.withdraw_list_bg .wd_btn .btn{
+    background-color: #999;
+    border-color: transparent;
+    border-radius: 0.1rem;
+    box-shadow: none;
+    color: #fff;
+    font-size: 0.24rem;
+    height: 0.6rem;
+    padding: 0;
+    width: 2.4rem;
+}
+
+.withdraw_list_bg .wd_btn .usable{
+	  background-color: #ffd73d;
+}
+
+/* 提额法宝       end */
+
+/* 银行卡列表       start */
+ 
+
+.bank_list .mui-table-view,.bank_list .mui-table-view::after,.bank_list .mui-table-view-cell::after{
+   background-color: transparent;
+}
+
+ 
+.bank_list .bank_icon {
+    height: 0.7rem;
+    padding-top: 0.09rem;
+    width: 0.7rem;
+    background: #fff none repeat scroll 0 0;
+    border-radius: 100%;
+    text-align: center;
+}
+
+.bank_list .bank_logo{
+  background-image: url("../images/bankLogo/bank_logo_bj1@3x.png");
+  height: 0.5rem;
+  width: 0.5rem;
+
+}
+
+.dl_item  .hd {
+    color: #2e2e4a;
+    font-size: 0.32rem;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/* 银行卡列表       end */
 
 
 
@@ -1081,3 +1508,53 @@ div.sp.cur-scales{
   }
 }*/
 /*--------------------主页面----------------end*/
+
+/* 底部弹出层动画    start */
+
+
+@-webkit-keyframes up{
+	   
+	   from{ 
+			 bottom:-3rem;;
+		 }
+	   to{ 
+		   bottom:0rem;
+		   
+		}
+ }
+ 
+ @-moz-keyframes up{
+	   
+	   from{ 
+			 bottom:-3rem;;
+		 }
+	   to{ 
+		   bottom:0rem;
+		   
+		}
+ }
+ 
+ 
+@-o-keyframes up{
+	   
+	   from{ 
+			 bottom:-3rem;;
+		 }
+	   to{ 
+		   bottom:0rem;
+		   
+		}
+ }
+ 
+ @-moz-keyframes up{
+	   
+	   from{ 
+			 bottom:-3rem;;
+		 }
+	   to{ 
+		   bottom:0rem;
+		   
+		}
+ }
+ 
+ /* 底部弹出层动画    end */

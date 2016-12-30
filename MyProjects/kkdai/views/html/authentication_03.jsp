@@ -10,6 +10,10 @@
 <title>信贷GUI-身份验证3</title>
 </head>
 <body>
+  	<!--提示-->
+	 <div class="tips_main" style="display:none;">
+			<p class="lead"></p>
+	 </div>
 	<div class="header">
 		<a href="authentication_02" class="icon ico_back"></a>
 		身份验证信息

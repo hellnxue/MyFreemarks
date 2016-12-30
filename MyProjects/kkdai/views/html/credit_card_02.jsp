@@ -4,13 +4,15 @@
 <head>
 <jsp:include page="../commen.jsp"></jsp:include>
 <title>信贷GUI-银行卡信息2</title>
-<script type="text/javascript" src="resource/js/jquery.js"></script>
-<script src="resource/js/htmlsize.js"></script>
-<script src='resource/js/My97DatePicker/WdatePicker.js'/></script>
-
+<link type="text/css" href="<%=request.getContextPath()%>/resource/css/common/mobiscroll_date.css" rel="stylesheet" />
  
 </head>
 <body>
+  	<!--提示-->
+	 <div class="tips_main" style="display:none;">
+			<p class="lead"></p>
+	 </div>
+	 
 	<div class="header">
 		<a href="javascript:void(0);" class="icon ico_back" id="proBack"></a>
 		银行卡信息
@@ -24,12 +26,12 @@
          <input name="productCode" value="" type="hidden">
     </form>        
             
-	<form action="./credit_card_04.html" method="post">
+	<form action="./credit_card_04.html" method="post" name="myform">
 		<div class="tips_info">
 			<i class="icon ico_sign"></i>亲，您申请的金额需大于1000小于您的授信额度哦~~
 		</div>
 		<div class="box_circle circle_not_b">
-			<div class="hd" ><span data-credit></span><i class='more_crieds'></i></div>
+			<div class="hd" ><span data-credit>&nbsp;</span><i class='more_crieds'></i></div>
 			<input type="hidden" name="creditBank" value=""/>
 			<input type="hidden" name="creditCardNo" value=""/>
 			<input type="hidden" name="md5CreditNo" value=""/>
@@ -40,11 +42,11 @@
 			<div class="form_wrap">
 				<div class="form-group">
 					<label class="control-label">申请代还金额</label>
-					<input type="text" name='loanAmt' value="<%=request.getParameter("loanAmt")%>" id="amount" placeholder="最低1000且为100整数倍" class="form-control form_ipt_right" readonly="readonly"/>
+					<input type="text" name='loanAmt' value="<%=request.getParameter("loanAmt")==null?"":request.getParameter("loanAmt")  %>" id="amount" placeholder="最低1000且为100整数倍" class="form-control form_ipt_right" readonly="readonly"/>
 				</div>
 				<div class="form-group">
 					<label class="control-label">还款期数</label>
-					<span style="text-align:right;margin-right:0.6rem;"><%=request.getParameter("repaymentPeriod")%></span>
+					<span style="text-align:right;margin-right:0.6rem;"><%=request.getParameter("repaymentPeriod")==null?"":request.getParameter("repaymentPeriod")%></span>
 					<input type="hidden" name="repaymentPeriod" value="<%=request.getParameter("repaymentPeriod")%>" />
 					<!-- <i class="icon ico_arrow_down" style="right:0.45rem ;"></i>
 					<div class="subnav none">
@@ -56,13 +58,13 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label">手续费</label>
-					<bdo class="form_text_right c_orange fs36" id="poundage"><%=request.getParameter("poundage")%></bdo>
+					<bdo class="form_text_right c_orange fs36" id="poundage"><%=request.getParameter("poundage")==null?"":request.getParameter("poundage")%></bdo>
 					<input type="hidden" name="poundage" value="<%=request.getParameter("poundage")%>" />
 				</div>
 				<div class="form_hint">注：手续费需从代还金额中扣除</div>
 				<div class="form-group">
 					<label class="control-label">放款日期</label>
-					<input required="required" type="date" name="makeLoanDay" value="<%= request.getParameter("makeLoanDay") == null  ? "" : request.getParameter("makeLoanDay") %>" class="form-control form_ipt_right_ico" id="makeLoanDay" style="background:url(resource/images/day@3x.png) no-repeat scroll 83% 42% / 8% 42%"/>
+					<input required="required" type="date" name="makeLoanDay" readonly="readonly" value="<%= request.getParameter("makeLoanDay") == null  ? "" : request.getParameter("makeLoanDay") %>" class="form-control form_ipt_right_ico" id="makeLoanDay" style="background:url(resource/images/day@3x.png) no-repeat scroll 83% 42% / 8% 42%"/>
 					<!-- <i class="icon ico_date"></i> -->
 				</div>
 				<div class="form_hint">注：放款成功后，预计1-2个工作日到账</div>
@@ -73,7 +75,7 @@
 			<div class="form_wrap">
 				<div class="form-group">
 					<label class="control-label">每月还款</label>
-					<bdo class="form_text_right c_orange" id="capital"><%=request.getParameter("capital")%></bdo>
+					<bdo class="form_text_right c_orange" id="capital"><%=request.getParameter("capital")==null?"":request.getParameter("capital")%></bdo>
 					<input type="hidden" name="capital" value="<%=request.getParameter("capital")%>" />
 				</div>
 				<div class="form-group">
@@ -119,11 +121,20 @@
   {{/if}}
  
 </script>	
+<!-- <script type="text/javascript" src="resource/js/jquery.js"></script>
+<script src="resource/js/htmlsize.js"></script>  
+<script src='resource/js/My97DatePicker/WdatePicker.js'/></script>-->
+
+<script src="<%=request.getContextPath()%>/resource/js/common/mobiscroll_date.js" type="text/javascript"  ></script>
+<script src="<%=request.getContextPath()%>/resource/js/common/mobiscroll.js" type="text/javascript" ></script>
 <script type="text/javascript">
+var path="<%=request.getContextPath()%>";
 var userId="${userSession.userId}";
 //隐藏域
 $("input[name=productCode]").val("${param.productCode}");
 $("input[name=loanAmt]").val("${param.loanAmt}");
+
+
 </script>
 		
 <script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>

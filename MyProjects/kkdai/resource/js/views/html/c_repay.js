@@ -7,6 +7,8 @@ var json = {
 
 var billsAry=[];//子订单里列表
 
+var lyIndex;//layer层标记
+
 $(function(){
 	
 	//还款详情数据渲染
@@ -17,7 +19,7 @@ $(function(){
 		var hMobile=sessionMobile.replace(sessionMobile.substr(3,4),"****");
 		$("#ctCode").find("[data-info]").html("请在下方输入手机"+hMobile+"，所收到的验证码");;
 		 var html=$("#ctCode").html();
-		 var index=layer.open({
+		 var lyIndex=layer.open({
 	  			anim: 'up',
 	  			content: html,
 	  			shadeClose:true
@@ -39,7 +41,8 @@ $(function(){
   		    //个人主动还款
 	  		$.post("kakadai/order/payOffLaonActivePersonal",{id:billId, verifyCode: $.trim(code)},function(data){
 	  			 if(data &&data.code&&data.code=="0000"){
-	  				   
+	  				    
+	  				    layer.close(lyIndex);
 	  				    location.href="./c_repay_status";//还款状态页面
 	  				   
 	  			   }else{
@@ -103,15 +106,21 @@ function repaySpecify(){
 
 function dynamic() {
 	var $selector=$(this).parents(".custom-code-wrapper");
+	var th=this;
 	$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
-	time(this);
-    $.post("phoneDynCode",{verifyKind:"CHK"},function(){ });
+	 
+    $.post("phoneDynCode",{verifyKind:"CHK"},function(){
+    	if(data.code=="0000"){
+    		time(th);
+    	}else{
+    		 layer.close(lyIndex);
+    		 MessageWin(data.msg);
+    		 
+    	}
+    });
 }
 
 function time(o) {
-	if (wait == 60) {
-		//sendVerifyCode('verifyCode','');
-	}
 	if (wait == 0) {
 		$(o).get(0).onclick = dynamic;
 		$(o).html("获取验证码");
@@ -120,7 +129,6 @@ function time(o) {
 	} else {
 		$(o).get(0).onclick = null;
 		$(o).html("(" + wait + ")重获验证码");
-		//$(o).css("color", "#FF0000");
 		wait--;
 		setTimeout(function() {
 			time(o);

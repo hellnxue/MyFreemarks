@@ -8,11 +8,12 @@
 </head>
 <body>
 	<div class="header">
-		<a href="index" class="icon ico_back"></a>
+		<a href="javascript:history.go(-1);" class="icon ico_back"></a>
 		银行卡绑定
 	</div>
 	<div class="maincontainer">
 	<form action="vefCard" method="post">
+		<input type='hidden' name='type' />
 		<div class="tips_info gray_bg">请绑定本人银行卡</div>
 		<div class='form_wrap mt20_no'>
 			<div class="form-group">
@@ -71,6 +72,9 @@
 	<script type="text/javascript">
 	var code = "${code}"; 
 	var msg = "${msg}";
+	
+	var hType="${param.type}";//卡类型
+	var hFrom="${param.from}";//替换标示
  
 	</script>
 	<script src="<%=request.getContextPath()%>/resource/js/views/html/bind_credit_card.js" type="text/javascript" ></script>  

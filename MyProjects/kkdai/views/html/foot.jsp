@@ -20,7 +20,7 @@ $(document).ready(function(){
 <body>
 <br></br>
 <br></br>
-    <div class="footer">
+    <div class="footer ctm-footer">
         <a href="bill_manage_01">
 			<span>
 			   <i class='foot_ico_1' alt="" ></i>

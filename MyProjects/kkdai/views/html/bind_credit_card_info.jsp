@@ -63,7 +63,8 @@ $(document).ready(function(){
 </head>
 <body>
     <div class="header">
-		<a href="bind_credit_card" class="icon ico_back"></a>
+		<!-- <a href="bind_credit_card" class="icon ico_back"></a> -->
+		<a href="javascript:history.go(-1);" class="icon ico_back"></a>
 		银行卡信息
 	</div>
 	<div class="maincontainer">

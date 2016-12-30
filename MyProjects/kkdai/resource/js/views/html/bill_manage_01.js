@@ -2,6 +2,7 @@
 var sendCodeFlag=false;
 var cTip01="success";
 var cTip02="tipOnly";
+var lyIndex;//layer层标记
 var json = {
 	  userId: sessionUserId,
   };
@@ -42,14 +43,16 @@ function ttest(){
 			//sendVerifyCode('verifyCode','');
 		}
 		if (wait == 0) {
+			
 			$(o).get(0).onclick = dynamic;
 			$(o).html("获取验证码");
 			$(o).removeAttr("style").addClass("catch");
 			wait = 60;
+			
 		} else {
+			
 			$(o).get(0).onclick = null;
 			$(o).html("(" + wait + ")重获验证码");
-			//$(o).css("color", "#FF0000");
 			wait--;
 			setTimeout(function() {
 				time(o);
@@ -59,14 +62,28 @@ function ttest(){
 
 	function dynamic() {
 		sendCodeFlag=true;
+		var th=this;
 		var $selector=$(this).parents(".custom-code-wrapper");
 		$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
-		time(this);
 		
-//		var orderId= $(this).data("orderid"); //订单编号
-//		$("#orderId").val(orderId);
-//		console.log(orderId);
-	    $.post("phoneDynCode",{verifyKind:"JY"},function(){ });
+	    $.post("phoneDynCode",{verifyKind:"JY"},function(data){ 
+	    	
+	    	if(data.result&&data.result.firendlyRem){
+	    		
+	    		$selector.find("p[data-friendly]").html(data.result.firendlyRem+"！&nbsp;");
+	    		
+	    	}
+	    	
+	    	 
+	    	if(data.code=="0000"){
+	    		 
+	    		time(th);
+	    	}else{
+	    		 layer.close(lyIndex);
+	    		 MessageWin(data.msg);
+	    		 
+	    	}
+	    });
 	}
 	
 	//数据初始化渲染 
@@ -76,6 +93,12 @@ function ttest(){
 			  {userId: json.userId,account:'baifutianxia',pageSize:10,pageIndex:page},
 			  function(res){
 				 if(res.result){
+					 
+					 if(times=="1"&&res.result.length==0){
+						 $(".maincontainer").html( $("#noMessage").clone().removeClass("none"));
+						 return;
+					 }
+					 
 					 if(res.result.length == 0 || "" == res.result || null == res.result){
 						 if(callBack){
 							 callBack();
@@ -132,7 +155,7 @@ function ttest(){
 	  		  });
 	}    
   
-  
+	
   //取消订单
   function orderCancel(th){
 	  var orderId= $(th).data("orderid"); //订单编号
@@ -156,7 +179,7 @@ function ttest(){
 			 
 		   }else{ //执行取消账单操作
 			   
-			   var index=layer.open({
+			     lyIndex=layer.open({
 		  			anim: 'up',
 		  			area: '500px' ,
 		  			closeBtn:1,
@@ -169,7 +192,7 @@ function ttest(){
 		  	  
 		  	  //取消
 		  	  $(".layui-m-layercont").find("button[data-cancel]").on("click",function(){
-		  		  layer.close(index);
+		  		  layer.close(lyIndex);
 		  		 sendCodeFlag=false;
 		  		  
 		  	  });
@@ -197,7 +220,7 @@ function ttest(){
 			  				   
 			  			   }else{
 			  				 
-			  				 layer.close(index);
+			  				 layer.close(lyIndex);
 			  				 MessageWin(data.msg);
 			  				 
 			  			   }

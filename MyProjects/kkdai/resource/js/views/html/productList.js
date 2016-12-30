@@ -12,34 +12,49 @@
 		
 		//金额输入
 		$('input[name=loanAmt]').on('click', function() {
-		 
-			new KeyBoard(this,{accomplished:function(){
+ 
+			$(".shade_outer").css("background","rgba(0,0,0,0)").show();
+			new KeyBoard(this,
+				{
+					
+					accomplished:function(){
+					
+					var productCode=$(".swiper-slide-active").attr("productCode");
+					var period=$(".swiper-slide-active").attr("period");
+					
+					//初始化试算结果
+					inputchange(productCode,period);
+					
+					//匹配产品试算结果
+					capticalMatchByPC(productCode);
+					
 				
-				var productCode=$(".swiper-slide-active").attr("productCode");
-				var period=$(".swiper-slide-active").attr("period");
-				
-				//初始化试算结果
-				inputchange(productCode,period);
-				
-				//匹配产品试算结果
-				capticalMatchByPC(productCode);
-			}});
+			},
+				endCallback:function(){
+					setTimeout(function(){
+						$(".shade_outer").css("background","rgba(0,0,0,0.5)").hide();
+					},600);
+				}
+			});
+			
+			$("img[data-delete]").attr("src",path+"/resource/images/main/v1/delete@2x.png").css("width","0.59rem");
 
 		});
 		
 		
 		//下一步
-		$("#step").on("click", function(){
-			
-			if(validate()){
-				$(this).parents("form").submit();
-			}
-			
-		});
+		$("#step").on("click", next);
 		
 		
 		
 	});
+	
+	function next(){
+			if(validate()){
+				$(this).parents("form").submit();
+			}
+
+	}
 	
 	//根据输入金额获取产品试算结果
 	function inputchange(productCode,period){ 
@@ -51,10 +66,10 @@
 			return false;
 		}
 		
-		if(parseInt(amount) > parseInt(creditAmount)){
-			MessageWin("您的信用额度不够");
-			return false;
+		if(!validate()){
+			return ;
 		}
+		
 		$.ajax({
 			async: false,
 			type: 'post',
@@ -72,7 +87,7 @@
 				calculateResult=data.result;
 				
 			}else {
-				MessageWin(data.msg, function(){});
+				promt(data.msg, function(){});
 			}
 			
 		});
@@ -133,8 +148,10 @@
 					        "</div>" +
 					        "<div class='t_lit'>" +
 					        "<span>手续费扣收方式</span>" +
-					        "<span class='t_lit_je'>从放款余额中直接扣除</span>" +
-					        "<p class='t_lit_p'><span class='orange'>/</span>还款时收取</p>" +
+					        "<span class='t_lit_je'>"+obj.interestTypeDesc+"</span>" +
+					        "<p class='t_lit_p'>&nbsp;</p>" +
+//					        "<span class='t_lit_je'>从放款余额中直接扣除</span>" +
+//					        "<p class='t_lit_p'><span class='orange'>/</span>还款时收取</p>" +
 					        
 				        "</div>" +
 					        "<div class='t_lit'>" +
@@ -167,7 +184,7 @@
 						capticalMatchByPC(paramObj.productCode);
 					} 
 				}else {
-					MessageWin(data.msg);
+					promt(data.msg);
 				}
 			}
 		});
@@ -175,18 +192,24 @@
 	
 	
 
-	
+	/*额度验证*/
 	function validate() {
+		var flag=false;
 		var amount = $("input[name=loanAmt]").val(); 
 		if(amount==""){
-			MessageWin("请输入借款金额！");
-			return false;
+			promt("请输入借款金额！");
+			 
 		}else if(parseInt(amount) > parseInt(creditAmount)){
-			MessageWin("您的信用额度不够");
-			return false;
+			promt("您的信用额度不够！");
+			 
+		}else if(parseInt(amount) < 100 || parseInt(amount) % 100 != 0){
+			promt("贷还金额为100的整数倍！");
+		 
 		}else{
-			return true;
+			flag=true;
 		}
+		
+		return flag;
 	}
 	
 	//初始化滑动插件
