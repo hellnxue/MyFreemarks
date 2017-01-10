@@ -38,10 +38,10 @@ function MessageWin(message, callback) {
 	$(".w_content").text(message);
 	$(".shade_outer, .shade_window").removeClass("none");
     $("#shade_window_close").bind("click", function(){
-    $(".shade_outer, .shade_window").addClass("none");
-    if(callback){
-    	callback();
-    }	
+    	$(".shade_outer, .shade_window").addClass("none");
+	    if(callback){
+	    	callback();
+	    }	
     });
 }
 
@@ -80,3 +80,54 @@ function ajaxUtil(prmObj){
 		}
 	});
 }
+
+/*文字滚动提示*/
+function scrollNewsInfo(obj){
+
+	  	var num;
+	    var docEl = document.documentElement;
+		var clientWidth = docEl.clientWidth;
+		if (!clientWidth){
+			return
+		}
+			 
+		 
+		if (clientWidth >= 750) {
+			num = 100;
+		} else {
+			num = 100 * (clientWidth / 750);
+		}
+
+
+	  var height=Math.round(obj.height*num);
+
+
+	  var box=obj.scrollDom,can=true;
+	  box.innerHTML+=box.innerHTML;
+	  
+	 (function(){
+	   var stop=box.scrollTop%height==0&&!can;
+	   if(!stop)box.scrollTop==parseInt(box.scrollHeight/2)?box.scrollTop=0:box.scrollTop++;
+	   setTimeout(arguments.callee,box.scrollTop%height?20:2000);
+	  })();
+
+}
+
+
+
+
+/*获取当前日期*/
+function getCurrentDate(ms){
+	   var date=new Date(ms);
+	   var month= date.getMonth()+1 +"";
+	   if(month.length<2){
+	 	 month="0"+month;
+	  }
+	   var day= date.getDate() +"";
+	   if(day.length<2){
+	 	 day="0"+day;
+	  }
+	   
+	  var handleDate=date.getFullYear()+"-"+month+"-"+day;
+	  return handleDate;
+	}

@@ -75,11 +75,8 @@ p {
 /* 修改弹框按钮的默认样式  end */
 
 
- 
-.hm-form-group input[type="number"], 
-.hm-form-group input[type="password"], 
- 
-.hm-form-group input[type="text"]
+/* 修改部分表单控件的mui样式 */ 
+.hm-form-group input[type="number"],  .hm-form-group input[type="password"],  .hm-form-group input[type="text"]
   {
     height: 0.8rem;
     line-height: 0.28rem;
@@ -90,6 +87,48 @@ p {
     margin-bottom: 0;
 }
 
+input[type="text"].hm-no-border,input[type="text"].hm-verify-ode{
+	border: 0 none;
+	 
+}
+
+input[type="text"].hm-verify-ode{
+	 
+	padding: 0.04rem 0.12rem 0.06rem;
+}
+
+/*列表样式*/
+
+/* 底线*/
+.hm-t-v-cell::after{
+    left: 0;
+}
+
+/* 带选项卡的下拉刷新列表中的图片*/
+.mui-slider .mui-slider-group .mui-slider-item img{
+	width:inherit;
+}
+
+/*下拉刷新-上拉加载更多*/
+
+.hm-table-view{
+	background-color:transparent;
+}
+
+/* ul上下横线 */
+.hm-table-view-no-bd::before,.hm-table-view-no-bd::after{
+	background-color:transparent;
+}
+
+.mui-pull{
+    font-weight: 500;
+    color:#9b9b9b;
+}
+.mui-pull-caption mui-pull-caption-nomore{
+    font-size: 0.26rem;
+    line-height: 1;
+    
+}
 
 
 

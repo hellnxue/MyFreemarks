@@ -7,8 +7,16 @@ var operator_01="operator_01";  //运营商
 var credit_03="credit_03";		//征信验证
 
 $(document).ready(function() {
+	
+		sessionStorage.promoteQuota=promoteQuota;
+		sessionStorage.processCode=processCode;
+		sessionStorage.credit=credit;
+		sessionStorage.card=card;
 	 
-	 setDateInfo()
+		setDateInfo();
+		
+		setNewsInfo(newInfo);
+		
 		if(promoteQuota==0){ 
 			
 			$("a[data-dwte]").show().find("span").html("申请额度");
@@ -43,18 +51,12 @@ $(document).ready(function() {
 
 
 			if(promoteQuota==0){ 
-				 
-				if(processCode == '00' || processCode == ""){
-					window.location.href=authentication_02;
-					bindCardBeforeFlag=authentication_02;
-				}else if(processCode == '10'){
-					window.location.href=linkman;			
-					bindCardBeforeFlag=linkman;
-				}else if (processCode == '20'){
-					window.location.href=zhimaxinyong;	
-					bindCardBeforeFlag=zhimaxinyong;
+				
+				if(bindCardBeforeFlag){
+					window.location=bindCardBeforeFlag;
 				}
-
+				
+				
 			}else if(promoteQuota==1){
 				 
 //				if(processCode == '30'){
@@ -72,24 +74,14 @@ $(document).ready(function() {
 
 			});
 
-	 //最新消息	
-	 scrollNewsInfo({
-	 	height:0.8, 
-	 	scrollDom:$("a[data-scroll]")[0]
-	 });
-
-	//最新动态
-	scrollNewsInfo({
-	 	height:0.8,
-	 	scrollDom:$("a[data-scroll]")[1]
-	 });
 	
-	/*借款*/
-	$("div[data-href]").on("click",function(){
+	/*借款、绑定银行卡*/
+	$("[data-href]").on("click",function(e){
+		
+		e.preventDefault();
 		var proSel=$(this).data("href");
 		var cardHref=$(this).data("cardHref");
 		
-		console.log(bindCardBeforeFlag);
 		if(bindCardBeforeFlag){
 			
 			MessageWin("请先申请额度！", function(){
@@ -99,9 +91,11 @@ $(document).ready(function() {
 			});
 			
 		}else{
-			if(credit==1&&card==1){
+			if(credit==1&&card==1){//借钱还信用卡
+				
 				window.location.href=proSel;
-			}else{
+				
+			}else{ //银行卡绑定
 				if(credit==0&&card==0){
 					$("#cardType").val("J");
 				}else if(credit==1&&card==0){
@@ -120,39 +114,11 @@ $(document).ready(function() {
 
 	});
 	 
-  /*文字滚动提示*/
-  function scrollNewsInfo(obj){
-
-	  	var num;
-	    var docEl = document.documentElement;
-		var clientWidth = docEl.clientWidth;
-		if (!clientWidth){
-			return
-		}
-			 
-		 
-		if (clientWidth >= 750) {
-			num = 100;
-		} else {
-			num = 100 * (clientWidth / 750);
-		}
-
-
-	  var height=Math.round(obj.height*num);
-
-
-	  var box=obj.scrollDom,can=true;
-	  box.innerHTML+=box.innerHTML;
-	  
-	 (function(){
-	   var stop=box.scrollTop%height==0&&!can;
-	   if(!stop)box.scrollTop==parseInt(box.scrollHeight/2)?box.scrollTop=0:box.scrollTop++;
-	   setTimeout(arguments.callee,box.scrollTop%height?20:2000);
-	  })();
-
-  }
+ 
   
-  
+  /**
+   * 日期
+   */
   function setDateInfo(){
 	  var weekAry=["周日","周一","周二","周三","周四","周五","周六"];
 	  var date=new Date(), 
@@ -178,5 +144,28 @@ $(document).ready(function() {
 	  
 	  
 	   
+  }
+  
+  
+  /**
+   * 最新活动
+   */
+  function setNewsInfo(newsItem){
+	  
+	  if(newsItem.indexOf("|")){
+		  var newsAry=newsItem.split("|");
+		  $("a[data-scroll]").empty();
+		  $.map(newsAry,function(item,index){
+			  $("a[data-scroll]").append(' <span class="news_span">'+item+'</span>');
+		  });
+		  
+		  scrollNewsInfo({
+			 	height:0.8, 
+			 	scrollDom:$("a[data-scroll]")[0]
+			 });
+		  
+	  }
+	  
+	  
   }
 

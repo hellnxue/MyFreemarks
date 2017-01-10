@@ -99,7 +99,7 @@
 		</div>
 		<center>${msg}</<center>
 		<div class="btn-wrap">
-			<button id='linkman_form' type="submit" class="btn l_wd btn-white"  onclick="return checkNull()">下一步</button>
+			<button id='linkman_form' type="submit" class="btn l_wd btn-white ctm-box-shadow"  onclick="return checkNull()">下一步</button>
 		</div>
 		<div class="tips">
 			<bdo class="c_orange">*</bdo>为必填信息

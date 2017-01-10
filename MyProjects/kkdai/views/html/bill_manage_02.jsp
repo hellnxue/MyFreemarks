@@ -1,12 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
-<jsp:include page="../commen.jsp"></jsp:include>
+<jsp:include page="../commen_mui.jsp"></jsp:include>
 <title>账单中心-还款状况</title>
+<link type="text/css" href="<%=request.getContextPath()%>/resource/css/pullrefreshWithTab.css" rel="stylesheet" />
+
 </head>
 <body>
 		<header class="ctm-header ctm-header-default">
-			<a href="bill_manage_01.html" class="nav-left-icon"> <em></em>
+			<a href="bill_manage_01_main.html" class="nav-left-icon"> <em></em>
 			</a> 
 			<!-- <a href="#" class="nav-right-icon"> <span>返回首页</span>
 			</a> -->
@@ -18,38 +20,41 @@
 			<div class="custom-col-5 ctm-cursor-ptr" data-tab="record"><span>还款记录</span></div>
 		</div>
 	</div>
-	<div class="maincontainer">
+	
+	
+   <div class="mui-content">
+		<div id="slider" class="mui-slider mui-fullscreen">
+			<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active " data-flag="bill"  data-bill >
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view hm-table-view">
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item1mobile" class="mui-slider-item mui-control-content " data-flag="record" data-record >
+						<div id="scroll2" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view hm-table-view">
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+  </div>
+	<!-- <div class="maincontainer">
 		<div data-bill>
 		
 		</div>
 		<div data-record>
 		    
 		</div>
-		<!-- <div class="box_wrap2" style="display:none">
-			<div class="title2">
-				应还日期：
-				<div class="pos_a_r">期数：<bdo class="c_orange"></bdo></div>
-			</div>
-			<div class="form_wrap form_noborder">
-				<div class="form-group">
-					<label class="control-label">应还金额：</label>
-					 元
-				</div>
-				<div class="form-group">
-					<label class="control-label">超期罚息：</label>
-					 元
-				</div>
-				<div class="form-group">
-					<label class="control-label">扣款日期：</label>
-					
-				</div>
-			</div>
-			<div class="form_ft">支付状态：<bdo class="c_orange"></bdo></div>
-		</div>
-		<div class="btn-wrap mt280" id="btnRepay">
-			<button class="btn l_wd btn-orange disabled" type="button">提前还款</button>
-		</div> -->
-	</div>
+		 
+	</div> -->
 	
 	<!-- 分期账单数据渲染模板 -->	
 	<script id="billManageTemplate" type="text/html">
@@ -105,10 +110,10 @@
  				<div class="form-group ctm-hor-l">
 					<label class="control-label">手续费：</label>
 
-					{{if bill.monthServiceFee==0}}
+					{{if bill.handingFee==0}}
 						    无
 					 {{else}}
-					     {{bill.monthServiceFee}}元						
+					     {{bill.handingFee}}元						
 					 {{/if}} 
 				</div>
 				<div class="form-group ctm-hor-r">
@@ -148,23 +153,23 @@
 				 </bdo> 
 					  
 					  {{if bill.payStatus==2||bill.payStatus==3}}
-
 				  	     <a class="c_orange ctm-f-r " href="javascript:void(0)"  data-repayment-immediately  data-id="{{bill.id}}" data-billPeriod="{{bill.billPeriod}}" data-payStatus="{{bill.payStatus}}">
 				             	  立即还款
-				    	 <img src="<%=request.getContextPath()%>/resource/images/j_rt@3x.png" class="ctm-icon1"/>
+				    	
+							<span class="ctm-icon1"></span>
 				   		</a>
  
 				  		<!-- <a class="c_orange ctm-f-r " href="./bill_manage_02.html?param={{bill.orderId}}"  data-ajax="false">
 				             	  立即还款
 				    	 <img src="<%=request.getContextPath()%>/resource/images/j_rt@3x.png" class="ctm-icon1"/>
 				   		</a> -->
-
 					  {{else if bill.payStatus==5}}
 				  		 <a class="c_orange ctm-f-r " href="./c_repay_status.html?params={{bill.orderId}}"  data-ajax="false">
 				             	  立即查看
-				    	 <img src="<%=request.getContextPath()%>/resource/images/j_rt@3x.png" class="ctm-icon1"/>
+							<span class="ctm-icon1"></span>
 				   		</a> 
 					  {{/if}}  
+					 
 			</div>	    
 				    
 		   </div>
@@ -200,7 +205,8 @@
 				<div class="form-group">
 					<label class="control-label">还款金额：</label>
 					{{detail.total}}元
-					<img class="detailsInfo m-l-lg" src="<%=request.getContextPath()%>/resource/images/main/v1/mark@2x.png"  >	
+					<span class="detailsInfo m-l-lg"></span>
+						
 				</div>
 				<div class="form-group">
 					<label class="control-label">支付状态：</label>
@@ -308,7 +314,7 @@
 	   	<div class="ctm-container">
 	   	   <div class="ctm-row">
 	   	     <div class="custom-col-10 ctm-layer-title" >
-				<img src="<%=request.getContextPath()%>/resource/images/main/v1/follow@2x.png">
+				<%-- <img src="<%=request.getContextPath()%>/resource/images/main/v1/follow@2x.png"> --%>
 				<span class="m-l-sm">还款金额明细</span> 
 			 </div>
 	   	   </div>
@@ -318,12 +324,16 @@
 	   	</div>
 	</div>
 <script src="<%=request.getContextPath()%>/resource/js/common/layer.js" type="text/javascript"></script>
+<script src="<%=request.getContextPath()%>/resource/mui/js/mui.pullToRefresh.js"></script>
+<script src="<%=request.getContextPath()%>/resource/mui/js/mui.pullToRefresh.material.js"></script>
 <script type="text/javascript">
 	var  sessionUserId= '${userSession.userId}';
 	var  pmOrderId= "${param.param}";
+	
+	
 </script> 
 
 <script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>
-<script src="<%=request.getContextPath()%>/resource/js/views/html/bill_manage_02.js" type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/resource/js/views/html/bill_manage_02.js" type="text/javascript" ></script> 
 </body>
 </html>

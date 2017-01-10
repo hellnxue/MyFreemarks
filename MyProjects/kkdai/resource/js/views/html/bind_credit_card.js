@@ -23,7 +23,11 @@
 	//调用卡宾校验后提示
  
 	if(code.length > 0 && code != "0000") {
-		MessageWin(msg);
+		MessageWin(msg,function(){
+			if(code=="4030"){
+				location.assign("index");
+			}
+		});
 	}
 	
 	$(".form-group>span").click(function(){

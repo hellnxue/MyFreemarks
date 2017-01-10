@@ -21,7 +21,7 @@ $(document).ready(function(){
 <br></br>
 <br></br>
     <div class="footer ctm-footer">
-        <a href="bill_manage_01">
+        <a href="bill_manage_01_main">
 			<span>
 			   <i class='foot_ico_1' alt="" ></i>
 			</span>

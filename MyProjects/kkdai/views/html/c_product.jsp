@@ -6,14 +6,17 @@
 </head>
 
 <body style="background-color: #f3f3f3;">
-<div id='content_dom'> </div>
-
+	<div id='content_dom'> </div>
+	<form   id="cardForm">
+    	<input type='hidden' name='type'  id="cardType"/>
+	</form> 
+	
 	<script type="text/html" id="productDetail">
- <div>
 	<div class="header">
 		<a href="javascript:history.go(-1)" class="icon hd_left"></a> 
 		{{productName}}
 	</div>
+
 	<div class="pro_top_box">
 		<div class="pro_top1">
 			<p class="p1">{{lossFeeDesc}}</p>
@@ -51,12 +54,14 @@
 			 
 		</div>
 	</div>
-	<a href="productList"><div class="pro_bottom">立即代还信用卡</div></a>
- </div>
+	<a href="javascript:void(0);" class="pro_bottom"><div class="" id="hcredit" data-href="productList" data-card-href="bind_credit_card">立即代还信用卡</div></a>
 	</script>
+	
+
 	<script type="text/javascript">
 	   
 	    var productCode = "${param.productCode}";
+	    
 		
 	</script>
 	<script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script> 

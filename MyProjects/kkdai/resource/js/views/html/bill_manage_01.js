@@ -1,158 +1,213 @@
-﻿var wait = 60;
-var sendCodeFlag=false;
-var cTip01="success";
-var cTip02="tipOnly";
-var lyIndex;//layer层标记
-var json = {
-	  userId: sessionUserId,
-  };
-
-function ttest(){
-	location.href="bill_cancel_01?flag="+cTip01;
+﻿	var wait = 60;
+	var sendCodeFlag=false;
+	var cTip01="success";
+	var cTip02="tipOnly";
+	var lyIndex;//layer层标记
 	
-}
-  
-  var beforeScrollStart = 0,  beforeScrollTop = 0, page = 1, flag = false;
-  $(document).ready(function(){
-	   
-	  $(document).on("scrollstart",function(){
-		   beforeScrollStart = document.body.scrollTop;
-	  });
-	  $(document).on("scrollstop",function(){
-		   beforeScrollTop = document.body.scrollTop;
-		   if((beforeScrollStart - beforeScrollTop) < 0){// 判断是否下滑
-			   page = page + 1;
-			   var callBack = function(){
-		    	   page = page - 1;
-				   flag = true;
-		       };
-			   if(flag){
-				   return false;
-			   }
-			    postDate("2", callBack);
-		   }
-	  });
-	   postDate("1");
-	  
-	  
-	 
-  });
-  
-  function time(o) {
-		if (wait == 60) {
-			//sendVerifyCode('verifyCode','');
+	//分页
+	var pageIndex=1,
+	pageSize=10,
+	moreInfo=true,
+	pullrefresh='#pullrefresh',
+	pullBottomTextSelector=".mui-scroll .mui-pull-bottom-pocket",
+	pullBottomMTop="m-t-xxxl";
+
+	mui.init({ 
+		pullRefresh: {
+			container: pullrefresh,
+			down: {
+				callback: pulldownRefresh,
+				contentdown : "下拉刷新", 
+			    contentover : "释放更新", 
+			    contentrefresh : "加载中...", 
+			},
+			up: {
+				contentrefresh: '加载更多...',
+				callback: pullupRefresh
+			}
 		}
-		if (wait == 0) {
-			
-			$(o).get(0).onclick = dynamic;
-			$(o).html("获取验证码");
-			$(o).removeAttr("style").addClass("catch");
-			wait = 60;
-			
-		} else {
-			
-			$(o).get(0).onclick = null;
-			$(o).html("(" + wait + ")重获验证码");
-			wait--;
+	});
+	if (mui.os.plus) {
+		mui.plusReady(function() {
 			setTimeout(function() {
-				time(o);
+				mui(pullrefresh).pullRefresh().pullupLoading();
 			}, 1000);
-		}
+
+		});
+	} else {
+		mui.ready(function() {
+			mui(pullrefresh).pullRefresh().pullupLoading();
+		});
 	}
 
-	function dynamic() {
-		sendCodeFlag=true;
-		var th=this;
-		var $selector=$(this).parents(".custom-code-wrapper");
-		$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
-		
-	    $.post("phoneDynCode",{verifyKind:"JY"},function(data){ 
-	    	
-	    	if(data.result&&data.result.firendlyRem){
-	    		
-	    		$selector.find("p[data-friendly]").html(data.result.firendlyRem+"！&nbsp;");
-	    		
-	    	}
-	    	
-	    	 
-	    	if(data.code=="0000"){
-	    		 
-	    		time(th);
-	    	}else{
-	    		 layer.close(lyIndex);
-	    		 MessageWin(data.msg);
-	    		 
-	    	}
-	    });
+  
+//  var beforeScrollStart = 0,  beforeScrollTop = 0, page = 1, flag = false;
+//  $(document).ready(function(){
+//	   
+//	  $(document).on("scrollstart",function(){
+//		   beforeScrollStart = document.body.scrollTop;
+//	  });
+//	  $(document).on("scrollstop",function(){
+//		   beforeScrollTop = document.body.scrollTop;
+//		   if((beforeScrollStart - beforeScrollTop) < 0){// 判断是否下滑
+//			   page = page + 1;
+//			   var callBack = function(){
+//		    	   page = page - 1;
+//				   flag = true;
+//		       };
+//			   if(flag){
+//				   return false;
+//			   }
+//			    postDate("2", callBack);
+//		   }
+//	  });
+//	   postDate("1");
+//	  
+//	  
+//	 
+//  });
+	
+	/**
+	 * 下拉刷新具体业务实现
+	 */
+	function pulldownRefresh() {
+
+		postDate("pullUp");
 	}
+
+	/**
+	 * 上拉加载具体业务实现
+	 */
+	function pullupRefresh() {
+		
+		postDate("pullDown");
+	}
+  
+ 
 	
 	//数据初始化渲染 
-	function postDate(times, callBack){
-		 
-		 $.post("kakadai/order/orderInfo",
-			  {userId: json.userId,account:'baifutianxia',pageSize:10,pageIndex:page},
-			  function(res){
-				 if(res.result){
-					 
-					 if(times=="1"&&res.result.length==0){
-						 $(".maincontainer").html( $("#noMessage").clone().removeClass("none"));
-						 return;
-					 }
-					 
-					 if(res.result.length == 0 || "" == res.result || null == res.result){
-						 if(callBack){
-							 callBack();
-							 
-						  }
-						 };
-					 var statusJson = {10: "订单申请中", 11: "已签约", 12: "已结清", 20: "解约"};
-					 
-					 var $maincontainer = $("div.maincontainer");
-				 	 var resdata = typeof res == 'string' ? $.parseJSON(res) : res;
-				 	 
-				 	 if(resdata.code != '0000') {
-				 		 MessageWin(resdata.msg );
-				 		 return;
-				 	 }
-				 	 if(resdata.result) {
-				 		 
-				 		 var html=template("billManageTemplate",resdata);
-				 		 var $html=$(html);
-				 		 
-					 	if("1" == times) {
-					 		
-					 		$maincontainer.empty().append( $html);
-					 		
-					 	}else {
-					 		$maincontainer.append( $html);
-					 	}
-					 	
-					 	//$(".box_wrap2").first().addClass("mt20");
-					 	//取消订单
-					 	$html.find('[data-type="cancel"]').on("click",function(){
-					 		
-					 		orderCancel(this);
-					 		
-					 	});
-					 	
-					 	//还款状况
-					 	$html.find('[data-href]').on("click",function(){
+	function postDate(status){
+		var flag=false;//是否有数据结果标示
+		setTimeout(function() {
+			 $.post("kakadai/order/orderInfo",
+				   {
+				 	userId: sessionUserId,
+				 	account:'baifutianxia',
+				 	pageSize:pageSize,
+				 	pageIndex:pageIndex
+				 	},
+				 	function(res){
+					  
+					 	 if(res.code != '0000') {
 					 		 
-					 		location.href=$(this).data("href");
+					 		 mui.toast("获取账单列表失败！"+res.msg,{ duration:'short', type:'div' }) ;
+					 		 
+					 		if(status=="pullUp"){//下拉刷新
+					 			
+					 			//停止刷新
+								mui(pullrefresh).pullRefresh().endPulldownToRefresh();
+								
+							}else{//禁用上拉加载
+								
+						 		 mui(pullrefresh).pullRefresh().endPullupToRefresh(true); 
+							}
 					 		
-					 	});
+					 		 $(pullBottomTextSelector).addClass(pullBottomMTop);
+					 		 
+					 		 return;
+					 	 }
+					 	 
+					 	 if(res.result&&res.result.length>0){
+					 		
+					 		if( $(pullBottomTextSelector).hasClass(pullBottomMTop)){
+					 			
+					 			 $(pullBottomTextSelector).removeClass(pullBottomMTop);
+					 		}
+					 		
+					 		
+							 //暂无账单信息
+							 if(pageIndex==1&&res.result.length==0){
+								 $("ul[data-bill-items]").html( $("#noMessage").clone().removeClass("none"));
+								 return;
+							 }
+							 
+							 var $maincontainer = $("ul[data-bill-items]");
+						 		 
+					 		 var html=template("billManageTemplate",res);
+					 		 var $html=$(html);
+						 		 
+					 		if(pageIndex==1){
+					 			
+					 			$maincontainer.empty().append($html);
+					 			
+							}else{
+								if(status=="pullDown"){//下拉刷新
+									
+									$maincontainer.prepend($html);
+									
+								}else{//上拉加载更多
+									
+									$maincontainer.append($html);
+								}
+								
+							}
+	
+							//取消订单 	
+						 	$html.find('[data-type="cancel"]').each(function(){
+						 		this.addEventListener("tap",function(){
+						 			orderCancel(this);
+						 		});
+						 	});
+						 	
+						 	//账单详情
+							$html.find('[data-href]').each(function(){
+						 		this.addEventListener("tap",function(){
+						 			mui.openWindow({
+									    url:$(this).data("href"),
+									    id:$(this).data("href"),
+									});
+						 		});
+						 	});
+							 
+						 }else{
+							 
+							flag=true;
+						 } 
 					 	
-				 	 } 
-					 
-				 }
+					 	if(status=="pullUp"){//下拉刷新
+							flag=false;
+							mui(pullrefresh).pullRefresh().endPulldownToRefresh();
+							
+						}else{//上拉加载更多
+							
+							mui(pullrefresh).pullRefresh().endPullupToRefresh(flag); 
+						}
+						
+						//没有数据时禁用上拉加载数据
+						if(flag){
+							setTimeout(function(){
+							    mui(pullrefresh).pullRefresh().disablePullupToRefresh();
+							}, 2000);
+							
+						}
+						
+				 		
+				 		pageIndex++;
+						pageSize++;
+					 	
 
-			  }) .error(function(){
-				  MessageWin("ajax异常" );
-				  var $maincontainer = $("div.maincontainer");   
-				  /* $maincontainer.html($maincontainer.html().replace(/#\w+#/g,""));
-				  $maincontainer.find("a").attr("href","javascript:void(0)").removeClass("ico_next");
-				  $maincontainer.find(".box_wrap2").show(); */
-	  		  });
+				  }) .fail(function(){
+//					     MessageWin("账单获取失败！" );
+					     mui.alert("账单获取失败！", '提示',"确认");
+//						  var $maincontainer = $("div.maincontainer");   
+					  /* $maincontainer.html($maincontainer.html().replace(/#\w+#/g,""));
+					  $maincontainer.find("a").attr("href","javascript:void(0)").removeClass("ico_next");
+					  $maincontainer.find(".box_wrap2").show(); */
+		  		  });
+			
+		},1500);
+		 
+		
 	}    
   
 	
@@ -173,7 +228,12 @@ function ttest(){
 		   
 		   //预约代还日期为当天，给出提示
 		   if(appointDate==currentDate){
-			 location.href="bill_cancel_01?flag="+cTip02;
+//			 location.href="bill_cancel_01?flag="+cTip02;
+			 var href="bill_cancel_01?flag="+cTip02;
+			 mui.openWindow({
+				    url:href,
+				    id:href,
+				});
 			 return; 
 			 
 			 
@@ -215,8 +275,13 @@ function ttest(){
 		  		   $.post("surrender",{orderId:orderId, vefCode: phoneCode},function(data){
 		  			   
 		  			   if(data &&data.code&&data.code=="0000"){
-			  				  //页面跳转
-			  				   location.href="bill_cancel_01?flag="+cTip01;
+		  				     //页面跳转
+//			  				 location.href="bill_cancel_01?flag="+cTip01;
+			  				 var cHref= "bill_cancel_01?flag="+cTip01;
+			  				 mui.openWindow({
+			 				    url:cHref,
+			 				    id:cHref,
+			 				});
 			  				   
 			  			   }else{
 			  				 
@@ -236,6 +301,8 @@ function ttest(){
 	  
   }
   
+  
+  
   /*获取当前日期*/
   function getHandleDate(ms){
 	   var date=new Date(ms);
@@ -250,5 +317,52 @@ function ttest(){
 	   
 	  var handleDate=date.getFullYear()+"-"+month+"-"+day;
 	  return handleDate;
+	}
+  
+  
+  function time(o) {
+		if (wait == 60) {
+			//sendVerifyCode('verifyCode','');
+		}
+		if (wait == 0) {
+			
+			$(o).get(0).onclick = dynamic;
+			$(o).html("获取验证码");
+			$(o).removeAttr("style").addClass("catch");
+			wait = 60;
+			
+		} else {
+			
+			$(o).get(0).onclick = null;
+			$(o).html("(" + wait + ")重获验证码");
+			wait--;
+			setTimeout(function() {
+				time(o);
+			}, 1000);
+		}
+	}
+
+	function dynamic() {
+		sendCodeFlag=true;
+		var th=this;
+		var $selector=$(this).parents(".custom-code-wrapper");
+		$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
+		
+	    $.post("phoneDynCode",{verifyKind:"JY"},function(data){ 
+	    	
+	    	if(data.result&&data.result.firendlyRem){
+	    		
+	    		$selector.find("p[data-friendly]").html(data.result.firendlyRem+"！&nbsp;");
+	    	}
+	    	
+	    	if(data.code=="0000"){
+	    		 
+	    		time(th);
+	    	}else{
+	    		 layer.close(lyIndex);
+	    		 MessageWin(data.msg);
+	    		 
+	    	}
+	    });
 	}
   

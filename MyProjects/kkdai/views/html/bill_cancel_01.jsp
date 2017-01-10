@@ -12,7 +12,7 @@
 <body>
    <header class="ctm-header ctm-header-default">
 		 
-		  <a href="bill_manage_01" class="nav-right-icon"> <span>确认</span>
+		  <a href="bill_manage_01_main" class="nav-right-icon"> <span>确认</span>
 		</a>  
 		<h1 class="ctm-header-title">我的账单</h1>
 	</header>

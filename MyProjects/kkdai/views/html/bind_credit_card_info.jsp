@@ -3,63 +3,7 @@
 <head>
 <jsp:include page="../commen.jsp"></jsp:include>
 <title>银行卡信息 </title>
-<script type="text/javascript">
 
-$(document).ready(function(){
-	var code = '${code}', msg = '${msg}';
-	if("" != code && code != '0000') {
-		function passFun(){
-			window.location.href = 'bind_credit_card'
-		}
-		MessageWin(msg, passFun);
-	}
-	$("#next_type").bind("click", function(){
-		var telephone = $('input[name=telephone]').val()
-		if("" == telephone ){
-			MessageWin("手机号不能为空", function(){})
-			return false;
-		} 
-		$.ajax({
-			async: false,
-			type: 'post',
-			dataType: 'json',
-			url: 'phoneDynCode',
-			data: {
-				verifyKind:"BK",
-				mobileNo: telephone
-			},
-			success: function(data) {
-				if(data.code == '0000'){
-					var dom = $("#hidden_dom").html();
-					var str = "" + 
-					"<div class='header'>" + 
-						"<a href='#' class='icon ico_back'></a>" + 
-						"填写验证码" + 
-					"</div>" + 
-					"<div class='maincontainer'>" + 
-					"<form action='saveCard' method='post'>"+
-					    "<div class='tips_info gray_bg'>请输入手机139********收到的短信验证码</div>" + 
-						"<div>" + 
-							"<input class='form-control-border mt20 input_boder_style' name='verifyCode' value='' placeholder='请输入验证码' type='text' required='required'>" + 
-							"<input class='form-control-border mt20 button_boder_style' value='59秒后重发' type='button'>" + 
-						"</div>" + 
-						"<div class='btn-wrap'>" + 
-						    dom + 
-						    "<input type='hidden' name='telephone' value='" + telephone + "'/>" +
-						    "<button class='btn_new' type='submit' >下一步</button>" + 
-						"</div>" + 
-					"</form>" + 
-					"</div>";
-					$("body").html(str);
-				}else {
-					MessageWin(data.msg, function(){});
-				}
-			}
-		});
-	})
-	
-})
-</script>
 </head>
 <body>
     <div class="header">
@@ -93,5 +37,13 @@ $(document).ready(function(){
 		    <input type='hidden' name='name' value='<%=request.getParameter("name")%>'/>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+	
+		var code = '${code}', msg = '${msg}';
+	
+	</script>
+	<script src="<%=request.getContextPath()%>/resource/js/views/html/bind_credit_card_info.js" type="text/javascript" ></script>
+	
 </body>
 </html>

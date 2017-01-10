@@ -2,19 +2,29 @@
 <html style=" font-size:70.6667px">
 <head>
  
-<jsp:include page="../commen.jsp"></jsp:include>
+<jsp:include page="../commen_mui.jsp"></jsp:include>
 
 
  <title>账单中心-我的账单</title>
 
 </head>
 <body >
- <!-- <a data-ajax="false" onclick="ttest()">测试</a> -->
 	<header class="ctm-header ctm-header-default">
 			<a href="index" class="nav-left-icon" data-ajax="false"> <em></em> </a> 
 			<h1 class="ctm-header-title">我的账单</h1>
 	</header>
 	
+	<div class="mui-content">
+	 <!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view hm-table-view mui-table-view-chevron hm-table-view-no-bd" data-bill-items>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="maincontainer">
 		<%-- <div class="box_wrap2" >
 			<div class="title2">
@@ -151,7 +161,6 @@
 			
 			
 		</div>
-
   {{/each}}
 
 </script>
@@ -169,7 +178,7 @@
 			</div>
 			<div class="ctm-row wrpBorder clearfix m-t-xxl">
 				<div class="custom-col-l">
-					<input  name="verifyCode" class="custom-form-control" placeholder="请输入验证码" type="text" data-input="dy">
+					<input  name="verifyCode" class="custom-form-control hm-no-border hm-verify-ode" placeholder="请输入验证码" type="text" data-input="dy">
 				</div>
 
 				<div class="custom-col-r ctm-cursor-ptr">

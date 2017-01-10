@@ -21,7 +21,7 @@
 <!-- 自定义公用JS-->
 <script type="text/javascript" src="<%=request.getContextPath()%>/resource/js/utils/Utils.js"></script>
 
-
+<script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script> 
 <!--CSS-->
 
 <!-- mui CSS-->

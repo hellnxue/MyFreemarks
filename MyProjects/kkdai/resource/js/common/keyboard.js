@@ -34,6 +34,7 @@
 		var cssStr = '<style type="text/css">';
 		cssStr += '#' + TABLE_ID + '{text-align:center;width:100%;height:160px;border-top:1px solid #CECDCE;background-color:#FFF;}';
 		cssStr += '#' + TABLE_ID + ' td{width:33%;border:1px solid #ddd;border-right:0;border-top:0;}';
+//		cssStr += '#' + TABLE_ID + ' td:active{background-color:#ddd;color:#FFF;}';
 		if(!mobile){
 			cssStr += '#' + TABLE_ID + ' td:hover{background-color:#1FB9FF;color:#FFF;}';
 		}
@@ -60,8 +61,8 @@
 		tableStr += '<tr><td>1</td><td>2</td><td>3</td></tr>';
 		tableStr += '<tr><td>4</td><td>5</td><td>6</td></tr>';
 		tableStr += '<tr><td>7</td><td>8</td><td>9</td></tr>';
-		tableStr += '<tr><td style="background-color:#D3D9DF;"></td><td>0</td>';
-		tableStr += '<td style="background-color:#D3D9DF;"><img src="" data-delete style="cursor:pointer;"></td></tr>';
+		tableStr += '<tr><td style="background-color:#D3D9DF;font-size: 0.35rem;color: #fa6e28;">清空</td><td>0</td>';
+		tableStr += '<td style="background-color:#D3D9DF;vertical-align: middle; text-align: center;" ><div data-delete ></div></td></tr>';
 		tableStr += '</table>';
 		this.el.innerHTML = cssStr + btnStr + tableStr;
 		
@@ -69,7 +70,12 @@
 			var ev = e || window.event;
 			var clickEl = ev.element || ev.target;
 			var value = clickEl.textContent || clickEl.innerText;
-			if(clickEl.tagName.toLocaleLowerCase() === 'td' && value !== "删除"){
+			
+			if(clickEl.tagName.toLocaleLowerCase() === 'td' && value !== "删除"&& value !== "清空"){
+				clickEl.style.backgroundColor="#ddd";
+				setTimeout(function(){
+					clickEl.style.backgroundColor="#fff";
+				},100);
 				if(self.input){
 					self.input.value += value;
 				}
@@ -85,12 +91,20 @@
 				}
 				
 //			}else if(clickEl.tagName.toLocaleLowerCase() === 'td' && value === "删除"){
-			}else if(clickEl.tagName=== "IMG"){
+			}else if(clickEl.tagName=== "DIV"){
 				var num = self.input.value;
 				if(num){
 					var newNum = num.substr(0, num.length - 1);
 					self.input.value = newNum;
 				}
+			}else if(clickEl.tagName.toLocaleLowerCase() === 'td' && value === "清空"){
+				
+				var nump = self.input.value;
+				if(nump){
+					self.input.value="";
+				}
+				
+			 
 			}
 		}
 		

@@ -18,11 +18,10 @@ function zxConfirm(){
 				url:"juxinliDecision",
 				data:dataObj,
 				callback:function(data){
-					console.log(data);
 					if(data.code == "0000"){
 						location.assign("credit_05");
 					}else{
-						promt("data.msg");
+						promt( data.msg );
 					}
 				},
 				failCallback:function(data){

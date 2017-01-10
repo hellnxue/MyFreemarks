@@ -18,10 +18,11 @@
 					<i class="arrows"></i>
 					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/past_icon@2x.png" width="28">
 					<span class="widget-name">历史交易</span>
+					<p>hello world</p>
 				</a>
        		</li>
        		<li>
-       			<a  href="credit_card_01">
+       			<a  href="credit_card_01" data-href="credit_card_01" data-check >
 					<i class="arrows"></i>
 					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/cards_icon@2x.png" style="width:0.51rem;">
 					<span class="widget-name">银行卡管理</span>
@@ -61,29 +62,6 @@
     
 <jsp:include page="foot.jsp"></jsp:include>
 
-
-
-
-<script type="text/javascript">
-   (function (doc, win) {
-    var docEl = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-    recalc = function () {
-        var clientWidth = docEl.clientWidth;
-       
-            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
-        }
-  
-	if (!doc.addEventListener) return;
-	win.addEventListener(resizeEvt, recalc, false);
-	doc.addEventListener('DOMContentLoaded', recalc, false);
-	})(document, window);
-   
-   $(document).ready(function(){
-	   $("div.footer>a").removeClass("footer_current");
-	   $("i.foot_ico_3").parent().parent().addClass("footer_current");
-	   
-   })
-</script>
+<script src="<%=request.getContextPath()%>/resource/js/views/html/c_my_page.js" type="text/javascript" ></script>  
 </body>
 </html>
