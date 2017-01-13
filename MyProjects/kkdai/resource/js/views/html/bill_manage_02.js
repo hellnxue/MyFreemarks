@@ -11,6 +11,8 @@ var pageIndex=1, pageSize=10 ,pullBottomMTop="m-t-xxxl";
 
 $(function(){
 	
+	
+	
 	cutTab();
 	
 	
@@ -18,7 +20,9 @@ $(function(){
 		   layerHide();
 	 });
  });
+
 mui.init();
+
 (function($) {
 	$.ready(function() {
 		
@@ -51,6 +55,7 @@ mui.init();
 function pulldownRefresh() {
 	var self = this;
 	var ele=$(self.element);
+	pageIndex=1;//重新加载页面数据
 	var billOrRecordFlag=$(ele).parents(".mui-control-content").data("flag");//分期账单or还款记录
 	loadData(self,billOrRecordFlag,"pullDown");
 }
@@ -59,9 +64,11 @@ function pulldownRefresh() {
  * 上拉加载具体业务实现
  */
 function pullupRefresh() {
+	
 	var self = this;
 	var ele=$(self.element);
 	var billOrRecordFlag=$(ele).parents(".mui-control-content").data("flag");//分期账单or还款记录
+	
 	loadData(self,billOrRecordFlag,"pullUp");
 }
 
@@ -74,6 +81,7 @@ function loadData(self,billOrRecordFlag,status){
 		
 		if(status=="pullDown"){
 			self.endPullDownToRefresh();
+			self.refresh(true);//重置没有数据时禁用的下拉加载更多
 		}else{
 			self.endPullUpToRefresh();
 		}
@@ -159,22 +167,22 @@ function renderData(billOrRecordFlag,status,self){
 				 			$billSel.empty().append($html);//分期账单
 					 		$recordSel.empty().append($detailHTML).parents("div[data-record]").hide();//还款记录
 					 		
+					 		
+					 		$("div[data-tab]").each(function(){
+					 	  		var cur=$(this).data("tab");
+					 	 		if($(this).hasClass("cur")){
+					 	 			$(".mui-content [data-"+cur+"]").show().siblings("div").hide();
+					 	 		}
+					 	 	}); 
+					 		
 					 		//数据初始化若无账单或还款，不显示下拉加载更多
 					 		$billSel.siblings(".mui-pull-bottom-tips").find("span").html("");
 					 		$recordSel.siblings(".mui-pull-bottom-tips").find("span").html("");
 				 		
 				 		}else{
 				 			
-				 			if(status=="pullDown"){//下拉刷新-前置
-				 				
-				 				$billSel.append($html);
-						 		$recordSel.append($detailHTML);
-						 		
-				 			}else{//上拉加载更多-append
-				 				
-						 		$billSel.prepend($html);
-						 		$recordSel.prepend($detailHTML);
-				 			}
+				 			$billSel.prepend($html);
+					 		$recordSel.prepend($detailHTML);
 			 				
 				 			
 				 		}
@@ -277,10 +285,13 @@ function renderData(billOrRecordFlag,status,self){
 			 		
 			 		//无数据禁用上拉加载更多
 			 		if(status=="pullUp"){
+
 						self.endPullUpToRefresh(true);
+					    
+							
 					}
+			 		 
 			 		
-			 		//$(self.element).find(".mui-pull-bottom-tips").addClass(pullBottomMTop);
 			 	 }
 			 	 
 
@@ -289,10 +300,6 @@ function renderData(billOrRecordFlag,status,self){
 			  })
 			  .fail(function(){
 					     mui.alert("获取信息失败！", '提示',"确认");
-						  //checkButton.call(this,false);
-						  /* var $wrap = $("div.box_wrap2");
-						  $wrap.html($wrap.html().replace(/#\w+#/g,""));
-						  $wrap.show(); */
 		  		  });
 	
 }

@@ -85,7 +85,7 @@ function borrowMoney($selector){
 		}else{
 			if(credit==1&&card==1){//借钱还信用卡
 				
-				window.location.href=proSel;
+				window.location.href=proSel+"?productCode="+productCode;
 				
 			}else{ //银行卡绑定
 				if(credit==0&&card==0){

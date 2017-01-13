@@ -10,83 +10,46 @@
 	moreInfo=true,
 	pullrefresh='#pullrefresh',
 	pullBottomTextSelector=".mui-scroll .mui-pull-bottom-pocket",
-	pullBottomMTop="m-t-xxxl";
+	pullBottomMTop="m-t-xxxl" ;
 
+	
 	mui.init({ 
 		pullRefresh: {
-			container: pullrefresh,
+			container:  pullrefresh,
 			down: {
-				callback: pulldownRefresh,
+				callback:  pulldownRefresh,
 				contentdown : "下拉刷新", 
 			    contentover : "释放更新", 
 			    contentrefresh : "加载中...", 
 			},
 			up: {
 				contentrefresh: '加载更多...',
-				callback: pullupRefresh
+				callback:  pullupRefresh
 			}
 		}
 	});
+		
+		
+	 
 	if (mui.os.plus) {
 		mui.plusReady(function() {
 			setTimeout(function() {
-				mui(pullrefresh).pullRefresh().pullupLoading();
+				mui( pullrefresh).pullRefresh().pullupLoading();
 			}, 1000);
 
 		});
 	} else {
 		mui.ready(function() {
-			mui(pullrefresh).pullRefresh().pullupLoading();
+			mui( pullrefresh).pullRefresh().pullupLoading();
 		});
 	}
-
-  
-//  var beforeScrollStart = 0,  beforeScrollTop = 0, page = 1, flag = false;
-//  $(document).ready(function(){
-//	   
-//	  $(document).on("scrollstart",function(){
-//		   beforeScrollStart = document.body.scrollTop;
-//	  });
-//	  $(document).on("scrollstop",function(){
-//		   beforeScrollTop = document.body.scrollTop;
-//		   if((beforeScrollStart - beforeScrollTop) < 0){// 判断是否下滑
-//			   page = page + 1;
-//			   var callBack = function(){
-//		    	   page = page - 1;
-//				   flag = true;
-//		       };
-//			   if(flag){
-//				   return false;
-//			   }
-//			    postDate("2", callBack);
-//		   }
-//	  });
-//	   postDate("1");
-//	  
-//	  
-//	 
-//  });
 	
-	/**
-	 * 下拉刷新具体业务实现
-	 */
-	function pulldownRefresh() {
-
-		postDate("pullUp");
-	}
-
-	/**
-	 * 上拉加载具体业务实现
-	 */
-	function pullupRefresh() {
-		
-		postDate("pullDown");
-	}
-  
+	
  
 	
 	//数据初始化渲染 
 	function postDate(status){
+		 
 		var flag=false;//是否有数据结果标示
 		setTimeout(function() {
 			 $.post("kakadai/order/orderInfo",
@@ -102,7 +65,7 @@
 					 		 
 					 		 mui.toast("获取账单列表失败！"+res.msg,{ duration:'short', type:'div' }) ;
 					 		 
-					 		if(status=="pullUp"){//下拉刷新
+					 		if(status=="pullDown"){ 
 					 			
 					 			//停止刷新
 								mui(pullrefresh).pullRefresh().endPulldownToRefresh();
@@ -125,11 +88,7 @@
 					 		}
 					 		
 					 		
-							 //暂无账单信息
-							 if(pageIndex==1&&res.result.length==0){
-								 $("ul[data-bill-items]").html( $("#noMessage").clone().removeClass("none"));
-								 return;
-							 }
+
 							 
 							 var $maincontainer = $("ul[data-bill-items]");
 						 		 
@@ -140,17 +99,14 @@
 					 			
 					 			$maincontainer.empty().append($html);
 					 			
+					 			
 							}else{
-								if(status=="pullDown"){//下拉刷新
-									
-									$maincontainer.prepend($html);
-									
-								}else{//上拉加载更多
-									
-									$maincontainer.append($html);
-								}
+								 
+								$maincontainer.append($html);
 								
 							}
+					 		
+					 		pageIndex++;
 	
 							//取消订单 	
 						 	$html.find('[data-type="cancel"]').each(function(){
@@ -168,41 +124,52 @@
 									});
 						 		});
 						 	});
+							
 							 
 						 }else{
 							 
 							flag=true;
+
 						 } 
 					 	
-					 	if(status=="pullUp"){//下拉刷新
+					 	 //停止下拉刷新或上拉加载更多
+					 	if(status=="pullDown"){
+					 		
 							flag=false;
-							mui(pullrefresh).pullRefresh().endPulldownToRefresh();
+							mui(pullrefresh).pullRefresh().endPulldownToRefresh();//stop下拉刷新
+							mui(pullrefresh).pullRefresh().refresh(true);//重置之前禁用掉的上拉加载更多
 							
-						}else{//上拉加载更多
+						}else{
 							
-							mui(pullrefresh).pullRefresh().endPullupToRefresh(flag); 
+							mui(pullrefresh).pullRefresh().endPullupToRefresh(flag);//stop上拉加载更多
 						}
 						
-						//没有数据时禁用上拉加载数据
+						//当没有更多数据时，禁用上拉加载更多
 						if(flag){
+							
 							setTimeout(function(){
+								
 							    mui(pullrefresh).pullRefresh().disablePullupToRefresh();
-							}, 2000);
+							    
+							    //启用上拉加载更多
+//							    setTimeout(function(){
+//							    	mui(pullrefresh).pullRefresh().enablePullupToRefresh();
+//								}, 5000);
+								
+							}, 1000);
 							
 						}
 						
+						 //暂无账单信息
+						 if(pageIndex==1&&res.result.length==0){
+							 $("ul[data-bill-items]").html( $("#noMessage").clone().removeClass("none"));
+							 return;
+						 }
 				 		
-				 		pageIndex++;
-						pageSize++;
 					 	
 
 				  }) .fail(function(){
-//					     MessageWin("账单获取失败！" );
-					     mui.alert("账单获取失败！", '提示',"确认");
-//						  var $maincontainer = $("div.maincontainer");   
-					  /* $maincontainer.html($maincontainer.html().replace(/#\w+#/g,""));
-					  $maincontainer.find("a").attr("href","javascript:void(0)").removeClass("ico_next");
-					  $maincontainer.find(".box_wrap2").show(); */
+					  mui.alert("账单获取失败！", '提示',"确认");
 		  		  });
 			
 		},1500);
@@ -301,7 +268,23 @@
 	  
   }
   
-  
+  /**
+	 * 下拉刷新具体业务实现
+	 */
+	function pulldownRefresh() {
+		
+	    pageIndex=1;//页面数据重置
+		postDate("pullDown");
+	}
+
+	/**
+	 * 上拉加载具体业务实现
+	 */
+	function pullupRefresh() {
+		
+		postDate("pullUp");
+	}
+
   
   /*获取当前日期*/
   function getHandleDate(ms){

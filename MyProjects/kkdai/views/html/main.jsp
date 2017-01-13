@@ -80,29 +80,27 @@
 				</a>
 			</div>
 		</div>
-<%-- 		<div class=" ctm-row   p-l-lg p-r-lg " >
-			<div class="ctm-row news_feed ctm-b-btm">
+  		<div class=" ctm-row   p-l-lg p-r-lg " >
+			<div class="ctm-row news_feed  ">
 				<div class="m-vr"></div>
 				<div class="custom-col-3 news_tag ">
-					<img src="<%=request.getContextPath()%>/resource/images/main/v1/news@2x.png">
-					<span>最新消息</span> 
+					<img src="<%=request.getContextPath()%>/resource/images/main/v1/activity@2x.png">
+					<span  >最新活动</span> 
 				</div>
 				<div class="custom-col-5 w-rt newsItem">
 					 
-					<a  href="bind_credit_card" class="block  news_tip" data-scroll>
-					    <span class="news_span">1.聚宝袋推出尊享信用卡日利率0.05%</span>
-						<span class="news_span">2.聚宝袋推出尊享信用卡日利率0.05%</span>
-						<span class="news_span">3.聚宝袋推出尊享信用卡日利率0.05%</span>
+					<a  href="news_center_main" class="block  news_tip" data-scroll>
+					    
 					</a> 
 				</div>
 				<div class="custom-col-2 news_tip text-right w-rt newsMore">
 					 
-					<a  href="#" class="block ">更多</a> 
+					<a   href="news_center_main" class="block ">更多</a> 
 				</div>			
 			</div>
 			 				
-		</div>  --%>
-		<div class=" ctm-row   p-l-lg p-r-lg" >
+		</div>   
+		<%-- <div class=" ctm-row   p-l-lg p-r-lg" >
 			
 			<div class="ctm-row news_feed  ">
 				<div class="m-vr"></div>
@@ -114,10 +112,10 @@
 			<!-- style="height: 0.5rem;line-height: 0.5rem" -->
 			<div class="ctm-row news_feed"  style=" top: -0.2rem;">
 				
-<%-- 				<div class="custom-col-3 news_tag">
+				<div class="custom-col-3 news_tag">
 					<img src="<%=request.getContextPath()%>/resource/images/main/v1/activity@2x.png">
 					<span  >最新活动</span> 
-				</div> --%>
+				</div>
 				<div class="custom-col-8   newsItem">
 					 
 					<a   href="news_center_main" class="block  news_tip" data-scroll>					
@@ -132,7 +130,7 @@
 				</div>
 			</div>		
 						
-		</div> 
+		</div>  --%>
 	</div>
 
 

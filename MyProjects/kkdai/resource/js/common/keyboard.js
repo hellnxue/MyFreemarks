@@ -72,12 +72,14 @@
 			var value = clickEl.textContent || clickEl.innerText;
 			
 			if(clickEl.tagName.toLocaleLowerCase() === 'td' && value !== "删除"&& value !== "清空"){
-				clickEl.style.backgroundColor="#ddd";
-				setTimeout(function(){
-					clickEl.style.backgroundColor="#fff";
-				},100);
+				
+				bgChanges(clickEl,"#ddd","#fff");
+				
 				if(self.input){
-					self.input.value += value;
+					if(self.input.value.length<=7){
+						self.input.value += value;
+					}
+					
 				}
 			}else if(clickEl.tagName.toLocaleLowerCase() === 'div' && value === "完成"){
 				if(options.accomplished){
@@ -92,13 +94,14 @@
 				
 //			}else if(clickEl.tagName.toLocaleLowerCase() === 'td' && value === "删除"){
 			}else if(clickEl.tagName=== "DIV"){
+				bgChanges(clickEl,"#bbb","#d3d9df");
 				var num = self.input.value;
 				if(num){
 					var newNum = num.substr(0, num.length - 1);
 					self.input.value = newNum;
 				}
 			}else if(clickEl.tagName.toLocaleLowerCase() === 'td' && value === "清空"){
-				
+				bgChanges(clickEl,"#bbb","#d3d9df");
 				var nump = self.input.value;
 				if(nump){
 					self.input.value="";

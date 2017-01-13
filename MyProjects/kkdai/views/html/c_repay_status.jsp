@@ -3,28 +3,12 @@
 <head>
 <jsp:include page="../commen.jsp"></jsp:include>
 <title>还款状态查询</title>
-<link href="css/css.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
-   (function (doc, win) {
-    var docEl = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-    recalc = function () {
-        var clientWidth = docEl.clientWidth;
-       
-            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
-        }
-  
-	if (!doc.addEventListener) return;
-	win.addEventListener(resizeEvt, recalc, false);
-	doc.addEventListener('DOMContentLoaded', recalc, false);
-	})(document, window);
-</script>
 </head>
 
 <body style=" background-color:#efeff4;">
     <div class="header header_y">
 		<!-- <a href="#" class="icon hd_left"></a> -->
-		<a href="javascript:history.go(-1)" class="icon ico_back"></a>
+		<a href="index" class="icon ico_back"></a>
 		还款状态查询
 	</div>
     <div class="hk_jd_box">

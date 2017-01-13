@@ -190,13 +190,13 @@ function initPageData(){
 
 function checkNull(){
 	var validate = true;
-	$(".validate").each(function(){
-		if('' == $(this).val() || 'undefined' == $(this).val()){
-//			MessageWin($(this).attr('msg'));
+	$(".validate").each(function(index){
+		if('' == $(this).val() ||  undefined  == $(this).val()){
 			promt($(this).attr('msg'));
 			validate = false;
 			return false;
-		}
+		} 
+		
 	});	
 	return validate;
 }

@@ -9,7 +9,6 @@
 	$(".mask_outer").bind("click", function(){
 	   layerHide();
     });
-	
 	initData();
 
 	
@@ -29,17 +28,27 @@
 	
 	var userSignature = $("input[name=userSignature]").val();
 	if('null' != userSignature && userSignature.length > 0){
+		
 		$("#btnSubmit").removeClass("disabled");
+		
 		$("#signlink").find("i").addClass("ico_check_current");
+		
 		$("#btnSubmit").bind("click", function(){
-			if($("input[name=makeLoanDay]").val() == ""){ 
-//				MessageWin("放款时间不能为空", function(){}); 
-				promt("放款时间不能为空！");
-				return false;
+			
+
+			var makeLoanDay=$("input[name=makeLoanDay]").val();
+			
+			
+			if(makeLoanDay == ""){ 
+				
+				promt("放款日期不能为空！");
+				
+				return;
+			}else if( parseInt(makeLoanDay.replace(new RegExp("-","gm"),""))<parseInt(getCurrentDate().replace(new RegExp("-","gm"),""))){
+				
+				promt("放款日期不能小于当天日期！");
+				return;
 			}
-			
-			
-//			$("form[name='myform']").attr("action", "kakadai/order/submitOrder").submit();serializeObject
 			
 			 $.ajax({
 		 			type: "POST",
@@ -78,7 +87,7 @@
 		
 	});
 	
-	
+
 
 });
 
@@ -135,7 +144,8 @@ function initData(){
 }
 
 function dateScrollControl(){
-	var currYear = (new Date()).getFullYear();	
+	var currDate=new Date();
+	var currYear = currDate.getFullYear();	
 	var opt={
 		'default':{
 			theme: 'android-ics light', //皮肤样式
@@ -145,8 +155,9 @@ function dateScrollControl(){
 			lang: 'zh',
 			showNow: true,
 			nowText: "今天",
-			startYear: currYear - 50, //开始年份
-			endYear: currYear + 10 //结束年份
+			minDate: currDate,
+			startYear: currYear , //开始年份
+			endYear: currYear + 5 //结束年份
 		}	
 			
 	};

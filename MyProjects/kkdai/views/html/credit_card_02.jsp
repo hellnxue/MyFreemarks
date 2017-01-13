@@ -20,10 +20,10 @@
 	
 	
 	<div class="maincontainer">
-	
+	<!-- 返回数据隐藏域 -->
 	<form action="productList" method="post" id="productList">
-         <input name="loanAmt" value="" type="hidden">
-         <input name="productCode" value="" type="hidden">
+         <input name="loanAmt" value="${param.loanAmt}" type="hidden">
+         <input name="productCode" value="${param.productCode}" type="hidden">
     </form>        
             
 	<form action="./credit_card_04.html" method="post" name="myform">
@@ -130,9 +130,6 @@
 <script type="text/javascript">
 var path="<%=request.getContextPath()%>";
 var userId="${userSession.userId}";
-//隐藏域
-$("input[name=productCode]").val("${param.productCode}");
-$("input[name=loanAmt]").val("${param.loanAmt}");
 
 
 </script>
@@ -140,195 +137,5 @@ $("input[name=loanAmt]").val("${param.loanAmt}");
 <script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/resource/js/views/html/credit_card_02.js" type="text/javascript" ></script>  
 </body>
-<script type="text/javascript">
-	/* var param = undefined;
-	var periods="";
-    //获取后台回传的参数
-	if(!!"${param.param}") {
-		if(window.atob) {
-			var decode = window.atob("${param.param}");
-			if(!!decode) {
-				console.log(decode);
-				param = $.parseJSON(decode);
-			} else {
-				alert("参数为空!");
-			}
-			
-		} else {
-			alert("解析参数失败");
-		}
-	}
-    var jsonFromRequest = {
-    		md5CardNo: "${card.md5CardNo}",
-    		identityNo: "${userSession.idCard}",
-    		bankKey: "${credit.bankKey}",
-    		creditNo: "${credit.creditNo}",
-    		depositsCardNo: "${card.cardNo}",
-    		creditBank: "${credit.creditBank}",
-    		md5CreditNo: "${credit.md5CreditNo}",
-    		cardBankKey: "${card.cardBankKey}" 
-    }
-	$(document).ready(function(){
-		$(".form-group>span").click(function(){
-			var b=$(this).parent().find(".subnav").css("display")
-	  		if( b=="none"){
-	        	$(this).parents().find(".subnav").hide()
-	  			$(this).parent().find(".subnav").show()
-	  			$(this).parents().find("i").filter(".ico_arrow_up").attr("class","icon ico_arrow_down");
-	        	$(this).parent().find("i").attr("class","icon ico_arrow_up")
-	        } else {
-	        	$(this).parent().find(".subnav").hide()
-	        	$(this).parent().find("i").attr("class","icon ico_arrow_down")
-	        }
-	    });
-	    $('.subnav a').click(function(){
-			$(this).parents('.form-group').find('span').html($(this).html()); //改变span文本内容
-			$(this).parents('.form-group').find('span').addClass("current")
-			$(this).parents().find('.subnav').hide();
-			$(".form-group i").filter(".ico_arrow_up").attr("class","icon ico_arrow_down");
-			
-			dotail.call($("#amount"),$(this).parents('.form-group').find('span').text());
-		});
-	    $("#amount").blur(function(){
-	    	var periodStr = $('.subnav a').parents('.form-group').find('span').text();
-	    	if(periodStr != "") {
-	    		dotail.call(this,periodStr);
-	    	}
-        });
-	    function dotail(periodStr) {
-	    	var period = 0;
-	    	if(periodStr.indexOf("月") > 0) {
-	    		period=periodStr.replace("个月","");
-	    		periods=period;
-	    	}
-	    	var creditAmount = document.getElementById("creditAmount").value;
-	    	var userId = document.getElementById("userId").value;
-        	if($(this).val()%100==0 && $(this).val()>=1000 && $(this).val()<=creditAmount){
-        		//alert("试算");
-        		$.post('kakadai/order/trial',{userId:userId,amount:$(this).val(),period:period,account:'baifutianxia'},function(data,status){
-        			//alert(data);
-        			if(status == 'success') {
-        				var resdata = typeof data == 'string' ? $.parseJSON(data) : data;
-        				if(resdata.code == "0000") {
-            				$("#poundage").text(Number(resdata.result.poundage).toFixed(2));
-            				$("#capital").text(Number(resdata.result.capital).toFixed(2));
-            				$("#repaymentDate").val(resdata.result.repaymentDate);
-        				} else {
-        					alert(resdata.msg);
-        				}
-        				
-        			}
-        			
-        		});
-        	} else if(creditAmount < 1000) {
-        		alert("授信额度小于1000");
-        	}else{
-        		alert("金额需大于1000且为100的整倍数并小于授信额度");
-        	}
-
-
-	    $("#signlink").on("click",function(){
-	    	if(window.btoa) {
-	    		//base64编码参数
-	    		var param = window.btoa(JSON.stringify({
-	    			applyAmount:$("#amount").val(),
-	    			amount:$("#amount").val(),
-	    			period:periods,
-	    			userId:$("#userId").val(),
-	    			md5CreditNo: jsonFromRequest.md5CreditNo,
-	    			poundage:$("#poundage").text(),
-	    			repaymentDate:encodeURI($("#repaymentDate").val()),
-	    			makeLoanDay:$("#makeLoanDay").val(),
-	    			capital:$("#capital").text()
-	    		}));
-	    		
-    			$("#applyAmount").val($("#amount").val());
-    			$("#applyPeriods").val("3");
-    			$("#md5CreditNo").val(jsonFromRequest.md5CreditNo);
-    			$("#creditCardBankName").val(jsonFromRequest.bankKey);
-	    			
-	    		$("#creditCard03Param").val(param);
-	    		//表单post提交
-	    		$("#creditCard03Param").parents("form").submit();
-	    	} else {
-	    		alert("参数传递失败");
-	    	}
-	    });
-        
-        if(param != undefined) {
-        	$("#userId").val(param.userId);
-    		$("#amount").val(param.amount);
-    		$("div.subnav").children().each(function(i,ele){
-    			if($(ele).text().indexOf(param.period) >= 0 || i == 3) {
-    				$(ele).parents(".form-group").find("span").html($(ele).text());
-    				return false;
-    			} 
-    		});
-    		$("#poundage").text(param.poundage);
-    		$("#repaymentDate").val(decodeURI(param.repaymentDate));
-    		$("#makeLoanDay").val(param.makeLoanDay);
-    		$("#capital").text(param.capital);
-    		//选中checkbox
-    		$("#signlink").find("i").addClass("ico_check_current");
-    		
-    		var data = {
-        			userId: $("#userId").val(),
-        			md5CreditNo:jsonFromRequest.md5CreditNo,
-        			md5CardNo: jsonFromRequest.md5CardNo,
-        			userSignature: param.sign,
-        			creditCardNo: jsonFromRequest.creditNo,
-        			repaymentPeriod: param.period,
-        			loanAmt: param.amount,
-        			makeLoanDay: param.makeLoanDay,
-        			bankKey: jsonFromRequest.bankKey,
-        			cardBankKey: jsonFromRequest.cardBankKey,
-        			identityNo: jsonFromRequest.identityNo,
-        			depositsCardNo: jsonFromRequest.depositsCardNo
-        	}
-        	var isEmpty = false;
-        	for(var k in data)  {
-        		if(!data[k]) {
-        			isEmpty = true;
-        			break;
-        		}
-        	}
-        	//输入项没有填写完毕，“确认代换”按钮不可点击
-        	if(!isEmpty) {
-        		$("#btnSubmit").disabled=false;
-        	}
-        
-	        $("#btnSubmit").on("click",function(){
-	        	
-	        	$.post("kakadai/order/submitOrder",data, function(res){
-	        		var resjson = typeof res == 'string' ? $.parseJSON(res) : res;
-	        		if(resjson.code != '0000') {
-	        			alert(resjson.msg);
-	        			return;
-	        		}
-	        		var payedParam =  {
-	        			   userId: $("#userId").val(),
-	        			   loanAmt: param.amount, 
-		        		   creditCardNo: jsonFromRequest.creditNo,
-		        		   creditBank: encodeURI(jsonFromRequest.creditBank),
-		        		   makeLoanDay: data.makeLoanDay,
-		        		   repaymentPeriod: param.period,
-		        		   capital: $("#capital").text(),
-		        		   repaymentDate: encodeURI($("#repaymentDate").val()),
-		        		   orderId: resjson.result.orderId,
-		        		   bankKey: data.bankKey,
-		        		   cardBankKey:data.cardBankKey
-	        		 }
-	        		if(window.btoa) {
-	        			$("#creditCard04Param").val(window.btoa(JSON.stringify(payedParam)));
-	            		$("#creditCard04Param").parents("form").submit();
-	        		} else {
-	        			alert("参数传递失败");
-	        		}
-	        		
-	        	});
-	        }).removeClass("disabled");
-        }
-	}); */
-	
-</script>
+ 
 </html>

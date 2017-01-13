@@ -117,8 +117,8 @@ function scrollNewsInfo(obj){
 
 
 /*获取当前日期*/
-function getCurrentDate(ms){
-	   var date=new Date(ms);
+function getCurrentDate(){
+	   var date=new Date();
 	   var month= date.getMonth()+1 +"";
 	   if(month.length<2){
 	 	 month="0"+month;
@@ -131,3 +131,27 @@ function getCurrentDate(ms){
 	  var handleDate=date.getFullYear()+"-"+month+"-"+day;
 	  return handleDate;
 	}
+
+/*表单为空的简单验证*/
+function formValidation(){
+	var validate = true;
+	$(".validate").each(function(){
+		if('' == $(this).val() ||  undefined  == $(this).val()){
+			promt($(this).attr('msg'));
+			validate = false;
+			return false;
+		}
+	});	
+	return validate;
+}
+
+/*点击元素背景改变
+ * ele DOM
+ * cgColor 点击之后应用的color
+ * inColor 元素最初应用的color*/
+function bgChanges(ele,cgColor,inColor){
+	ele.style.backgroundColor=cgColor;
+	setTimeout(function(){
+		ele.style.backgroundColor=inColor;
+	},100);
+}

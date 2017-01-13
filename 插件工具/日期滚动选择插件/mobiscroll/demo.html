@@ -41,6 +41,7 @@ $(function () {
 		lang: 'zh',
 		showNow: true,
 		nowText: "今天",
+		minDate: new Date(),//设置日期可选的范围为大于等于当前日期，设置了minDate后，即使设置了startYear: currYear - 50，也不会出现后50年奥
 		startYear: currYear - 50, //开始年份
 		endYear: currYear + 10 //结束年份
 	};

@@ -22,9 +22,9 @@ mui.init({
 });
  
 function initData(status){
+	var flag=false;
 	setTimeout(function() {
-		var flag=false;
-		console.log(pageIndex);
+		
 		ajaxUtil({
 			url:"getNewInfo",
 			data:{
@@ -33,23 +33,20 @@ function initData(status){
 			},
 			callback:function(data){
 				
-				if(data.code == "0000"){
+				if(data.code&&data.code == "0000"){
 					
 					if(data.result&&data.result.length>0){
 						var html=template("newsList",data);
 						var $html=$(html);
 						
 						if(pageIndex==1){
+							 
 							$("ul[data-news-items]").empty().append($html);
+							 
 						}else{
-							if(status=="pullDown"){//下拉刷新
-								console.log("下拉刷新");
-								$("ul[data-news-items]").prepend($html);
-							}else{
-								console.log("上拉加载更多");
-								$("ul[data-news-items]").append($html);
-							}
-							
+							 
+							$("ul[data-news-items]").append($html);
+							 
 						}
 						
 						$html.find("a").each(function(){
@@ -69,31 +66,47 @@ function initData(status){
 						});
 						
 						pageIndex++;
-						pageSize++;
 						
 					}else{
 						flag=true;
 					} 
 					
-					if(status=="pullUp"){//下拉刷新
+					 //停止下拉刷新或上拉加载更多
+				 	if(status=="pullDown"){
 						flag=false;
-						mui(pullrefresh).pullRefresh().endPulldownToRefresh();
+						mui(pullrefresh).pullRefresh().endPulldownToRefresh();//stop下拉刷新
 						
-					}else{//上拉加载更多
+						//为了防止数据只有一条的时候下拉刷新完之后自动触发上拉加载更多的bug,此处延迟重置~~
+						setTimeout(function(){
+							mui(pullrefresh).pullRefresh().refresh(true);//重置之前禁用掉的上拉加载更多
+							$(".mui-pull .mui-pull-caption-down").html("");//隐藏掉"下拉加载更多"
+						},1000);
 						
-						mui(pullrefresh).pullRefresh().endPullupToRefresh(flag); 
+					}else{
+						mui(pullrefresh).pullRefresh().endPullupToRefresh(flag);//stop上拉加载更多
 					}
 					
 					//没有数据时禁用上拉加载数据
 					if(flag){
 						setTimeout(function(){
 						    mui(pullrefresh).pullRefresh().disablePullupToRefresh();
-						}, 2000);
+						}, 1000);
 						
 					}
 					
 				}else{
 					mui.toast("获取消息列表失败！",{ duration:'short', type:'div' }) ;
+					if(status=="pullDown"){ 
+			 			
+			 			//停止刷新
+						mui(pullrefresh).pullRefresh().endPulldownToRefresh();
+						
+					}else{//禁用上拉加载
+						
+				 		 mui(pullrefresh).pullRefresh().endPullupToRefresh(true); 
+					}
+					
+					return;
 				}
 			}
 		});
@@ -107,16 +120,16 @@ function initData(status){
  * 下拉刷新具体业务实现
  */
 function pulldownRefresh() {
-
-	initData("pullUp");
+	pageIndex=1;
+	initData("pullDown");
 }
 
 /**
  * 上拉加载具体业务实现
  */
 function pullupRefresh() {
-	
-	initData("pullDown");
+	 
+	initData("pullUp");
 }
 if (mui.os.plus) {
 	mui.plusReady(function() {

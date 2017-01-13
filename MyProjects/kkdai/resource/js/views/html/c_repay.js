@@ -109,25 +109,27 @@ function dynamic() {
 	var th=this;
 	$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
 	 
-    $.post("phoneDynCode",{verifyKind:"CHK"},function(){
-    	if(data.code=="0000"){
+    $.post("phoneDynCode",{verifyKind:"CHK"},function(data){
+    	if(data.code&&data.code=="0000"){
     		time(th);
     	}else{
     		 layer.close(lyIndex);
     		 MessageWin(data.msg);
     		 
     	}
+    }).fail(function(data){
+    	 MessageWin(data.msg);
     });
 }
 
 function time(o) {
 	if (wait == 0) {
-		$(o).get(0).onclick = dynamic;
+		o.onclick = dynamic;
 		$(o).html("获取验证码");
 		$(o).removeAttr("style").addClass("catch");
 		wait = 60;
 	} else {
-		$(o).get(0).onclick = null;
+		o.onclick = null;
 		$(o).html("(" + wait + ")重获验证码");
 		wait--;
 		setTimeout(function() {

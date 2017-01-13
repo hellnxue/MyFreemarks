@@ -848,7 +848,8 @@ div.sp.cur-scales {
 /*第三部分*/
 .news_area{
     background-color: #fff;
-   height: 2.9rem; 
+   /* height: 2.9rem;  */
+    height: 2.1rem;
     padding-top: 0.01rem;
 }
 
@@ -1127,14 +1128,14 @@ div.sp.cur-scales {
 
 
 /* 数字键盘清空样*/			
-.keyboard-empty{
-	width:0.8rem;
-	height:0.5rem;
-	background-image:url("../images/main/v1/delete@2x.png");  
-	background-size:0.59rem 0.43rem;
-	background-repeat:no-repeat;	
-	display:inline-block;
-	
+.keyboard-empty {
+    background-image: url("../images/main/v1/delete@2x.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 0.59rem 0.43rem;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
 }
 
 /* 借贷产品       end */
