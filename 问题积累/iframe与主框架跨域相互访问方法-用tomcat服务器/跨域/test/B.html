@@ -12,15 +12,15 @@
 
   // exec main function
   function exec_main(){
-	if(typeof(exec_obj)=='undefined'){
-		exec_obj = document.createElement('iframe');
-		exec_obj.name = 'tmp_frame';
-		exec_obj.src = 'http://localhost/execA.html';
-		exec_obj.style.display = 'none';
-		document.body.appendChild(exec_obj);
-	}else{
-		exec_obj.src = 'http://localhost/execA.html?' + Math.random();
-	}
+  	if(typeof(exec_obj)=='undefined'){
+  		exec_obj = document.createElement('iframe');
+  		exec_obj.name = 'tmp_frame';
+  		exec_obj.src = 'http://localhost:8086/test/execA.html';
+  		exec_obj.style.display = 'none';
+  		document.body.appendChild(exec_obj);
+  	}else{
+  		exec_obj.src = 'http://localhost:8086/test/execA.html?' + Math.random();
+  	}
   }
   </script>
 
