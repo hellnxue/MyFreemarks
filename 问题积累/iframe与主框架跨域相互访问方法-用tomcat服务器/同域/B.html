@@ -14,6 +14,12 @@
   function exec_main(){
 	parent.fMain();
   }
+
+  function test(){
+    window.parent.location="C.html"
+  }
+
+ 
   </script>
 
  </head>
@@ -21,5 +27,7 @@
  <body>
   <p>B.html iframe</p>
   <p><input type="button" value="exec main function" onclick="exec_main()"></p>
+  <a href="C.html">baidu</a>
+  <button type="button" onclick="test()">try</button>
  </body>
 </html>

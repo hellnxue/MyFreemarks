@@ -14,13 +14,19 @@
   function exec_iframe(){
 	window.myframe.fIframe();
   }
+
+   //获取iframe->子框架的地址
+   function test(){
+    console.log(document.getElementById("myframe").contentWindow.location.href);
+
+   }
   </script>
 
  </head>
 
- <body>
+ <body onload="test()">
   <p>A.html main</p>
   <p><input type="button" value="exec iframe function" onclick="exec_iframe()"></p>
-  <iframe src="B.html" name="myframe" width="500" height="100"></iframe>
+  <iframe src="B.html" name="myframe" id="myframe" width="500" height="100"></iframe>
  </body>
 </html>
