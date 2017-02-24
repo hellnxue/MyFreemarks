@@ -127,10 +127,10 @@ body {
   });
 
 
-  Swiper.h.getWidth();
+  // Swiper.h.getWidth();
 
    $('.pagination .swiper-pagination-switch').click(function(){
-               console.log(11);
+               console.log($(this).index());
                 mySwiper.swipeTo($(this).index());
               });
 
@@ -177,7 +177,7 @@ body {
   });
   $('.sdl-remove2').click(function(e) {
     e.preventDefault();
-    mySwiper.removeSlide(1)
+    mySwiper.removeSlide([0,1])
   }); 
   </script>
 </body>
