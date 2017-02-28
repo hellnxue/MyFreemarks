@@ -28,7 +28,19 @@
 <script src="js/mobiscroll.js"></script> 
 <script type="text/javascript">
 $(function () {
-	var currYear = (new Date()).getFullYear();	
+
+
+	/*
+    //获取当天的明天  --传给minDate后，就不会显示当天了
+
+	var currDate=new Date();
+	
+	var bDate=new Date((currDate/1000+86400)*1000);
+
+	*/
+
+	var currDate=new Date();
+	var currYear = currDate.getFullYear();	
 	var opt={};
 	opt.date = {preset : 'date'};
 	opt.datetime = {preset : 'datetime'};
@@ -41,7 +53,7 @@ $(function () {
 		lang: 'zh',
 		showNow: true,
 		nowText: "今天",
-		minDate: new Date(),//设置日期可选的范围为大于等于当前日期，设置了minDate后，即使设置了startYear: currYear - 50，也不会出现后50年奥
+		minDate: currDate,//设置日期可选的范围为大于等于当前日期，设置了minDate后，即使设置了startYear: currYear - 50，也不会出现后50年奥
 		startYear: currYear - 50, //开始年份
 		endYear: currYear + 10 //结束年份
 	};
