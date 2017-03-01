@@ -21,10 +21,16 @@
           <div class="hk_jd_bg2 hk_jd_bg2_current"></div>
           <div class="hk_jd_text current">银行正加紧处理中</div>
         </div>
-        <div class="hk_line line_current"></div>
+       <!--  <div class="hk_line line_current"></div>
         <div class="hk_jd1">
           <div class="hk_jd_bg3 hk_jd_bg3_current"></div>
           <div class="hk_jd_text current">提交成功</div>
+        </div> -->
+        
+         <div class="hk_line"></div>
+        <div class="hk_jd1">
+          <div class="hk_jd_bg3"></div>
+          <div class="hk_jd_text">还款成功或失败</div>
         </div>
     </div>
    

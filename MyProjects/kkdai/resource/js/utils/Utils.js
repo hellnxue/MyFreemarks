@@ -1,18 +1,61 @@
 ﻿
 var layerIndex;
 
+var ajaxHandleFlag=true;//异步进度提示
+
+var hasIframe=false;//ajax请求session超时页面跳转标记，mui嵌套页面用openWindow
+
 $(function(){
 	
-	/*自定义Ajax进度*/
+	$.ajaxSetup({
+		
+		dataFilter : function(data, type){
+		 
+            if(data.indexOf("AjaxAuthFailed") != -1){
+            	
+            	//关闭遮罩
+            	if(typeof layer!="undefined"&&layerIndex!="undefined"){
+            		layer.close(layerIndex);
+            	}
+            	 
+        		if(!hasIframe){
+        			location="login";
+        			 
+        		}else if(typeof mui!="undefined"){
+        			mui.openWindow({
+    				    url:"login",
+    				    id:"login",
+    				});
+        			 
+        		}
+            	 
+        		return "";
+            	
+            }else{
+                return data;
+            }
+        }
+	});
+	
+	
+	
+	
+	/*自定义Ajax请求进度*/
 	$(document).bind("ajaxStart", function() {
 		/* $(".shade_outer_ajax").removeClass("none"); */
-		layerIndex=layer.open({
-		    type: 2
-		    ,content: 'loading...'
-		  });
+		if(ajaxHandleFlag){
+			layerIndex=layer.open({
+			    type: 2
+			    ,content: 'loading...'
+			  });
+		}
+		
 	}).bind("ajaxComplete", function() {
 		/* $(".shade_outer_ajax").addClass("none"); */
-		layer.close(layerIndex);
+		if(ajaxHandleFlag){
+			layer.close(layerIndex);
+		}
+		
 		 
 	});
 
@@ -46,14 +89,34 @@ function MessageWin(message, callback) {
 }
 
 
-/*自定义错误提示*/
+/*自定义错误提示
+ * 
+ *   	 
+ DOM: <div class="tips_main" style="display:none;">
+		<p class="lead"></p>
+      </div>
+ */
 function promt(obj) {
 	
+	var $tip=$(".tips_main");
+	
+	//框架嵌套提示处理
+	if(!$($tip)[0]&& window.parent){
+		
+		 $tip=$(parent.parent.document.getElementById("tips_main"));
+		
+	}
+	
 	// 浮动层打开
-	$(".tips_main").attr("style","display:block;");
-	$(".tips_main p").html(obj);
+	$tip.attr("style","display:block;");
+	$tip.find("p").html(obj);
+	
 	// 设定定时器的时间值
-	setTimeout(tip,3000);
+	setTimeout(function(){
+		$tip.slideUp();
+	},3000);
+	
+	
 }
 
 function tip(){
@@ -132,10 +195,11 @@ function getCurrentDate(){
 	  return handleDate;
 	}
 
-/*表单为空的简单验证*/
-function formValidation(){
+/*表单为空的简单验证
+ * $form 要验证的jQuery form对象*/
+function formValidation($form){
 	var validate = true;
-	$(".validate").each(function(){
+	$form.find(".validate").each(function(){
 		if('' == $(this).val() ||  undefined  == $(this).val()){
 			promt($(this).attr('msg'));
 			validate = false;
@@ -154,4 +218,14 @@ function bgChanges(ele,cgColor,inColor){
 	setTimeout(function(){
 		ele.style.backgroundColor=inColor;
 	},100);
+}
+
+
+/**
+ * 验证手机号码
+ * @param mobile
+ * @returns
+ */
+function isValidityMobile(mobile) {
+    return /^(?:13\d|14\d|15\d|17\d|18\d)-?\d{5}(\d{3}|\*{3})$/.test(mobile);
 }

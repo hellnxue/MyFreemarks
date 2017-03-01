@@ -21,10 +21,11 @@ $(document).ready(function(){
 </script>
 </head>
 <body class="yellow_bg">
-	<div class="header">
-		<a href="credit_card_02.html" class="icon ico_back"></a>
-		合同套件
-	</div>
+		<header class="ctm-header ctm-header-default">
+		<a href="credit_card_02.html" class="nav-left-icon"  > <em></em>
+		</a>
+		<h1 class="ctm-header-title">合同套件</h1>
+	</header>
 	<div class="maincontainer">
 	<iframe name="Info1" id="iframepage" src="" wonload="this.height=Info1.document.body.scrollHeight" width="100%" height="6000%" scrolling="no" frameborder="0"></iframe>
 		<div class="text-con">
@@ -56,6 +57,8 @@ $(document).ready(function(){
 	</div>
 </div>
 <form action="credit_card_02" method="post" style="display:none">
+
+   <!--  返回代换列表页面时的传输数据-->
    <input type="hidden" name="productCode" value="<%=request.getParameter("productCode")%>"/>
    <input type="hidden" name="creditNo" value="<%=request.getParameter("creditNo")%>" />
    <input type="hidden" name="creditBank" value="<%=request.getParameter("creditBank")%>" />
@@ -67,6 +70,10 @@ $(document).ready(function(){
    <input type="hidden" name="capital" value="<%=request.getParameter("capital")%>" />
    <input type="hidden" name="makeLoanDay" value="<%=request.getParameter("makeLoanDay")%>" />
    <input type="hidden" name="userSignature" id="imageData" />
+   
+   
+   <input name="sameDay" value="${param.sameDay}" type="hidden">
+   <input name="sameDayMsg" value="${param.sameDayMsg}" type="hidden">
 </form>
 </body>
 <script type="text/javascript">

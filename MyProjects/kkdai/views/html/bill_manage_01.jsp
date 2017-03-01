@@ -9,10 +9,10 @@
 
 </head>
 <body >
-	<header class="ctm-header ctm-header-default">
+	<!-- <header class="ctm-header ctm-header-default">
 			<a href="index" class="nav-left-icon" data-ajax="false"> <em></em> </a> 
 			<h1 class="ctm-header-title">我的账单</h1>
-	</header>
+	</header> -->
 	
 	<div class="mui-content">
 	 <!--下拉刷新容器-->
@@ -92,7 +92,7 @@
 				<div class="pos_a_r">订单编号：{{value.orderNo}}</div>
 			</div>
 			<!--测试 value.status!=10&&value.status!=20-->
-			{{if value.status!=10&&value.status!=20}}
+			{{if value.status!=10&&value.status!=20&&value.status!=14}}
 			   
 			  <div class="form_wrap form_noborder f-ct ctm-cursor-ptr"  data-href="./bill_manage_02.html?param={{value.orderId}}"> 
 			{{else}}
@@ -107,7 +107,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label">代还卡号：</label>
-						{{value.cardNo}}
+						{{value.creditNo}}
 					</div>
 					<div class="form-group">
 						<label class="control-label">预约代还日期：</label>
@@ -125,7 +125,7 @@
 						<label class="control-label">每月应还：</label>
 						{{value.repaymentAmount}} 元
 					</div>
-			    {{if value.status!=10&&value.status!=20}}
+			    {{if value.status!=10&&value.status!=20&&value.status!=14}}
 			   	    <a  class="icon ico_next pos_a_r "  ></a>
 			      
 				{{/if}}					
@@ -149,7 +149,8 @@
 					  {{/if}}
 					</bdo>  
 					  {{if value.status==10||value.status==13}}
-						  {{if value.cancOrder==0}}
+						  {{if value.cancOrder==0&&value.appointDate!=currentDate}}
+							
 				       		<bdo class="c_orange ctm-f-r   m-l-lg  ctm-cursor-ptr" data-type="cancel" data-orderId="{{value.orderId}}" data-appointDate="{{value.appointDate}}">取消订单</bdo>
 						  {{/if}}
 					  {{/if}}

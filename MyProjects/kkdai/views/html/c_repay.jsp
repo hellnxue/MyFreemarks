@@ -42,7 +42,7 @@
 				{{else}}
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				{{/if}}
-				<span>手续扣款：
+				<span>分期手续费：
 				{{if handingFee}}
 					{{handingFee}}
 				{{else}}
@@ -51,22 +51,40 @@
 				</span>
 				</p>
 				<p class="t2">
-					分期利息： 
+					还款利息： 
 					{{if interest}}
 						{{interest}}
 				    {{else}}
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				    {{/if}}
-				<span>逾期费： 
-					{{if lateCharge}}
-						{{lateCharge}}
+				<span>逾期罚息： 
+					{{if deductionFee}}
+						{{deductionFee}}
 				    {{else}}
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				    {{/if}}
 				</span>
 				</p>
 				<p class="t2">
-					逾期扣失：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>提前还：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					滞纳金：
+					{{if lateCharge}}
+						{{lateCharge}}
+				    {{else}}
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    {{/if}}
+
+
+				{{if deduck!=0}}
+					<span>减免：
+					
+					{{if deduck}}
+						{{deduck}}
+				    {{/if}}
+					</span>	
+					     				
+				{{/if}} 
+
+
 				</p>
 			</div>
 

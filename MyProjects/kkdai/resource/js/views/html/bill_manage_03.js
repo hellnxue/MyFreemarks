@@ -5,6 +5,7 @@ if(!!param) {
     	var decode = window.atob(param);
     	if(!!decode && decode != 'undefined') {
     		param = $.parseJSON(decode);
+    		
     	} else {
     		MessageWin("参数为空!");
     	}
@@ -59,7 +60,7 @@ if(!!param) {
 		  		   
 				  $.post("kakadai/order/payOffLoan",{bid:param.bid, verifyCode:phoneCode, userId:sessionUserId },function(data){
 					 if(data.code == "0000"){
-						 window.location.href = "./bill_manage_01.html";
+						 window.location.href = "./bill_manage_01_main.html";
 					 }else{
 						 
 						 MessageWin(data.msg);
@@ -71,31 +72,25 @@ if(!!param) {
 		 });
 		
 		
-		
+		//数据初始化
 		$.post("kakadai/order/redemptionBill",
 				{userId: json.userId,account:'baifutianxia',bid: param.bid},
+				 
 				function(res){
-					var resdata = typeof res == 'string' ? $.parseJSON(res) : res;
-					if(resdata.code != '0000') {
-						MessageWin(resdata.msg,function(){
+					
+					if(res.code != '0000') {
+						MessageWin(res.msg,function(){
 							history.go(-1);
 						});
 						 
 					}
-					var html = $("div.form_wrap").html();
-					for(var k in resdata.result) {
-						html = html.replace("#" + k + "#", resdata.result[k]);
-					}
-					var $formwrap = $("div.form_wrap");
-					$formwrap.html(html);
-					$formwrap.find(".displayno").removeClass("displayno");
+					var html=template("redemptionBillTemplate",res.result);
+					$("div[data-item]").html("").append($(html));
 					
-//					checkButton.call(this,true);
 					
-				})
-				.error(function(){
+				},"json").fail(function(data){
+					 
 					MessageWin("您的网络不稳定，请重试！");
-					//checkButton.call(this,true);
 				});
 		
 		$("#pageback").on("click",function(){

@@ -341,6 +341,13 @@ fieldset[disabled] .btn  {
 	margin-top: 0;
 	padding-top: 0.2rem;
 }
+
+.form_wrap.p-t-none{
+	padding-top: 0;
+}
+.form_wrap.m-t-none{
+	margin-top: 0;
+}
 .form-group{
 	position: relative;
 	color:#424242;
@@ -349,6 +356,11 @@ fieldset[disabled] .btn  {
 	border-top:0.02rem solid #E6E6E6;
 	padding-left: 1.86rem;
 }
+
+.form-group.long-label{
+	padding-left:2.5rem;
+}
+
 .form-group:first-of-type{
 	border: 0;
 }
@@ -618,6 +630,10 @@ fieldset[disabled] .btn  {
 	height: 0.26rem;
 	margin-right: 0.22rem;
 	background-image: url(../images/qu_icon@3x.png);
+}
+
+.ico_radio.m-r-none,.ico_check.m-r-none{
+	margin-right: 0;
 }
 .ico_radio_current{
 	background-image: url(../images/qu_iconin@3x.png);
@@ -1606,10 +1622,14 @@ i.ico_success{
 
 .pro_bottom .btm_accomplished{
 	display: block;
-    background-color: orange;
+    background-color: orange;  
     color: #fff;
-    font-size: 0.45rem;
+    font-size: 0.4rem;
 }
+
+.btm_accomplished:hover,.btm_accomplished:active{
+	 background-color: rgba(0,0,0,.15); 
+}  
 
 .me_top{ height:4.99rem; width:7.5rem; background:url(../images/img/me_bg@2x.png) no-repeat; background-size:100%; text-align:center; padding-top:3.27rem; font-size:0.5rem; color:#fff;}
 .me_ul{ padding-left:0.3rem; margin-bottom:1rem}

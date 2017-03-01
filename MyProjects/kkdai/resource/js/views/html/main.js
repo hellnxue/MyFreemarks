@@ -17,60 +17,76 @@ $(document).ready(function() {
 		
 		setNewsInfo(newInfo);
 		
-		if(promoteQuota==0){ 
+		if(processCode == '25'||processCode == '35'){//额度申请中
 			
-			$("a[data-dwte]").show().find("span").html("申请额度");
+			$("a[data-dwte]").show().find("span").html("额度申请中");
 			
-			if(processCode == '00' || processCode == ""){
+		}else{
+			if(promoteQuota==0){ 
 				
-				bindCardBeforeFlag=authentication_02;
+				$("a[data-dwte]").show().find("span").html("申请额度");
 				
-			}else if(processCode == '10'){
-			
-				bindCardBeforeFlag=linkman;
+				if(processCode == '00' || processCode == ""){
+					
+					bindCardBeforeFlag=authentication_02;
+					
+				}else if(processCode == '10'){
 				
-			}else if (processCode == '20'){
-				
-				bindCardBeforeFlag=zhimaxinyong;
+					bindCardBeforeFlag=linkman;
+					
+				}else if (processCode == '20'){
+					
+					bindCardBeforeFlag=zhimaxinyong;
+				}
+
+			}else if(promoteQuota==1){
+				$("a[data-dwte]").show().find("span").html("点我提额");		 
+
+			} else if(promoteQuota==2){
+				$("a[data-dwte]").hide();
+				//$("a[data-dwte]").find("span").html("立即还款");
+				 
 			}
-
-		}else if(promoteQuota==1){
-			$("a[data-dwte]").show().find("span").html("点我提额");		 
-
-		} else if(promoteQuota==2){
-			$("a[data-dwte]").hide();
-			//$("a[data-dwte]").find("span").html("立即还款");
-			 
+			
 		}
 		
+		
+		
 		//还款提示
-		$("#tips").html(repayRem );
+		if(repayRem){
+			$("#tips").html(repayRem );
+		}
+		
 
-		 
+		 //额度动态处理
 		$("a[data-dwte]").bind("click", function(){
 
 
-			if(promoteQuota==0){ 
-				
-				if(bindCardBeforeFlag){
-					window.location=bindCardBeforeFlag;
-				}
-				
-				
-			}else if(promoteQuota==1){
-				 
-//				if(processCode == '30'){
-//				    window.location.href='operator_01';
-//				}else if(processCode == '40'){
-//					window.location.href='credit_03';
-//				}
-				location.assign("withdraw_cash");
+			if(processCode == '25'){//额度申请中
+				return;
+			}else{
+				if(promoteQuota==0){ //申请额度
+					
+					if(bindCardBeforeFlag){
+						window.location=bindCardBeforeFlag;
+					}
+					
+					
+				}else if(promoteQuota==1){//点我提额
+					 
+//					if(processCode == '30'){
+//					    window.location.href='operator_01';
+//					}else if(processCode == '40'){
+//						window.location.href='credit_03';
+//					}
+					location.assign("withdraw_cash");
 
+				}
+//				else if(promoteQuota==2){
+//					 
+//					//window.location.href='productList';
+//				}
 			}
-//			else if(promoteQuota==2){
-//				 
-//				//window.location.href='productList';
-//			}
 
 			});
 

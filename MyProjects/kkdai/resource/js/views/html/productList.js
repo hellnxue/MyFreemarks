@@ -16,25 +16,24 @@
 			$(".shade_outer").css("background","rgba(0,0,0,0)").show();
 			new KeyBoard(this,
 				{
-					
 					accomplished:function(){
 					
-					var productCode=$(".swiper-slide-active").attr("productCode");
-					var period=$(".swiper-slide-active").attr("period");
+						var productCode=$(".swiper-slide-active").attr("productCode");
+						var period=$(".swiper-slide-active").attr("period");
+						
+						//初始化试算结果
+						var flag=inputchange(productCode,period);
+						
+						//匹配产品试算结果
+						capticalMatchByPC(productCode);
+						return flag;
 					
-					//初始化试算结果
-					inputchange(productCode,period);
-					
-					//匹配产品试算结果
-					capticalMatchByPC(productCode);
-					
-				
-			},
-				endCallback:function(){
-					setTimeout(function(){
-						$(".shade_outer").css("background","rgba(0,0,0,0.5)").hide();
-					},600);
-				}
+					},
+					endCallback:function(){
+						setTimeout(function(){
+							$(".shade_outer").css("background","rgba(0,0,0,0.5)").hide();
+						},600);
+					}
 			});
 			
 //			$("img[data-delete]").attr("src",path+"/resource/images/main/v1/delete@2x.png").css("width","0.59rem");
@@ -77,7 +76,7 @@
 		}
 		
 		if(!validate()){
-			return ;
+			return false;
 		}
 		
 		$.ajax({
@@ -114,6 +113,8 @@
 					$(".pd_area[productcode="+productCode+"]").find(".bMoney").html(item.capital);
 					$("input[name=poundage]").val(item.poundage);
 					$("input[name=capital]").val(item.capital);
+					$("input[name=sameDayMsg]").val(item.sameDayMsg);
+					$("input[name=sameDay]").val(item.sameDay);
 				}
 				 
 			});
@@ -133,68 +134,76 @@
 			url: 'getProduct' 
 		}).done(function(data){
 			if(data.code == '0000'){
-				var dom = "", pd_c= "";
 				
-					$(data.result).each(function(i, obj){
+				if(data.result){
+						var dom = "", pd_c= "";
 						
-						if(i == 0 ){
-							//pd_c = " pd_c_first checked";
-							$("#period_dom").text(obj.period);
-							$("input[name=repaymentPeriod]").val(obj.period);
-							$("input[name=productCode]").val(obj.productCode);
-							$("input[name=productName]").val(obj.productName);
+						$(data.result).each(function(i, obj){
 							
-						}  else {
-							//pd_c = " pd_c";
-						}
-						//productDesc
-						dom +=
-						"<div class='swiper-slide pd_area sp " + "" + "' period='" + obj.period + "' productCode='" + obj.productCode +"' productName='" + obj.productName + "' >" +
-				        "<div class='t_lit'>" +
-					        "<div class='p_n' productCode='" + obj.productCode + "'>" + obj.productName +
+							if(i == 0 ){
+								//pd_c = " pd_c_first checked";
+								$("#period_dom").text(obj.period);
+								$("input[name=repaymentPeriod]").val(obj.period);
+								$("input[name=productCode]").val(obj.productCode);
+								$("input[name=productName]").val(obj.productName);
+								
+							}  else {
+								//pd_c = " pd_c";
+							}
+							//productDesc
+							dom +=
+							"<div class='swiper-slide pd_area sp " + "" + "' period='" + obj.period + "' productCode='" + obj.productCode +"' productName='" + obj.productName + "' >" +
+					        "<div class='t_lit'>" +
+						        "<div class='p_n' productCode='" + obj.productCode + "'>" + obj.productName +
+						        "</div>" +
+						        "<div class='p_d'>" + obj.rateDesc +
+						        "</div>" +
 					        "</div>" +
-					        "<div class='p_d'>" + obj.productDesc +
+					        "<div class='t_lit'>" +
+					        "<span>手续费扣收方式</span>" +
+					        "<span class='t_lit_je'>"+obj.interestTypeDesc+"</span>" +
+					        "<p class='t_lit_p'>&nbsp;</p>" +
+	//				        "<span class='t_lit_je'>从放款余额中直接扣除</span>" +
+	//				        "<p class='t_lit_p'><span class='orange'>/</span>还款时收取</p>" +
+					        
+				        "</div>" +
+					        "<div class='t_lit'>" +
+						        "<span>每期还款</span>" +
+						        "<span class='t_lit_je bMoney'>0.00</span>" +
 					        "</div>" +
-				        "</div>" +
-				        "<div class='t_lit'>" +
-				        "<span>手续费扣收方式</span>" +
-				        "<span class='t_lit_je'>"+obj.interestTypeDesc+"</span>" +
-				        "<p class='t_lit_p'>&nbsp;</p>" +
-//				        "<span class='t_lit_je'>从放款余额中直接扣除</span>" +
-//				        "<p class='t_lit_p'><span class='orange'>/</span>还款时收取</p>" +
-				        
-			        "</div>" +
-				        "<div class='t_lit'>" +
-					        "<span>每期还款</span>" +
-					        "<span class='t_lit_je bMoney'>0  &gt; </span>" +
-				        "</div>" +
-				    "</div>";
-					});
-				
-				
-				
-				$(".pd_list_cn .swiper-wrapper").html(dom);
-				
-				$(".swiper-slide:first").addClass("cur-scales");
-				
-				
-				initSwiperTool(paramObj.productCode);
-				 $(".swiper-active-switch").css("background-color","orange");
-				
-				//返回
-				if(paramObj.productCode){
-					var $curSelector=$(".pd_area[productcode="+paramObj.productCode+"]");
-					$("#period_dom").text($curSelector.attr("period"));				//期数
-					$("input[name=repaymentPeriod]").val($curSelector.attr("period")); //期数
-					$("input[name=productCode]").val($curSelector.attr("productCode"));
-					$("input[name=productName]").val($curSelector.attr("productName"));
+					    "</div>";
+						});
 					
-					inputchange(paramObj.productCode,$curSelector.attr("period"));
-					 
-					capticalMatchByPC(paramObj.productCode);
-				} 
+					
+					
+					$(".pd_list_cn .swiper-wrapper").html(dom);
+					
+					$(".swiper-slide:first").addClass("cur-scales");
+					
+					
+					initSwiperTool(paramObj.productCode);
+					 $(".swiper-active-switch").css("background-color","orange");
+					
+					//返回
+					if(paramObj.productCode){
+						var $curSelector=$(".pd_area[productcode="+paramObj.productCode+"]");
+						$("#period_dom").text($curSelector.attr("period"));				//期数
+						$("input[name=repaymentPeriod]").val($curSelector.attr("period")); //期数
+						$("input[name=productCode]").val($curSelector.attr("productCode"));
+						$("input[name=productName]").val($curSelector.attr("productName"));
+						
+						inputchange(paramObj.productCode,$curSelector.attr("period"));
+						 
+						capticalMatchByPC(paramObj.productCode);
+					}
+				}else{
+					MessageWin(data.msg,function(){
+						history.go(-1);
+					});
+				}
+				 
 			}else {
-				MessageWin("获取信息失败！",function(){
+				MessageWin(data.msg,function(){
 					history.go(-1);
 				});
 			}
@@ -307,4 +316,27 @@
 		  $(".swiper-slide-active").addClass("cur-scales");
 		  $(".swiper-pagination-switch").css("background-color","#555");
 		  $(".swiper-active-switch").css("background-color","orange");
+	}
+	
+	/*动态计算重置滑动容器的宽高 */	
+	function resetSwiperContainerWH(paramObj) {
+		var cardinalNumber=0;
+		if (paramObj.firstInitPage) {
+			var docEl = document.documentElement;
+			var clientWidth = docEl.clientWidth;
+			if (!clientWidth)
+				return;
+			if (clientWidth >= 750) {
+				cardinalNumber = 100;
+			} else {
+				cardinalNumber = 100 * (clientWidth / 750);
+			}
+
+		}
+		var hWidth = cardinalNumber * paramObj.remWidth;
+		var hHeight = cardinalNumber * paramObj.remHeight;
+
+		$(paramObj.containerSelector).css("width", hWidth + "px");
+		$(paramObj.containerSelector).css("height", hHeight + "px");
+
 	}

@@ -24,7 +24,7 @@
 	<form action='linkman_submit' id='formid' method="post" >
 		<div class="form_wrap">
 			<div class="form-group">
-				<label class="control-label"><bdo class="c_orange">*</bdo>与本人关系</label>
+				<label class="control-label"><!-- <bdo class="c_orange">*</bdo> -->与本人关系</label>
 				<span>请选择</span>
 				<input type='hidden' name='relation1' class='validate' msg='请选择与本人关系' >
 				<i class="icon ico_arrow_down"></i>

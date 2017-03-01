@@ -8,10 +8,10 @@
 </head>
 
 <body style=" background-color:#efeff4;">
-    <div class="header">
-		<a href="c_my_page" class="icon hd_left" data-ajax="false"></a>
-		历史交易
-	</div>
+	<header class="ctm-header ctm-header-default">
+		<a href="c_my_page" class="nav-left-icon" data-ajax="false"> <em></em> </a>
+		<h1 class="ctm-header-title">历史交易</h1>
+	</header>
     <div class="lishi_title">
       <a href="#" class="left current" type='2' data-ajax="false">出账交易</a>
       <a href="#" class="rt" type='1' data-ajax="false">入账交易</a>

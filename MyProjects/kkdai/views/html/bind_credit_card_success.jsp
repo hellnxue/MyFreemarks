@@ -16,7 +16,7 @@
 		           恭喜您添加成功!
 		</div>
 		<div class="pro_bottom">
-			<a   href="index" class="btm_accomplished" style="display: block; color: #fff;background-color: orange;font-size: 0.45rem;">完成</a>
+			<a   href="index" class="btm_accomplished" >完成</a>
 		</div>		
 	</div>
 </body>

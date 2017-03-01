@@ -82,15 +82,21 @@
 					
 				}
 			}else if(clickEl.tagName.toLocaleLowerCase() === 'div' && value === "完成"){
-				if(options.accomplished){
-					options.accomplished();
-				}
-				 
-				body.removeChild(self.el);
 				
-				if(options.endCallback){
-					options.endCallback();
+				var flag;
+				if(options.accomplished){
+					flag=options.accomplished();
 				}
+				
+				//验证通过时or未输入数字时隐藏数字键盘
+				if(flag==undefined||flag!=false||input.value==""){
+					body.removeChild(self.el);
+					
+					if(options.endCallback){
+						options.endCallback();
+					}
+				}
+				
 				
 //			}else if(clickEl.tagName.toLocaleLowerCase() === 'td' && value === "删除"){
 			}else if(clickEl.tagName=== "DIV"){

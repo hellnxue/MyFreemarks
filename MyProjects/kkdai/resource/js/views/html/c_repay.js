@@ -93,6 +93,28 @@ function repaySpecify(){
 			 		data.total=billObj[0].total;//还款总额
 			 		data.handingFee=billObj[0].handingFee;//手续扣费
 			 		
+			 		//逾期扣失
+			 		
+			 		//提前还
+			 		
+			 		
+			 		
+			 		//还款本金 
+			 		data.payAmt=billObj[0].payAmt;
+			 		//分期手续费 
+			 		data.handingFee=billObj[0].handingFee;
+			 		//还款利息 
+			 		data.interest=billObj[0].interest;
+			 		
+			 		//逾期罚息bill.deductionFee
+			 		data.deductionFee=billObj[0].deductionFee;
+			 		
+			 		//滞纳金 
+			 		data.lateCharge=billObj[0].lateCharge;
+			 		
+			 		//减免bill.deduck
+			 		data.deduck=billObj[0].deduck;
+			 		
 			 		var html=template("specifyTemplate",data);
 			 		$("#main [data-btm]").before("");
 			 		$("#main [data-btm]").before($(html));

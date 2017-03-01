@@ -6,9 +6,9 @@
 		layerShow();
 		
 	});
-	$(".mask_outer").bind("click", function(){
-	   layerHide();
-    });
+//	$(".mask_outer").bind("click", function(){
+//	   layerHide();
+//    });
 	initData();
 
 	
@@ -20,7 +20,7 @@
 	});
 	 
  
-	//合同套件（暂时注掉）
+	//合同套件 
 	$("#signlink").bind("click", function(){
 		 
 		$("form[name=myform]").attr("action", "credit_card_03").submit();
@@ -35,9 +35,7 @@
 		
 		$("#btnSubmit").bind("click", function(){
 			
-
 			var makeLoanDay=$("input[name=makeLoanDay]").val();
-			
 			
 			if(makeLoanDay == ""){ 
 				
@@ -48,7 +46,13 @@
 				
 				promt("放款日期不能小于当天日期！");
 				return;
+			}else if(sameDay==0){
+				
+				promt("放款日期不可选当天！");
+				
+				return;
 			}
+			
 			
 			 $.ajax({
 		 			type: "POST",
@@ -68,24 +72,6 @@
 	}
 	
 
-	$(".credit_list").bind("click", function(){
-		 
-		var creditBank = $(this).find('label').attr("creditBank");
-		var creditNo = $(this).find('span').attr("creditNo");
-		var md5CreditNo = $(this).find('span').attr("md5CreditNo");
-		var bankKey = $(this).find('span').attr("bankKey");
-		
-		layerHide();
-		    
-		$("#bankKey").val(bankKey);
-		 
-		$("span[data-credit]").html(creditBank + " | " + creditNo );
-		
-		$("input[name=md5CreditNo]").val(md5CreditNo);
-		$("input[name=creditCardNo]").val(creditNo);
-		$("input[name=creditBank]").val(creditBank);
-		
-	});
 	
 
 
@@ -108,6 +94,21 @@ function initData(){
 				var $html=$(html);
 				$("div[data-credit-list]").empty().append($html);
 				
+				//信用卡选择
+				$html.on("click",function(){
+					var creditBank = $(this).find('label').attr("creditBank");
+					var creditNo = $(this).find('span').attr("creditNo");
+					 
+					    
+					$("#bankKey").val($(this).find('span').attr("bankKey"));
+					$("span[data-credit]").html(creditBank + " | " + creditNo );
+					$("input[name=md5CreditNo]").val($(this).find('span').attr("md5CreditNo"));
+					$("input[name=creditCardNo]").val(creditNo);
+					$("input[name=creditBank]").val(creditBank);
+					
+					layerHide();
+				});
+				
 				if(data.result.card&&data.result.card.length>0){
 					var card=data.result.card[0];
 					
@@ -120,14 +121,13 @@ function initData(){
 				var dom = $(".credit_list").children(":first");
 				var creditBank = dom.find('label').attr("creditBank");
 				var creditNo = dom.find('span').attr("creditNo");
-				var md5CreditNo = dom.find('span').attr("md5CreditNo");
-				var bankKey = dom.find('span').attr("bankKey");
-				$("#bankKey").val(bankKey);
+				 
+				$("#bankKey").val(dom.find('span').attr("bankKey"));
 				if(creditBank&&creditNo){
 					$("span[data-credit]").html(creditBank + " | " + creditNo );
 				}
 				
-				$("input[name=md5CreditNo]").val(md5CreditNo);
+				$("input[name=md5CreditNo]").val(dom.find('span').attr("md5CreditNo"));
 				$("input[name=creditCardNo]").val(creditNo);
 				$("input[name=creditBank]").val(creditBank);
 				
@@ -145,6 +145,8 @@ function initData(){
 
 function dateScrollControl(){
 	var currDate=new Date();
+	
+//	var bDate=new Date((currDate/1000+86400)*1000);
 	var currYear = currDate.getFullYear();	
 	var opt={
 		'default':{

@@ -27,8 +27,8 @@
 			<i class="icon ico_sign"></i>如要提前清贷，除剩余本金外，涉及到的其他费用，如下
 		</div>
 		<div class="box_circle">
-			<div class="form_wrap form_msg">
-				<div class="form-group">
+			<div class="form_wrap form_msg" data-item>
+				<!-- <div class="form-group">
 					<label class="control-label">剩余本金</label>
 					<bdo class="form_text_right"><label class="c_orange displayno">#oddCorpus#</label> 元</bdo>
 				</div>
@@ -50,7 +50,7 @@
 				</div>
 				<div class="form-group">
 					<bdo class="form_text_right fs36">总计<label class="c_orange displayno">#totaling#</label></bdo>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div class="btn-wrap mt280">
@@ -110,14 +110,54 @@
 	</div>
 </div> -->
 
-<script src="<%=request.getContextPath()%>/resource/js/common/layer.js" type="text/javascript"></script>
-<script type="text/javascript">
-	var  sessionUserId= '${userSession.userId}';
-	var  param= "${param.param}";
-	var  sessionMobile= "${userSession.mobilePhone}";
-</script> 
 
-<script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>
-<script src="<%=request.getContextPath()%>/resource/js/views/html/bill_manage_03.js" type="text/javascript" ></script>  
+		<script id="redemptionBillTemplate" type="text/html" >
+				<div class="form-group">
+					<label class="control-label">剩余本金</label>
+					<bdo class="form_text_right"><label class="c_orange ">{{oddCorpus}}</label> 元</bdo>
+				</div>
+				<div class="form-group">
+					<label class="control-label">剩余利息</label>
+					<bdo class="form_text_right c_orange ">{{monthlyInterest}}</bdo>
+				</div>
+				<div class="form-group">
+					<label class="control-label">剩余分期手续费</label>
+					<bdo class="form_text_right c_orange ">{{handingFee}}</bdo>
+				</div>
+				<div class="form-group">
+					<label class="control-label">逾期罚息总额</label>
+					<bdo class="form_text_right c_orange ">{{deuction}}</bdo>
+				</div>
+				<div class="form-group">
+					<label class="control-label">滞纳金总额</label>
+					<bdo class="form_text_right c_orange ">{{demurrage}}</bdo>
+				</div>
+				<div class="form-group">
+					<label class="control-label">清贷手续费</label>
+					<bdo class="form_text_right c_orange ">{{handlingcharge}}</bdo>
+				</div>
+				<div class="form-group">
+					<label class="control-label">减免总额</label>
+					<bdo class="form_text_right c_orange ">{{deduck}}</bdo>
+				</div>
+				<div class="form-group">
+					<label class="control-label">扣款时间</label>
+					<bdo class="form_text_right c_orange">实时</bdo>
+				</div>
+				<div class="form-group">
+					<bdo class="form_text_right fs36">总计<label class="c_orange ">{{totaling}}</label></bdo>
+				</div>
+		</script>
+
+		<script src="<%=request.getContextPath()%>/resource/js/common/layer.js" type="text/javascript"></script>
+		<script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>
+		<script type="text/javascript">
+			var  sessionUserId= '${userSession.userId}';
+			var  param= "${param.param}";
+			var  sessionMobile= "${userSession.mobilePhone}";
+		</script> 
+		
+		<script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>
+		<script src="<%=request.getContextPath()%>/resource/js/views/html/bill_manage_03.js" type="text/javascript" ></script>  
 </body>
 </html>

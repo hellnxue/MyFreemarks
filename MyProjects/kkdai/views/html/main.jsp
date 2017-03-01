@@ -6,8 +6,8 @@
 </head>
 <body>
 <div id="main-wrapper">
-	<!--  <a href="productList"  ><i  ></i>产品</a>   
-<a href="authentication_03"  ><i  ></i>身份验证</a>   -->
+	 <!--  <a href="credit_05"  ><i  ></i>产品</a>  -->    
+<!-- <a href="authentication_03"  ><i  ></i>身份验证</a>   -->
    <div class='header_bg'>
    		<div class='nav_date text-left'>
    			<div  data-date >
@@ -45,13 +45,13 @@
 				</div> -->
 			</div>
 		</div>
-		<div class=" ctm-row   p-l-lg m-t-xs" >
-			<div class="custom-col-5 pret-info ctm-cursor-ptr" data-href="productList" data-card-href="bind_credit_card" >
+		<div class=" ctm-row   p-l-lg " >
+			<div class="custom-col-5 pret-info ctm-cursor-ptr p-t-xs" data-href="productList" data-card-href="bind_credit_card" >
 				 
 				<p>极速审核，快速放款</p> 
 			</div>
 	
-			<div class="custom-col-5 ctm-cursor-ptr pret-info pr"  >
+			<div class="custom-col-5 ctm-cursor-ptr pret-info pr p-t-xs"  >
 				 
 				<!-- <p>距离本期还款还有<span class="c_orange">10</span>天</p>  -->
 				<p id="tips">  </p>
@@ -150,6 +150,8 @@
 	var credit="${credit}";
 	var card="${card}";  
 	var newInfo="${userSession.newInfo}";
+	
+	
 </script>
 <script src="<%=request.getContextPath()%>/resource/js/views/html/main.js" type="text/javascript" ></script>  
 </body>

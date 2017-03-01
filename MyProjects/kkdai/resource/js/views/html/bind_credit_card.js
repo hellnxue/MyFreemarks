@@ -1,4 +1,6 @@
-﻿$(document).ready(function(){
+﻿
+mui.init();
+$(document).ready(function(){
 	
 	
 	if(hFrom&&hType&&hFrom=="replace"){//借记卡替换
@@ -22,79 +24,98 @@
 	
 	//调用卡宾校验后提示
  
-	if(code.length > 0 && code != "0000") {
-		MessageWin(msg,function(){
-			if(code=="4030"){
-				location.assign("index");
-			}
-		});
-	}
+//	if(code.length > 0 && code != "0000") {
+//		MessageWin(msg,function(){
+//			if(code=="4030"){
+//				location.assign("index");
+//			}
+//		});
+//	}
 	
 	$(".form-group>span").click(function(){
+		
+		var cityselFlag=true;
 		if($(this).attr("id") == 'province'){
-			$(this).parent().find("div").html(createProvince());
+			$(this).siblings("div").html(createProvince());
 			$(this).parent("div").next("div").find("span").removeClass("current").html("选择发卡行城市");
 			 
 		}else if($(this).attr("id") == 'city'){
 			var str = $("input[name=province]").attr("data");
 			if( undefined  == str || str.length == 0){
-				MessageWin("请选择省份", function(){});
+				
+				cityselFlag=false;
+				promt("请先选择省份");
+				
 			}
-			$(this).parent().find("div").html(createCity(str))
+			$(this).parent().find("div").html(createCity(str));
 		}
-		var b=$(this).parent().find(".subnav")
-  		if($(b).is(":hidden")){
-        	$(this).parents().find(".subnav").hide()
-  			$(this).parent().find(".subnav").show()
-  			$(this).parents().find("i").filter(".ico_arrow_up").attr("class","icon ico_arrow_down");
-  			$(this).parent().find("i").attr("class","icon ico_arrow_up")
+		
+		var b=$(this).siblings(".subnav");
+  		if(cityselFlag&&$(b).is(":hidden")){
+  			$(this).siblings(".subnav").show();
+  			$(this).siblings("i").filter(".ico_arrow_up").attr("class","icon ico_arrow_down");
+  			$(this).siblings("i").attr("class","icon ico_arrow_up");
         } else {
-        	$(this).parent().find(".subnav").hide()
-        	$(this).parent().find("i").attr("class","icon ico_arrow_down")
+        	$(this).siblings(".subnav").hide();
+        	$(this).siblings("i").attr("class","icon ico_arrow_down");
         }
 		
 		$('.subnav a').click(function(){
-			$(this).parents('.form-group').find('span').html($(this).html()); //改变span文本内容
-			$(this).parents('.form-group').find('input').val($(this).html()); //改变span文本内容
-			$(this).parents('.form-group').find('input').attr("data", $(this).attr("data")); //改变span文本内容
-			$(this).parents('.form-group').find('span').addClass("current")
-			$(this).parents().find('.subnav').hide();
+			
+			var $fmgp=$(this).parents('.form-group');
+			
+			$fmgp.find('span').html($(this).html()); //改变span文本内容
+			$fmgp.find('input').val($(this).html()); //改变span文本内容
+			$fmgp.find('input').attr("data", $(this).attr("data")); //改变span文本内容
+			$fmgp.find('span').addClass("current");
+			$(this).parent('.subnav').hide();
 			$(".form-group i").filter(".ico_arrow_up").attr("class","icon ico_arrow_down");
 		});
     });
 	
+	//下一步-校验银行卡信息
 	$("#next_step").click(function(){
-		var cardNo = $('input[name=cardNo]').val();
-		var name = $('input[name=name]').val();
-		var cardCity = $('input[name=cardCity]').val();
-		if("" == name || "" == cardNo || "" == cardCity){
-			$(".mask_outer").show();
-			$(".layer-wrap").show();
-			return false;
-		}
-		$("form").submit();
 		
-		/* $.ajax({
-			async: false,
-			type: 'post',
-			dataType: 'json',
-			url: 'saveCard',
-			data: {
-				reqType:"1",
-				cardNo:cardNo,
-				name:name,
-				cardCity: cardCity
-			},
-			success: function(data) {
-				if(data.code == "0000"){
-					window.location.href='bind_credit_card_info';
-				}else{
-					$(".mask_outer").show();
-					$(".layer-wrap").show();
-					return false;
-				}
-			}
-		}); */
+		 if(formValidation($(this).parents("form"))){
+			 
+			 var paramObj=$(this).parents().serializeObject();
+			 ajaxUtil({
+					url:"vefCard",
+					data:paramObj,
+					callback:function(data){
+						if(data.code=="0000"){
+							
+							
+							var bankInfoObj={
+									bankName:data.result.bankName,
+									cardAtt:data.result.cardAtt,
+									type:data.result.type,
+									
+									cardNo:paramObj.cardNo,
+									
+									cardCity:paramObj.cardCity,
+									
+									name:paramObj.name
+							};
+							sessionStorage.setItem("bankInfo", JSON.stringify(bankInfoObj));
+							location="bind_credit_card_info";//银行卡信息
+						}else if(data.code=="4030"){
+							location.assign("index");
+						}
+						
+						promt(data.msg);
+					},
+					failCallback:function(data){
+						
+						mui.toast(data.msg,{ duration:'short', type:'div' }) ;
+						
+					}
+					
+				}); 
+		 }
+		
+		
+		
     });
 	
 });

@@ -12,11 +12,12 @@
 	</form> 
 	
 	<script type="text/html" id="productDetail">
-	<div class="header">
-		<a href="javascript:history.go(-1)" class="icon hd_left"></a> 
-		{{productName}}
-	</div>
-
+	 
+	<header class="ctm-header ctm-header-default">
+		<a href="javascript:history.go(-1)" class="nav-left-icon"> <em></em>
+		</a>
+		<h1 class="ctm-header-title">{{productName}}</h1>
+	</header>
 	<div class="pro_top_box">
 		<div class="pro_top1">
 			<p class="p1">{{lossFeeDesc}}</p>

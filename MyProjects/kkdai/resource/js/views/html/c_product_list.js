@@ -1,4 +1,6 @@
-﻿ $(document).ready(function(){
+﻿ hasIframe=true;
+
+$(document).ready(function(){
 	 
 	 
 	 initData();
@@ -27,29 +29,17 @@
 					});
 					
 					
-//					var str = "";
-//					$(data.result).each(function(i, obj){
-//						var jsonStr = "{";
-//						/* $.each(obj, function(key, val) { 
-//							alert("key" + key); 
-//							alert("val" + val);  
-//							jsonStr += '"' + key +  '":' + '"' + val + '",'
-//						}); 
-//						jsonStr = jsonStr.substring(0,jsonStr.length-1) + "}";*/
-//						str	+= "<li productCode=" + obj.productCode + ">"+
-//									"<div class='j_ul_text'>"+
-//										"<span>" + obj.productName + "</span><span class='jie_int'>" + obj.periodDesc + "</span>"+
-//									"</div>"+
-//									"<p class='j_ul_p1'>" + obj.rateDesc + "</p>"+
-//									"<p class='j_ul_p2'>" + obj.handingRateDesc + "</p>"+
-//									"<div class='jie_hot_ico'></div>"+
-//								"</li>";
-//					})
-//					$(".j_ul").html(str);
-//					
-//					$(".j_ul > li").bind("click", function(){
-//						window.location.href='c_product?productCode=' + $(this).attr("productCode")
-//					});
+					$html.find("[data-code]").each(function(index){
+						this.addEventListener("tap",function(e){
+							mui.openWindow({
+							    url:'c_product?productCode=' +$(this).data("code"),
+							    id:'c_product'  
+							    
+							});
+						},false);
+						
+					});
+					
 				}else {
 					MessageWin(data.msg ); 
 				}

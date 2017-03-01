@@ -1,8 +1,11 @@
-﻿var pageIndex=1,
+﻿
+hasIframe=true;
+var pageIndex=1,
 	pageSize=10,
 	moreInfo=true;
 
 var pullrefresh='#pullrefresh';
+
 
 mui.init({
 	pullRefresh: {
@@ -14,12 +17,13 @@ mui.init({
 		    contentrefresh : "加载中...", 
 		},
 		up: {
-			contentrefresh: '加载更多...',
+			contentrefresh: '加载中...',
 			contentnomore:'没有更多数据了',
 			callback: pullupRefresh
 		}
 	}
 });
+
  
 function initData(status){
 	var flag=false;
@@ -61,6 +65,14 @@ function initData(status){
 								mui.openWindow({
 								    url:"news_center_detail",
 								    id:"news_center_detail",
+								    show:{
+								        autoShow:true,//页面loaded事件发生后自动显示，默认为true
+//								        aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+								      
+								      },
+//								      waiting:{
+//								      autoShow:false
+//								      } 
 								});
 							},false);
 						});
@@ -95,7 +107,7 @@ function initData(status){
 					}
 					
 				}else{
-					mui.toast("获取消息列表失败！",{ duration:'short', type:'div' }) ;
+					mui.toast(data.msg,{ duration:'short', type:'div' }) ;
 					if(status=="pullDown"){ 
 			 			
 			 			//停止刷新
@@ -108,6 +120,9 @@ function initData(status){
 					
 					return;
 				}
+			},
+			failCallback:function(data){
+				 mui.toast("网络异常！",{ duration:'short', type:'div' }) ;
 			}
 		});
 		

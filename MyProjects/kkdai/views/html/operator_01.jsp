@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
-<jsp:include page="../commen.jsp"></jsp:include>
+<jsp:include page="../commen_mui.jsp"></jsp:include>
 <title>信贷GUI-运营商1</title>
 
 </head>
@@ -12,7 +12,7 @@
 			<p class="lead"></p>
 	 </div>
 	<header class="ctm-header ctm-header-default">
-			<a href="index" class="nav-left-icon" > <em></em> </a> 
+			<a href="javascript:void(0);" class="nav-left-icon" id="confirm"> <em></em> </a> 
 			<h1 class="ctm-header-title">运营商</h1>
 	</header>	
 	<div class="nav_wrap">
@@ -25,11 +25,11 @@
 	<div class="maincontainer">
 	    <form id='form1' action="getAirtel" method="post" >
 		<div class="form_wrap">
-			<div class="form-group">
+			<div class="form-group hm-form-group">
 				<label class="control-label">手机号码：</label>
 				<input type="text" name="telephone" value="" class="form-control" required="required"/>
 			</div>
-			<div class="form-group">
+			<div class="form-group hm-form-group">
 				<label class="control-label">服务密码：</label>
 				<input type="password" name="passWord" value="" placeholder="服务密码" class="form-control" required="required"/>
 			</div>
@@ -72,6 +72,9 @@
 				value=<%=request.getParameter("passWord")%>>
 		</form>
 	</div>
+	<script>
+	var  userId= '${userSession.userId}';
+	</script>
 	<script src="<%=request.getContextPath()%>/resource/js/views/html/operator_01.js" type="text/javascript" ></script> 
 </body>
 </html>

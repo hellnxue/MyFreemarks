@@ -7,10 +7,10 @@
 
 <body style=" background-color:#efeff4;">
 	 
-		<header class="ctm-header ctm-header-default">
+		<!-- <header class="ctm-header ctm-header-default">
 			<a href="index" class="nav-left-icon" > <em></em> </a> 
 			<h1 class="ctm-header-title">消息中心</h1>
-	    </header>
+	    </header> -->
 
 	    <!-- <div class="news_center m-t-lg">
 	    	<ul class="mui-table-view" data-news-items>
@@ -38,7 +38,7 @@
 	    
 	    <!--下拉刷新容器-->
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
-			<div class="mui-scroll">
+			<div class="mui-scroll news_center">
 				<!--数据列表-->
 				<ul class="mui-table-view mui-table-view-chevron" data-news-items>
 					

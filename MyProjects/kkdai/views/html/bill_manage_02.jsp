@@ -7,38 +7,45 @@
 
 </head>
 <body>
-		<header class="ctm-header ctm-header-default">
-			<a href="bill_manage_01_main.html" class="nav-left-icon"> <em></em>
-			</a> 
-			<!-- <a href="#" class="nav-right-icon"> <span>返回首页</span>
-			</a> -->
-			<h1 class="ctm-header-title">还款状况</h1>
-		</header>
-	<div class="ctm-container bill-table" >
-		<div class="ctm-row">
-			<div class="custom-col-5 ctm-cursor-ptr cur" data-tab="bill"><span>分期账单</span></div>
-			<div class="custom-col-5 ctm-cursor-ptr" data-tab="record"><span>还款记录</span></div>
-		</div>
-	</div>
-	
+	<header class="ctm-header ctm-header-default">
+		<a href="bill_manage_01_main.html" class="nav-left-icon"> <em></em>
+		</a> 
+		<!-- <a href="#" class="nav-right-icon"> <span>返回首页</span>
+		</a> -->
+		<h1 class="ctm-header-title">还款状况</h1>
+	</header>
 	
    <div class="mui-content">
-		<div id="slider" class="mui-slider mui-fullscreen">
+   
+		<div   class="mui-slider mui-fullscreen">
+		
+			  <div  class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted bg-white">
+					<div class="mui-scroll " style="width:100%;">
+						<a class="mui-control-item mui-active" href="#item1mobile1" style="width:50%;">
+							分期账单
+						</a>
+						<a class="mui-control-item" href="#item1mobile2" style="width:50%;">
+							还款记录
+						</a>  
+						
+					</div>
+				</div>  
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
 			<div class="mui-slider-group">
-					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active " data-flag="bill"  data-bill >
-						<div id="scroll1" class="mui-scroll-wrapper">
+					<div id="item1mobile1" class="mui-slider-item mui-control-content no-border mui-active " data-flag="bill"  data-bill  >
+						<div   class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<ul class="mui-table-view hm-table-view">
-									
+									 
 								</ul>
 							</div>
 						</div>
 					</div>
-					<div id="item1mobile" class="mui-slider-item mui-control-content " data-flag="record" data-record >
-						<div id="scroll2" class="mui-scroll-wrapper">
+					<div id="item1mobile2" class="mui-slider-item mui-control-content no-border " data-flag="record" data-record  >
+						<div   class="mui-scroll-wrapper">
 							<div class="mui-scroll">
 								<ul class="mui-table-view hm-table-view">
-									
+									 
 								</ul>
 							</div>
 						</div>
@@ -46,16 +53,6 @@
 				</div>
 		</div>
   </div>
-	<!-- <div class="maincontainer">
-		<div data-bill>
-		
-		</div>
-		<div data-record>
-		    
-		</div>
-		 
-	</div> -->
-	
 	<!-- 分期账单数据渲染模板 -->	
 	<script id="billManageTemplate" type="text/html">
 
@@ -103,12 +100,12 @@
 					{{bill.lateCharge}} 元
 				</div>
 				<div class="form-group ctm-hor-r">
-					<label class="control-label">超期罚息：</label>
+					<label class="control-label">逾期罚息：</label>
 					{{bill.deductionFee}}
 				</div>
 
  				<div class="form-group ctm-hor-l">
-					<label class="control-label">手续费：</label>
+					<label class="control-label">分期手续费：</label>
 
 					{{if bill.handingFee==0}}
 						    无
@@ -146,23 +143,31 @@
 						还款处理中
 					  {{else if bill.payStatus==6}}
 						放款处理中
-					  {{else if bill.payStatus==7}}
+					  {{else if bill.payStatus==7||bill.payStatus==8}}
 						还款失败
 					  {{/if}}
 
 				 </bdo> 
-					  
-					  {{if bill.payStatus==2||bill.payStatus==3}}
-				  	     <a class="c_orange ctm-f-r " href="javascript:void(0)"  data-repayment-immediately  data-id="{{bill.id}}" data-billPeriod="{{bill.billPeriod}}" data-payStatus="{{bill.payStatus}}">
-				             	  立即还款
-				    	
-							<span class="ctm-icon1"></span>
-				   		</a>
+					 
+					  {{if bill.payStatus==2||bill.payStatus==3||bill.payStatus==7}}
+						 
+						 {{if clearLoan!=1}}
+							<a class="c_orange ctm-f-r " href="javascript:void(0)"  data-repayment-immediately  data-id="{{bill.id}}" data-billPeriod="{{bill.billPeriod}}" data-payStatus="{{bill.payStatus}}">
+				             	
+				    			{{if bill.payStatus==7}}
+									  重新还款
+								{{else}}
+									  立即还款
+								{{/if}}
+							    <span class="ctm-icon1"></span>
+				   		   </a>
  
-				  		<!-- <a class="c_orange ctm-f-r " href="./bill_manage_02.html?param={{bill.orderId}}"  data-ajax="false">
+				  		   <!-- <a class="c_orange ctm-f-r " href="./bill_manage_02.html?param={{bill.orderId}}"  data-ajax="false">
 				             	  立即还款
-				    	 <img src="<%=request.getContextPath()%>/resource/images/j_rt@3x.png" class="ctm-icon1"/>
-				   		</a> -->
+				    	   <img src="<%=request.getContextPath()%>/resource/images/j_rt@3x.png" class="ctm-icon1"/>
+				   		   </a> -->					
+					       {{/if}}
+
 					  {{else if bill.payStatus==5}}
 				  		 <a class="c_orange ctm-f-r " href="./c_repay_status.html?params={{bill.orderId}}"  data-ajax="false">
 				             	  立即查看
@@ -178,14 +183,18 @@
 		{{else}}
 			<div class="text-center"><h5 style="font-size:0.3rem;font-weight:500;margin-top: 2rem;">暂无记录！</h5></div>
 		{{/if}}
-		<!--提前还款-->	
-		{{if  status=="11"&&whLen>1&&whLen!=1&&!isShow}}
-		   <div class="btn-wrap m-t-lg" id="btnRepay">
-			 <button class="btn l_wd btn-orange ctm-box-shadow" type="button" data-bid="{{bid}}" data-repayment  >提前还款</button>
-		   </div>			
-		  <!-- <div class="btn-wrap m-t-lg" id="btnRepay">
-			 <button class="btn l_wd btn-orange disabled ctm-box-shadow-none custom-btn-hfnone" type="button">提前还款</button>
-		   </div>	-->
+		<!--提前还款 -->	
+		{{if  status=="11"&&whLen>1&&!isShow}}
+		   {{if whLen>1&&clearLoan==0 }}
+
+		     <div class="btn-wrap m-t-lg" id="btnRepay">
+			   <button class="btn l_wd btn-orange ctm-box-shadow" type="button" data-bid="{{bid}}" data-repayment  >结清还款</button>
+		     </div>			
+		   {{else if whLen==1&&clearLoan==1}}
+		     <div class="btn-wrap m-t-lg" id="btnRepay">
+			   <button class="btn l_wd btn-orange ctm-box-shadow" type="button" data-bid="{{bid}}" data-repayment  >结清还款</button>
+		     </div>					
+		   {{/if}}
 		{{/if}}	 
 
 	</script>
@@ -248,12 +257,12 @@
 
 
 	</script>
-	
+	<!-- 还款金额明细 -->
 	<script id="selectedDetail" type="text/html"> 
 			<ul class="clearfix">
 					<li>
 						<div class="custom-col-5">
-							<span>应还总额</span>
+							<span>还款总额</span>
 						</div>
 						<div class="custom-col-5">
 							<span>{{total}}元</span>
@@ -277,6 +286,22 @@
 					</li>
 					<li>
 						<div class="custom-col-5">
+							<span>分期手续费</span>
+						</div>
+						<div class="custom-col-5">
+							<span>{{handingFee}}元</span>
+						</div>
+					</li>
+					<li>
+						<div class="custom-col-5">
+							<span>逾期罚息</span>
+						</div>
+						<div class="custom-col-5">
+							<span>{{deductionFee}}元</span>
+						</div>
+					</li>
+					<li>
+						<div class="custom-col-5">
 							<span>滞纳金</span>
 						</div>
 						<div class="custom-col-5">
@@ -285,20 +310,24 @@
 					</li>
 					<li>
 						<div class="custom-col-5">
-							<span>超期罚息</span>
+							<span>清贷手续费</span>
 						</div>
 						<div class="custom-col-5">
-							<span>{{deductionFee}}元</span>
+							<span>{{payOffHandingFee}}元</span>
 						</div>
 					</li>
-					<li>
-						<div class="custom-col-5">
-							<span>手续费</span>
-						</div>
-						<div class="custom-col-5">
-							<span>{{handingFee}}元</span>
-						</div>
-					</li>															
+
+					{{if deduck!=0}}
+						<li>
+							<div class="custom-col-5">
+								<span>减免</span>
+							</div>
+							<div class="custom-col-5">
+								<span>{{deduck}}元</span>
+							</div>
+						</li>	
+					{{/if}}
+														
 				</ul>		
 	</script>
 
@@ -335,5 +364,5 @@
 
 <script src="<%=request.getContextPath()%>/resource/js/common/template.js" type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/resource/js/views/html/bill_manage_02.js" type="text/javascript" ></script> 
-</body>
+ </body>
 </html>

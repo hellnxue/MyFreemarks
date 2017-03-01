@@ -14,9 +14,9 @@
 	<header class="ctm-header ctm-header-default">
 			<a href="index" class="nav-left-icon" data-ajax="false"> <em></em> </a> 
 			<h1 class="ctm-header-title">消息中心</h1>
-	    </header>
+	 </header>
 	<div class="mui-content"></div>
 	
-	<script src="<%=request.getContextPath()%>/resource/js/views/html/news_center_main.js" type="text/javascript" ></script>  
+	<script src="<%=request.getContextPath()%>/resource/js/views/mui/news_center_main.js" type="text/javascript" ></script>  
 </body>
 </html>

@@ -1,4 +1,6 @@
-﻿	var wait = 60;
+﻿	
+	hasIframe=true;
+	var wait = 60;
 	var sendCodeFlag=false;
 	var cTip01="success";
 	var cTip02="tipOnly";
@@ -23,7 +25,7 @@
 			    contentrefresh : "加载中...", 
 			},
 			up: {
-				contentrefresh: '加载更多...',
+				contentrefresh: '加载中...',
 				callback:  pullupRefresh
 			}
 		}
@@ -91,7 +93,8 @@
 
 							 
 							 var $maincontainer = $("ul[data-bill-items]");
-						 		 
+							 var currentDate=getHandleDate(new Date().getTime());
+							 res.currentDate=currentDate;
 					 		 var html=template("billManageTemplate",res);
 					 		 var $html=$(html);
 						 		 
@@ -137,7 +140,13 @@
 					 		
 							flag=false;
 							mui(pullrefresh).pullRefresh().endPulldownToRefresh();//stop下拉刷新
-							mui(pullrefresh).pullRefresh().refresh(true);//重置之前禁用掉的上拉加载更多
+							//mui(pullrefresh).pullRefresh().refresh(true);//重置之前禁用掉的上拉加载更多
+							
+							//为了防止数据只有一条的时候下拉刷新完之后自动触发上拉加载更多的bug,此处延迟重置~~
+							setTimeout(function(){
+								mui(pullrefresh).pullRefresh().refresh(true);//重置之前禁用掉的上拉加载更多
+								$(".mui-pull .mui-pull-caption-down").html("");//隐藏掉"下拉加载更多"
+							},1000);
 							
 						}else{
 							
@@ -160,16 +169,17 @@
 							
 						}
 						
+						
 						 //暂无账单信息
-						 if(pageIndex==1&&res.result.length==0){
+						 if(pageIndex==1&&res.result==null||(pageIndex==1&&res.result&&res.result.length==0)){
 							 $("ul[data-bill-items]").html( $("#noMessage").clone().removeClass("none"));
 							 return;
 						 }
 				 		
 					 	
 
-				  }) .fail(function(){
-					  mui.alert("账单获取失败！", '提示',"确认");
+				  }) .fail(function(data){
+					  mui.toast("网络异常！",{ duration:'short', type:'div' }) ;
 		  		  });
 			
 		},1500);

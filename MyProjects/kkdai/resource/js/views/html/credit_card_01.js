@@ -85,20 +85,30 @@
 							},
 							callback:function(data){
 								if(data.code=="0000"){
+									
 									mui.alert("信用卡删除成功！", '提示',"确认",function(e){
 										if(data.code=="0000"){
-											location="bind_credit_card_info";//银行卡信息
+											//location="bind_credit_card_info";//银行卡信息
+											 
+											//当信用卡只有一张且删除以后，给出提示
+											if($elem.parents("ul").find("li").length==1){
+													$elem.parents("ul").html('<li class="mui-table-view-cell">'
+															+'<div class="dl_tips">请绑定信用卡</div>'
+															+'</li>');
+											}else{
+												$(li).remove();
+											}
+											
 										}
 								    });
 								}else{
-									mui.toast("信用卡删除失败！",{ duration:'short', type:'div' }) ;
+									mui.toast(data.msg,{ duration:'short', type:'div' }) ;
 								}
-								
 								
 								
 							},
 							failCallback:function(data){
-								mui.alert("信用卡删除失败！", '提示',"确认");					
+								mui.toast(data.msg,{ duration:'short', type:'div' }) ;					
 							}
 						});
 						
@@ -106,7 +116,6 @@
 						
 						location="bind_credit_card?type=J&from=replace";//银行卡信息
 					}
-					
 					
 					
 				} else {

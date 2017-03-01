@@ -14,7 +14,7 @@
 	<header class="ctm-header ctm-header-default">
 			<a href="index" class="nav-left-icon" data-ajax="false"> <em></em> </a> 
 			<h1 class="ctm-header-title">我的账单</h1>
-	    </header>
+	</header>
 	<div class="mui-content"></div>
 	
 	<script src="<%=request.getContextPath()%>/resource/js/views/mui/bill_manage_01_main.js" type="text/javascript" ></script>  

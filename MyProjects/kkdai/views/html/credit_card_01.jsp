@@ -11,13 +11,14 @@
 	 <div class="tips_main" style="display:none;">
 			<p class="lead"></p>
 	 </div>
-	<div class="header">
-		<a href="c_my_page" class="icon ico_back" ></a>
-		银行卡信息
-		</i><!--<i><img image src="images/card_bg@3x.png" alt="" />  -->
-	</div>
+		 
+	<header class="ctm-header ctm-header-default">
+		<a href="c_my_page" class="nav-left-icon"> <em></em>
+		</a>
+		<h1 class="ctm-header-title">银行卡信息</h1>
+	</header>
 	
-<div class="maincontainer  ">
+	<div class="maincontainer  ">
 			<!-- <div class="box_wrap">
 			  <div class="title">代还信用卡<a class="icon add_back_card_icon" href="bind_credit_card"></a></div>
   	
@@ -143,7 +144,7 @@
   				{{if credit}}
   
   				  {{each credit as credit index}}
-      				<li class="mui-table-view-cell">
+      				<li class="mui-table-view-cell" data-creditno="{{credit.md5CreditNo}}">
 
 
       					<div class="mui-slider-right ctm-silider-right mui-disabled"  >
@@ -173,10 +174,12 @@
 						</div>
       				</li>
 					{{/each}}
+				  {{else}}
+					<li class="mui-table-view-cell">
+					 <div class="dl_tips">请绑定信用卡</div>
+					</li>
 				  {{/if}}
 
-
-      				
       			</ul>
       		</div>
       		<div class="box_wrap bank_list mt30">
@@ -228,7 +231,11 @@
       				</li>
 
 					{{/each}}
-				{{/if}}       				
+				{{else}}
+					<li class="mui-table-view-cell">
+					 <div class="dl_tips">请绑定借记卡</div>
+					</li>
+				  {{/if}}   				
       				
       			</ul>
       		</div>

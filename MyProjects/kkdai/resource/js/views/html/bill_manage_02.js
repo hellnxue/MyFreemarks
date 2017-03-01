@@ -1,4 +1,7 @@
-﻿var json = {
+﻿
+hasIframe=true;
+
+var json = {
 	userId: sessionUserId,
 	orderId: pmOrderId
 };
@@ -11,10 +14,7 @@ var pageIndex=1, pageSize=10 ,pullBottomMTop="m-t-xxxl";
 
 $(function(){
 	
-	
-	
-	cutTab();
-	
+//	cutTab();
 	
 	$(".mask_outer").bind("click", function(){
 		   layerHide();
@@ -25,6 +25,7 @@ mui.init();
 
 (function($) {
 	$.ready(function() {
+		
 		
 		$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
 			
@@ -38,11 +39,12 @@ mui.init();
 						callback:pullupRefresh
 					}
 				};
-			//设置第一个下拉组执行一次数据加载
+			//设置第一个选项卡下拉时执行一次数据加载
 			if(index==0){
 				paramObj.up.auto=true;
 			}else{
 				paramObj.up.auto=false;
+				paramObj.up.callback=null;//去掉第二个选项卡的上拉加载更多
 			}
 			$(pullRefreshEl).pullToRefresh(paramObj);
 		});
@@ -79,11 +81,11 @@ function loadData(self,billOrRecordFlag,status){
 		
 		renderData(billOrRecordFlag,status,self);
 		
-		if(status=="pullDown"){
+		if(status=="pullDown"){//停止下拉刷新
 			self.endPullDownToRefresh();
-			self.refresh(true);//重置没有数据时禁用的下拉加载更多
-		}else{
-			self.endPullUpToRefresh();
+			//self.refresh();//重置没有数据时禁用的下拉加载更多(上拉加载更多开启时此处开启)
+		}else{//停止上拉加载更多
+			self.endPullUpToRefresh(true);//true禁用上拉加载更多  开启:self.endPullUpToRefresh();
 		}
 		
 	}, 1000);
@@ -147,8 +149,10 @@ function renderData(billOrRecordFlag,status,self){
 					 
 				 		 //是否可提前还款的判定
 				 		 var flag=billsAry.some(function(item,index){
+				 			
+				 			 //item.payStatus==0||item.payStatus==1||item.payStatus==4||item.payStatus==5||item.payStatus==6
 				 			 
-				 			return item.payStatus==0||item.payStatus==1||item.payStatus==4||item.payStatus==5||item.payStatus==6 ;
+				 			return item.payStatus==1||item.payStatus==4||item.payStatus==5||item.payStatus==6 ;
 				 			 
 				 		 });
 				 		 
@@ -165,15 +169,16 @@ function renderData(billOrRecordFlag,status,self){
 				 		if(pageIndex==1){//数据初始化
 				 			 
 				 			$billSel.empty().append($html);//分期账单
-					 		$recordSel.empty().append($detailHTML).parents("div[data-record]").hide();//还款记录
+//					 		$recordSel.empty().append($detailHTML).parents("div[data-record]").hide();//还款记录
+					 		$recordSel.empty().append($detailHTML);//还款记录
+
 					 		
-					 		
-					 		$("div[data-tab]").each(function(){
-					 	  		var cur=$(this).data("tab");
-					 	 		if($(this).hasClass("cur")){
-					 	 			$(".mui-content [data-"+cur+"]").show().siblings("div").hide();
-					 	 		}
-					 	 	}); 
+//					 		$("div[data-tab]").each(function(){
+//					 	  		var cur=$(this).data("tab");
+//					 	 		if($(this).hasClass("cur")){
+//					 	 			$(".mui-content [data-"+cur+"]").show().siblings("div").hide();
+//					 	 		}
+//					 	 	}); 
 					 		
 					 		//数据初始化若无账单或还款，不显示下拉加载更多
 					 		$billSel.siblings(".mui-pull-bottom-tips").find("span").html("");
@@ -217,7 +222,7 @@ function renderData(billOrRecordFlag,status,self){
 				 			});
 				 		});
 				 		
-				 		//立即还款(都按照期数顺序判定。逾期为先 ，再者未还)
+				 		//立即还款(都按照期数顺序判定。是否有还款失败的状态，逾期为先 ，再者未还)
 				 		$html.find("a[data-repayment-immediately]").each(function(){
 				 			this.addEventListener("tap",function(){
 				 				var curObj={
@@ -229,7 +234,8 @@ function renderData(billOrRecordFlag,status,self){
 					 			var payStatus={
 					 					yq:2,	//逾期
 					 					wh:3,	//未还
-					 					hkz:5	//还款处理中
+					 					hkz:5,	//还款处理中
+					 					hksb:7	//还款失败
 					 			};
 					 			
 					 			//还款处理中
@@ -244,8 +250,19 @@ function renderData(billOrRecordFlag,status,self){
 					 			//逾期状态的期数数组
 				 				var yqAry=periodList(billsAry,payStatus.yq);
 				 				
+				 				//是否存在还款失败的状态
+				 				var hasHksb=billsAry.some(function(item,index){
+				 					return item.payStatus==payStatus.hksb;
+				 					
+				 				});
+				 				
+				 				//有还款失败的状态时，点击下面的立即还款给出提示
+				 				if(hasHksb&&curObj.payStatus!=payStatus.hksb){
+				 					
+				 					 MessageWin("有上一期的逾期账单未处理！");
+				 					 
 				 				//逾期判断
-					 			if(curObj.payStatus==payStatus.yq){
+				 				}else if(curObj.payStatus==payStatus.yq){
 					 				 
 					 				var flagy=orderDecide(yqAry,curObj.billPeriod);
 					 				
@@ -272,6 +289,13 @@ function renderData(billOrRecordFlag,status,self){
 						 				
 					 					
 					 				}
+					 			
+					 			//还款失败  -重新还款
+					 			}else if(curObj.payStatus==payStatus.hksb){
+					 				
+					 				location.href="./c_repay?param="+pmOrderId+"&billId="+curObj.id;//还款明细页面
+					 				
+					 				
 					 				
 					 			}
 					 		});
@@ -353,14 +377,14 @@ function yqFlag(billsAry,hkzStatus){
  }
  
  /*tab切换*/
- function cutTab(){
+/* function cutTab(){
  	$("div[data-tab]").on("click",function(){
  		var cur=$(this).data("tab");
  		$(this).addClass("cur").siblings("div").removeClass("cur");
  		$(".mui-content [data-"+cur+"]").show().siblings("div").hide();
  	}); 
  	
- }
+ }*/
  
  function layerShow(){
 	 $(".mask_outer").removeClass("none");

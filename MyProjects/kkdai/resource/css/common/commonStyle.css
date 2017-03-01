@@ -387,8 +387,16 @@ html{
 	padding:0;
 }
 
+.p-t-none{
+	padding-top:0;
+}
+
 .p-t{
 	padding-top:0.15rem;
+}
+
+.p-t-xs{
+	padding-top:0.05rem;
 }
 
 .p-t-sm{
@@ -581,10 +589,37 @@ html{
 	width: 100%;
 	background: rgba(0, 0, 0, 0.8);
 	z-index: 99;
+	max-width: 7.5rem;/* reference body  */
 }
 
 .tips_main p {
 	margin: 0.25rem;
 	color: #fff;
 	word-break: break-all;
+	text-align:center;
 }
+
+
+/* Tabѡ�   statu --close */
+/* .bill-table *{
+	box-sizing:border-box;
+}
+.bill-table {
+    background-color: #fff;
+    color: #9b9b9b;
+    font-size: 0.28rem;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    text-align: center;
+}
+
+.bill-table .ctm-row > div{
+	
+	border-bottom:0.02rem solid #fff;
+}
+
+
+.bill-table .ctm-row >.cur{
+	color:#fe6f1a;
+	border-bottom-color:#fe6f1a;
+} */

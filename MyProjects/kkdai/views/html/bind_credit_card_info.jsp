@@ -6,16 +6,22 @@
 
 </head>
 <body>
-    <div class="header">
-		<!-- <a href="bind_credit_card" class="icon ico_back"></a> -->
-		<a href="javascript:history.go(-1);" class="icon ico_back"></a>
-		银行卡信息
-	</div>
+	<!--提示-->
+	 <div class="tips_main" style="display:none;">
+			<p class="lead"></p>
+	 </div>
+	 
+	 <header class="ctm-header ctm-header-default">
+		<a href="javascript:history.go(-1);" class="nav-left-icon"> <em></em>
+		</a>
+		<h1 class="ctm-header-title">银行卡信息</h1>
+	</header>
+	
 	<div class="maincontainer">
 	    <div class="box_wrap2 mt20 font_size_1">
 	        <div class="form-group">
 	            <label class="control-label">卡类型</label>
-	            <span class="current">
+	            <span class="current" id="bankInfo">
 	                <bdo class="text_rt">${result.bankName}</bdo>
 	                <bdo class="text_rt">${result.cardAtt}</bdo>
 	            </span>
@@ -25,7 +31,9 @@
 	            <input class="form-control input_text_rt" name="telephone" placeholder="139********" type="text">
 	        </div>
 	    </div>
-	    <div class="tips_info gray_bg">请务必更改为银行预留手机号，否则会导致开户不成功。</div>
+<!-- 	    <div class="tips_info gray_bg">请务必更改为银行预留手机号，否则会导致开户不成功。</div>
+ -->	    <div class=" l-t-entry gray_bg m-t-md">请务必更改为银行预留手机号，否则会导致开户不成功。</div>
+	    
 	    <div class="btn-wrap">
 			<button id="next_type" class="btn_new" type="button">下一步</button>
 		</div>

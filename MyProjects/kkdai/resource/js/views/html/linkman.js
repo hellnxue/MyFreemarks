@@ -31,7 +31,7 @@
 	    //提交表单
 	    $("#linkman_form").on("click",function(){
 	    	
-	    	if(formValidation()){
+	    	if(formValidation($(this).parents("form"))){
 	    		
 	    		var formObj=$(this).parents("form").serializeObject();
 	    		
@@ -75,8 +75,8 @@
 					$("input[name=relationMobile1]").val(
 							data.result.resultRelation.relationMobile1);
 
-					$("input[name=relation2]");
-					relation2.val(data.result.resultRelation.relation2)
+					var relation2 = $("input[name=relation2]");
+					relation2.val(data.result.resultRelation.relation2);
 					relation2.parent().find("span").html(
 							data.result.resultRelation.relation2Name).attr(
 							"class", "current");

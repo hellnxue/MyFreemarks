@@ -14,10 +14,13 @@
 	 <div class="tips_main" style="display:none;">
 			<p class="lead"></p>
 	 </div>
-	<div class="header">
-		<a href="authentication_02" class="icon ico_back"></a>
-		身份验证信息
-	</div>
+	<header class="ctm-header ctm-header-default">
+		<a href="authentication_02" class="nav-left-icon" > <em></em>
+		</a> 
+		<!-- <a href="#" class="nav-right-icon"> <span>返回首页</span>
+		</a> -->
+		<h1 class="ctm-header-title">身份验证信息</h1>
+	 </header>
 	<div class="nav_wrap">
 		<a href="javascript:void(0)" class="selected"><i class="nav_ico nav_ico_sfxx"></i>身份信息<i class="icon nav_ico_line"></i></a>
 		<a href="javascript:void(0)"><i class="nav_ico nav_ico_linkman"></i>联系人<i class="icon nav_ico_line"></i></a>

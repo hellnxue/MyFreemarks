@@ -1,15 +1,10 @@
-/*
- *ÕâÊÇµ¥¶ÀÎªhello mui×¼±¸µÄ¸öĞÔ»¯css£¬¿ÉÒÔ¸²¸Ç±ê×¼muiµÄcss¶¨Òå£»
- * ÔÚÊµ¼ÊÏîÄ¿¿ª·¢Ê±£¬½¨ÒéÎªAppµ¥¶ÀĞ´Ò»¸öcssÎÄ¼ş£¬´Ó¶øÊµÏÖÏîÄ¿µÄ×Ô¶¨ÒåÆ¤·ô¹¦ÄÜ£»
- * 
- * */
  
  body{
 	max-width: 7.5rem;
 	margin: 0 auto;
 	background: #F5F5F5;
 	color: #424242;
-	font-family: "Î¢ÈíÑÅºÚ",tahoma,sans-serif;
+	font-family: "å¾®è½¯é›…é»‘",tahoma,sans-serif;
 	font-size: 0.28rem;
 	line-height: normal;
 }
@@ -33,7 +28,7 @@ p {
 	padding: 0;
 }
 
-/*hm¿ªÍ·µÄ±íÊ¾½öÎª Hello MUIÊ¾Àı¶¨Òå*/
+/*hmå¼€å¤´çš„è¡¨ç¤ºä»…ä¸º Hello MUIç¤ºä¾‹å®šä¹‰*/
 .hm-description{
 	margin: .5em 0;
 }
@@ -45,7 +40,7 @@ p {
 
 
 
-/*»¬¶¯ÁĞ±íÑùÊ½ÖØÖÃ----start*/
+/*æ»‘åŠ¨åˆ—è¡¨æ ·å¼é‡ç½®----start*/
 .mui-table-view-cell > .mui-slider-left, 
 .mui-table-view-cell > .mui-slider-right.ctm-silider-right{
     height: 1.2rem;
@@ -63,19 +58,19 @@ p {
     
 }
 
-/*»¬¶¯ÁĞ±íÑùÊ½ÖØÖÃ----end*/
+/*æ»‘åŠ¨åˆ—è¡¨æ ·å¼é‡ç½®----end*/
 
 
-/* ĞŞ¸Äµ¯¿ò°´Å¥µÄÄ¬ÈÏÑùÊ½  start */
+/* ä¿®æ”¹å¼¹æ¡†æŒ‰é’®çš„é»˜è®¤æ ·å¼  start */
 .mui-popup-button{
 	color:#FD6F19;
 }
 
 
-/* ĞŞ¸Äµ¯¿ò°´Å¥µÄÄ¬ÈÏÑùÊ½  end */
+/* ä¿®æ”¹å¼¹æ¡†æŒ‰é’®çš„é»˜è®¤æ ·å¼  end */
 
 
-/* ĞŞ¸Ä²¿·Ö±íµ¥¿Ø¼şµÄmuiÑùÊ½ */ 
+/* ä¿®æ”¹éƒ¨åˆ†è¡¨å•æ§ä»¶çš„muiæ ·å¼ */ 
 .hm-form-group input[type="number"],  .hm-form-group input[type="password"],  .hm-form-group input[type="text"]
   {
     height: 0.8rem;
@@ -97,25 +92,25 @@ input[type="text"].hm-verify-ode{
 	padding: 0.04rem 0.12rem 0.06rem;
 }
 
-/*ÁĞ±íÑùÊ½*/
+/*åˆ—è¡¨æ ·å¼*/
 
-/* µ×Ïß*/
+/* åº•çº¿*/
 .hm-t-v-cell::after{
     left: 0;
 }
 
-/* ´øÑ¡Ïî¿¨µÄÏÂÀ­Ë¢ĞÂÁĞ±íÖĞµÄÍ¼Æ¬*/
+/* å¸¦é€‰é¡¹å¡çš„ä¸‹æ‹‰åˆ·æ–°åˆ—è¡¨ä¸­çš„å›¾ç‰‡*/
 .mui-slider .mui-slider-group .mui-slider-item img{
 	width:inherit;
 }
 
-/*ÏÂÀ­Ë¢ĞÂ-ÉÏÀ­¼ÓÔØ¸ü¶à*/
+/*ä¸‹æ‹‰åˆ·æ–°-ä¸Šæ‹‰åŠ è½½æ›´å¤š*/
 
 .hm-table-view{
 	background-color:transparent;
 }
 
-/* ulÉÏÏÂºáÏß */
+/* ulä¸Šä¸‹æ¨ªçº¿ */
 .hm-table-view-no-bd::before,.hm-table-view-no-bd::after{
 	background-color:transparent;
 }
@@ -129,6 +124,33 @@ input[type="text"].hm-verify-ode{
     line-height: 1;
     
 }
+
+
+
+/* Tabé€‰é¡¹å¡æ ·å¼ */
+.ctm-header~.mui-content .mui-slider.mui-fullscreen {
+    top: 0.86rem;
+}
+
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item.no-border {
+   border:0;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active
+{
+	
+	color:#fe6f1a;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar{
+	 background-color: #fe6f1a;
+}
+
+.mui-slider-indicator.mui-segmented-control.bg-white {
+    background-color: #fff;
+}
+
+
 
 
 

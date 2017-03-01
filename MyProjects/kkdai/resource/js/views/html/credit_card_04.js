@@ -30,7 +30,7 @@
    		});
    		
    		$("#btn_repayment").bind("click", function(){
-   			window.location.href='bill_manage_01';
+   			window.location.href='bill_manage_01_main';
    		});
    		
 	});

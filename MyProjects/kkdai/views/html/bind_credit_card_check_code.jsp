@@ -5,10 +5,14 @@
 <title>填写验证码</title>
 </head>
 <body>
-    <div class="header">
-		<a href="bind_credit_card" class="icon ico_back"></a>
-		填写验证码
-	</div>
+	 <header class="ctm-header ctm-header-default">
+		<a href="bind_credit_card" class="nav-left-icon" data-ajax="false"> <em></em>
+		</a> 
+		<!-- <a href="#" class="nav-right-icon"> <span>返回首页</span>
+		</a> -->
+		<h1 class="ctm-header-title">填写验证码</h1>
+	 </header>	
+	
 	<div class="maincontainer">
 	    <div class="tips_info gray_bg">请输入手机139****1410收到的短信验证码</div>
 		<div>

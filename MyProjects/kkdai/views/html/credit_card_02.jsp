@@ -3,7 +3,7 @@
 <html>
 <head>
 <jsp:include page="../commen.jsp"></jsp:include>
-<title>信贷GUI-银行卡信息2</title>
+<title>申请借款</title>
 <link type="text/css" href="<%=request.getContextPath()%>/resource/css/common/mobiscroll_date.css" rel="stylesheet" />
  
 </head>
@@ -13,10 +13,11 @@
 			<p class="lead"></p>
 	 </div>
 	 
-	<div class="header">
-		<a href="javascript:void(0);" class="icon ico_back" id="proBack"></a>
-		银行卡信息
-	</div>
+	<header class="ctm-header ctm-header-default">
+		<a href="javascript:void(0);" class="nav-left-icon" id="proBack"> <em></em>
+		</a>
+		<h1 class="ctm-header-title">申请借款</h1>
+	</header>
 	
 	
 	<div class="maincontainer">
@@ -24,11 +25,13 @@
 	<form action="productList" method="post" id="productList">
          <input name="loanAmt" value="${param.loanAmt}" type="hidden">
          <input name="productCode" value="${param.productCode}" type="hidden">
+        
     </form>        
             
 	<form action="./credit_card_04.html" method="post" name="myform">
 		<div class="tips_info">
-			<i class="icon ico_sign"></i>亲，您申请的金额需大于1000小于您的授信额度哦~~
+			 ${param.sameDayMsg}  
+			 <!-- <i class="icon ico_sign"></i>亲，您申请的金额需为100的整数倍数且小于您的授信额度哦~~  -->
 		</div>
 		<div class="box_circle circle_not_b">
 			<div class="hd" ><span data-credit>&nbsp;</span><i class='more_crieds'></i></div>
@@ -39,14 +42,20 @@
 			<input type="hidden" id="creditAmount" value="${userSession.creditAmount}"/>
 			<input type="hidden" id="userId" name='userId' value="${userSession.userId}"/>
 			<input type="hidden" id="bankKey" name='bankKey' value="${credit.bankKey}"/>
+			
+			<!-- 试算信息 -->
+			<input name="sameDay" value="${param.sameDay}" type="hidden">
+   			<input name="sameDayMsg" value="${param.sameDayMsg}" type="hidden">
 			<div class="form_wrap">
 				<div class="form-group">
 					<label class="control-label">申请代还金额</label>
 					<input type="text" name='loanAmt' value="<%=request.getParameter("loanAmt")==null?"":request.getParameter("loanAmt")  %>" id="amount" placeholder="最低1000且为100整数倍" class="form-control form_ipt_right" readonly="readonly"/>
 				</div>
 				<div class="form-group">
-					<label class="control-label">还款期数</label>
-					<span style="text-align:right;margin-right:0.6rem;"><%=request.getParameter("repaymentPeriod")==null?"":request.getParameter("repaymentPeriod")%></span>
+					<label class="control-label">
+					还款期数
+					</label>
+					<span style="text-align:right;margin-right:0.6rem;"><%=request.getParameter("repaymentPeriod")==null||request.getParameter("repaymentPeriod").equals("null")?"":request.getParameter("repaymentPeriod")%></span>
 					<input type="hidden" name="repaymentPeriod" value="<%=request.getParameter("repaymentPeriod")%>" />
 					<!-- <i class="icon ico_arrow_down" style="right:0.45rem ;"></i>
 					<div class="subnav none">
@@ -58,7 +67,7 @@
 				</div>
 				<div class="form-group">
 					<label class="control-label">手续费</label>
-					<bdo class="form_text_right c_orange fs36" id="poundage"><%=request.getParameter("poundage")==null?"":request.getParameter("poundage")%></bdo>
+					<bdo class="form_text_right c_orange fs36" id="poundage"><%=request.getParameter("poundage")==null||request.getParameter("poundage").equals("null")?"":request.getParameter("poundage")%></bdo>
 					<input type="hidden" name="poundage" value="<%=request.getParameter("poundage")%>" />
 				</div>
 				<div class="form_hint">注：手续费需从代还金额中扣除</div>
@@ -75,7 +84,7 @@
 			<div class="form_wrap">
 				<div class="form-group">
 					<label class="control-label">每月还款</label>
-					<bdo class="form_text_right c_orange" id="capital"><%=request.getParameter("capital")==null?"":request.getParameter("capital")%></bdo>
+					<bdo class="form_text_right c_orange" id="capital"><%=request.getParameter("capital")==null||request.getParameter("capital").equals("null")?"":request.getParameter("capital")%></bdo>
 					<input type="hidden" name="capital" value="<%=request.getParameter("capital")%>" />
 				</div>
 				<div class="form-group">

@@ -18,7 +18,25 @@ $(document).ready(function(){
 		 
 	}) ;
 	
+	initData();
+	
 });
+
+/*数据初始化*/
+function initData(){
+	var bankInfo=sessionStorage.getItem("bankInfo");
+	if(bankInfo){
+		var paramObj=JSON.parse(bankInfo);
+		
+//		console.log(paramObj);
+		$("#bankInfo bdo:first").html(paramObj.bankName).siblings().html(paramObj.cardAtt);
+		$("#hidden_dom :input[name=type]").val(paramObj.type)
+		.next(":input[name=cardNo]").val(paramObj.cardNo)
+		.next(":input[name='cardBank']").val(paramObj.bankName)
+		.next(":input[name=cardCity]").val(paramObj.cardCity)
+		.next(":input[name=name]").val(paramObj.name);
+	}
+}
 
 
 
@@ -26,9 +44,14 @@ $(document).ready(function(){
 function getCode(status){
 	var telephone = $('input[name=telephone]').val();
 	if("" == telephone ){
-		MessageWin("手机号不能为空");
+//		MessageWin("手机号不能为空");
+		promt("手机号不能为空!");
 		return ;
-	} 
+	} else if(!isValidityMobile(telephone)){
+		promt("请输入正确的手机号码!");
+		return ;
+	}
+	
 	$.ajax({
 		async: false,
 		type: 'post',
@@ -99,12 +122,12 @@ function initSendCodeHandel(telephone){
 			'<p class="lead"></p>'+
 	 '</div>'+
 	"<div class='header'>" + 
-		"<a href='#' class='icon ico_back'></a>" + 
+		"<a href='javascript:history.go(-1);' class='icon ico_back'></a>" + 
 		"填写验证码" + 
 	"</div>" + 
 	"<div class='maincontainer'>" + 
 	"<form action='saveCard' method='post'>"+
-	    "<div class='tips_info gray_bg'>请输入手机139********收到的短信验证码</div>" + 
+	    "<div class='tips_info gray_bg'>请输入手机"+telephone.replace(telephone.substring(3,7),"****")+"收到的短信验证码</div>" + 
 		"<div>" + 
 			"<input class='form-control-border mt20 input_boder_style' name='verifyCode' value='' placeholder='请输入验证码' type='text' required='required'>" + 
 			"<input class='form-control-border mt20 button_boder_style' value='59秒后重发' type='button' id='checkcode'>" + 

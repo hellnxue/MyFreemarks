@@ -9,7 +9,7 @@
 
 <body class="ctm-white-bgc">
 
-    <div class="me_top">15989987899</div>
+    <div class="me_top">${userSession.mobilePhone}</div>
     
     <div class="widget-list">
        <ul class="vip-list">
@@ -29,7 +29,7 @@
 				</a>
        		</li>
        		<li>
-       			<a  href="c_product_list">
+       			<a  href="c_product_list_main">
 					<i class="arrows"></i>
 					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/find_icon@2x.png" style="width:0.51rem;">
 					<span class="widget-name">发现</span>
@@ -43,7 +43,7 @@
 				</a>
        		</li>
        		<li>
-       			<a  href="#">
+       			<a  href="faquestions_main">
 					<i class="arrows"></i>
 					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/help_icon@2x.png" style="width:0.49rem;">
 					<span class="widget-name">帮助中心</span>
