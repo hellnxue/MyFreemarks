@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>无标题文档</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<link href="../../CSS/CSSSecret/secret.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+	.bgRange {
+    background: #ccc url("../../../image/bz/986760.jpg") no-repeat scroll center center / cover ;
+    height: 200px;
+    margin: 0 auto;
+    min-height: 200px;
+    width: 500px;
+}
+
+.bgRange > div {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 20px solid hsla(0, 0%, 100%, 0.5);
+    height: 50%;/*元素高度为百分比值时,其外层元素必须指定height属性的值奥  资料网址：http://blog.163.com/m13864039250_1/blog/static/213865248201391012657561/
+
+
+    http://www.cnblogs.com/vajoy/p/3730014.html*/
+    margin: auto;
+    width: 50%;
+}
+
+
+
+/*多重边框---box-shadow的用法*/
+.muilBorder{
+	width: 100px;
+	height: 100px;
+	margin:0 auto;
+	background:pink;
+	/*用box-shadow的第四个参数-扩张半径实现，扩张半径在容器上是层层叠加的，因此，第二层的扩张半径5px需要加上之前已扩张的10px，即15px*/
+	
+	cursor: pointer;
+
+}
+
+.mb1,.mb2{
+	box-shadow: 0 0 0 10px #acaaff,0 0 0 15px yellow,0 2px 5px 15px rgba(0,0,0,.5); 
+}
+
+.mb1{
+	float: left;
+	margin: 15px;/*去掉可以看到box-shdow不影响容器的布局奥~*/
+}
+
+/*内嵌的box-shadow */
+.mb2{
+	padding:15px;/*利用padding给box-shadow腾出地方，为了不影响容器的点击区域*/
+	box-shadow: 0 0 0 10px #acaaff inset,0 0 0 15px yellow inset;
+}
+
+
+/*若要用双层边框，outline更适合。*/
+.mb3{
+ 
+	border: 10px solid #acaaff;
+    outline: 5px dashed yellow;/*outline还可以加虚线，同样，outline也不影响容器布局*/
+    outline-offset: 10px;/*规定边框边缘之外 10px处的轮廓*/
+    float: left;
+}
+
+/*使用outline的注意点：边框不一定会贴合border-radius属性产生的圆角，因此如果元素是圆角的，它的描边可能还是直角的（未来可能为改善的吧~）*/
+.mb4{
+ 
+	border: 10px solid #acaaff;
+	border-radius: 15px;
+    outline: 5px solid yellow;/*outline还可以加虚线，同样，outline也不影响容器布局*/
+    
+}	
+
+
+
+/* 
+	当背景图像的位置与元素的padding的位置相同时，可以使用background-origin:content-box而无需设置background-position;
+	background-origin规定background-position相对于什么位置来定位 
+	默认值：padding-box 背景图像相对于内边距框来定位。
+			border-box 	背景图像相对于边框盒来定位。
+			content-box 	背景图像相对于内容框来定位。
+
+
+	*/
+.bgpn{
+	background: rgba(0,0,0,0)  url(../../../image/mxx/mxx8.png);
+	background-repeat:no-repeat;
+/*	background-position:20px 20px; 为了让背景图片在元素的内容区而不在元素的padding区，这里定义了背景图片的位置，背景图的左上角距离元素的左上角水平20像素，垂直20像素的位置
+	 */
+
+	background-origin: content-box;
+	padding: 20px;
+	width: 300px;
+	height: 150px;
+	margin:0 auto;
+	line-height: 150px;
+	border: 2px solid yellow;
+	
+	text-align: center;
+}
+
+.bgpn2{
+	background: rgba(0,0,0,0)  url(../../../image/mxx/mxx8.png);
+	background-repeat:no-repeat;
+	background-position:calc(100% - 20px) calc(100% - 20px);
+	padding: 20px;
+	width: 300px;
+	height: 150px;
+	margin:0 auto;
+	line-height: 150px;
+	border: 2px solid yellow;
+	text-align: center;
+}
+
+
+/*边框内圆角*/
+.something-meaningful{
+	background: #655;
+	padding: 0.8em;
+	margin:0 30%;
+}
+.something-meaningful > div{
+	background: tan;
+	border-radius: .8em;
+	padding: 1em;
+}
+
+.oneEle{
+	background: tan;
+	margin:1em 30%;
+	padding: 1em;
+	border-radius: .8em;
+	outline:#655 solid .8em; /*描边不会跟着圆角走，但box-shadow却可以，但box-shadow指定的扩张值可以用勾股定理算出来，或者直接取border-radius的一半，这里是0.4em*/
+	box-shadow: 0 0 0 .4em #655;
+}
+
+
+.bgstrip,.bgstripcz,.bgstripxx,.bgstriprpt{
+	   
+	width:100%;     
+	border:1px solid #ccc;     
+	
+	overflow: hidden;
+}
+
+.bgstrip > div,.bgstripcz > div,.bgstripxx > div,.bgstriprpt > div{
+	
+    display: flex;
+    float: left;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 150px;
+    border:1px solid yellow;
+    margin: 10px;
+   	color: yellow;
+
+}
+
+.bgstrip .one{
+	background: linear-gradient(#fb3,#58a);
+}
+
+.bgstrip .two{
+	background: linear-gradient(#fb3 20%,#58a 80%);
+}
+
+.bgstrip .three{
+	background: linear-gradient(#fb3 50%,#58a 50%);
+}
+
+.bgstrip .four{
+	background: linear-gradient(#fb3 50%,#58a 50%);
+	background-size: 100% 30px;
+}
+
+.bgstrip .five{
+	background: linear-gradient(#fb3 30%,#58a 30%);
+	background-size: 100% 30px;
+}
+
+/*四个条纹 100/4=25   每两种颜色的25%，25%为一个条纹，75%之后还会有一个单独的条纹，即粉红色*/
+.bgstrip .six{
+	background: linear-gradient(#fb3 25%,#58a 25%, #58a 50%, yellowgreen 50%,yellowgreen 75% ,pink 75%);
+	background-size: 100% 50px;
+}
+
+
+/*垂直条纹*/
+.bgstripcz .one,.bgstripcz .two{
+	background: linear-gradient(to right,#fb3 50%, #58a 50%);
+	background-size:30px 100%;
+}
+
+.bgstripcz .one{
+ 
+	background-repeat: no-repeat;
+}
+
+
+/*斜向条纹*/
+.bgstripxx .one,.bgstripxx .two,.bgstripxx .three{
+	background: linear-gradient(45deg,#fb3 50%,#58a 50%);
+	background-repeat: no-repeat;
+	background-size: 30px 100%;
+}
+
+.bgstripxx .two{
+	background-repeat: repeat;
+}
+
+.bgstripxx .three{
+	 
+	background-repeat: repeat;
+	background-size: 30px 30px;
+}
+
+.bgstripxx .four,.bgstripxx .five{
+	 
+	 background: linear-gradient(45deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0, #fb3 75%, #58a 0);
+	 background-size: 30px 30px;
+}
+
+.bgstripxx .four{
+	 
+	background-repeat: no-repeat;
+}
+
+
+
+
+/*重复性渐变创建条纹背景时，第一个色标不能指定大小哎，或者说第一个色标值必须0*/
+.bgstriprpt .one{
+	background: repeating-linear-gradient(45deg,#fb3,#58a 30px);
+}
+
+/*重复性渐变 创建的双色条纹时都需要用到四个色标*/
+.bgstriprpt .two{
+	background: repeating-linear-gradient(45deg,#fb3,#fb3 15px,#58a 0,#58a 30px);
+}
+/*两个以上的条纹*/
+.bgstriprpt .three{
+	background: repeating-linear-gradient(45deg,#fb3,#fb3 15px,#58a 0,#58a 30px,yellow 0,yellow 45px);
+}
+</style>
+<body>
+<h3>1、背景在容器中的覆盖范围</h3>
+<div class="bgRange" >
+	 <div>
+	 
+	 </div>
+</div>
+
+
+<h3>2、多重边框--用box-shadow实现</h3>
+<div style="overflow: hidden;border: 2px solid yellow;">
+	<div class="muilBorder mb1">外扩的box-shadow</div>
+
+
+    <div class="muilBorder mb2">内嵌的box-shadow</div>
+
+     
+</div>
+
+<h3>2、多重边框--用outline实现</h3>
+<div style=" border: 2px solid yellow;">
+	 
+
+    <div class="muilBorder mb3">outline 双层边框</div>
+
+    <div class="muilBorder mb4">outline 不会贴合圆角</div>
+</div>
+
+<h3>3、灵活的背景定位background-position</h3>
+<div class="bgpn">
+	
+	background origin
+
+</div>
+
+<!-- 图片位置位于内容的右下角：运用运算函数calc() -->
+<div class="bgpn2">
+	
+	background use calc()
+
+</div>
+
+
+
+<h3>3、边框内圆角</h3>
+<div class="something-meaningful">
+   <div>
+   	I have a nice subtle inner rounding,don't i look pretty?
+   </div>
+
+</div>
+
+<div class="oneEle">
+	I have a nice subtle inner rounding,don't i look pretty?
+</div>
+
+ <h3>4、条纹背景</h3>
+
+ <p>水平条纹</p>
+<div class="bgstrip">
+	<div class="one"></div>
+	<div class="two"></div>
+	<div class="three"></div>
+
+	<div class="four">通过设置background-size来创建条纹背景</div>
+	<div class="five">通过调整色标的位置来创建不等宽条纹</div>
+	<div class="six">超过两种颜色以上的背景条纹</div>
+
+</div>
+
+ <p>垂直条纹</p>
+<div class="bgstripcz">
+	<div class="one">背景不重复时的样子</div>
+	<div class="two">背景重复时会填满整个容器奥~</div>
+	 
+
+</div>
+
+<p>斜向条纹</p>
+<div class="bgstripxx">
+	<div class="one">45deg方向不重复的斜向条纹 </div>
+	<div class="two">45deg方向重复的斜向条纹 </div>
+	<div class="three">45deg方向重复的斜向条纹 尺寸为30px*30px的 </div>
+	<div class="four">斜向条纹贴片 </div>
+	<div class="five">多个斜向条纹贴片组成的斜纹背景 </div>
+	 
+
+</div>
+
+<p>重复性渐变repeating-linear-gradient。第一个色标的值必须是0哎，why??</p>
+<div class="bgstriprpt">
+	<div class="one"> 	 重复性渐变创建条纹背景时，第一个色标不能指定大小哎，或者说第一个色标值必须0 
+	</div>
+	<div class="two">重复性渐变 创建的双色条纹时都需要用到四个色标</div>
+	<div class="three">重复性渐变背景创建的多个条纹</div>
+	 
+	   
+
+</div>
+</body>
+</html>

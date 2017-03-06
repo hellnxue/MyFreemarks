@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="utf-8" />
+<title>效果小计</title>
+<link href="../../CSS/CSSUtil.css" rel="stylesheet" type="text/css"/>
+<link href="../../CSS/noteCSS.css" rel="stylesheet" type="text/css"/>
+<style>
+  .selectorT2{
+  color:pink;}
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+
+<body>
+
+<!--页面导航-->
+<header class="ctm-header border-box ctm-default">
+    <a href="#" class="back-icon">
+		<em></em>
+	</a>
+	<h1 class="ctm-header-title">CSS效果小记</h1>
+</header>
+
+
+<h3> 导航栏</h3>
+  <header class="ctm-header-1 ctm-header-default-1">
+      <a href="index" class="nav-left-icon" data-ajax="false"> <em></em> </a> 
+      <h1 class="ctm-header-title-1">我的导航栏</h1>
+  </header>
+
+
+<h3>--- 评论栏上部的样式----</h3>
+ 
+<div  class="cmt-wrapper">
+	<div class="cmt-list-type">
+	
+        <ul class="type-lists">
+            <li class="type-list active">评论</li>   
+        </ul>
+
+        <div class="cmt-list-border"></div>
+
+        <div class="cmt-list-number">
+            <span class="comment-number"><span class="number">1410</span>人参与,<span class="number">798</span>条评论</span>
+        </div>
+    </div>
+
+</div>
+
+<h3>--- 评论框部分----</h3>
+ 
+<div  class="cmt-wrapper" style="position: relative;margin-top: 50px;">
+    <div class="rounded">登录</div>
+    <div class="post-wrap-w">
+
+        <div class="post-wrap-border-l"></div>
+
+        <div class="post-wrap-border-r"></div>
+
+        <div node-type="post-wrap-main" class="post-wrap-main">
+
+            <div class="post-wrap-border-t">
+                <div node-type="post-wrap-border-t-l" class="post-wrap-border-t-l"></div>
+                <div node-type=" " class="post-wrap-border-t-r"></div>
+            </div>
+
+            <div class="wrap-area-w">
+                <div class="area-textarea-w">
+                    <textarea node-type="textarea" name="" class="textarea-fw textarea-bf" >有事没事说两句... </textarea>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>
+ <textarea node-type="textarea" name="" class="textarea-fw textarea-bf" >有事没事说两句... </textarea>
+ 
+
+
+ <h3>--- 用浮动属性包围超出父容器宽度的子元素(重要提示：此功能的前提是，子元素的内容的宽度不是百分比，或者子元素的内容比子元素还要宽，或者子元素的内容宽度设置了像素的情况下才管用的，具体看浮动非宽度的两种情况吧。。。)----</h3>
+ <div class="ctm-f-wrapper clearfix">
+     <div>
+          <!-- f1的宽度为100% -->
+          <div class="f1 commona">short width</div>
+
+          <!-- <div class="f2">long width</div> -->
+
+          <!-- div f3的宽度为100%，但是img的宽度为像素，且超出了直接父容器div的宽度时 -->
+          <div class="f3 commonb">
+              <img src="../../img/test.PNG" style="height: 50px; width: 1400px;">
+
+          </div>
+
+     </div>
+    
+ </div>
+
+
+
+ <h3>--- 一、浮动没有宽度的元素 之 子元素宽度为百分比的情况----</h3>
+ <div class="ctm-f-wrapper clearfix ff">
+     <div>
+          
+          <div class="commona f5">short width</div>
+          <div class="commonb f6"> </div>
+
+     </div>
+    
+ </div>
+
+
+ <h3>--- 二、浮动没有宽度的元素 之 子元素宽度为像素情况----</h3>
+ <div class="ctm-f-wrapper clearfix ff">
+     <div>
+          
+          <div class="commona f7">short width</div>
+          <div class="commonb f8"> </div>
+
+     </div>
+    
+ </div>
+
+<h3>--- 浏览器默认块级元素占满一行,子元素width:100%即与父容器宽度一致----</h3>
+<div style="background-color: pink; min-height: 100px;">
+    <div style="background-color: yellow; width: 106%;">hello world</div>
+
+</div>
+
+
+<h3>--- 定位上下文的问题.当一个元素是绝对定位时，它的定位上下文除了是position:relative外，还可以是
+position:absulute哎----</h3>
+<div class="pt-wrapper">
+    <div class="A">
+      pink-绝对定位
+      <div class="B">yellow-绝对定位</div>
+
+    </div>
+
+</div>
+
+
+<!--图片的区别:作为容器中的img时，只要容器不剪裁溢出的图片，给图片只设置宽度的情况下，高度会自适应的-->
+<h3>--- 一张图片作为容器中width:100%的子元素，与作为背景图的区别:作为容器中的img时----</h3>
+<div class="img-wrapper">
+    
+      <img src="../../img/bill_bg@2x.png">
+</div>
+
+<!--图片的宽高比不一致时，作为背景图就有问题了，不能很好的控制背景图全部覆盖背景的同时还要保持宽高比-->
+<h3>--- 一张图片作为容器中width:100%的子元素，与作为背景图的区别：作为容器的背景时----</h3>
+<div class="bgImg-wrapper">
+</div>
+
+
+<h3>---简单的居中：除了给有宽度的元素用margin:0 auto外，给没有宽度的元素设置margin:0 百分比;也可以达到居中的效果哎！----</h3>
+<div class="ele-center">
+</div>
+
+<h3>---上负外边距+下正外边距互相抵消 当前元素上移的同时，防止后面元素上移导致布局错乱----</h3>
+<div class="mtmb">
+  <p class="mtmb1">hello margin-top + margin-bottom</p>
+  <p class="mtmb2">hello margin-top + margin-bottom</p>
+</div>
+
+<h3>---line-height会让行内元素垂直居中，也能让display:inline-block的元素垂直居中奥----</h3>
+<div class="lieh">
+  <span class="h" style="display:inline-block">hello margin-top + margin-bottom</span>
+  <span class="h" style="display: inline;">hello margin-top + margin-bottom</span>
+  <span class="h" style="display:inline-block">hello margin-top + margin-bottom</span>
+  <span class="h" style="display:inline-block">hello margin-top + margin-bottom</span>
+</div>
+
+<div class="lieh">
+  <img src="../../img/title-tag.png">
+  
+</div>
+
+
+<h3>---vertical-align:middle让元素在父元素中垂直居中----</h3>
+<div class="lieh lh" style="line-height: normal;">
+  <span class="h hh1"  >hello margin-top + margin-bottom</span>
+  <span class="h hh2"  >hello</span>
+</div>
+
+
+
+<!--如果子元素有固定宽度，那么负外边距会使子元素向左移动，导致子元素的右边空出一块来，如果width为自适应的话就不会有这种情况了-->
+
+<h3>---父元素中得子元素有负外边距时，子元素加宽度与不加宽度的区别之有宽度的子元素----</h3>
+<div class="mrl"  >
+  <div  >hehe</div>
+</div>
+
+<h3>---父元素中得子元素有负外边距时，子元素加宽度与不加宽度的区别之子元素宽度自适应，因为没有宽度的子元素，它的宽度总是占满父元素的宽度（指块级元素奥~）----</h3>
+<div class="f-ctr"   >
+	<div >左右都有负外边距的时候</div>
+</div>
+
+
+<h3>---固定高度or不固定高度时设置padding的情况----</h3>
+<div class="fixed-height"   >
+  hello world 
+</div>
+
+<h3>---设置选中的文字的颜色----</h3>
+<h1 class="selectionColor">hello text color</h1>
+
+<h3>---用CSS3动画控制滑动的底部弹出层----</h3>
+
+
+<div class="layer-outer hidden" data-outer></div>
+<div class="my-layer hidden" data-layer>
+  <h3>从底部出来</h3>
+
+</div>
+
+<div style="text-align: center;">
+  
+  <button type="button" id="layerTest" class="btn btn-info ">显示弹出层</button>
+
+</div>
+
+<h3 class="yellow_gradient">---绝对定位对于行内元素的应用--新发现:并排的一行的几个行内元素，若其中有定位称absolute的，它依然在原来位置，而且内容换行时也在自己的位置区域，不会在一行的下面。----</h3>
+
+<h3  >行内元素在一行，其中的有内容过多时的样子.......</h3>
+<div  class="discover-pos">
+    <label>hello inline element</label><label style="position: static;"> world world  world world  world world  world world  world world  world world  world world  world world  world world  world world  world world </label>
+</div>
+
+<h3>行内元素在一行，其中某个用了position:absolute;的时候.......</h3>
+<div   class="discover-pos">
+    <label>hello inline element</label><label> world world  world world  world world  world world  world world  world world  world world  world world  world world  world world  world world </label>
+</div>
+
+<h3>line-height可以使固定高度元素内的行内元素垂直居中</h3>
+<div class="leht-wrapper"   >
+    <span>
+      <label></label>
+    </span>
+</div>
+
+
+<h3>有固定宽高度的绝对定位的元素在容器中水平垂直居中---transform的应用。。。</h3>
+
+
+
+
+<h3>？？？？？绝对定位的情况:在一个块级元素上下都有绝对定位的时候，不设置left:0;top:0;时是不会叠加在一起的哎</h3>
+<div class="leht-wrapper"   >
+  <div style="position: absolute;width: 100px;height: 100px; background-color: yellow;"></div>
+  <p style="line-height: normal;">hello world hello world </p>
+  <div style="position: absolute;width: 100px;height: 100px; background-color: green;"></div>
+</div>
+
+<h3>绝对定位的情况:绝对定位的元素在一个位置时的情况，此时两个绝对定位的元素之间没有其它元素相隔</h3>
+<div class="leht-wrapper"   >
+
+  <div style="position: absolute;width: 100px;height: 100px; background-color: yellow;"></div>
+  <div style="position: absolute;width: 100px;height: 100px; background-color: green;"></div>
+
+</div>
+
+
+
+
+<h3>关于导航，左右图标浮动，中间元素为绝对定位(一个没有固定宽度的绝对定位的元素，用left和right可以把这个元素拉长)</h3>
+<div class="leht-wrapper"   >
+
+  <div style="background-color: yellow; height: 20px; width: 20px; float: left;"></div>
+  <p style="line-height: normal; position: absolute; margin: 0px; background: pink none repeat scroll 0% 0%; left: 40px; right: 40px; width: auto; text-align: center;">hello world   </p>
+  <div style="background-color: green; height: 20px; width: 20px; float: right;"></div>
+
+</div>
+
+
+<h3> 动态计算calc()函数的用法举例：不让子元素的宽度超出父容器</h3>
+<div class="demo">
+   <div class="box"></div>
+</div>  
+
+ 
+ 
+<h3> pointer-event:none的应用-----半透明覆盖后，可以穿透透明层操作文字（这种穿透的效果是z-index层叠顺序做不到的，因为有层叠就不会有半透明渐变效果了）</h3>
+ 
+<div class="petDemo">
+   <ul>   
+     <li> </li>
+     <li>金鸡一唱传佳讯，玉犬三呼报福音</li>
+     <li>金猴留恋丰收年，彩凤欢啼盛世春</li>
+     <li>鸡鸣喜报丰收果，犬吠欣迎富贵宾</li>
+   </ul>
+</div> 
+
+ <h3><code>水平分割线hr</code></h3>
+  <!-- 说好的垂直线，怎么会是个圆点呢？？ -->
+  <hr  size="50" noshade="" width="3" align="center">
+
+  <span>水平线版虚线</span>
+  <hr style="border: 1px dashed red;width: 80%;height: 1px;">
+
+  <span>hr的noshade属性兼容性不好，可以用样式代替</span>
+  <hr  style="height: 2px; border-width: 0;color: gray;background:gray;">
+  
+  
+  
+   <h3>选择器</h3>
+   <p id="selectorT1" class="selectorT2">hello selector</p>
+   
+   <h3>rgb百分比颜色值:(注:即使是0，也要加上%,用作0%奥。)</h3>
+  <div class="rgbpercent">rgb百分比颜色值</div>
+
+
+  <h3>利用flex弹性盒子平均分配父容器区域大小，弹性子元素需指定flex:1;(弹性容器上用了align-items后会导致弹性子元素的高度缩小化哎)</h3>
+  <div class="flex-container">
+    <div class="flex-item item1">弹性子元素不需要指定宽高，flex:1;可以让子元素平均分配弹性容器的大小</div>
+    <div class="flex-item item2">flex item 2</div>
+  </div>
+
+<script type="text/javascript" src="../../js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="../../js/myJs.js"></script>
+</body>
+</html>
