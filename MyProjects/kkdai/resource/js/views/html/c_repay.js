@@ -7,6 +7,8 @@ var json = {
 
 var billsAry=[];//子订单里列表
 
+var lyIndex;//layer层标记
+
 $(function(){
 	
 	//还款详情数据渲染
@@ -17,7 +19,7 @@ $(function(){
 		var hMobile=sessionMobile.replace(sessionMobile.substr(3,4),"****");
 		$("#ctCode").find("[data-info]").html("请在下方输入手机"+hMobile+"，所收到的验证码");;
 		 var html=$("#ctCode").html();
-		 var index=layer.open({
+		 var lyIndex=layer.open({
 	  			anim: 'up',
 	  			content: html,
 	  			shadeClose:true
@@ -39,7 +41,8 @@ $(function(){
   		    //个人主动还款
 	  		$.post("kakadai/order/payOffLaonActivePersonal",{id:billId, verifyCode: $.trim(code)},function(data){
 	  			 if(data &&data.code&&data.code=="0000"){
-	  				   
+	  				    
+	  				    layer.close(lyIndex);
 	  				    location.href="./c_repay_status";//还款状态页面
 	  				   
 	  			   }else{
@@ -90,6 +93,28 @@ function repaySpecify(){
 			 		data.total=billObj[0].total;//还款总额
 			 		data.handingFee=billObj[0].handingFee;//手续扣费
 			 		
+			 		//逾期扣失
+			 		
+			 		//提前还
+			 		
+			 		
+			 		
+			 		//还款本金 
+			 		data.payAmt=billObj[0].payAmt;
+			 		//分期手续费 
+			 		data.handingFee=billObj[0].handingFee;
+			 		//还款利息 
+			 		data.interest=billObj[0].interest;
+			 		
+			 		//逾期罚息bill.deductionFee
+			 		data.deductionFee=billObj[0].deductionFee;
+			 		
+			 		//滞纳金 
+			 		data.lateCharge=billObj[0].lateCharge;
+			 		
+			 		//减免bill.deduck
+			 		data.deduck=billObj[0].deduck;
+			 		
 			 		var html=template("specifyTemplate",data);
 			 		$("#main [data-btm]").before("");
 			 		$("#main [data-btm]").before($(html));
@@ -103,24 +128,31 @@ function repaySpecify(){
 
 function dynamic() {
 	var $selector=$(this).parents(".custom-code-wrapper");
+	var th=this;
 	$selector.find("button[data-confirm]").removeAttr("disabled"); //验证码
-	time(this);
-    $.post("phoneDynCode",{verifyKind:"CHK"},function(){ });
+	 
+    $.post("phoneDynCode",{verifyKind:"CHK"},function(data){
+    	if(data.code&&data.code=="0000"){
+    		time(th);
+    	}else{
+    		 layer.close(lyIndex);
+    		 MessageWin(data.msg);
+    		 
+    	}
+    }).fail(function(data){
+    	 MessageWin(data.msg);
+    });
 }
 
 function time(o) {
-	if (wait == 60) {
-		//sendVerifyCode('verifyCode','');
-	}
 	if (wait == 0) {
-		$(o).get(0).onclick = dynamic;
+		o.onclick = dynamic;
 		$(o).html("获取验证码");
 		$(o).removeAttr("style").addClass("catch");
 		wait = 60;
 	} else {
-		$(o).get(0).onclick = null;
+		o.onclick = null;
 		$(o).html("(" + wait + ")重获验证码");
-		//$(o).css("color", "#FF0000");
 		wait--;
 		setTimeout(function() {
 			time(o);

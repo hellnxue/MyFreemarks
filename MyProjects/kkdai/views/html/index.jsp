@@ -74,7 +74,7 @@ $(document).ready(function(){
 	var dom3 = $("button[id=billing_center]");
 	if(dom3.attr("processStatus") == '1'){
 		dom3.bind("click", function(){
-			window.location.href='bill_manage_01';
+			window.location.href='bill_manage_01_main';
 		})
 	}else if(dom3.attr("processStatus") == '0' || dom3.attr("processStatus") == ''){
 		dom3.css("background", "gray");

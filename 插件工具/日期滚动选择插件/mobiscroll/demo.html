@@ -7,8 +7,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <link rel="stylesheet" href="css/normalize3.0.2.min.css" />
 <link rel="stylesheet" href="css/style.css?v=7" />
-<link href="css/mobiscroll.css" rel="stylesheet" />
-<link href="css/mobiscroll_date.css" rel="stylesheet" />
+<!-- <link href="css/mobiscroll.css" rel="stylesheet" />
+ --><link href="css/mobiscroll_date.css" rel="stylesheet" />
 <title>兼容PC和移动设备的日期选择jquery插件</title>
 </head>
 
@@ -24,11 +24,23 @@
     </form>
   </section>
 <script src="js/jquery.min.js"></script> 
-<script src="js/mobiscroll_date.js" charset="gb2312"></script> 
+<script src="js/mobiscroll_date.js"  ></script> 
 <script src="js/mobiscroll.js"></script> 
 <script type="text/javascript">
 $(function () {
-	var currYear = (new Date()).getFullYear();	
+
+
+	/*
+    //获取当天的明天  --传给minDate后，就不会显示当天了
+
+	var currDate=new Date();
+	
+	var bDate=new Date((currDate/1000+86400)*1000);
+
+	*/
+
+	var currDate=new Date();
+	var currYear = currDate.getFullYear();	
 	var opt={};
 	opt.date = {preset : 'date'};
 	opt.datetime = {preset : 'datetime'};
@@ -41,6 +53,7 @@ $(function () {
 		lang: 'zh',
 		showNow: true,
 		nowText: "今天",
+		minDate: currDate,//设置日期可选的范围为大于等于当前日期，设置了minDate后，即使设置了startYear: currYear - 50，也不会出现后50年奥
 		startYear: currYear - 50, //开始年份
 		endYear: currYear + 10 //结束年份
 	};

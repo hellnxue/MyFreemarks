@@ -6,10 +6,11 @@
 
 </head>
 <body >
-	<div class="header">
-		<a href="javascript:history.go(-1)" class="icon ico_back" id="pageback"></a>
-		已还款页面
-	</div>
+	<header class="ctm-header ctm-header-default">
+		<a href="index" class="nav-left-icon" id="pageback"> <em></em>
+		</a>
+		<h1 class="ctm-header-title">借贷产品</h1>
+	</header>
 	<div class="maincontainer repay-wrapper">
 		<div class="text-con">
 			<div class="hd">恭喜您，<bdo class="c_orange fs50" id="loanAmount"></bdo> 代还成功！</div>
@@ -52,7 +53,7 @@
 	</div>
 </div>
 <script type="text/javascript">
- 	var orderId = "${result.orderId}";
+ 	var orderId = "${param.orderId}";
  	var userId = "${userSession.userId}";
    
 </script>

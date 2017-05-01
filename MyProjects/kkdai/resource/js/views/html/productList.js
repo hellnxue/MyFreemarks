@@ -12,34 +12,58 @@
 		
 		//金额输入
 		$('input[name=loanAmt]').on('click', function() {
-		 
-			new KeyBoard(this,{accomplished:function(){
-				
-				var productCode=$(".swiper-slide-active").attr("productCode");
-				var period=$(".swiper-slide-active").attr("period");
-				
-				//初始化试算结果
-				inputchange(productCode,period);
-				
-				//匹配产品试算结果
-				capticalMatchByPC(productCode);
-			}});
+ 
+			$(".shade_outer").css("background","rgba(0,0,0,0)").show();
+			new KeyBoard(this,
+				{
+					accomplished:function(){
+					
+						var productCode=$(".swiper-slide-active").attr("productCode");
+						var period=$(".swiper-slide-active").attr("period");
+						
+						//初始化试算结果
+						var flag=inputchange(productCode,period);
+						
+						//匹配产品试算结果
+						capticalMatchByPC(productCode);
+						return flag;
+					
+					},
+					endCallback:function(){
+						setTimeout(function(){
+							$(".shade_outer").css("background","rgba(0,0,0,0.5)").hide();
+						},600);
+					}
+			});
+			
+//			$("img[data-delete]").attr("src",path+"/resource/images/main/v1/delete@2x.png").css("width","0.59rem");
+//			$("div[data-delete]").css({
+//				"width":"0.8rem",
+//				"height":"0.5rem",
+//				"background":"url('"+path+"/resource/images/main/v1/delete@2x.png')",
+//				"background-size":"0.59rem 0.43rem",
+//				"display":"inline-block",
+//				"background-repeat":"no-repeat"
+//				 });
+			
+			$("div[data-delete]").addClass("keyboard-empty");
 
 		});
 		
 		
 		//下一步
-		$("#step").on("click", function(){
-			
-			if(validate()){
-				$(this).parents("form").submit();
-			}
-			
-		});
+		$("#step").on("click", next);
 		
 		
 		
 	});
+	
+	function next(){
+			if(validate()){
+				$(this).parents("form").submit();
+			}
+
+	}
 	
 	//根据输入金额获取产品试算结果
 	function inputchange(productCode,period){ 
@@ -51,10 +75,10 @@
 			return false;
 		}
 		
-		if(parseInt(amount) > parseInt(creditAmount)){
-			MessageWin("您的信用额度不够");
+		if(!validate()){
 			return false;
 		}
+		
 		$.ajax({
 			async: false,
 			type: 'post',
@@ -72,7 +96,7 @@
 				calculateResult=data.result;
 				
 			}else {
-				MessageWin(data.msg, function(){});
+				promt(data.msg, function(){});
 			}
 			
 		});
@@ -89,6 +113,8 @@
 					$(".pd_area[productcode="+productCode+"]").find(".bMoney").html(item.capital);
 					$("input[name=poundage]").val(item.poundage);
 					$("input[name=capital]").val(item.capital);
+					$("input[name=sameDayMsg]").val(item.sameDayMsg);
+					$("input[name=sameDay]").val(item.sameDay);
 				}
 				 
 			});
@@ -105,11 +131,13 @@
 			async: false,
 			type: 'post',
 			dataType: 'json',
-			url: 'getProduct',
-			success: function(data) {
-				if(data.code == '0000'){
-					var dom = "", pd_c= "";
-					
+			url: 'getProduct' 
+		}).done(function(data){
+			if(data.code == '0000'){
+				
+				if(data.result){
+						var dom = "", pd_c= "";
+						
 						$(data.result).each(function(i, obj){
 							
 							if(i == 0 ){
@@ -128,18 +156,20 @@
 					        "<div class='t_lit'>" +
 						        "<div class='p_n' productCode='" + obj.productCode + "'>" + obj.productName +
 						        "</div>" +
-						        "<div class='p_d'>" + obj.productDesc +
+						        "<div class='p_d'>" + obj.rateDesc +
 						        "</div>" +
 					        "</div>" +
 					        "<div class='t_lit'>" +
 					        "<span>手续费扣收方式</span>" +
-					        "<span class='t_lit_je'>从放款余额中直接扣除</span>" +
-					        "<p class='t_lit_p'><span class='orange'>/</span>还款时收取</p>" +
+					        "<span class='t_lit_je'>"+obj.interestTypeDesc+"</span>" +
+					        "<p class='t_lit_p'>&nbsp;</p>" +
+	//				        "<span class='t_lit_je'>从放款余额中直接扣除</span>" +
+	//				        "<p class='t_lit_p'><span class='orange'>/</span>还款时收取</p>" +
 					        
 				        "</div>" +
 					        "<div class='t_lit'>" +
 						        "<span>每期还款</span>" +
-						        "<span class='t_lit_je bMoney'>0  &gt; </span>" +
+						        "<span class='t_lit_je bMoney'>0.00</span>" +
 					        "</div>" +
 					    "</div>";
 						});
@@ -165,28 +195,46 @@
 						inputchange(paramObj.productCode,$curSelector.attr("period"));
 						 
 						capticalMatchByPC(paramObj.productCode);
-					} 
-				}else {
-					MessageWin(data.msg);
+					}
+				}else{
+					MessageWin(data.msg,function(){
+						history.go(-1);
+					});
 				}
+				 
+			}else {
+				MessageWin(data.msg,function(){
+					history.go(-1);
+				});
 			}
+		}).fail(function(data){
+			
+			MessageWin("获取信息失败！",function(){
+				history.go(-1);
+			});
 		});
 	}
 	
 	
 
-	
+	/*额度验证*/
 	function validate() {
+		var flag=false;
 		var amount = $("input[name=loanAmt]").val(); 
 		if(amount==""){
-			MessageWin("请输入借款金额！");
-			return false;
+			promt("请输入借款金额！");
+			 
 		}else if(parseInt(amount) > parseInt(creditAmount)){
-			MessageWin("您的信用额度不够");
-			return false;
+			promt("您的信用额度不够！");
+			 
+		}else if(parseInt(amount) < 100 || parseInt(amount) % 100 != 0){
+			promt("贷还金额为100的整数倍！");
+		 
 		}else{
-			return true;
+			flag=true;
 		}
+		
+		return flag;
 	}
 	
 	//初始化滑动插件
@@ -210,7 +258,7 @@
 		   	    onTouchEnd: function(swiper){
 		   	      var $curSelector=$(".swiper-slide-active");
 				  swiper.swipeTo($curSelector.index());
-				
+				  
 				  touchAndClick(swiper);
 		   	    },
 		   	  onSliderMove:function(swiper, event){
@@ -227,8 +275,9 @@
     	 
     	
     	//设置默认选中项
-    	$(".swiper-container .pagination span").eq(index).click();
-     
+    	 $(".swiper-container .pagination span").eq(index).click();
+    	//滑动动画
+		 sliderItemAnimation();
     	
     	//分页器点击处理
     	$(".swiper-container .pagination span").click(function(){
@@ -243,13 +292,10 @@
 	
 	function touchAndClick(swiper){
 		
-		  
-		  $(".swiper-slide").removeClass("cur-scales right");
-		  $(".swiper-slide-active").prev("div").addClass("right");
-		  $(".swiper-slide-active").addClass("cur-scales");
-		  $(".swiper-pagination-switch").css("background-color","#555");
-		  $(".swiper-active-switch").css("background-color","orange");
+		  //滑动动画
+		  sliderItemAnimation();
 		
+		  //产品试算
 		 var $curSelector=$(".swiper-slide-active");
 		  
 		 $("#period_dom").text( $curSelector.attr("period") );//产品期数
@@ -261,4 +307,36 @@
 		//匹配产品试算结果
 		 capticalMatchByPC($curSelector.attr("productCode"));
 		 
+	}
+	
+	/*滑动动画*/
+	function sliderItemAnimation(){
+		  $(".swiper-slide").removeClass("cur-scales right");
+		  $(".swiper-slide-active").prev("div").addClass("right");
+		  $(".swiper-slide-active").addClass("cur-scales");
+		  $(".swiper-pagination-switch").css("background-color","#555");
+		  $(".swiper-active-switch").css("background-color","orange");
+	}
+	
+	/*动态计算重置滑动容器的宽高 */	
+	function resetSwiperContainerWH(paramObj) {
+		var cardinalNumber=0;
+		if (paramObj.firstInitPage) {
+			var docEl = document.documentElement;
+			var clientWidth = docEl.clientWidth;
+			if (!clientWidth)
+				return;
+			if (clientWidth >= 750) {
+				cardinalNumber = 100;
+			} else {
+				cardinalNumber = 100 * (clientWidth / 750);
+			}
+
+		}
+		var hWidth = cardinalNumber * paramObj.remWidth;
+		var hHeight = cardinalNumber * paramObj.remHeight;
+
+		$(paramObj.containerSelector).css("width", hWidth + "px");
+		$(paramObj.containerSelector).css("height", hHeight + "px");
+
 	}

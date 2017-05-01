@@ -7,14 +7,21 @@
 <title>借钱还信用卡</title>
 </head>
 <body>
-    <div class="header">
-		<a href="index" class="icon ico_back" data-ajax="false"></a>
-		借钱还信用卡
-	</div>
+  	<!--提示-->
+	 <div class="tips_main" style="display:none;">
+			<p class="lead"></p>
+	 </div>
+	 <header class="ctm-header ctm-header-default">
+		<a href="index" class="nav-left-icon" data-ajax="false"> <em></em>
+		</a> 
+		<!-- <a href="#" class="nav-right-icon"> <span>返回首页</span>
+		</a> -->
+		<h1 class="ctm-header-title">借钱还信用卡</h1>
+	 </header>
 	<div class="maincontainer">
 	<form action="credit_card_02" method="post"  data-ajax="false" class="ctm-produt-list ctm-overflow-hidden">
 	    <div class='pd_area_t'>最高可借${userSession.creditAmount}元！</div>
-	    <div class='form-group pd_area_t_je'>
+	    <div class='form-group pd_area_t_je' style="overflow:hidden;">
 		    <label class="control-label">借款金额</label>
             <input class="form-control" name="loanAmt" required="required" value="${param.loanAmt}" type="text" data-role='none'   readonly="readonly">  
             <input name="repaymentPeriod" value="" type="hidden">
@@ -22,6 +29,8 @@
             <input name="productName" value="" type="hidden">
             <input name="poundage" value="" type="hidden">
             <input name="capital" value="" type="hidden">
+            <input name="sameDayMsg" value="" type="hidden">
+            <input name="sameDay" value="" type="hidden">
         </div>
          <div class='pd_list_cn swiper-container' >
         	<div class='swiper-wrapper text-left'  >
@@ -97,7 +106,7 @@ var paramObj={
 		
 };
 
-
+var path="<%=request.getContextPath()%>";
 
  
 </script> 

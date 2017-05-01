@@ -27,11 +27,11 @@
 
             <tr>
                 <td>图片验证码（需提供网络地址）</td>
-                <td><input name="verifyCode" type="text" value="U3B09Ob9S6R08B1UAPfB97sBA"/></td>
+                <td><input name="verifyCode" type="text" value="U3B09Ob9S6R08B1UAPfB97sBB"/></td>
             </tr>
             <tr>
                 <td>验证码token</td>
-                <td><input name="vcodeToken" type="text" value="U3B09Ob9S6R08B1UAPfB97sBA"/></td>
+                <td><input name="vcodeToken" type="text" value="U3B09Ob9S6R08B1UAPfB97sBB"/></td>
             </tr>
             <tr>
                 <td><input type="submit"></td>

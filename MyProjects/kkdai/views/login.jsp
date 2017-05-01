@@ -2,7 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+	<meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1" name="viewport">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Index</title>
 </head>
 <body>
@@ -31,7 +37,7 @@
 
             <tr>
                 <td>apikey</td>
-                <td><input name="apiKey" type="text" value="U3B09Ob9S6R08B1UAPfB97sBA"/></td>
+                <td><input name="apiKey" type="text" value="U3B09Ob9S6R08B1UAPfB97sBB"/></td>
             </tr>
             <tr>
                 <td><input type="submit"></td>

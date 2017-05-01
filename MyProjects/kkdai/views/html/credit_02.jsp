@@ -5,10 +5,11 @@
 <title>信贷GUI-征信验证2</title>
 </head>
 <body class="white_bg">
-	<div class="header">
-		<a href="index" class="icon ico_back"></a>
-		征信验证
-	</div>
+	<header class="ctm-header ctm-header-default">
+		<a href="index" class="nav-left-icon"> <em></em>
+		</a> 
+		<h1 class="ctm-header-title">征信验证</h1>
+	</header>
 	<div class="nav_wrap">
 		<a href="javascript:void(0)" class="selected"><i class="nav_ico nav_ico_sfxx"></i>身份信息<i class="icon nav_ico_line"></i></a>
 		<a href="javascript:void(0)" class="selected"><i class="nav_ico nav_ico_linkman"></i>联系人<i class="icon nav_ico_line"></i></a>

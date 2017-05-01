@@ -3,40 +3,65 @@
 <html>
 <head>
 <jsp:include page="../commen.jsp"></jsp:include>
-<title>产品详情</title>
-<script type="text/javascript">
-   (function (doc, win) {
-    var docEl = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
-    recalc = function () {
-        var clientWidth = docEl.clientWidth;
-       
-            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
-        }
-  
-	if (!doc.addEventListener) return;
-	win.addEventListener(resizeEvt, recalc, false);
-	doc.addEventListener('DOMContentLoaded', recalc, false);
-	})(document, window);
-   
-   $(document).ready(function(){
-	   $("div.footer>a").removeClass("footer_current");
-	   $("i.foot_ico_3").parent().parent().addClass("footer_current");
-	   
-   })
-</script>
+<title>个人中心</title>
+
 </head>
 
-<body>
-    <div class="me_top">15989987899</div>
-    <ul class="me_ul">
-      <li><div class="me_li1"></div>历史交易<a  href="c_history_list" class="me_go_ico"></a></li>
-      <li><div class="me_li2"></div>银行卡管理<a  href="credit_card_01" class="me_go_ico"></a></li>
-      <li><div class="me_li3"></div>发现<a  href="c_product_list" class="me_go_ico"></a></li>
-      <li><div class="me_li4"></div>安全信息修改<a  href="#" class="me_go_ico"></a></li>
-      <li><div class="me_li5"></div>帮助中心<a  href="#" class="me_go_ico"></a></li>
-      <li><div class="me_li6"></div>设置<a  href="#" class="me_go_ico"></a></li>
-    </ul>
+<body class="ctm-white-bgc">
+
+    <div class="me_top">${userSession.mobilePhone}</div>
+    
+    <div class="widget-list">
+       <ul class="vip-list">
+       		<li>
+       			<a  href="c_history_list">
+					<i class="arrows"></i>
+					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/past_icon@2x.png" width="28">
+					<span class="widget-name">历史交易</span>
+					<p>hello world</p>
+				</a>
+       		</li>
+       		<li>
+       			<a  href="credit_card_01" data-href="credit_card_01" data-check >
+					<i class="arrows"></i>
+					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/cards_icon@2x.png" style="width:0.51rem;">
+					<span class="widget-name">银行卡管理</span>
+				</a>
+       		</li>
+       		<li>
+       			<a  href="c_product_list_main">
+					<i class="arrows"></i>
+					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/find_icon@2x.png" style="width:0.51rem;">
+					<span class="widget-name">发现</span>
+				</a>
+       		</li>
+       		<li>
+       			<a  href="#">
+					<i class="arrows"></i>
+					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/safety_icon@2x.png" style="width:0.48rem;">
+					<span class="widget-name">安全信息修改</span>
+				</a>
+       		</li>
+       		<li>
+       			<a  href="faquestions_main">
+					<i class="arrows"></i>
+					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/help_icon@2x.png" style="width:0.49rem;">
+					<span class="widget-name">帮助中心</span>
+				</a>
+       		</li>
+       		<li>
+       			<a  href="#">
+					<i class="arrows"></i>
+					<img class="widget-icon"   src="<%=request.getContextPath()%>/resource/images/img/v1/setting_icon@2x.png" style="width:0.5rem;">
+					<span class="widget-name">设置</span>
+				</a>
+       		</li>       		       		
+       </ul>
+    </div>
+    
+    
 <jsp:include page="foot.jsp"></jsp:include>
+
+<script src="<%=request.getContextPath()%>/resource/js/views/html/c_my_page.js" type="text/javascript" ></script>  
 </body>
 </html>

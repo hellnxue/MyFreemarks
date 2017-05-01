@@ -1,0 +1,905 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*公共部分*/
+h3{
+	margin:30px;
+	background-color:#FFFF99;
+	border-radius:10px;
+	text-align: center;
+	color:#FF66FF;
+	background:-moz-linear-gradient(left,#64d1dd, #FFF 50%, #64d1dd);
+	font-size:1.2em;
+	
+}
+
+.yellow_gradient{
+	background:-moz-linear-gradient(left,yellow, #FFF 50%, yellow);
+}
+
+
+.bootstrap-well{
+	min-height:20px;
+	border:1px solid #e3e3e3;
+	padding:20px;
+	margin-bottom:20px;
+	border-radius:6px;
+	box-shadow:0 1px 1px rgba(0,0,0,0.05) inset;
+	background-color:#f5f5f5;}
+
+/*bootstrap的按钮*/
+.btn{
+	display:inline-block;
+	margin-bottom:0;
+	padding:6px 12px;
+	border:1px solid transparent;
+	border-radius:4px;
+	font-size:14px;
+	font-weight:400;
+	background-color:#eee;
+	vertical-align:middle;
+	line-height:1.4;
+	text-align:center;
+	white-space:nowrap;
+	cursor:pointer;}
+	
+/*bootstrap信息按钮*/
+.btn-info{
+	background-color:#5bc0de;
+	border-color:#46b8da;
+	color:#fff;}
+	
+	
+.btn-primary {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+}	
+
+.btn-lg{
+	border-radius:6px;
+	font-size:18px;
+	line-height:1.3;
+	padding:10px 16px;}
+	
+.btn-sm{
+	border-radius:3px;
+	font-size:12px;
+	line-height:1.5;
+	padding:5px 10px;}
+
+	
+.btn-xs{
+	border-radius:3px;
+	font-size:12px;
+	line-height:1.5;
+	padding:1px 5px;}
+	
+.btn-info:hover{
+ 	background-color: #31b0d5;
+    border-color: #269abc;
+    color: #fff;}
+.btn-info:focus{
+	 background-color: #31b0d5;
+    border-color: #269abc;
+    color: #fff;
+}
+
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.btn.disabled:focus,.btn.disabled:hover{
+	background-color:#5bc0de;
+	border-color:#46b8da;
+}
+
+.border-box *{
+	box-sizing:border-box;}
+
+
+/*导航*/
+.ctm-header{
+	display:block;
+	width:100%;
+	height:50px;
+	line-height:50px;
+	position:relative;
+	}
+.ctm-default{
+	background-color:#0e90d2;}
+	
+	
+.back-icon{
+	position:absolute;
+	left:0;
+	top:3px;;
+	padding-left:15px;
+	display:inline-block;
+	width:46px;
+	height:46px;
+	color:#fff;
+	
+	}
+header .back-icon em{
+	display:inline-block;
+	background-image:url(../img/bak_ico.png);
+	background-repeat:no-repeat;
+	background-size:100% auto;
+	width:11px;
+	height:18px;
+	}
+	
+header .ctm-header-title{
+	display:block;
+	margin:0 30%;
+	padding:0;
+	font-size:30px;
+	font-weight:400;
+	overflow:hidden;
+	overflow-wrap:normal;/*?????*/
+	text-align:center;
+	text-overflow:ellipsis;
+	white-space:no-wrap;/*?????*/
+	color:#fff;} 
+
+
+
+
+/*导航栏*/
+ /*---------------自定义导航栏----------- start*/
+.ctm-header-default-1 {
+    background-color: #fd6f19;
+    color:#fff;
+}
+
+.ctm-header-white-1 {
+    background-color: #fff;
+    color:#fe6f1a;
+}
+
+.ctm-header-1 {
+    display: block;
+    height:  86px;
+    line-height:  86px;
+    position: relative;
+    width: 100%;
+}
+
+
+
+.ctm-header-1 .nav-left-icon,.ctm-header-1 .nav-right-icon{
+
+    display: inline-block;
+    position: absolute;    
+    color: #fe6f1a;   
+}
+
+.ctm-header-1 .nav-left-icon {
+    width:  86px;
+    height:  86px;
+    left: 0;
+    padding-left: 20px;
+}
+
+.ctm-header-1 .nav-right-icon {
+
+    width: 180px;
+    height:  86px;
+    padding-right: 20px;
+    right: 0;
+    font-size: 30px; 
+    text-align: right;  
+}
+
+.ctm-header-1 .nav-left-icon em {
+    background-image: url("../images/main/back@2x.png");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: inline-block;
+    height:42px;
+    position: absolute;
+    top: 50%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+    width: 20px;
+}
+
+.ctm-header-default-1 .nav-left-icon em{
+	background-image: url("../img/back@3x.png"); 
+}
+
+.ctm-header-default-1 .nav-right-icon{
+	color:#fff;
+}
+ 
+
+.ctm-header-1 .ctm-header-title-1 {
+    /* color: #fe6f1a; */
+    display: block;
+    font-size:  36px;
+    line-height: 86px;
+    font-weight: 500;
+    margin: 0 30%;
+    overflow: hidden;
+    overflow-wrap: normal;
+    padding: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+/*--------------------自定义导航栏 --------- end*/	
+
+
+/*评论区域*/
+.cmt-wrapper *{
+	box-sizing: border-box;
+}
+
+.cmt-wrapper{
+	width: 660px;
+	margin: 0 auto;
+}
+
+.cmt-list-type{
+	position: relative;
+	height: 30px;
+	line-height: 30px;/*文字垂直居中的*/
+	margin-top: 50px;
+	overflow: hidden;
+	color: #4398ed;
+	/*border: 1px solid yellow;*/
+
+}
+
+ul.type-lists{
+	margin: 0;
+	padding:0;
+
+}
+
+ul.type-lists li{
+	position: relative;
+	bottom: -1px;
+	background: rgba(0, 0, 0, 0) url("../img/cmtlist-bg-active.png") no-repeat scroll 0 0;
+    
+    list-style-type: none;
+    text-align: center;
+    width: 66px;
+	
+}
+
+
+.cmt-list-border{
+	background-color: #4398ed;
+    bottom: 1px;
+    height: 1px;
+    left: 66px;
+    position: relative;
+
+
+}
+
+.cmt-list-number{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+ .comment-number {
+    color: #4398ed;
+    font-family: "Microsoft YaHei";
+    font-size: 14px;
+}
+
+.number {
+    color: #4398ed;
+    font-family: Impact;
+    font-size: 20px;
+    margin: 0 5px;
+}
+
+/*输入框部分*/
+.rounded {
+    border: 1px solid #4398ed;
+    border-radius: 42px;
+    color: #4398ed;
+    font-size: 85%;
+    height: 40px;
+    left: 10px;
+    line-height: 40px;
+    position: absolute;
+    text-align: center;
+    top: -36px;
+    width: 40px;
+}
+.post-wrap-w{
+	display: block;
+	position: relative;
+	height:97px;
+	z-index: 2;
+}
+
+.post-wrap-border-l{
+	position:absolute;
+	left:0;
+	top:0;
+	height:97px;
+	width: 8px;
+	background: rgba(0,0,0,0)  url(../img/border-l.png);
+}
+
+.post-wrap-border-r{
+	position:absolute;
+	right:0;
+	top:0;
+	height:97px;
+	width: 8px;
+	background: rgba(0,0,0,0)  url(../img/border-r.png);
+}
+
+
+.post-wrap-main {
+    border-bottom: 1px solid #4398ed;
+    box-sizing: content-box;
+    height: 96px;
+    margin: 0 8px;
+    position: relative;
+    background:rgba(0, 0, 0, 0) url("../img/cy-logo.png") no-repeat scroll center center;
+}
+
+.post-wrap-border-t {
+    height: 8px;
+    position: relative;
+}
+
+.post-wrap-border-t-l{
+	width: 46px;
+	height: 8px;
+	position: absolute;;
+	top: 0;
+	left: 0;
+	overflow: hidden;;
+	background: rgba(0,0,0,0)  url(../img/border-t.png);
+
+}
+
+.post-wrap-border-t-r{
+	border-top: 1px solid #4398ed;
+	margin-left: 46px;
+}
+
+.wrap-area-w{
+	padding: 13px 10px 0;
+}
+
+.area-textarea-w textarea{
+	border: 0px none; 
+	width: 100%; 
+	height: 70px; 
+	resize: none; 
+	background: rgba(0,0,0,0);
+}
+
+
+/*用浮动包围超出父容器宽度的子元素*/
+.ctm-f-wrapper{
+   min-height: 100px;
+   padding-top: 5px;
+   background-color: #abcdef;
+
+}
+
+.ctm-f-wrapper >div{
+	/*float: left;;
+	width: 70%;
+	margin: 0 auto;
+	background-color: #E4A8FE;
+	 border: 2px solid red;
+    border-radius: 6px;*/
+
+
+    background-color: #e4a8fe;
+    border: 2px solid red;
+    border-radius: 6px;
+    float: left;
+    margin: 0 auto;
+}
+
+.ctm-f-wrapper .f1{
+	width: 100%;
+	 
+
+}
+
+/*.ctm-f-wrapper .f2{
+	 
+	margin-top:5px;
+	min-height: 50px;
+	background-color: green;
+	width: 120%;
+}*/
+
+.ctm-f-wrapper .f3{
+	 
+	 
+    width: 100%;
+}
+
+
+/*浮动没有宽度的元素 之 子元素宽度为百分比的情况*/
+.commona{
+   background-color: yellow;
+   min-height: 50px;
+
+}
+
+.commonb{
+    background-color: green;
+    box-sizing: border-box;
+    margin-top: 5px;
+    min-height: 50px;
+
+}
+
+
+.ff > div{
+	float: left;
+}
+
+.ctm-f-wrapper .f5{
+	
+    width: 50%;
+
+}
+
+.ctm-f-wrapper .f6{
+	
+    width: 70%;
+
+}
+
+
+/*浮动没有宽度的元素 之 子元素宽度为百分比的情况*/
+
+.ff>div{
+	float: left;
+}
+
+.ctm-f-wrapper .f7{
+	 
+    width: 600px;
+
+}
+
+.ctm-f-wrapper .f8{
+	 
+   width: 800px;
+
+}
+
+
+/*定位上下文的问题.当一个元素是绝对定位时，它的定位上下文除了是position:relative外，
+还可以是position:absulute哎*/
+.pt-wrapper {
+    background-color: #edf4fe;
+    margin: 0 auto;
+    min-height: 100px;
+    position: relative;
+    width: 80%;
+}
+
+.pt-wrapper .A {
+    background-color: pink;
+    min-height: 70px;
+    position: absolute;
+    top: 20%;
+    width: 80%;
+}
+
+.pt-wrapper .B {
+    background-color: yellow;
+    bottom: 0;
+    min-height: 20px;
+    position: absolute;
+    width: 80%;
+}
+
+
+/**/
+.img-wrapper {
+    background-color: #edf4fe;
+    margin: 0 auto;
+    width: 20%;
+}
+
+ 
+.img-wrapper img {
+   
+     width: 100%;
+     display: block;/*去除图片底部与父容器的间隙（有间隙是因为图片默认是行内元素，行内
+元素的定位原则是与文本基线对齐，而不是与它们容器的底边对齐）*/
+}
+
+
+.bgImg-wrapper {
+    background: rgba(0, 0, 0, 0) url("../img/bill_bg@2x.png") no-repeat scroll 0 0 / 100% auto;
+    margin: 0 auto;
+    min-height: 100px;/*169px*/
+    width: 20%;
+}
+
+
+
+
+.ele-center{
+	background-color:#99FF99;
+	min-height:20px;
+	margin:0 30%;
+}
+
+
+/*负的上边距和正的下外边距互相抵消效果测试*/
+.mtmb{
+	height: 44px;
+	border: 1px solid black;
+}
+
+.mtmb1,.mtmb2{
+	margin: 0;
+	background-color: pink;	 
+}
+
+.mtmb1 {
+    margin-bottom: 1px;
+    margin-top: -1px;
+}
+
+/*vertical-align:middle*/
+
+.lieh.lh {
+    border: 1px solid;
+    margin: 0 30%;
+  /*  min-height: 100px;*/
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+.lieh .h{
+
+	background-color: pink;
+}
+.lieh .hh1 {
+   
+    vertical-align: middle;
+    
+}
+
+.lieh .hh2 {
+    display: inline-block;
+    height: 100%;/*为什么这里用height:100%没效果呢？ 是因为父元素没有设置height的缘故，只设置min-height是不行的*/
+    vertical-align: middle;
+    width: 21px;
+}
+
+/*左右外边距为都为负值*/
+.mrl::after, .mrl::before {
+    content: " ";
+    display: table;
+}
+.mrl *::after, .mrl *::before {
+    box-sizing: border-box;
+}
+.mrl {
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.mrl  div{
+    border: 1px solid yellow;
+    box-sizing: border-box;
+    /*为啥左右margin都为负值确导致左移而不是两边均匀呢？*/
+    margin-left: -15px;
+    margin-right: -15px;
+    width: 100%;
+}
+
+
+/**/
+
+.f-ctr{
+
+	 box-sizing:border-box;
+	 width:80%; 
+	 background-color:#FFCCCC; 
+	 border:1px solid blue;
+	 margin:0 auto;
+	 padding:0 15px;
+ 
+}
+
+.f-ctr div{
+    background-color: yellow;
+    border: 1px solid;
+    margin:0 -15px;
+    
+  /*  width: 100%;*/  /*如果子元素有固定宽度，那么负外边距会使子元素向左移动，导致子元素的右边空出一块来，如果width为自适应的话就不会有这种情况了*/
+}
+
+
+
+.fixed-height{
+	box-sizing: border-box;
+	height: 50px;
+	margin: 0 30%;
+	background-color: #abcdef;
+	border: 1px solid yellow;
+	padding:10px;
+
+}
+
+
+
+
+/*设置选中文字颜色*/
+.selectionColor{
+	text-align:center;}
+.selectionColor::selection { background:yellow; color:#333; }
+.selectionColor::-moz-selection    { background:yellow; color:#333; }
+.selectionColor::-webkit-selection { background:yellow; color:#333;}
+ 
+/*line-height除了可以让有高度的容器中的文字在父容器中垂直居中外，还可以使行内元素垂直居中的*/
+ .lieh{
+    border: 1px solid pink;
+    height: 50px;
+    line-height: 50px;
+}
+
+
+
+
+/*底部弹出层  start*/
+
+.hidden{
+	display: none;
+}
+
+.show{
+	display: block;
+}
+
+
+/*弹出层的遮罩*/
+.layer-outer{
+	background-color: rgba(0,0,0,0.7);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+}
+
+
+/*底部弹框*/
+.my-layer {
+    background-color: rgba(255, 255, 255, 1);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 200px;
+    width: 100%;
+    z-index: 2000;
+    animation: myLayer 0.1s linear ;/*如果加上延迟，动画会一开始从bottom为0到-200，再到0，so,看上去的样子就是
+    弹出层都出来了后再从底部滑动出来，这样感觉不对，还是不加延迟了*/
+	-moz-animation:myLayer 0.1s linear ;
+	-webkit-animation:myLayer 0.1s linear ;
+	-ms-animation:myLayer 0.1s linear ;
+	-o-animation:myLayer 0.1s linear ;
+}
+
+
+/*动画定义*/
+@-webkit-keyframes  myLayer{
+
+	0%{
+		bottom: -200px;
+	}
+ 
+
+	100%{
+		bottom: 0;
+	}
+}
+
+ @-moz-keyframes  myLayer{
+
+	0%{
+		bottom: -200px;
+	}
+ 
+
+	100%{
+		bottom: 0;
+	}
+}
+
+@-o-keyframes  myLayer{
+
+	0%{
+		bottom: -200px;
+	}
+ 
+
+	100%{
+		bottom: 0;
+	}
+}
+
+
+
+/*底部弹出层  end*/
+
+
+
+
+
+
+/*绝对定位应用给行内元素时的新发现*/
+.discover-pos{
+    background-color: #abcdef;
+    margin: 0 auto;
+    min-height: 100px;
+    width: 50%;
+}
+
+
+.discover-pos label:first-child{
+    background-color: yellow;
+    margin-right: 5px;
+}
+
+.discover-pos label:last-child{
+   position: absolute;
+
+}
+
+
+
+/*line-height可以使固定高度元素内的行内元素垂直居中*/
+.leht-wrapper{
+    background-color: rgb(171, 205, 239);
+    height: 200px;
+    line-height: 200px;
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+}
+
+
+.leht-wrapper > span{
+    background-color: yellow;
+    display: inline-block;
+    height: 50px;
+    position: absolute;
+    width: 50px;
+}
+
+.leht-wrapper > span >label {
+    background-color: red;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+}
+
+
+
+/*calc()动态计算函数的用法*/
+.demo {
+	width: 300px;
+	background: #abcdef;
+	padding: 3px 0;
+}
+.box {
+    /*
+	写给不支持calc()函数的浏览器
+    width: 100%;
+    box-sizing:border-box;*/
+    width: calc(100% - (10px + 5px ) * 2);/*当元素的宽度为百分比值时，不太好计算布局的宽度，
+    如果用calc 则简单的多了*/
+	background: #f60;
+	height: 50px;
+	padding: 10px;
+    border: 5px solid green;
+}
+
+
+/*pointer-event:none的应用-----半透明覆盖后，可以穿透透明层操作文字*/
+.petDemo{
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    height: 300px;
+    margin: 0 30%;
+}
+
+
+.petDemo ul{
+    /*align-content: space-around;*/
+   
+    display: flex;/*弹性伸缩盒子布局*/
+    flex-wrap: wrap;/*换行，让每个li为一行*/
+    height: 100%;
+    justify-content: center;/*弹性子元素水平居中*/
+    align-items: center;/*弹性子元素垂直居中*/
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    position: relative;
+}
+
+.petDemo ul li{
+   width: 100%;
+   height: 25%;
+  /* margin:auto; 其实，父元素的justify-content:center和align-items:center可以用margin:auto代替就
+  可以实现弹性子元素在弹性容器中的水平垂直对齐了耶*/
+
+
+  /*让文字在容器中水平垂直居中*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  font-weight: 600;
+}
+
+.petDemo li:first-child{
+    background: rgba(0, 0, 0, 0) -moz-linear-gradient(center top , #fff 30%, rgba(225, 225, 225, 0)) repeat scroll 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    height: 35%;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+}
+
+
+#selectorT1{
+
+	color:red;}
+
+/*rgb百分比值的颜色值*/
+.rgbpercent{
+
+	 
+	height:100px;
+	margin:0 40%;
+	background:rgb(0%,100%,100%);
+	text-align:center;
+	line-height:100px;}
+
+
+
+.flex-container{
+	 display: flex;
+
+/*	align-items: center;*/
+	min-height: 100px;
+	margin: 0 30%;
+	border: 1px solid yellow; 
+	 
+   
+}
+
+.flex-container .flex-item{
+	flex: 1;
+	background: pink;
+	margin: 10px;
+}
+
+

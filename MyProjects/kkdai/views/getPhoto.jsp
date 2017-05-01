@@ -27,7 +27,7 @@
 
             <tr>
                 <td>用户ID</td>
-                <td><input name="userId" type="text" value="U3B09Ob9S6R08B1UAPfB97sBA"/></td>
+                <td><input name="userId" type="text" value="U3B09Ob9S6R08B1UAPfB97sBB"/></td>
             </tr>
             <tr>
                 <td><input type="submit"></td>

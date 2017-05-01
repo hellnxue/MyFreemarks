@@ -1,0 +1,156 @@
+ 
+ body{
+	max-width: 7.5rem;
+	margin: 0 auto;
+	background: #F5F5F5;
+	color: #424242;
+	font-family: "微软雅黑",tahoma,sans-serif;
+	font-size: 0.28rem;
+	line-height: normal;
+}
+
+p {
+    color: #424242;
+    font-size: inherit;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.layui-m-layercont p{
+    color: #fff;
+}
+
+
+.mui-plus.mui-android header.mui-bar{
+	display: none;
+}
+.mui-plus.mui-android .mui-bar-nav~.mui-content{
+	padding: 0;
+}
+
+/*hm开头的表示仅为 Hello MUI示例定义*/
+.hm-description{
+	margin: .5em 0;
+}
+
+.hm-description>li {
+	font-size: 14px;
+	color: #8f8f94;
+}
+
+
+
+/*滑动列表样式重置----start*/
+.mui-table-view-cell > .mui-slider-left, 
+.mui-table-view-cell > .mui-slider-right.ctm-silider-right{
+    height: 1.2rem;
+    margin-top: -7%;
+    top: 50%;
+}
+
+
+.mui-table-view-cell > .mui-slider-left > .mui-btn,
+ .mui-table-view-cell > .ctm-silider-right > .mui-btn{
+    border-radius: 0.08rem;
+    font-size: 0.3rem;
+    letter-spacing: 0.2rem;
+    text-align: center;
+    
+}
+
+/*滑动列表样式重置----end*/
+
+
+/* 修改弹框按钮的默认样式  start */
+.mui-popup-button{
+	color:#FD6F19;
+}
+
+
+/* 修改弹框按钮的默认样式  end */
+
+
+/* 修改部分表单控件的mui样式 */ 
+.hm-form-group input[type="number"],  .hm-form-group input[type="password"],  .hm-form-group input[type="text"]
+  {
+    height: 0.8rem;
+    line-height: 0.28rem;
+    padding: 0.26rem 0.15rem 0.26rem 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    margin-bottom: 0;
+}
+
+input[type="text"].hm-no-border,input[type="text"].hm-verify-ode{
+	border: 0 none;
+	 
+}
+
+input[type="text"].hm-verify-ode{
+	 
+	padding: 0.04rem 0.12rem 0.06rem;
+}
+
+/*列表样式*/
+
+/* 底线*/
+.hm-t-v-cell::after{
+    left: 0;
+}
+
+/* 带选项卡的下拉刷新列表中的图片*/
+.mui-slider .mui-slider-group .mui-slider-item img{
+	width:inherit;
+}
+
+/*下拉刷新-上拉加载更多*/
+
+.hm-table-view{
+	background-color:transparent;
+}
+
+/* ul上下横线 */
+.hm-table-view-no-bd::before,.hm-table-view-no-bd::after{
+	background-color:transparent;
+}
+
+.mui-pull{
+    font-weight: 500;
+    color:#9b9b9b;
+}
+.mui-pull-caption mui-pull-caption-nomore{
+    font-size: 0.26rem;
+    line-height: 1;
+    
+}
+
+
+
+/* Tab选项卡样式 */
+.ctm-header~.mui-content .mui-slider.mui-fullscreen {
+    top: 0.86rem;
+}
+
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item.no-border {
+   border:0;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active
+{
+	
+	color:#fe6f1a;
+}
+
+.mui-segmented-control.mui-segmented-control-inverted~.mui-slider-progress-bar{
+	 background-color: #fe6f1a;
+}
+
+.mui-slider-indicator.mui-segmented-control.bg-white {
+    background-color: #fff;
+}
+
+
+
+
+
