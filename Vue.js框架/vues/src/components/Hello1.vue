@@ -50,11 +50,11 @@ export default {
           console.log(info);
       },
       getName:function(){
-          var vm1=this;
+          var vm1=this;//此处能访问vm吗？？
           console.log(vm1.$refs);//指向myElDom
           var info=vm1.$refs.item1.innerText;//????undefined
           console.log(info);
-      }
+      } 
 
   }
 }

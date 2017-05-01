@@ -22,17 +22,32 @@
 
       
     </ul>
-    <router-view></router-view> <!--这是啥？？-->
+
+    <div class='cmpt'>
+      动态Prop
+      <input name='vl' v-model='parentMsg'/>
+      <emit v-on:parentInfo='parentFun' pmsg='这是父组件传过来的值' :my-msg='parentMsg' :bind-msg='100' pt-msg='100'></emit>
+    </div>
   </div>
 </template>
 
 <script>
+import emit from './emit.vue';
 
 export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your first page'
+      msg: 'Welcome to Your first page',
+      parentMsg:'hello sir'
+    }
+  },
+  components:{
+    emit
+  },
+  methods:{
+    parentFun:function(data){
+      console.log('父组件：'+data);
     }
   }
 }
@@ -57,4 +72,5 @@ li {
 a {
   color: #42b983;
 }
+
 </style>
