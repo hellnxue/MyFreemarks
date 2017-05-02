@@ -47,14 +47,14 @@
       </emit>
 
 
-      <slotTest>
+      <slot-test>
         <!-- 作用域插槽也可以是具名的 -->
         <template slot="item" scope="props" >
 
             <li class="my-fancy-item">{{ props.text }}</li>
 
         </template>
-      </slotTest>
+      </slot-test>
     </div>
 
    <p class='myColor'>scope作用域中的样式测试-父组件</p>
