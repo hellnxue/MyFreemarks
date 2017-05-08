@@ -17,13 +17,14 @@
       <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
 
-      <!--页面跳转-->
+      <!--路由页面跳转-->
       <li><router-link to="/h1">to Hello1 Page</router-link></li>
 
-      
+       <!--路由页面跳转-->
+      <li><router-link to="/papp">子组件传递数据给父组件</router-link></li>
     </ul>
 
-     <button type='button' @click='ftos()' id='fwf'>父组件访问子组件的元素</button>
+    <button type='button' @click='ftos()' id='fwf'>父组件访问子组件的元素</button>
 
     <div class='cmpt'>
       动态Prop

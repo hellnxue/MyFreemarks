@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Hello1 from '@/components/Hello1'
-// import parent from '@/components/parent'
+import parent from '@/components/parent'
 
 Vue.use(Router)
 
