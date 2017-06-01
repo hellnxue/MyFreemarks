@@ -21,6 +21,7 @@ function roll(){
 			getOulWidthData = oUl.offsetWidth;
 
 		oUl.style.left = getOulLeftData + iSpeed + 'px';
+
 		
 		if(getOulLeftData < -getOulWidthData/2){
 			oUl.style.left = '0px';

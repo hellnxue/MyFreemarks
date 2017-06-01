@@ -66,67 +66,69 @@ a{
     window.onload=aa;
 	
 	function aa(){
-            var oDiv=document.getElementById("div1");
-            var oUl=document.getElementsByTagName("ul")[0];
-            var oLi=document.getElementsByTagName("li");
+
+        var oDiv=document.getElementById("div1");
+        var oUl=document.getElementsByTagName("ul")[0];
+        var oLi=document.getElementsByTagName("li");
+         
+        oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+         
+        oUl.style.width=oLi[0].offsetWidth*oLi.length+"px";
+         
+         
+        //移动速度
+        var speed=2;
+         
+         
+        //控制滚动的方向
+        var a1=document.getElementById("id1");  //左
+        var a2=document.getElementById("id2");  //右
+        var a3=document.getElementById("id3");  //暂停
              
-            oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
-			
-			
-             
-            oUl.style.width=oLi[0].offsetWidth*oLi.length+"px";
-             
-             
-            //移动速度
-            var speed=2;
-             
-             
-            //控制滚动的方向
-            var a1=document.getElementById("id1");  //左
-            var a2=document.getElementById("id2");  //右
-            var a3=document.getElementById("id3");  //暂停
-                 
-                a1.onclick=function(){
-                        speed=2;
-                    }
-                a2.onclick=function(){
-                        speed=-2;
-                    }
-                a3.onclick=function(){
-                        speed=0;
-                    }
-					
-			console.log( oUl.offsetLeft);//0
-            console.log( -oUl.offsetWidth/2); //-800        
-                //鼠标移开  
-            function  move(){
-			
-			    //向左滑到了自身的一半时，返回到初始位置
-                if(oUl.offsetLeft<-oUl.offsetWidth/2){
-                    oUl.style.left="0";
-                    }
-                     
-                if(oUl.offsetLeft>0){
-				   
-                    oUl.style.left=-oUl.offsetWidth/2+"px";
-                    }
-                     
-                    oUl.style.left=oUl.offsetLeft-speed+"px";
-                     
+            a1.onclick=function(){
+                    speed=2;
                 }
-             
-            //定时器  控制移动的时间
-            var timer=setInterval(move,30);
-                 
-            //鼠标移入
-            oDiv.onmouseover=function(){
-                clearInterval(timer);
+            a2.onclick=function(){
+                    speed=-2;
                 }
-                     
-            //鼠标移开
-            oDiv.onmouseout=function(){
-                 timer=setInterval(move,30);
-                    }   
+            a3.onclick=function(){
+                    speed=0;
+                }
+				
+		console.log( oUl.offsetLeft);//0
+        console.log( -oUl.offsetWidth/2); //-800        
+       //鼠标移开  
+        function  move(){
+		
+		    //向左滑到了自身的一半时，返回到初始位置
+            if(oUl.offsetLeft<-oUl.offsetWidth/2){
+
+                oUl.style.left="0";
+            }
+            
+            //向右滑到列表的offsetLeft初始位置为0时，回到自身的的一半的位置
+            if(oUl.offsetLeft>0){
+			    
+                oUl.style.left=-oUl.offsetWidth/2+"px";
+
+            }
+                 
+                oUl.style.left=oUl.offsetLeft-speed+"px";//向左或向右逐渐移动(默认开始时向左移动)
+                 
+            }
+         
+        //定时器  控制移动的时间
+        var timer=setInterval(move,30);
+             
+        //鼠标移入
+        oDiv.onmouseover=function(){
+            clearInterval(timer);
+            }
+                 
+        //鼠标移开
+        oDiv.onmouseout=function(){
+             timer=setInterval(move,30);
+                }   
         }
 		
 		console.log((0-2-(-2)));
