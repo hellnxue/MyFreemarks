@@ -19,7 +19,8 @@
 
        <p> {{variable}}</p>
       <button type='button' @click='dymProp()'>prop的属性在子组件中能不能改</button>
-
+      <p>通过计算属性处理的props的值：{{normalizedSize}}</p>
+      <br/>
 
       <button type='button' @click='fwffn()'  >子组件访问父组件的元素</button>
 
@@ -76,7 +77,7 @@ export default {
       dymProp:function(){
          var vm3=this;
          //vm3.ptMsg='update ptMsg value'  //!! prop属性的传值是单向的，只能父传子，子组件中不能修改奥~~~
-         vm3.variable=vm3.ptMsg;
+         vm3.variable=vm3.ptMsg;//把props的变量值赋值给局部变量
 
       },
       fwffn:function(){
@@ -85,7 +86,13 @@ export default {
       }
   },
   //通过props属性，让父组件给子组件传值
-  props:['pmsg','myMsg','ptMsg','bindMsg']
+  props:['pmsg','myMsg','ptMsg','bindMsg'],
+  computed:{
+    //可以把props中的属性值放在计算属性中处理之后返回
+    normalizedSize:function(){
+      return this.ptMsg+" 处理后的ptMsg";
+    }
+  }
 }
 </script>
 
