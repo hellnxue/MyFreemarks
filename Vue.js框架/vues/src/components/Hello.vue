@@ -64,17 +64,22 @@
    <!--动态组件-->
    <div style='border:5px solid pink;background-color:#abc;'>
 
-        <!-- 组件在 vm.currentview 变化时改变！ 通过使用保留的 <component> 元素，动态地绑定到它的 is 特性，我们让多个组件可以使用同一个挂载点，并动态切换 -->
-        <component v-bind:is="currentView">
+      <!-- 组件在 vm.currentview 变化时改变！ 通过使用保留的 <component> 元素，动态地绑定到它的 is 特性，我们让多个组件可以使用同一个挂载点，并动态切换 -->
+      <component v-bind:is="currentView">
         
       </component>
    </div>
+
+   <single>
+    
+   </single>
   </div>
 </template>
 
 <script>
 import emit from './emit.vue';
 import slotTest from './slot.vue';
+import single from './singleSlot.vue';
 
 export default {
   name: 'hello',
@@ -86,7 +91,7 @@ export default {
     }
   },
   components:{
-    emit,slotTest
+    emit,slotTest,single
   },
   methods:{
     parentFun:function(data){

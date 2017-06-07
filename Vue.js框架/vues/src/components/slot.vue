@@ -1,6 +1,6 @@
 <template>
   <div class='cmpt'>
-      <h2>slot测试</h2>
+      <h2>slot测试11</h2>
       <ul>
         <slot name="item" v-for="item in items" :text="item.text">
           <!-- 这里写入备用内容 -->
