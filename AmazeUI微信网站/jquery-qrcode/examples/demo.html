@@ -2,7 +2,18 @@
 <html>
 <head>
 <title>Demo page</title>
-
+<style type="text/css">
+  .headPortRait{
+    background: #fff none repeat scroll 0 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 2px;
+    transform: translate(-50%, -50%);
+    border: 1px solid transparent;
+    border-radius: 50%;
+  }
+</style>
 </head>
 <body>
 <p>
@@ -23,11 +34,13 @@
 
 
 <!--图片长宽不相等时，设置圆形头像  1.通过div中包含img-->
- <div style="border-radius: 50%;   left: 50%;  margin-left: -32px; margin-top: -32px; position: absolute;  top: 50%;  overflow:hidden; width:60px; height:60px; padding: 2px;  ">
+ <!-- <div style="border-radius: 50%;   left: 50%;  margin-left: -32px; margin-top: -32px; position: absolute;  top: 50%;  overflow:hidden; width:60px; height:60px; padding: 2px;  ">
  
-      <img src="../img/gj.jpg" style="width: 100px; margin-left: -16px;  margin-top: -1px;  "/> 
+      <img src="../img/me.png" style="width: 100px; margin-left: -16px;  margin-top: -1px;  "/> 
  
- </div>
+ </div> -->
+
+     <img src="../img/miao.jpg" class="headPortRait">
  
  <!--2 通过设置背景图片 主要是background-size的大小-->
  <!-- <div style="border-radius: 50%;   left: 50%;  margin-left: -32px; margin-top: -32px; position: absolute;  top: 50%;  overflow:hidden; width:60px; height:60px; padding: 2px; background-image:url(../img/gj.jpg); background-position:50% 50%;background-size: cover;  ">
@@ -104,7 +117,8 @@ var lxp="BEGIN:VCARD\nVERSION:3.0\nFN:"+toUtf8("刘雪萍")+"\nTEL;TYPE=CELL;VOICE:
 var isMe="BEGIN:VCARD\nVERSION:3.0\nFN:"+toUtf8("刘雪萍")+"\nTEL;TYPE=CELL;VOICE:13671832769\n"+"END:VCARD\n";
 var isGaoJie="BEGIN:VCARD\nVERSION:3.0\nFN:"+toUtf8("高杰")+"\nTEL;TYPE=CELL;VOICE:13701970983\n"+"END:VCARD\n";
 
- 
+var ldz="BEGIN:VCARD\n"+"VERSION:3.0\n"+"FN:"+toUtf8("李大志")+"\n"+"TEL;CELL;VOICE:15121155775\n"+"EMAIL;PREF;INTERNET:lidazhi@mobanker.com\n"+"ORG:"+toUtf8("上海前隆金融信息服务有限公司")+"\n"+"END:VCARD\n";
+
 var temp="http://appperson.ezhiyang.com";
 	/*jQuery('#output').qrcode(pt);*/
 	
